@@ -1,0 +1,1617 @@
+/*logo bar::::::::::::::::::::::::;*/
+body{
+	font-family: "Avenir Next LT Pro";
+  font-size: 18px;
+}
+
+input, button, select, textarea, .btn {
+  border-radius: 0px !important;
+}
+
+.logo-bar{
+	background-image: url("../image/logo-background.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.logo-bar .bar-right-side{
+    padding-top: 10px;
+}
+
+.affix {
+   top: 0;
+   width: 100%;
+   z-index: 9999 !important;
+ }
+
+.logo-bar .logo-image{
+	width:110px;
+	height:50px;
+	margin-left: 7%;
+}
+
+.logo-bar .media-heading{
+	font-weight: bold;
+	font-size: 12px;
+}
+.logo-bar a{
+	font-size: 14px;
+}
+/*nav bar:::::::::::::::::::::::::::*/
+.navbar{
+	/*background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);*/
+	background: url("../../images/top_address/menu_bar.png");
+	border:0px;
+	margin:0px;
+}
+
+ .my-nav-left{
+     margin-left: 6%;
+ }
+
+ .navbar-right{
+   margin-right:7%;
+ }
+
+.navbar-inverse .navbar-nav>li>a {
+	  font-size: 14px;
+	  font-family: "Avenir Next LT Pro";
+	  color: rgb(255, 255, 255);
+	  font-weight: bold;
+	  line-height: 1.2;
+}
+
+
+/*slider:::::::::::::::::::::::::::::*/
+.slider-part .container-fluid{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.slider-part h1{
+    font-size: 56px;
+}
+
+.About_us {
+  font-size: 30px;
+  font-family: "Avenir Next LT Pro";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  line-height: 1.2;
+  -moz-transform: matrix( 0.83935818707245,0,0,0.83935818707245,0,0);
+  -webkit-transform: matrix( 0.83935818707245,0,0,0.83935818707245,0,0);
+  -ms-transform: matrix( 0.83935818707245,0,0,0.83935818707245,0,0);
+  position: absolute;
+  left: 393.441px;
+  top: 176.5px;
+  z-index: 530;
+}
+
+
+/*platform:::::::::::::::::::::::::::*/
+.platform{
+   position: relative;
+   top: -60px;
+}
+
+.platform h4{
+   color:white;
+   font-size: 15px;
+   font-weight: bold;
+}
+
+.platform p{
+   color:white;
+   font-size: 14px;
+   /*text-align: justify;*/
+   line-height: 1.1;
+}
+
+.platform .background-red{
+    background-image: url("../../images/banner_icon/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:150px;
+    width: 260px;
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+.platform .padding{
+    padding-left:3%;
+    padding-right:3%;
+}
+
+.platform .plat-image{
+	width: 72px;
+  height: 72px;
+  /* width: 85px;
+  height: 140px; */
+	margin-top: 10px;
+}
+
+
+
+/*about admy:::::::::::::::::::::::;*/
+
+.about-admy{
+  background: #ebebeb;
+  padding-top:40px;
+  padding-bottom: 45px;
+}
+.about-admy h2{
+  font-weight: bold;
+  font-size:36px;
+}
+
+.about-admy h4{
+  font-weight: bold;
+  font-size:16px;
+  margin-top:15px;
+  margin-bottom: 20px;
+
+}
+
+.about-admy p{
+  margin-bottom: 20px;
+  color:black;
+  text-align: justify;
+}
+
+.line-big .col-md-12{
+	margin-top:-12px;
+}
+.line-sm .col-md-12{
+	margin-top:-13px;
+}
+
+
+/*product-input-output:::::::::::::::::::*/
+
+
+.product-input-output{
+  background: #ebebeb;
+  padding-bottom:40px;
+  padding-top: 10px;
+}
+
+.product-input-output h3{
+     font-size: 30px;
+}
+
+.product-input-output h5{
+  margin-bottom: 20px;
+}
+
+.table-bordered,.table-bordered>tbody>tr>td,.table-bordered>tbody>tr>th,.table-bordered>thead>tr>th{
+    border: 2px solid #6b1818;
+}
+
+
+.input-color{
+	background: #f44336;
+	color:white;
+}
+
+.output-color{
+	background:#f58128;
+	color:white;
+}
+
+.color-orange{
+   background: #fed6bd;
+   text-align: center;
+   font-weight: bold;
+}
+
+.color-light-orange{
+   background: #fce2cf;
+   text-align: center;
+   font-weight: bold;
+}
+
+.td-center{
+	text-align: center;
+}
+
+.btn-calculate{
+	 /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
+	 background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+}
+
+.btn-calculate_2{
+    /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
+    background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+}
+
+.product-overview{
+   padding-top: 30px;
+   padding-bottom: 30px;
+}
+
+.product-overview .product-overview-bg{
+     background-image: url("../../images/banner_icon/advantage_of_admy.png");;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     padding-left:3%;
+     padding-right: 3%;
+    /* margin-bottom: 13%;*/
+}
+
+.product-overview h3{
+     font-size: 30px;
+}
+
+.product-overview .product-overview-bg img{
+	width:60px;
+	height:75px;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.product-overview h5{
+	font-size:20px;
+	color:white;
+	font-weight: bold;
+	padding-bottom: 20px;
+	padding-left:16%;
+	padding-right:16%;
+}
+
+.admy-obd-platform{
+    padding-top: 40px;
+    padding-bottom: 35px;
+    background: #ebebeb;
+}
+
+.admy-obd-platform .obd-heading img{
+    padding-top: 12px;
+}
+
+.admy-obd-platform h1{
+	font-size:56px;
+	font-weight: bold;
+	color:#aa2654;
+	margin-top:50px;
+	margin-bottom: -5px;
+    margin-left: 20px;
+}
+
+.admy-obd-platform h2{
+	font-size:38px;
+	font-weight: bold;
+	color:#403f41;
+	margin-top: 0px;
+    margin-left: 20px;
+}
+
+.admy-obd-platform ul li:before {
+    content: "";
+    line-height: 1em;
+    width: .5em;
+    height: .5em;
+    background-color: #aa2654;
+    float: left;
+    margin: .72em .50em 0;
+    border-radius: 50%;
+}
+
+.admy-obd-platform ul{
+	margin-left: -4%;
+}
+
+.admy-obd-platform ul li{
+	line-height: 22px;
+}
+
+.admy-obd-platform p.first-p{
+	/*margin-bottom: 45px;*/
+	margin-top: 40px;
+  margin-left:20px;
+  text-align: justify;
+}
+
+.admy-obd-platform p.second-p{
+	/*margin-bottom: 25px;*/
+   margin-left:20px;
+   text-align: justify;
+}
+
+.admy-obd-platform h4{
+  /*padding-top:30px;*/
+  padding-bottom:15px;
+  font-size: 30px;
+}
+
+
+.admy-obd-platform .detail .col-md-6{
+  padding:15px;
+}
+
+
+/*...............................................................................
+    ................................................................
+          ..................................................*/
+ .carousel-caption{
+ 	bottom: 130px;
+ 	left:10%;
+ }
+
+.carousel-indicators {
+    bottom: 85px !important;
+}
+
+.carousel-control .glyphicon-chevron-right{
+    margin-right: -80px;
+}
+
+ .carousel-control .glyphicon-chevron-left{
+ 	 margin-left: -80px;
+ }
+
+
+
+
+/* .....................................................................
+ .....................................
+ ...........................................................................
+ ...........................................*/
+
+ .bulk-sms-service{
+   background: #ebebeb;
+   padding-top:90px;
+   padding-bottom:80px;
+ }
+
+ .bulk-sms-service .titles{
+    margin-top:-4%;
+ }
+ .bulk-sms-service h1.bulk{
+    font-size: 56px;
+    font-weight: bold;
+    color:#982c62;
+     margin-top: 124px;
+ }
+
+ .bulk-sms-service h1.sms-service{
+    font-size:38px;
+    font-weight: bold;
+    color:#403f41;
+    margin-top: -10px;
+ }
+
+.bulk-sms-service h3.service-process{
+   margin-top: 45px;
+   margin-bottom: 18px;
+}
+
+.bulk-sms-service .global-delivery{
+  margin-left:15%;
+}
+
+.bulk-sms-service .global-delivery h4{
+  margin-top:17px;
+}
+
+.bulk-sms-service .global-delivery p{
+  margin-top:10px;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.bulk-sms-service h2.bulk-plan{
+  font-size: 36px;
+  color:#403f41;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+.bulk-sms-service .package{
+  background: #d7d5d5;
+  padding-top:25px;
+  padding-bottom: 35px;
+}
+
+.bulk-sms-service .package h2{
+  color:#a32757;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.bulk-sms-service .package h3{
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 35px;
+}
+
+.bulk-sms-service a{
+  width: 100%;
+  margin-top: 7px;
+}
+
+/*--------------
+ */
+
+.push-sms-service{
+    background: white;
+    padding-top:90px;
+    padding-bottom:80px;
+}
+
+.push-sms-service h1.bulk{
+    font-size: 56px;
+    font-weight: bold;
+    color:#982c62;
+    margin-top: 124px;
+}
+
+.push-sms-service h1.sms-service{
+    font-size:38px;
+    font-weight: bold;
+    color:#403f41;
+    margin-top: -10px;
+}
+
+.push-sms-service h3.service-process{
+    margin-top: 45px;
+    margin-bottom: 18px;
+}
+
+.push-sms-service .global-delivery{
+    margin-left:15%;
+}
+
+.push-sms-service .global-delivery h4{
+    margin-top:17px;
+}
+
+.push-sms-service .global-delivery p{
+    margin-top:10px;
+    text-align: justify;
+    font-size: 18px;
+}
+
+.push-sms-service h2.bulk-plan{
+    font-size: 36px;
+    color:#403f41;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.push-sms-service .package{
+    background: #d7d5d5;
+    padding-top:25px;
+    padding-bottom: 35px;
+}
+
+.push-sms-service .package h2{
+    color:#a32757;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.push-sms-service .package h3{
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 35px;
+}
+
+.push-sms-service a{
+    width: 100%;
+    margin-top: 7px;
+}
+
+
+/*................................................................................................
+.........................................................................................
+...............................................................................
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+...............................................................................
+..........................................................................................
+.................................................................................................*/
+.obd-packages-plan{
+   background-image: url("../../images/obd_platform_01/backgrownd-for-obd.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
+   padding-top:40px;
+   padding-bottom: 70px;
+}
+
+.obd-packages-plan h2.obd-pack-plan{
+   font-weight: bold;
+   font-size: 34px;
+   color:white;
+}
+
+
+.obd-packages-plan .wrap{
+  background: white;
+  margin-left: 6%;
+  margin-right: 6%;
+  padding-left:4px;
+  padding-right:4px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px black;
+}
+
+.obd-packages-plan .wrap h3{
+  font-size: 22px;
+  font-weight: bold;
+  color:black;
+  padding-top: 15px;
+}
+
+.obd-packages-plan .wrap h2{
+  font-size: 22px;
+  font-weight: bold;
+  color:white;
+  background: url("../../images/obd_platform_01/obd-tk-bg.png");
+  padding-top:15px;
+  padding-bottom: 15px;
+}
+
+.obd-packages-plan .wrap span{
+  font-size: 14px;
+}
+
+.obd-packages-plan .wrap .p1{
+  color:black;
+  font-size: 14px;
+  /* border-bottom: 2px solid red; */
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+}
+
+.obd-packages-plan .wrap .p2{
+  color:#912a5e;
+  font-size: 18px;
+  border-bottom: 1px solid #bbbebf;
+  margin-bottom: 0px;
+  font-weight: bold;
+  background: #ebebeb;
+  padding:7px;
+}
+
+.obd-packages-plan .wrap a{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.obd-packages-plan .pack-detail{
+   background: white;
+   color:#f45233;
+   margin-top: 38px;
+   font-size: 18px;
+   font-weight: bold;
+   padding:10px;
+   padding-left:30px;
+   padding-right: 30px;
+}
+
+
+/*
+........................................................................................
+........................   digital-platform   ........................
+........................................................................................*/
+.digital-platform{
+   padding-bottom: 30px;
+}
+
+.digital-platform .image{
+    padding:4%;
+    position: relative;
+}
+
+.digital-platform .title{
+    padding-top: 9%;
+    position: absolute;
+    margin-left: 422px;
+    bottom: 335px;
+}
+@media screen and (max-width: 720px) {
+    .digital-platform .title{
+        padding-top: 9%;
+        position: absolute;
+        margin-left: 195px;
+        bottom: 145px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .digital-platform .title h1.platforms{
+        font-size: 25px;
+        font-weight: bold;
+        color:#403f41;
+        margin-top: -20px;
+        padding-left:8%;
+    }
+
+    .digital-platform .title h1.digital{
+        font-size: 30px;
+        font-weight: bold;
+        color:#ab2653;
+    }
+}
+@media screen and (min-width: 720px) {
+    .digital-platform .title h1.digital {
+        font-size: 56px;
+        font-weight: bold;
+        color: #ab2653;
+    }
+
+    .digital-platform .title h1.platforms {
+        font-size: 38px;
+        font-weight: bold;
+        color: #403f41;
+        margin-top: -20px;
+        padding-left: 8%;
+    }
+}
+
+.digital-platform .cpa-image{
+    width: 420px;
+    height: 180px;
+}
+
+.digital-platform .content-digital{
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.digital-platform .content-digital h5{
+    padding-top:23px;
+}
+
+.digital-platform .content-digital-left{
+    padding-left: 7%;
+}
+
+.digital-platform .content-digital-left h5{
+    padding-top:8px;
+}
+
+.digital-platform .content-digital-left h4{
+    padding-top:15px;
+    font-size: 20px;
+}
+
+
+/*
+...................................................................................
+...............................................................................................*/
+
+
+/*start footer::::::::::::::::::::::::*/
+
+.footer-wrap{
+  background: #282828;
+  padding-bottom: 25px;
+}
+
+
+.footer-wrap h4,.footer-wrap h5{
+  color:white;
+}
+
+
+/*end footer:::::::::::::::::::::::::;*/
+
+
+
+
+
+/*start of footer:::::::::::::::::::*/
+.footer-wrap .first-col{
+  /* padding-top:45px; */
+  padding-top:25px;
+}
+
+.footer-wrap .first-col button{
+  height:34px;
+}
+
+.footer-wrap .first-col .footer-logo{
+   width:75px;
+}
+
+.footer-wrap .middle-part{
+  padding-top:20px;
+  padding-bottom:10px;
+}
+
+.footer-wrap .middle-part p{
+  margin: 0 0 8px;
+}
+
+.footer-wrap p{
+    font-size: 14px;
+    font-family: "ClearGothicSerial";
+    color: rgb(160, 159, 159);
+    line-height: 1.1;
+}
+
+.footer-wrap .search-iccn{
+  color:white;
+
+}
+
+.footer-wrap .search-e button{
+    background:#9a295b;
+    border-radius: 0px;
+}
+
+.footer-wrap button{
+    background:#9a295b;
+    color:white;
+    font-size: 13px;
+    font-family: "ClearGothicSerial";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+
+.footer-wrap .search-e input[type=text] {
+  border-radius: 0px;
+}
+
+.footer-wrap .second-col,.footer-wrap .thired-col,.footer-wrap .fourth-col,.footer-wrap .fifth-col{
+  /* padding-top:50px; */
+  padding-top:25px;
+}
+
+.footer-wrap .second-col h4{
+  font-size: 16px;
+  font-family: "ClearGothicSerial";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+
+/*.footer-wrap .second-col h5{
+   font-size: 16px;
+   font-family: "ClearGothicSerial";
+   color: rgb(255, 255, 255);
+   font-weight: bold;
+   line-height: 1.323;
+   margin-top: 0px;
+}*/
+
+.footer-wrap .second-col .image-right-cont{
+     font-size: 10px;
+     font-family: "ClearGothicSerial";
+     color: rgb(103, 101, 101);
+}
+
+.footer-wrap .image-below-cont{
+  font-size: 16.5px;
+  font-family: "ClearGothicSerial";
+  color: rgb(160, 159, 159);
+  line-height: 1.455;
+  padding-bottom: 25px;
+}
+
+.footer-wrap .second-col a{
+     font-size: 18px;
+     font-family: "ClearGothicSerial";
+     color: rgb(160, 159, 159);
+}
+
+.footer-wrap .second-col a i{
+    font-size: 20px;
+    color:red;
+}
+
+.first-col h4,.thired-col h4 , .fourth-col h4 , .fifth-col h4{
+  font-size: 16px;
+  font-family: "ClearGothicSerial";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.thired-col ul , .fourth-col ul , .fifth-col ul{
+  list-style: none;
+  padding-left:2px;
+}
+
+.thired-col ul li , .fourth-col ul li , .fifth-col ul li{
+  font-size: 14px;
+  font-family: "ClearGothicSerial";
+}
+
+.thired-col ul li a, .fourth-col ul li a, .fifth-col ul li a{
+   color: rgb(160, 159, 159);
+}
+
+.footer-wrap .fifth-col input[type=text],.footer-wrap .fifth-col input[type=email],.footer-wrap .fifth-col textarea {
+  background: #313131;
+  color:#797777;
+  border: 1px solid #464646;
+}
+
+.footer-wrap .fifth-col button{
+  width:85px;
+  height:38px;
+  font-size: 13px;
+  font-family: "ClearGothicSerial";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border:1px solid #464646;
+  margin-top: 3px;
+}
+.footer-wrap h4.social-media{
+  /*padding-top: 15px;*/
+  padding-bottom: 2px;
+}
+
+  ul.social-media-list{
+    margin-left: -19%;
+}
+  ul.social-media-list li {
+    float: left;
+    padding-right:5px;
+}
+
+ ul.social-media-list li a img{
+   width:25px;
+}
+
+.footer-wrap .fifth-col h4{
+  padding-bottom: 5px;
+}
+.footer-wrap .fifth-col button:hover{
+  background: #f57b2a;
+}
+
+.footer-wrap .fifth-col .form-group{
+  margin-bottom: 8px;
+}
+/*end of footer::::::::::::::::::::*/
+
+
+
+.footer-end{
+  /* height:25px;
+  background:#1c1c1c; */
+}
+
+.footer-wrap h4.method{
+  padding-top: 10px;
+  /*padding-bottom: 10px;*/
+}
+
+
+.footer-wrap ul.payment-list {
+    padding-left:0px;
+
+}
+
+.footer-wrap ul.payment-list li {
+    float: left;
+    padding-right:20px;
+
+}
+
+.payment-list img{
+   /* width:45px; */
+   width: 40%;
+}
+
+
+
+
+
+/*.............................................................................................
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+---------------------------------REGISTRATION PAGE-------------------------------------------
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.............................................................................................*/
+
+.sign-up{
+   background-image: url("../image/registration.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.sign-up h2{
+   font-size: 48px;
+   font-weight: bold;
+   color: white;
+   padding-top: 90px;
+   padding-bottom: 80px;
+}
+
+.registration-now{
+   /* padding-top: 100px;
+   padding-bottom: 100px; */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.registration-now .registration-background{
+   background-image: url("../image/registration_art_work.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 110px;
+   padding-bottom: 547px;
+}
+
+.registration-now .registration-background h2.registration{
+    color:white;
+    font-weight: bold;
+    font-size:36px;
+}
+
+.registration-now .registration-background h2.now{
+   color:white;
+   font-weight: bold;
+   font-size:38px;
+   margin-top: -4px;
+}
+
+.registration-now .col-md-5{
+   padding-right: 0px;
+}
+
+.registration-now .col-md-7{
+   padding-left: 0px;
+}
+
+.registration-now .form-div{
+  /* padding-top:80px;
+  padding-bottom:70px;
+  padding-left: 40px;
+  padding-right: 40px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color:#ebebeb;
+}
+
+.registration-now .form-div label{
+  margin-top: 20px;
+}
+
+.registration-now .form-div label span{
+  color:#f5672e;
+}
+
+.registration-now .form-div button{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  /* padding-left:200px; */
+  /* padding-right: 200px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top:40px;
+  margin-bottom:10px;
+  width: 100%;
+}
+
+.registration-now .form-div .p1{
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.registration-now .form-div .p2{
+  color:#97295b;
+  font-size: 16px;
+}
+
+
+
+
+/*.............................................................................................
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+---------------------------------------LOGIN-------------------------------------------------
+.............................................................................................*/
+
+
+.login-now{
+   /* padding-top: 100px;
+   padding-bottom: 100px; */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.login-now .col-md-4{
+   padding-right: 0px;
+}
+
+.login-now .col-md-6{
+   padding-left: 0px;
+}
+
+.login-now .form-div{
+  /* padding-top:105px;
+  padding-bottom:166px;
+  padding-left: 55px;
+  padding-right: 55px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color:#ebebeb;
+}
+
+.login-now .form-div label{
+  margin-top: 20px;
+}
+
+.login-now .form-div label span,.login-now .form-div .sign-color{
+  color:#f5672e;
+}
+
+.login-now .form-div button{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  /* padding-left:185px; */
+  /* padding-right: 185px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top:40px;
+  margin-bottom:10px;
+  width: 100%;
+}
+
+.login-now .form-div .p1{
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.login-now .form-div .p2{
+  color:#f45831;
+  font-size: 16px;
+}
+
+
+.login-now .forget-pass{
+  margin-top: 5%;
+  color:#888787;
+}
+
+
+
+
+
+
+/*;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+...........................................................................................
+------------------------------CONTACT US---------------------------------------------------
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+...........................................................................................*/
+
+.contact-us{
+   background-image: url("../image/contact-us.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.contact-us h2{
+   font-size: 48px;
+   font-weight: bold;
+   color: white;
+   padding-top: 90px;
+   padding-bottom: 80px;
+}
+
+
+.close {
+  color: black;
+  opacity: 1;
+}
+
+
+.contact-us-field{
+   padding-top: 100px;
+   padding-bottom: 100px;
+}
+
+.contact-us-field .col-md-4{
+   padding-right: 0px;
+   margin-top: -10px;
+}
+
+.contact-us-field .col-md-6{
+   padding-left: 0px;
+}
+
+
+.contact-us-field .get-in-touch{
+   /* padding-bottom: 95px; */
+   padding-bottom: 342px;
+}
+
+.contact-us-field .get-in-touch h1.in-touch{
+   color:white;
+   font-weight: bold;
+   padding-top:100px;
+}
+
+
+.contact-us-field .get-in-touch .line,.contact-us-field .get-in-touch .line2{
+       width: 112px;
+       margin-left: 78px;
+}
+
+.contact-us-field .get-in-touch .line2{
+    margin-bottom: 35px;
+ }
+
+.contact-us-field .get-in-touch .message{
+       width:45%;
+       padding-top:32px;
+       padding-bottom: 35px;
+}
+
+
+.contact-us-field .get-in-touch h1.contact-info{
+   color:white;
+   font-weight: bold;
+   padding-top:50px;
+}
+
+.contact-us-field .get-in-touch p{
+   color:white;
+   padding-left: 78px;
+   padding-right: 78px;
+   text-align: justify;
+   margin-bottom: 35px;
+}
+
+
+
+.contact-us-field .form-div{
+  padding-top:105px;
+  /*padding-bottom:80px;*/
+  padding-bottom:72px;
+  padding-left: 55px;
+  padding-right: 55px;
+  background-color:#ebebeb;
+}
+
+.contact-us-field .form-div label{
+  margin-top: 20px;
+}
+
+.contact-us-field .form-div label span,.login-now .form-div .sign-color{
+  color:#8b2b60;
+}
+
+.contact-us-field .form-div button{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left:110px;
+  padding-right: 110px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top:40px;
+  margin-bottom:60px;
+}
+
+.contact-us-field .form-div .p1{
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.contact-us-field .form-div .p2{
+  color:#f45831;
+  font-size: 16px;
+}
+
+
+.contact-us-field .forget-pass{
+  margin-top: 5%;
+  color:#888787;
+}
+
+.contact-us-field .margin-div{
+  margin-bottom: 25px;
+}
+
+.contact-us-field .get-in-touch{
+   background-image: url("../../images/contact-us/get_in_touch_bg.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+
+
+.contact-us-field .miaki-address{
+  margin-bottom: 25px;
+}
+
+.contact-us-field .miaki-address p{
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+
+.contact-us-field .contact-info-images1{
+  width:30px;
+  padding-top: 46%;
+}
+
+.contact-us-field .contact-info-images2{
+  width:30px;
+  padding-top: 3%;
+}
+
+.contact-us-field .contact-info-images3{
+  width:30px;
+  padding-top: 20%;
+}
+
+
+
+
+
+
+
+
+
+/*.......................................location........................................
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
+
+.location-map img{
+  height: 410px;
+  width: 100%;
+}
+
+
+
+
+/*;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+................................................................................
+.....................FLIP BOX...................................................
+--------------------------------------------------------------------------------
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
+
+
+.flip-box {
+  background-color: transparent;
+  width:100%;
+  height: 200px;
+  /*border: 1px solid #f1f1f1;*/
+  perspective: 1000px;
+  margin-bottom: 25px
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  backface-visibility: hidden;
+}
+
+.flip-box-front {
+
+}
+
+.flip-box-back {
+  background-color: #ebebeb;
+  /* background-color: white; */
+  color: #a03804;;
+  transform: rotateY(180deg);
+  border: 2px solid #f44432;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*...................................................................
+....................end of it(flip)................................
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
+
+
+.w3-button-obd{
+  background: #f56a2e;
+  color: white;
+  font-size: 14px;
+  font-family: "Avenir Next LT Pro";
+  font-weight: bold;
+  padding-top:13px;
+}
+
+.w3-button-obd:hover{
+   background: #f56a2e !important;
+   color: white !important;
+   text-decoration: none !important;
+  }
+
+ .w3-button-obd-a{
+   color: white!important;
+   background-color: #f56a2e!important;
+ }
+
+  .w3-button-obd-a:hover{
+   color: white!important;
+   background-color: #f56a2e!important;
+   text-decoration: none;
+ }
+
+  /*.w3-button-obd-a:hover > .w3-button-obd,.first-child{
+   color: white!important;
+   background-color: #f56a2e!important;
+ }*/
+ .w3-dropdown-hover:hover > .w3-button:first-child, .w3-dropdown-click:hover > .w3-button:first-child{
+  color: white!important;
+   background-color: #f56a2e!important;
+ }
+
+ .w3-dropdown-content{
+/*  margin-top:7px;*/
+ }
+
+ .media:first-child {
+    margin-top: 5px !important;
+}
+
+
+
+
+/*-------------------------------------------------------------------
+:::::::::::::::::::::::::: PASSWORD RESET :::::::::::::::::::::::::
+-------------------------------------------------------------------*/
+
+.reset-pass{
+   background-image: url("../image/password-banner.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.reset-pass h2{
+   font-size: 48px;
+   font-weight: bold;
+   color: white;
+   padding-top: 60px;
+   padding-bottom: 75px;
+}
+
+
+
+
+.password-reset{
+   padding-top: 100px;
+   padding-bottom: 100px;
+}
+
+.password-reset .password-reset-background{
+   background-image: url("../image/password-form.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 36px;
+   padding-bottom: 203px;
+
+}
+
+.password-reset .password-reset-background h2{
+    color: white;
+    font-weight: bold;
+    font-size: 34px;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.password-reset .col-md-5{
+   padding-right: 0px;
+}
+
+.password-reset .col-md-7{
+   padding-left: 0px;
+}
+
+.password-reset .form-div{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color:#ebebeb;
+}
+
+.password-reset .form-div label{
+  margin-top: 20px;
+}
+
+.password-reset .form-div label span{
+  color:#f5672e;
+}
+
+.password-reset .form-div button{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left:20%;
+  padding-right: 20%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top:40px;
+  margin-bottom:10px;
+}
+
+/*---------------------------END OF IT-------------------------
+-------------------------------------------------------------*/
+
+
+
+
+
+
+/*.............................................................................
+---------------------------______________________----------------------------
+__________________________    PASSWORD   RECOVER   ___________________________
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+.............................................................................*/
+
+
+
+
+.recover{
+   background-image: url("../image/password-banner.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.recover h2{
+   font-size: 48px;
+   font-weight: bold;
+   color: white;
+   padding-top: 60px;
+   padding-bottom: 75px;
+}
+
+.password-recover{
+   padding-top: 100px;
+   padding-bottom: 100px;
+}
+
+.password-recover .password-recover-background{
+   background-image: url("../image/password-form.png");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-top: 35px;
+   padding-bottom: 150px;
+
+}
+
+.password-recover .password-recover-background h2{
+    color: white;
+    font-weight: bold;
+    font-size: 34px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.password-recover .col-md-5{
+   padding-right: 0px;
+}
+
+.password-recover .col-md-7{
+   padding-left: 0px;
+}
+
+.password-recover .form-div{
+  padding-top: 47.45px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color:#ebebeb;
+}
+
+.password-recover .form-div label{
+  margin-top: 20px;
+}
+
+.password-recover .form-div label span{
+  color:#f5672e;
+}
+
+.password-recover .form-div button{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left:20%;
+  padding-right: 20%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top:40px;
+  margin-bottom:10px;
+}
+
+.flip-back-text{
+  font-size: 20px;
+  margin-top: 65px;
+  font-weight: bold;
+}
+
+.top-icon-text{
+  padding-top: 4px;
+}
+
+.sign-up-background{
+    background: url("../../images/SignUP/registration.png");
+    width: auto;
+    height: 660px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.reg_text{
+    margin-top: 30px;
+    color: white;
+    padding: 30px;
+}
+.pd{
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.coming_soon{
+    position: absolute;
+    margin: -40px;
+    padding: 0;
+    display: block;
+}
+.api-package{
+    background: #d7d5d5!important;
+    padding: 30px;
+    min-height: 215px;
+}
+.api-package_2{
+    background: #d7d5d5!important;
+    padding: 30px;
+    margin-top: 11px;
+    min-height: 215px;
+}
+#web-api-service a{
+    width: 100%;
+    margin-top: 7px;
+}
+
+
+#web-api-service .api-package h2 {
+    color: #a32757;
+    font-weight: bold;
+    font-size: 25px;
+}
+.api-package_2 h2{
+    color: #a32757;
+    font-weight: bold;
+    font-size: 35px;
+}
+.api-package_2 p{
+    font-size: 13px!important;
+}
+.api-package_2 a{
+    width: 100%;
+    margin-top: 7px;
+}
+.web-plan{
+    margin-bottom: 30px;
+}

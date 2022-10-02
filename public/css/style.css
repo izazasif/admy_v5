@@ -1,0 +1,89 @@
+.distable {
+    display: table;
+  }
+  .distable-row {
+    display: table-row;
+  }
+  .distable-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .distable > .distable-row > .distable-cell {
+    padding: 2px;
+  }
+  .distable > .distable-row > .distable-cell > label {
+    margin: 0;
+  }
+
+  .search-btns {
+    padding-top: 21px !important;
+  }
+
+  .pack-name{
+    background-color: #d6d6d6;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+  }
+
+  .pack-price{
+    background-color: #3c8dbc;
+    font-size: 26px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    margin-bottom: 5px;
+  }
+
+  .pack-amount{
+    background-color: #d6d6d6;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+  }
+
+  .pack-amount>span{
+    color: #3c8dbc;
+    font-weight: bold;
+  }
+
+  .pack-duration{
+    background-color: #d6d6d6;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+  }
+
+  .pack-validity{
+    background-color: #d6d6d6;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+  }
+
+  .pack-setup{
+    background-color: #abaaaa;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+    color: white;
+  }
+
+  .pack-buy{
+    background-color: #d6d6d6;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .highlight-ticket{
+    font-weight: bold;
+    /* background-color: #eae9e9; */
+    background-color: #f9f0c1;
+  }

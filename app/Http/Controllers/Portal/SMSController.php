@@ -1,0 +1,197 @@
+<?php
+
+namespace App\Http\Controllers\Portal;
+
+use App\Http\Controllers\Api\CampainController;
+use App\Http\Controllers\Controller;
+use App\Models\Campaign;
+use App\SMS;
+use App\SMSSchedule;
+use App\UserSMS;
+use Illuminate\Http\Request;
+
+class SMSController extends Controller
+{
+    public function index(){
+        $sms = SMS::paginate();
+        $is_active = 'sms_list';
+        return view('portal.sms.index',compact('sms','is_active'));
+    }
+
+    public function create(){
+        $is_active = 'sms_create';
+        return view('portal.sms.create',compact('is_active'));
+    }
+
+    public function store(Request $request){
+        $rules = [
+            'name'          => 'required',
+            'sms_category'  => 'required',
+            'sms_type'      => 'required',
+            'unit_price'    => 'required',
+            'price'         => 'required',
+            'amount'        => 'required',
+            'validity'      => 'required',
+            'status'        => 'required',
+        ];
+
+        $messages = [
+            'name.required'         => 'Name field is required!',
+            'name.sms_category'     => 'SMS Category field is required!',
+            'name.sms_type'         => 'SMS Type field is required!',
+            'unit_price.required'   => 'Unit Price field is required!',
+            'price.required'        => 'Total Price field is required!',
+            'amount.required'       => 'Amount field is required!',
+            'validity.required'     => 'Validity field is required!',
+            'status.required'       => 'Status field is required!',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $smsData = new SMS();
+        $smsData->name = $request->name;
+        $smsData->sms_category = $request->sms_category;
+        $smsData->sms_type = $request->sms_type;
+        $smsData->unit_price = $request->unit_price;
+        $smsData->price = $request->price;
+        $smsData->amount = $request->amount;
+        $smsData->validity = $request->validity;
+        $smsData->status = $request->status;
+        $smsData->save();
+
+        $message = 'SMS Package Created Successfully!';
+        return redirect()->route('portal.sms.list')->with('message',$message);
+    }
+
+    public function edit($id){
+        $title = "AdMy | Edit SMS Package";
+        $is_active = "sms_edit";
+        $smsDetail = SMS::where('id', $id)->first();
+        return view('portal.sms.edit', compact('title', 'is_active', 'smsDetail'));
+    }
+
+    public function update(Request $request){
+        $rules = [
+            'name'          => 'required',
+            'sms_category'  => 'required',
+            'sms_type'      => 'required',
+            'unit_price'    => 'required',
+            'price'         => 'required',
+            'amount'        => 'required',
+            'validity'      => 'required',
+            'status'        => 'required',
+        ];
+
+        $messages = [
+            'name.required'         => 'Name field is required!',
+            'name.sms_category'     => 'SMS Category field is required!',
+            'name.sms_type'         => 'SMS Type field is required!',
+            'unit_price.required'   => 'Unit Price field is required!',
+            'price.required'        => 'Total Price field is required!',
+            'amount.required'       => 'Amount field is required!',
+            'validity.required'     => 'Validity field is required!',
+            'status.required'       => 'Status field is required!',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $sms_id = $request->sms_id;
+
+        $smsData = SMS::where('id', $sms_id)->first();
+        $smsData->name = $request->name;
+        $smsData->sms_category = $request->sms_category;
+        $smsData->sms_type = $request->sms_type;
+        $smsData->unit_price = $request->unit_price;
+        $smsData->price = $request->price;
+        $smsData->amount = $request->amount;
+        $smsData->validity = $request->validity;
+        $smsData->status = $request->status;
+        $smsData->save();
+
+        $message = 'SMS Package Updated Successfully!';
+        return redirect()->route('portal.sms.list')->with('message',$message);
+    }
+
+    public function purchase(){
+        $title = "AdMy | SMS Purchase";
+        $is_active = "purchase_sms";
+        $sms = SMS::where('status', 1)->get();
+        return view('portal.sms.purchase', compact('title', 'is_active', 'sms'));
+    }
+
+    public function checkout($id){
+        $title = "AdMy | SMS Checkout";
+        $is_active = "purchase_sms";
+        $packDetails = SMS::where('id', $id)->where('status', 1)->first();
+            $user_id = session()->get('user_id');
+            $userPackData = new UserSMS();
+            $userPackData->user_id = $user_id;
+            $userPackData->sms_id = $id;
+            $userPackData->amount = $packDetails->amount;
+            $userPackData->channel = 'push';
+            $userPackData->is_active = 0;
+            $userPackData->payment_status = 'Pending';
+            $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +' . $packDetails->validity . ' day'));
+            $success = $userPackData->save();
+            if($success) {
+                $user_pack_id = $userPackData->id;
+                $bkash = new BikashController();
+                $token = $bkash->getToken();
+                if($token == -1){
+                    return back();
+                }
+                session()->put('bkash_token',$token);
+                return view('portal.sms.checkout', compact('title', 'is_active', 'packDetails','user_pack_id'));
+            }else{
+                $message = 'Something is wrong, try again';
+                return redirect()->back()->with('message',$message);
+            }
+    }
+
+    public function startCampaign($id){
+        $user_id = session()->get('user_id');
+        $schedule = SMSSchedule::where('id', $id)->first();
+        if($schedule){
+            $campaign = new CampainController();
+           $response =  $campaign->createCampaign($schedule->user_id,$schedule->id);
+           if ($response && $response->result==0){
+               $cpgn = new Campaign();
+               $cpgn->campaign_id = $response->campaign_id;
+               $cpgn->schedule_id = $schedule->id;
+               $cpgn->user_id     = $schedule->user_id;
+               $cpgn->app_id      = $schedule->app_id;
+               $cpgn->conversions = $schedule->sms_amount;
+               $cpgn->status      = 'CREATED';
+               $cpgn->save();
+               $schedule->status = 1;
+               $schedule->save();
+               $message = "Campaign has created successfully, campaign id: ".$response->campaign_id;
+           }elseif($response && $response->result==1){
+               $message = "No balance remaining in purchased packages for specified channel";
+           }else{
+               $message = "Somethings is wrong";
+           }
+        }else{
+            $message = "Invalid Schedule";
+        }
+        return redirect()->back()->with('message',$message);
+    }
+
+    public function campaignInformation($id){
+        $title = "AdMy | Campaign Stat";
+        $is_active = "campaign_stat";
+        $cam = Campaign::where('schedule_id',$id)->select('campaign_id')->first();
+        $campaign = new CampainController();
+        $response =  $campaign->getCampainInformation($cam->campaign_id);
+        $stat = $response->stat;
+        return view('portal.sms_schedule.campaign_stat',compact('stat','title','is_active'));
+    }
+
+    public function purchaseHistory(){
+        $title = "AdMy | Push SMS Purchase History";
+        $user_id = session()->get('user_id');
+        $is_active = "sms_purchase_history";
+        $lists = UserSMS::where('user_id',$user_id)->where('is_active',1)->paginate(20);
+        return view('portal.sms_schedule.purchase-history',compact('title','is_active','lists'));
+    }
+}
