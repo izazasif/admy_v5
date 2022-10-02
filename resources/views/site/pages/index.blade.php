@@ -376,7 +376,7 @@
           <div class="col-md-12">
                 <h2 class="obd-pack-plan text-center" data-aos="zoom-in">OBD PACKAGES PLAN</h2>
                 <div class="row">
-                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
                   @foreach($packs as $pack)
                   <div class="col-md-2 pd">
                       <div class="wrap text-center " data-aos="zoom-in">
