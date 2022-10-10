@@ -26,11 +26,11 @@
                 </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li class="{{ $is_active == 'purchase_pack' ? 'active' : '' }}"><a href="{{ route('pack.purchase') }}"><i class="fa fa-shopping-bag"></i> Buy Packs</a></li>
+                        <li class="{{ $is_active == 'purchase_history' ? 'active' : '' }}"><a href="{{ route('pack.history') }}"><i class="fa fa-history"></i> OBD pack purchase History</a></li>
                         <li class="{{ $is_active == 'create_schedule' ? 'active' : '' }}"><a href="{{ route('schedule.create') }}"><i class="fa fa-calculator"></i>Schedule OBD</a></li>
                         <li class="{{ $is_active == 'schedule_history' ? 'active' : '' }}"><a href="{{ route('schedule.history') }}"><i class="fa fa-calendar-check-o"></i>Schedule History</a></li>
                         <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a href="{{ route('schedule.report') }}"><i class="fa fa-database"></i>OBD Report</a></li>
-                        <li class="{{ $is_active == 'purchase_pack' ? 'active' : '' }}"><a href="{{ route('pack.purchase') }}"><i class="fa fa-shopping-bag"></i> Buy Packs</a></li>
-                        <li class="{{ $is_active == 'purchase_history' ? 'active' : '' }}"><a href="{{ route('pack.history') }}"><i class="fa fa-history"></i> OBD History</a></li>
                     </ul>
                 </li>
 
@@ -42,10 +42,10 @@
                 </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li class="{{ $is_active == 'purchase_sms' ? 'active' : '' }}"><a href="{{ route('sms.purchase') }}"><i class="fa fa-cart-plus"></i> Buy Push SMS Package</a></li>
+                        <li class="{{ $is_active == 'sms_purchase_history' ? 'active' : '' }}"><a href="{{ route('sms.purchase.history') }}"><i class="fa fa-life-saver text-aqua"></i> <span>Push SMS Pack Purchase History</span></a></li>
                         <li class="{{ $is_active == 'create_sms_schedule' ? 'active' : '' }}"><a href="{{ route('sms.schedule.create') }}"><i class="fa fa-credit-card text-aqua"></i> <span>Push SMS Schedule</span></a></li>
                         <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a href="{{ route('sms.schedule.list.user') }}"><i class="fa fa-line-chart text-aqua"></i> <span>Push SMS Schedule History</span></a></li>
-                        <li class="{{ $is_active == 'sms_purchase_history' ? 'active' : '' }}"><a href="{{ route('sms.purchase.history') }}"><i class="fa fa-life-saver text-aqua"></i> <span>Push SMS Pack Purchase History</span></a></li>
-                        <li class="{{ $is_active == 'purchase_sms' ? 'active' : '' }}"><a href="{{ route('sms.purchase') }}"><i class="fa fa-cart-plus"></i> Buy Push SMS Package</a></li>
                     </ul>
                 </li>
                 <li class="treeview {{ ($is_active == 'create_web_api_schedule' || $is_active == 'web_api_schedule_list' || $is_active == 'purchase_web_api' || $is_active== 'web_api_purchase_history' ) ? 'active' : '' }}">
@@ -56,10 +56,10 @@
                 </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li class="{{ $is_active == 'purchase_web_api' ? 'active' : '' }}"><a href="{{ route('web.api.purchase') }}"><i class="fa fa-cart-arrow-down"></i> Buy Web API Package</a></li>
+                        <li class="{{ $is_active == 'web_api_purchase_history' ? 'active' : '' }}"><a href="{{ route('web.api.purchase.history') }}"><i class="fa fa-hand-paper-o text-aqua"></i> <span>Web API Purchase History</span></a></li>
                         <li class="{{ $is_active == 'create_web_api_schedule' ? 'active' : '' }}"><a href="{{ route('web.api.schedule.create') }}"><i class="fa fa-stack-exchange text-aqua"></i> <span>Schedule  Web API</span></a></li>
                         <li class="{{ $is_active == 'web_api_schedule_list' ? 'active' : '' }}"><a href="{{ route('web.api.schedule.list.user') }}"><i class="fa fa-deaf text-aqua"></i> <span>Schedule Web API History</span></a></li>
-                        <li class="{{ $is_active == 'web_api_purchase_history' ? 'active' : '' }}"><a href="{{ route('web.api.purchase.history') }}"><i class="fa fa-hand-paper-o text-aqua"></i> <span>Web API Purchase History</span></a></li>
-                        <li class="{{ $is_active == 'purchase_web_api' ? 'active' : '' }}"><a href="{{ route('web.api.purchase') }}"><i class="fa fa-cart-arrow-down"></i> Buy Web API Package</a></li>
                     </ul>
                 </li>
 

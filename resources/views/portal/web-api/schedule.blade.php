@@ -72,14 +72,19 @@
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control" name="category_id" id="category_sms_id">
-                                                <option value="">-- Select APP Type --</option>
+                                                <option value="">-- Select APP Category --</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="app_type" placeholder="Enter APP Type" value="{{ old('app_type') }}">
+                                            <!-- <input type="text" class="form-control" name="app_type" placeholder="Enter APP Type" value="{{ old('app_type') }}"> -->
+                                            <select class="form-control" name="app_type">
+                                                <option value="">-- Select APP Type --</option>
+                                                <option value="Pro">Pro</option>
+                                                <option value="Lite">Lite</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             Uploads <input type="file" class="form-control" name="deposit_slip" placeholder="Upload Deposit Slip">
