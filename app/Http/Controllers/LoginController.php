@@ -99,7 +99,7 @@ class LoginController extends Controller
         $logArray['body'] = $body;
         \Log::channel('email_dump')->info($logArray);
 
-//        \Mail::to($userData->email)->send(new \App\Mail\VerificationMail($body));
+       \Mail::to($userData->email)->send(new \App\Mail\VerificationMail($body));
 
         $message = 'Account created successfully! Please check you email for account verification link.';
 
