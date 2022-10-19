@@ -69,18 +69,18 @@ class CampainController extends Controller
 
     }
 
-    public function createCampaign($client_id,$schedule_id,$category='chat'){
+    public function createCampaign($client_id,$schedule_id){
         $user = User::find($client_id);
         $schedule = SMSSchedule::find($schedule_id);
         $date=date_create($schedule->schedule_time);
         $formated_date = date_format($date,'d-m-Y H:i');
         if($user && $schedule) {
             $data = array(
-                'client' => '123@test.com',
+                'client' => $user->email,
                 'channel' => "push",
                 'appid' => $schedule->app_id,
                 'conversions' => $schedule->sms_amount,
-                'category' => $category,
+                'category' => $schedule->text->category->title,
                 'scheduledStart' => $formated_date,
             );
             $data_raw = json_encode($data);
