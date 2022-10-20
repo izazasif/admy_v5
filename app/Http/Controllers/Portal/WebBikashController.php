@@ -178,7 +178,7 @@ class WebBikashController extends Controller
             $user_id = session()->get('user_id');
             $user_sms = UserWebAPI::where('id', $payment->user_web_api_id)->first();
             $user_sms->payment_status = 'Completed';
-            $user_sms->is_status = 1;
+            $user_sms->status = 1;
             $user_sms->save();
             $message = 'Payment is successful! Pack purchase completed.';
             return redirect()->route('web.api.purchase')->with('message', $message);
