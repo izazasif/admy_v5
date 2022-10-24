@@ -10,7 +10,7 @@
 
                   <div class="middle-part">
                     <p>Feel free to get in touch with us. We are here to help.</p>
-                    <p>AdMy</p>
+                    <p>MyBDApps</p>
                     <p>Tel: +88 0184 3900 056</p>
                     <p>Tel: +88 0175 9692 020</p>
                     <p>Email: info@miaki.co</p>

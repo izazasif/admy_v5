@@ -72,7 +72,7 @@
                                 <img src="{{ asset('assets/images/contact-us/location.png') }}" class="contact-info-images1">
                           </div>
                           <div class="col-md-10">
-                               <p>AdMy</p>
+                               <p>MyBDApps</p>
                                <p>Road # 19/A, House # 8</p>
                                <p>Banani, Dhaka, Bangladesh-1213</p>
                           </div>
@@ -92,8 +92,8 @@
                                 <img src="{{ asset('assets/images/contact-us/email.png') }}" class="contact-info-images3">
                           </div>
                           <div class="col-md-10">
-                               <p>info@admy.com</p>
-                               <p>support@admy.com</p>
+                               <p>info@mybdapps.com</p>
+                               <p>support@mybdapps.com</p>
                           </div>
                        </div>
 

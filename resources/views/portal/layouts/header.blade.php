@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="{{ url('/') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>M</span>
+      <span class="logo-mini"><b>M</b>B</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Ad</b>My Portal</span>
+      <span class="logo-lg"><b>My</b>BDApps Portal</span>
     </a>
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->

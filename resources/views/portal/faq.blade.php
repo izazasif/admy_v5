@@ -32,7 +32,7 @@
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="">
                         <div class="row">
                           <div class="col-sm-10">
-                            How to login Admy Web?
+                            How to login MyBDApps Web?
                           </div>
                           <div class="col-sm-2 text-right">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -59,7 +59,7 @@
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" class="">
                         <div class="row">
                           <div class="col-sm-10">
-                            How to send OBD through Admy Web?
+                            How to send OBD through MyBDApps Web?
                           </div>
                           <div class="col-sm-2 text-right">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -86,7 +86,7 @@
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" class="">
                         <div class="row">
                           <div class="col-sm-10">
-                            How to schedule OBD through Admy Web?
+                            How to schedule OBD through MyBDApps Web?
                           </div>
                           <div class="col-sm-2 text-right">
                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -194,7 +194,7 @@
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" class="">
                         <div class="row">
                           <div class="col-sm-10">
-                            How to do payment on Admy Web?
+                            How to do payment on MyBDApps Web?
                           </div>
                           <div class="col-sm-2 text-right">
                             <i class="fa fa-plus" aria-hidden="true"></i>

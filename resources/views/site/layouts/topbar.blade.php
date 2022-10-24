@@ -39,7 +39,7 @@
                                <img src="{{ asset('assets/images/top_address/mail_icon.png') }}" class="media-object" style="width:30px;">
                              </div>
                              <div class="media-body">
-                               <p class="media-heading top-icon-text">Mail Us info@admy.com</p>
+                               <p class="media-heading top-icon-text">Mail Us info@mybdapps.com</p>
                              </div>
                            </div>
                         </a>

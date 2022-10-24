@@ -123,7 +123,7 @@
         <div class="col-md-10 col-md-offset-1">
            <div class="row">
                 <div class="col-md-5">
-                     <h2>About ADMY</h2>
+                     <h2>About MyBDApps</h2>
                      <div class="row line-big">
                        <div class="col-md-12">
                         <img src="{{ asset('assets/images/line/about_line.png') }}">
@@ -133,9 +133,9 @@
                        <div class="col-md-12">
                       </div>
                      </div>
-                     <p>ADMY is a digital marketing platform designed to promote products & services to the community and target market. It is being developed to claim its spot as one of the top digital marketing tools.
+                     <p>MyBDApps is a digital marketing platform designed to promote products & services to the community and target market. It is being developed to claim its spot as one of the top digital marketing tools.
                      <br><br>Digital Marketing plays a big part in the success of any products & services of a company, regardless of size, age or industry: that social media marketing is a must to thrive in this digital era.
-                     <br><br>With everything you need to promote your products & services in one place, you don't have to pull yourself in many different directions. ADMY will help you to achieve greater success.</p>
+                     <br><br>With everything you need to promote your products & services in one place, you don't have to pull yourself in many different directions. MyBDApps will help you to achieve greater success.</p>
 
                 </div>
                 <div class="col-md-7 text-right" data-aos="fade-left">
@@ -154,7 +154,7 @@
        <div class="row">
            <div class="col-md-10 col-md-offset-1">
              <div data-aos="fade-up" data-aos-duration="1000">
-               <h3 class="text-center"><b>Advantage of ADMY</b></h3>
+               <h3 class="text-center"><b>Advantage of MyBDApps</b></h3>
                <div class="row line-big">
                   <div class="col-md-12 text-center">
                     <img src="{{ asset('assets/images/line/advantage_line.png') }}">
@@ -328,7 +328,7 @@
                           <img src="{{ asset('assets/images/obd_platform_01/obd_platform.png') }}" class="img-responsive" data-aos="zoom-out">
                        </div>
                        <div class="col-md-8">
-                          <h1 data-aos="fade-right">ADMY</h1>
+                          <h1 data-aos="fade-right">MyBDApps</h1>
                           <h2 data-aos="fade-left">OBD PLATFORM</h2>
 
                           <p class="first-p">With this platform OBD call is triggered to customer from a system offering different information like important voice broadcasting or services like VAS, promotional marketing sales or Customer Survey.</p>
