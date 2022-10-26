@@ -28,7 +28,8 @@ input, button, select, textarea, .btn {
  }
 
 .logo-bar .logo-image{
-	width:110px;
+	/* width:110px; */
+  width: 40%;
 	height:50px;
 	margin-left: 7%;
 }
