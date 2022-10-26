@@ -6,7 +6,7 @@
         <div class="container-fluid">
            <div class="row">
               <div class="col-md-2 col-md-offset-2 first-col">
-                  <img src="{{ asset('assets/images/banner_icon/logo_bottom.png') }}" class="img-responsive footer-logo">
+                  <img src="{{ asset('assets/images/foot-logo.png') }}" class="img-responsive footer-logo">
 
                   <div class="middle-part">
                     <p>Feel free to get in touch with us. We are here to help.</p>

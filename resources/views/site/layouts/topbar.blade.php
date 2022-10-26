@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-            <img src="{{ asset('assets/images/top_address/logo_top.png') }}" class="logo-image">
+            <img src="{{ asset('assets/images/top-logo-new.png') }}" class="logo-image">
         </div>
         <div class="col-md-8 bar-right-side">
            <div class="row">
