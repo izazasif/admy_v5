@@ -48,7 +48,7 @@
                         <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a href="{{ route('sms.schedule.list.user') }}"><i class="fa fa-line-chart text-aqua"></i> <span>Push SMS Schedule History</span></a></li>
                     </ul>
                 </li>
-                <li class="treeview {{ ($is_active == 'create_web_api_schedule' || $is_active == 'web_api_schedule_list' || $is_active == 'purchase_web_api' || $is_active== 'web_api_purchase_history' ) ? 'active' : '' }}">
+                <!-- <li class="treeview {{ ($is_active == 'create_web_api_schedule' || $is_active == 'web_api_schedule_list' || $is_active == 'purchase_web_api' || $is_active== 'web_api_purchase_history' ) ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-apple text-aqua"></i> <span>Web API</span>
                         <span class="pull-right-container">
@@ -61,7 +61,7 @@
                         <li class="{{ $is_active == 'create_web_api_schedule' ? 'active' : '' }}"><a href="{{ route('web.api.schedule.create') }}"><i class="fa fa-stack-exchange text-aqua"></i> <span>Schedule  Web API</span></a></li>
                         <li class="{{ $is_active == 'web_api_schedule_list' ? 'active' : '' }}"><a href="{{ route('web.api.schedule.list.user') }}"><i class="fa fa-deaf text-aqua"></i> <span>Schedule Web API History</span></a></li>
                     </ul>
-                </li>
+                </li> -->
 
             <li class="treeview {{ ($is_active == 'ticket_create' || $is_active == 'ticket_list_self') ? 'active' : '' }}">
                 <a href="#">
@@ -124,7 +124,7 @@
                     </ul>
                 </li>
 
-                <li class="treeview {{ ($is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active== 'web_api_schedule_list') ? 'active' : '' }}">
+                <!-- <li class="treeview {{ ($is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active== 'web_api_schedule_list') ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-bullhorn text-aqua"></i> <span>Web API Package</span>
                         <span class="pull-right-container">
@@ -136,7 +136,7 @@
                         <li class="{{ $is_active == 'web_api_create' ? 'active' : '' }}"><a href="{{ route('web.api.create') }}"><i class="fa fa-star"></i> Create Web API pack</a></li>
                         <li class="{{ $is_active == 'web_api_list' ? 'active' : '' }}"><a href="{{ route('web.api.list') }}"><i class="fa fa-bar-chart"></i> Web API pack List</a></li>
                     </ul>
-                </li>
+                </li> -->
 
             <li class="treeview {{ ($is_active == 'admin_list' || $is_active == 'admin_create' || $is_active == 'admin_edit') ? 'active' : '' }}">
                 <a href="#">
