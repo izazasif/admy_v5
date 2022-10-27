@@ -12,6 +12,9 @@
     <div class="contact-us-field">
         <div class="container-fluid">
             <div class="row">
+                <div class="text-center">
+                    <img class="coming_soon" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
+                </div>
                 <h2 class="text-center bulk-plan web-plan"><b>WEB API PRICE PLAN</b></h2>
                 <div class="col-md-7">
                     <div class="row">
@@ -23,7 +26,8 @@
                                            <h2>BDT {{ $pack->price }}</h2>
                                            <p> {{ $pack->acquisition }} ACQUISITION</p>
                                         </div>
-                                        <a href="{{ url('web/api/checkout',$pack->id) }}" class="btn btn-danger btn-calculate" role="button"><b>BUY NOW</b></a>
+                                        <!-- <a href="{{ url('web/api/checkout',$pack->id) }}" class="btn btn-danger btn-calculate" role="button"><b>BUY NOW</b></a> -->
+                                        <a href="#" class="btn btn-danger btn-calculate" role="button"><b>Coming Soon</b></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -48,7 +52,8 @@
                                     </tr>
                                 </table>
                         </div>
-                        <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button>
+                        <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
+                        <button  class="btn btn-danger" type="button" style="width: 100%" role="button"><b>Coming Soon</b></button>
                         </form>
                 </div>
                     </div>
