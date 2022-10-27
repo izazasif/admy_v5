@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="text-center">
-                    <img class="coming_soon" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
+                    <img class="" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
                 </div>
                 <h2 class="text-center bulk-plan web-plan"><b>WEB API PRICE PLAN</b></h2>
                 <div class="col-md-7">
@@ -53,7 +53,7 @@
                                 </table>
                         </div>
                         <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
-                        <button  class="btn btn-danger" type="button" style="width: 100%" role="button"><b>Coming Soon</b></button>
+                        <button  class="btn btn-danger btn-calculate" type="button" style="width: 100%" role="button"><b>Coming Soon</b></button>
                         </form>
                 </div>
                     </div>
