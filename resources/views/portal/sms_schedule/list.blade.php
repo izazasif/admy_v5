@@ -53,7 +53,7 @@
                                         <td class="text-center">{{ $schedule->app_id }}</td>
                                         <td class="text-center">{{ $schedule->app_name }}</td>
                                         <td class="text-center">{{ $schedule->ussd_code }}</td>
-                                        <td class="text-center">{{ $schedule->sms_amount }}</td>
+                                        <td class="text-center">{{ number_format($schedule->sms_amount) }}</td>
                                         <td class="text-center">{{ $schedule->text->text }}</td>
                                         <td class="text-center">{{ $schedule->remark }}</td>
                                         <td class="text-center">{{ ($schedule->is_content_up_to_date) ? 'yes' : 'no' }}</td>

@@ -51,8 +51,8 @@
                 <td class="text-center">{{ $sl++ }}</td>
                 <td class="text-center">{{ $pack->name }}</td>
                 <td class="text-center">{{ $pack->unit_price }} Taka</td>
-                <td class="text-center">{{ $pack->amount }}</td>
-                <td class="text-center">{{ $pack->price }} Taka</td>
+                <td class="text-center">{{ number_format($pack->amount) }}</td>
+                <td class="text-center">{{ number_format($pack->price) }} Taka</td>
                 <td class="text-center">{{ $pack->validity }} Days</td>
                 <td class="text-center">
                   @if($pack->status)

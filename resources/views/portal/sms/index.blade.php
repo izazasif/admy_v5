@@ -51,8 +51,8 @@
                                         <td class="text-center">{{ $sl++ }}</td>
                                         <td class="text-center">{{ $value->name }}</td>
                                         <td class="text-center">{{ $value->unit_price }} Taka</td>
-                                        <td class="text-center">{{ $value->amount }}</td>
-                                        <td class="text-center">{{ $value->price }} Taka</td>
+                                        <td class="text-center">{{ number_format($value->amount) }}</td>
+                                        <td class="text-center">{{ number_format($value->price) }} Taka</td>
                                         <td class="text-center">{{ $value->validity }} Days</td>
                                         <td class="text-center">
                                             @if($value->status)

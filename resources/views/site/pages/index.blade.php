@@ -385,7 +385,7 @@
                           <p class="p1">Call Duration <br>max 0.29 minutes</p>
                           <p class="p1">Setup Charge: Free</p>
                           <p class="p2" style="border-top: 1px solid #bbbebf;">{{ number_format($pack->amount) }} OBD</p>
-                          <p class="p2" style="border-top: 1px solid #bbbebf;">Total {{ $pack->price }} Taka</p>
+                          <p class="p2" style="border-top: 1px solid #bbbebf;">Total {{ number_format($pack->price) }} Taka</p>
                           <p class="p2">Validity {{ $pack->validity }} days</p>
 
                           <a href="{{ route('pack.checkout', $pack->id) }}" class="btn btn-danger btn-calculate" role="button">ORDER NOW</a>
