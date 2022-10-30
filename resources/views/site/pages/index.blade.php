@@ -384,7 +384,7 @@
                           <h2>{{ $pack->unit_price }} Taka</h2>
                           <p class="p1">Call Duration <br>max 0.29 minutes</p>
                           <p class="p1">Setup Charge: Free</p>
-                          <p class="p2" style="border-top: 1px solid #bbbebf;">{{ $pack->amount }} OBD</p>
+                          <p class="p2" style="border-top: 1px solid #bbbebf;">{{ number_format($pack->amount) }} OBD</p>
                           <p class="p2" style="border-top: 1px solid #bbbebf;">Total {{ $pack->price }} Taka</p>
                           <p class="p2">Validity {{ $pack->validity }} days</p>
 
@@ -432,7 +432,7 @@
                               <div class="package">
                                   <h2>{{ $sm->unit_price }} BDT</h2>
                                   <p> Per SMS</p>
-                                  <h3><b>{{ $sm->amount }} SMS</b></h3>
+                                  <h3><b>{{ number_format($sm->amount) }} SMS</b></h3>
                                   <b>Validity: {{ $sm->validity }} Day</b>
                               </div>
                               <a href="{{ url('sms/checkout',$sm->id) }}" class="btn btn-danger btn-calculate" role="button"><b>BUY NOW</b></a>
