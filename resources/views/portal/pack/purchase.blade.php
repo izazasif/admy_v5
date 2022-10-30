@@ -56,10 +56,10 @@
                   {{ $pack->unit_price }} Taka
                   </div>
                   <div class="pack-amount">
-                  <span>{{ $pack->amount }} OBD</span>
+                  <span>{{ number_format($pack->amount) }} OBD</span>
                   </div>
                   <div class="pack-amount">
-                  <span>Total {{ $pack->price }} Taka</span>
+                  <span>Total {{ number_format($pack->price) }} Taka</span>
                   </div>
                   <div class="pack-duration">
                     <div>Call Duration</div>

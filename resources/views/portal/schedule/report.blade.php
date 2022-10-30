@@ -111,11 +111,11 @@
                 <td class="text-center">{{ $report->app_name }}</td>
                 <td class="text-center">{{ $report->ussd_code }}</td>
                 <td class="text-center">{{ $report->clip_name }}</td>
-                <td class="text-center">{{ $report->obd_amount }}</td>
-                <td class="text-center" style="background-color: #d6d640;">{{ $report->sent_amount }}</td>
-                <td class="text-center" style="background-color: #49a0d2;">{{ $report->success_amount }}</td>
-                <td class="text-center" style="background-color: #e86969;">{{ $report->failed_amount }}</td>
-                <td class="text-center" style="background-color: #6cb926;">{{ $report->subscribed_amount }}</td>
+                <td class="text-center">{{ number_format($report->obd_amount) }}</td>
+                <td class="text-center" style="background-color: #d6d640;">{{ number_format($report->sent_amount) }}</td>
+                <td class="text-center" style="background-color: #49a0d2;">{{ number_format($report->success_amount) }}</td>
+                <td class="text-center" style="background-color: #e86969;">{{ number_format($report->failed_amount) }}</td>
+                <td class="text-center" style="background-color: #6cb926;">{{ number_format($report->subscribed_amount) }}</td>
               </tr>
               @endforeach
             </table>

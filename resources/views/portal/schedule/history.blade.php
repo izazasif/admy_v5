@@ -136,7 +136,7 @@
                 <td class="text-center">{{ $schedule->app_id }}</td>
                 <td class="text-center">{{ $schedule->app_name }}</td>
                 <td class="text-center">{{ $schedule->ussd_code }}</td>
-                <td class="text-center">{{ $schedule->obd_amount }}</td>
+                <td class="text-center">{{ number_format($schedule->obd_amount) }}</td>
                 <td class="text-center">{{ $schedule->getAudioClip->title }}</td>
                 <td class="text-center">{{ date('d-m-Y h:i A', strtotime($schedule->created_at)) }}</td>
                 <td class="text-center">

@@ -8,7 +8,7 @@
       <div class="col-xs-12 col-sm-6">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Schedule OBD</h3>
+            <h3 class="box-title">Schedule OBD (Pro App Only)</h3>
 
             <div class="box-tools">
               <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
@@ -63,11 +63,11 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="app_id">App ID</label>
+                    <label for="app_id">App ID (Pro App Only)</label>
                     <input type="text" class="form-control" name="app_id" placeholder="Enter App ID" value="{{ old('app_id') }}">
                   </div>
                   <div class="form-group">
-                    <label for="app_name">App Name</label>
+                    <label for="app_name">App Name (Pro App Only)</label>
                     <input type="text" class="form-control" name="app_name" placeholder="Enter App Name" value="{{ old('app_name') }}">
                   </div>
                   <div class="form-group">
@@ -82,10 +82,10 @@
                     <label for="obd_amount">OBD Amount</label>
                     <select class="form-control" name="obd_amount" id="obd_amount">
                       <option value="">-- Select OBD Amount --</option>
-                      <option value="50000">50000</option>
-                      <option value="100000">100000</option>
-                      <option value="150000">150000</option>
-                      <option value="200000">200000</option>
+                      <option value="50000">{{ number_format(50000) }}</option>
+                      <option value="100000">{{ number_format(100000) }}</option>
+                      <option value="150000">{{ number_format(150000) }}</option>
+                      <option value="200000">{{ number_format(200000) }}</option>
                     </select>
                   </div>
                   <div class="form-group">

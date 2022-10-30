@@ -96,7 +96,7 @@
                 <td class="text-center">{{ $sl++ }}</td>
                 <td class="text-center">{{ date('d-m-Y h:i A', strtotime($pack->created_at)) }}</td>
                 <td class="text-center">{{ $pack->getPack->name }}</td>
-                <td class="text-center">{{ $pack->getPack->amount }}</td>
+                <td class="text-center">{{ number_format($pack->getPack->amount) }}</td>
                 <td class="text-center">{{ $pack->getPack->price }} Taka</td>
                 <td class="text-center">{{ $pack->getPack->validity }} Days</td>
                 <td class="text-center">{{ date('d-m-Y h:i A', strtotime($pack->valid_till)) }}</td>

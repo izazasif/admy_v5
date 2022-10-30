@@ -51,10 +51,10 @@
                                                 {{ $sm->unit_price }} Taka
                                             </div>
                                             <div class="pack-amount">
-                                                <span>{{ $sm->amount }} SMS</span>
+                                                <span>{{ number_format($sm->amount) }} SMS</span>
                                             </div>
                                             <div class="pack-amount">
-                                                <span>Total {{ $sm->price }} Taka</span>
+                                                <span>Total {{ number_format($sm->price) }} Taka</span>
                                             </div>
                                             <div class="pack-validity">
                                                 Validity: <b>{{ $sm->validity }} days</b>

@@ -41,7 +41,7 @@
                                         <td class="text-center">{{ $sl++ }}</td>
                                         <td class="text-center">{{ $list->package_id }}</td>
                                         <td class="text-center">{{ $list->channel }}</td>
-                                        <td class="text-center">{{ $list->amount }}</td>
+                                        <td class="text-center">{{ number_format($list->amount) }}</td>
                                         <td class="text-center">{{ $list->payment_status }}</td>
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->valid_til)) }}</td>
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->created_at)) }}</td>
