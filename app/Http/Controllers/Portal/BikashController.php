@@ -177,9 +177,12 @@ class BikashController extends Controller
        $payment =  PaymentHistory::where('payment_id',$payment_id)->first();
        if($payment) {
            $user_id = session()->get('user_id');
-           $purchase = new CampainController();
-           $sms = $purchase->purchasePackage($user_id, $payment->amount);
+
            $user_sms = UserSMS::where('id', $payment->user_sms_id)->first();
+
+           $purchase = new CampainController();
+           $sms = $purchase->purchasePackage($user_id, $user_sms->amount);
+
            $user_sms->payment_status = 'Completed';
            $user_sms->package_id = $sms->package_id;
            $user_sms->is_active = 1;
