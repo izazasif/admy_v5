@@ -14,7 +14,7 @@ if (! function_exists('getUserPushSMSBalance')) {
         }else{
           $balance = $push_valid - $temp;
         }
-dd($balance);
+
         return $balance;
     }
 }
