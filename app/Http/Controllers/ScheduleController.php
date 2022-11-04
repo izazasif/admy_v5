@@ -27,15 +27,16 @@ class ScheduleController extends Controller
         // $user_debit = SMSSchedule::where('user_id', $user_id)->sum('sms_amount');
         // $user_remaining = $user_credit-$user_debit;
 
-        $push_debit = SMSSchedule::where('user_id', $user_id)->sum('sms_amount');
-        $push_invalid = UserSMS::where(['user_id'=>$user_id, 'is_active'=>1, 'status'=>1])->where('valid_till', '<', date('Y-m-d H:i:s'))->sum('amount');
-        $push_valid = UserSMS::where(['user_id'=>$user_id, 'is_active'=>1, 'status'=>1])->where('valid_till', '>=', date('Y-m-d H:i:s'))->sum('amount');
-        $temp = $push_debit - $push_invalid;
-        if($temp <= 0){
-          $user_remaining = $push_valid;
-        }else{
-          $user_remaining = $push_valid - $temp;
-        }
+        // $push_debit = SMSSchedule::where('user_id', $user_id)->sum('sms_amount');
+        // $push_invalid = UserSMS::where(['user_id'=>$user_id, 'is_active'=>1, 'status'=>1])->where('valid_till', '<', date('Y-m-d H:i:s'))->sum('amount');
+        // $push_valid = UserSMS::where(['user_id'=>$user_id, 'is_active'=>1, 'status'=>1])->where('valid_till', '>=', date('Y-m-d H:i:s'))->sum('amount');
+        // $temp = $push_debit - $push_invalid;
+        // if($temp <= 0){
+        //   $user_remaining = $push_valid;
+        // }else{
+        //   $user_remaining = $push_valid - $temp;
+        // }
+        $user_remaining = getUserPushSMSBalance($user_id);
         //---------------
         //get sms balance
         session()->put('user_sms_credit', $user_remaining);
