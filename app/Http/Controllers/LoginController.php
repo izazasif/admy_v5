@@ -147,7 +147,7 @@ class LoginController extends Controller
             $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
             $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
             session()->put('user_credit', $user_credit-$user_debit);
-
+dd('hola');
             $userPushSMSBalance = getUserPushSMSBalance($output->id);
             session()->put('user_sms_credit', $userPushSMSBalance);
 
