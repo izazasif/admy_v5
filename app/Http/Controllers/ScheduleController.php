@@ -22,6 +22,7 @@ class ScheduleController extends Controller
         $audio_clips = AudioClip::where('status', 1)->get();
         $user_id = session()->get('user_id');
         //get sms balance 
+        //---------------
         // $user_credit = UserSMS::where(['user_id'=>$user_id,'is_active'=>1])->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
         // $user_debit = SMSSchedule::where('user_id', $user_id)->sum('sms_amount');
         // $user_remaining = $user_credit-$user_debit;
@@ -35,6 +36,7 @@ class ScheduleController extends Controller
         }else{
           $user_remaining = $push_valid - $temp;
         }
+        //---------------
         //get sms balance
         session()->put('user_sms_credit', $user_remaining);
 
