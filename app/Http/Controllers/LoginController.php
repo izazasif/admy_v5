@@ -148,6 +148,9 @@ class LoginController extends Controller
             $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
             session()->put('user_credit', $user_credit-$user_debit);
 
+            $userPushSMSBalance = getUserPushSMSBalance($output->id);
+            session()->put('user_sms_credit', $userPushSMSBalance);
+
             if(session()->has('url_to_serve')){
                 $url = session()->get('url_to_serve');
                 session()->forget('url_to_serve');
@@ -200,6 +203,9 @@ class LoginController extends Controller
 
             $output->is_verified = 1;
             $output->save();
+
+            $userPushSMSBalance = getUserPushSMSBalance($output->id);
+            session()->put('user_sms_credit', $userPushSMSBalance);
 
     	    return redirect()->route('home');
         }else{

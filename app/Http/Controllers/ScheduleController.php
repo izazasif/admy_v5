@@ -20,7 +20,7 @@ class ScheduleController extends Controller
         $is_active = "create_schedule";
         $categorys = Category::where('status', 1)->get();
         $audio_clips = AudioClip::where('status', 1)->get();
-        $user_id = session()->get('user_id');
+        // $user_id = session()->get('user_id');
         //get sms balance 
         //---------------
         // $user_credit = UserSMS::where(['user_id'=>$user_id,'is_active'=>1])->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
@@ -36,10 +36,11 @@ class ScheduleController extends Controller
         // }else{
         //   $user_remaining = $push_valid - $temp;
         // }
-        $user_remaining = getUserPushSMSBalance($user_id);
+
+        // $user_remaining = getUserPushSMSBalance($user_id);
+        // session()->put('user_sms_credit', $user_remaining);
         //---------------
         //get sms balance
-        session()->put('user_sms_credit', $user_remaining);
 
         return view('portal.schedule.create', compact('title', 'is_active', 'categorys', 'audio_clips'));
     }
