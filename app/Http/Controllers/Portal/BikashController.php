@@ -187,6 +187,10 @@ class BikashController extends Controller
            $user_sms->package_id = $sms->package_id;
            $user_sms->is_active = 1;
            $user_sms->save();
+
+           $userPushSMSBalance = getUserPushSMSBalance($user_id);
+           session()->put('user_sms_credit', $userPushSMSBalance);
+
            $message = 'Payment is successful! Pack purchase completed.';
            return redirect()->route('sms.purchase')->with('message', $message);
        }else{
