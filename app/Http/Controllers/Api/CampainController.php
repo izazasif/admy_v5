@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\SMSSchedule;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client as GuzzleClient;
 
 class CampainController extends Controller
 {
@@ -121,4 +122,62 @@ class CampainController extends Controller
         $response = json_decode($response);
         return $response;
     }
+
+    public function smsCampaingStat(Request $request){
+        try{
+            $token = $this->getUserKey();
+            $clientid = $request->session()->get('user_mail');
+            $users = '';
+            $view = 'portal.sms_schedule.campain_stat_user';
+            $is_active = "campaing_stat"; 
+            if($request->clientId && $request->session()->get('user_role') == 'admin' ){
+                session()->put('clientId', $request->clientId);
+                $clientid = $request->clientId;
+                $users = User::where('status',1)->where('role','user')->get();
+                $view = 'portal.sms_schedule.campain_stat_admin';
+                $is_active = "campaing_stat_admin"; 
+            }
+            session()->put('dateRangeStat', $request->dateRange);
+            
+            $f = trim(explode("-",$request->dateRange)[0]," ");
+            $t = trim(explode("-",$request->dateRange)[1]," ");
+            $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('d-m-Y');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('d-m-Y');
+
+            $qstring = '?from=' .$from.'&to='.$to.'&clientid='.$clientid;
+
+            //api call
+            $headers = [
+                'x-api-key' => $token,
+            ];
+            $client = new GuzzleClient([
+                'headers' => $headers
+            ]);
+            $url = 'https://api.joycalls.com:48080/stats' . $qstring;
+            $result = $client->request('GET', $url);
+            
+            $title = "AdMy | Campaing Stat";
+                   
+            $decode_result = json_decode($result->getBody()->getContents());
+            $data = $decode_result->stats;
+
+            return view($view, compact('title','is_active','users','data'));
+        }
+    
+        catch (\Exception $e) { 
+            $title = "AdMy | Campaing Stat";
+            $users="";
+            $data = "";
+            $is_active = "campaing_stat";
+            $view = 'portal.sms_schedule.campain_stat_user';
+            $message = 'Error occured, Try later!!';
+            session()->put('message', $message);
+            if($request->session()->get('user_role') == 'admin' ){
+                    $users = User::where('status',1)->where('role','user')->get();
+                    $view = 'portal.sms_schedule.campain_stat_admin';
+                    $is_active = "campaing_stat_admin"; 
+                }
+            return view($view, compact('title','is_active','users','data'));	
+	    }
+    }    
 }
