@@ -38,7 +38,9 @@ Route::group(['middleware' => 'CheckLogin'], function(){
 });
 
 Route::group(['middleware' => 'CheckLogout'], function(){
-    Route::group(['middleware' => 'CheckUser'], function(){
+    Route::group(['middleware' => 'CheckUser'], function(){      
+        Route::post('user/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat.user');
+        Route::get('/campaing/stat','Portal\SMSController@campaingForUser')->name('sms.campaing.list.user');
         Route::get('/schedule/create','ScheduleController@create')->name('schedule.create');
         Route::post('/schedule/create/submit','ScheduleController@createSubmit')->name('schedule.create.submit');
 
@@ -100,6 +102,8 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     });
     //admin start
     Route::group(['middleware' => 'CheckAdmin'], function(){
+        Route::post('admin/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat');
+        Route::get('admin/campaing/stat','Portal\SMSController@campaingForAdmin')->name('sms.campaing.list.admin');        
         Route::get('/category/create','CategoryController@create')->name('category.create');
         Route::post('/category/store','CategoryController@store')->name('category.store');
         Route::get('/category/list','CategoryController@index')->name('category.list');

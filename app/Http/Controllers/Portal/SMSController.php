@@ -8,6 +8,7 @@ use App\Models\Campaign;
 use App\SMS;
 use App\SMSSchedule;
 use App\UserSMS;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SMSController extends Controller
@@ -194,4 +195,24 @@ class SMSController extends Controller
         $lists = UserSMS::where('user_id',$user_id)->where('is_active',1)->paginate(20);
         return view('portal.sms_schedule.purchase-history',compact('title','is_active','lists'));
     }
+    public function campaingForUser(){
+        session()->forget('dateRangeStat');
+        session()->forget('message');
+        $title = "AdMy | Campaing Stat";
+        $is_active = "campaing_stat";
+        $data = [];
+        return view('portal.sms_schedule.campain_stat_user', compact('title','is_active','data'));
+    }
+
+    public function campaingForAdmin(){
+        session()->forget('clientId');
+        session()->forget('dateRangeStat');
+        session()->forget('message');
+        $title = "AdMy | Campaing Stat";
+        $is_active = "campaing_stat_admin";
+        $users = User::where('status',1)->where('role','user')->get();
+        $data = [];
+        return view('portal.sms_schedule.campain_stat_admin', compact('title','is_active','users','data'));
+    }    
+    
 }
