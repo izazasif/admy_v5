@@ -111,9 +111,21 @@ class SMSScheduleController extends Controller
 
     public function list(Request $request)
     {
+        $daterange = $request->dateRange;
+        
+        if($daterange){
+            $f = trim(explode("-",$daterange)[0]," ");
+            $t = trim(explode("-",$daterange)[1]," ");
+            $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->paginate(20);
+        }
+        else{
+            $all_schedule_list = SMSSchedule::paginate(20);
+        }
         $title = "AdMy | SMS Schedule List";
         $is_active = "sms_schedule_list";
-        $all_schedule_list = SMSSchedule::paginate(20);
+        
         return view('portal.sms_schedule.list', compact('title', 'is_active', 'all_schedule_list'));
     }
 

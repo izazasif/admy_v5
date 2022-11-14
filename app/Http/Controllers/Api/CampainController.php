@@ -179,5 +179,36 @@ class CampainController extends Controller
                 }
             return view($view, compact('title','is_active','users','data'));	
 	    }
-    }    
+    }
+    
+    public function smsCampaingStat2(){
+        $title = "AdMy | Campaing Stat";
+        $is_active = "campaing_stat_admin";
+        $token = $this->getUserKey();
+        $clientid = (request()->query('user'));
+        // $daterange = (request()->query('daterange'));
+        $daterange = "11/15/2022 - 11/23/2022";
+        session()->put('dateRangeStat', $daterange);
+        session()->put('clientId', $clientid);
+        $f = trim(explode("-",$daterange)[0]," ");
+        $t = trim(explode("-",$daterange)[1]," ");
+        $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('d-m-Y');
+        $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('d-m-Y');
+
+        $qstring = '?from=' .$from.'&to='.$to.'&clientid='.$clientid;
+
+        $headers = [
+            'x-api-key' => $token,
+        ];
+        $client = new GuzzleClient([
+            'headers' => $headers
+        ]);
+
+        $url = 'https://api.joycalls.com:48080/stats' . $qstring;
+        $result = $client->request('GET', $url);
+        $users = User::where('status',1)->where('role','user')->get();
+        $decode_result = json_decode($result->getBody()->getContents());
+        $data = $decode_result->stats;
+        return view('portal.sms_schedule.campain_stat_admin', compact('title','users','is_active','data'));
+    }   
 }
