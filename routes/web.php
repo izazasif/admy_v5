@@ -103,6 +103,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     //admin start
     Route::group(['middleware' => 'CheckAdmin'], function(){
         Route::post('admin/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat');
+        Route::get('admin/campaing/stat-2','Api\CampainController@smsCampaingStat2')->name('sms.campaing.stat2');
         Route::get('admin/campaing/stat','Portal\SMSController@campaingForAdmin')->name('sms.campaing.list.admin');        
         Route::get('/category/create','CategoryController@create')->name('category.create');
         Route::post('/category/store','CategoryController@store')->name('category.store');
