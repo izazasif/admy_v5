@@ -186,8 +186,7 @@ class CampainController extends Controller
         $is_active = "campaing_stat_admin";
         $token = $this->getUserKey();
         $clientid = (request()->query('user'));
-        // $daterange = (request()->query('daterange'));
-        $daterange = "11/15/2022 - 11/23/2022";
+        $daterange = (request()->query('daterange'));
         session()->put('dateRangeStat', $daterange);
         session()->put('clientId', $clientid);
         $f = trim(explode("-",$daterange)[0]," ");

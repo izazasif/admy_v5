@@ -114,6 +114,7 @@ class SMSScheduleController extends Controller
         $daterange = $request->dateRange;
         
         if($daterange){
+            session()->put('dateRangeStat', $daterange);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
@@ -121,6 +122,7 @@ class SMSScheduleController extends Controller
             $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->paginate(20);
         }
         else{
+            session()->forget('dateRangeStat');
             $all_schedule_list = SMSSchedule::paginate(20);
         }
         $title = "AdMy | SMS Schedule List";
