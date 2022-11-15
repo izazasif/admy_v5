@@ -30,8 +30,8 @@ class ScheduleMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Admy: Schedule Notification')
-                    ->from('notification@admybd.com', 'Schedule Mail')
+        return $this->subject('Admy: New Schedule Raised')
+                    ->from('notification@admybd.com', 'Admy Mail')
                     ->view('emails.verification');
     }
 }
