@@ -107,7 +107,8 @@ class ScheduleController extends Controller
         session()->put('user_credit', $user_remaining);
 
         $message = 'Schedule saved successfully! In case of technical difficulties, we will deliver your schedule within 72 hours.';
-
+        $body = "New OBD Schedule has been created!";
+        \Mail::to("tanvira1993@gmail.com")->send(new \App\Mail\ScheduleMail($body));
         return redirect()->back()->with('message',$message);
     }
 
