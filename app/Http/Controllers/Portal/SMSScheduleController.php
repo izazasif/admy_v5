@@ -104,6 +104,8 @@ class SMSScheduleController extends Controller
         $userPushSMSBalance = getUserPushSMSBalance($user_id);
         session()->put('user_sms_credit', $userPushSMSBalance);
 
+        $body = "New Push SMS Schedule has been created!";
+        \Mail::to("tanvira1993@gmail.com")->send(new \App\Mail\ScheduleMail($body));
         $message = 'Schedule saved successfully! In case of technical difficulties, we will deliver your schedule within 72 hours.';
 
         return redirect()->back()->with('message',$message);
