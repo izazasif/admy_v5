@@ -130,7 +130,7 @@
                                         <td class="text-center">
                                             @if ($schedule->status)
                                                 <a
-                                                    href="{{ route('sms.campaing.stat2', ['user' => $schedule->getUser->email, 'daterange' => 'hfsdj']) }}"><i
+                                                    href="{{ route('sms.campaing.stat2', ['user' => $schedule->getUser->email, 'daterange' => session()->get('dateRangeStat')]) }}"><i
                                                         class="fa fa-line-chart" aria-hidden="true"></i>Check Stat</a>
                                             @endif
                                         </td>
