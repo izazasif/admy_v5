@@ -108,7 +108,8 @@ class ScheduleController extends Controller
 
         $message = 'Schedule saved successfully! In case of technical difficulties, we will deliver your schedule within 72 hours.';
         $body = "New OBD Schedule has been created!";
-        \Mail::to("asad.zaman@miaki.co")->send(new \App\Mail\ScheduleMail($body));
+        $sendTo = ['asad.zaman@miaki.co','yusuf.shumon@miaki.co','swapon.kumar@miaki.co','tanvira1993@gmail.com'];
+        \Mail::to($sendTo)->send(new \App\Mail\ScheduleMail($body));
         return redirect()->back()->with('message',$message);
     }
 
