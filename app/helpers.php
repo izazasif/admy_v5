@@ -1,6 +1,8 @@
 <?php
 use App\SMSSchedule;
 use App\UserSMS;
+use App\Models\Schedule;
+use App\Models\UserPack;
 
 if (! function_exists('getUserPushSMSBalance')) {
     function getUserPushSMSBalance($userID) {
@@ -17,4 +19,21 @@ if (! function_exists('getUserPushSMSBalance')) {
 
         return $balance;
     }
+}
+
+if (! function_exists('getUserOBDBalance')) {
+  function getUserOBDBalance($userID) {
+
+      $obd_debit = Schedule::where('user_id', $userID)->sum('obd_amount');
+      $obd_invalid = UserPack::where(['user_id'=>$userID, 'status'=>1])->where('valid_till', '<', date('Y-m-d H:i:s'))->sum('amount');
+      $obd_valid = UserPack::where(['user_id'=>$userID, 'status'=>1])->where('valid_till', '>=', date('Y-m-d H:i:s'))->sum('amount');
+      $temp = $obd_debit - $obd_invalid;
+      if($temp <= 0){
+        $balance = $obd_valid;
+      }else{
+        $balance = $obd_valid - $temp;
+      }
+
+      return $balance;
+  }
 }

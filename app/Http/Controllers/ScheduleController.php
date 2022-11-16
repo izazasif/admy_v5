@@ -76,9 +76,10 @@ class ScheduleController extends Controller
         }
 
         $user_id = session()->get('user_id');
-        $user_credit = UserPack::where('user_id', $user_id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
-        $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
-        $user_remaining = $user_credit-$user_debit;
+        // $user_credit = UserPack::where('user_id', $user_id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
+        // $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
+        // $user_remaining = $user_credit-$user_debit;
+        $user_remaining = getUserOBDBalance($user_id);
 
         if($request->obd_amount > $user_remaining){
             return redirect()->back()->withErrors("You do not have sufficient credit. Please buy credit first!");
@@ -102,9 +103,11 @@ class ScheduleController extends Controller
         $scheduleData->obd_amount = $request->obd_amount;
         $scheduleData->save();
 
-        $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
-        $user_remaining = $user_credit-$user_debit;
-        session()->put('user_credit', $user_remaining);
+        // $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
+        // $user_remaining = $user_credit-$user_debit;
+        // session()->put('user_credit', $user_remaining);
+        $userOBDBalance = getUserOBDBalance($user_id);
+        session()->put('user_credit', $userOBDBalance);
 
         $message = 'Schedule saved successfully! In case of technical difficulties, we will deliver your schedule within 72 hours.';
         $body = "New OBD Schedule has been created!";

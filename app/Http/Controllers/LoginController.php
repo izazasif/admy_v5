@@ -144,9 +144,12 @@ class LoginController extends Controller
             //     $oldLogToken->save();
             // }
 
-            $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
-            $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
-            session()->put('user_credit', $user_credit-$user_debit);
+            // $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
+            // $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
+            // session()->put('user_credit', $user_credit-$user_debit);
+            
+            $userOBDBalance = getUserOBDBalance($output->id);
+            session()->put('user_credit', $userOBDBalance);
 
             $userPushSMSBalance = getUserPushSMSBalance($output->id);
             session()->put('user_sms_credit', $userPushSMSBalance);
@@ -197,12 +200,15 @@ class LoginController extends Controller
             session()->put('user_username', $output->username);
             session()->put('user_role', $output->role);
 
-            $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
-            $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
-            session()->put('user_credit', $user_credit-$user_debit);
+            // $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
+            // $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');
+            // session()->put('user_credit', $user_credit-$user_debit);
 
             $output->is_verified = 1;
             $output->save();
+
+            $userOBDBalance = getUserOBDBalance($output->id);
+            session()->put('user_credit', $userOBDBalance);
 
             $userPushSMSBalance = getUserPushSMSBalance($output->id);
             session()->put('user_sms_credit', $userPushSMSBalance);

@@ -20,7 +20,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-              <span class="hidden-xs"><i class="fa fa-bullhorn"></i> OBD Credits: {{ session()->get('user_credit') }}</span>
+              <span class="hidden-xs"><i class="fa fa-bullhorn"></i> OBD Credits: {{ session()->get('user_credit') ? session()->get('user_credit') : 0 }}</span>
               <span class="hidden-xs"><i class="fa fa-bullhorn"></i> Push SMS Credits: {{ session()->get('user_sms_credit') ? session()->get('user_sms_credit') : 0 }}</span>
             </a>
 

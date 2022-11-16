@@ -75,9 +75,11 @@ class PackController extends Controller
       $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +'.$packDetails->validity.' day'));
       $userPackData->save();
 
-      $user_credit = UserPack::where('user_id', $user_id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
-      $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
-      session()->put('user_credit', $user_credit-$user_debit);
+      // $user_credit = UserPack::where('user_id', $user_id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
+      // $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
+      // session()->put('user_credit', $user_credit-$user_debit);
+      $userOBDBalance = getUserOBDBalance($user_id);
+      session()->put('user_credit', $userOBDBalance);
 
       $message = 'Pack purchased successfully!';
 
