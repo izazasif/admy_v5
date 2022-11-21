@@ -21,7 +21,7 @@ class ReportController extends Controller
     public function dailyObdReport(){
         $title = "AdMy | Daily Report";
         $is_active = "obd_report";
-        $data = UserPack::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy(DB::raw('DATE(created_at)'))->orderBy('id','DESC')->paginate(20);       
+        $data = UserPack::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy('date')->orderBy('date','DESC')->paginate(20);       
         return view('portal.report.obdreport', compact('title','is_active','data'));
     }
 
