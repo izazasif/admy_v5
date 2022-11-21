@@ -107,7 +107,7 @@
             @endif
             @if (session()->get('user_role') == 'admin')
                 <li
-                    class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' ? 'active' : '' }}">
+                    class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-music text-aqua"></i> <span>OBD</span>
                         <span class="pull-right-container">
@@ -127,6 +127,8 @@
                                 href="{{ route('pack.create') }}"><i class="fa fa-bug"></i> Create OBD pack</a></li>
                         <li class="{{ $is_active == 'pack_list' ? 'active' : '' }}"><a
                                 href="{{ route('pack.list') }}"><i class="fa fa-recycle"></i> OBD pack List</a></li>
+                        <li class="{{ $is_active == 'obd_report' ? 'active' : '' }}"><a
+                                href="{{ route('admin.obdreport') }}"><i class="fa fa-file"></i> OBD Report</a></li>
                     </ul>
                 </li>
                 <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
@@ -153,7 +155,7 @@
                 </li>
 
                 <li
-                    class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' ? 'active' : '' }}">
+                    class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' || $is_active == 'sms_report' ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-whatsapp text-aqua"></i> <span>Push SMS</span>
                         <span class="pull-right-container">
@@ -180,6 +182,9 @@
                                 href="{{ route('sms.campaing.list.admin') }}"><i
                                     class="fa fa-line-chart text-aqua"></i>
                                 <span>SMS Campaing Stat</span></a></li>
+                        <li class="{{ $is_active == 'sms_report' ? 'active' : '' }}"><a
+                                href="{{ route('admin.smsreport') }}"><i class="fa fa-file"></i>Push SMS Report</a>
+                        </li>
                     </ul>
                 </li>
 

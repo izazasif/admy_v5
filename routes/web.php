@@ -166,6 +166,10 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::get('sms/schedule/list','Portal\SMSScheduleController@list')->name('sms.schedule.list');
         Route::get('sms/campaign/start/{id}','Portal\SMSController@startCampaign')->name('sms.campaign.start');
         Route::get('sms/campaign/information/{id}','Portal\SMSController@campaignInformation')->name('sms.campaign.information');
+        Route::get('admin/user/report','Portal\ReportController@dailyUserReport')->name('admin.userreport');
+        Route::get('admin/obd/report','Portal\ReportController@dailyObdReport')->name('admin.obdreport');
+        Route::get('admin/sms/report','Portal\ReportController@dailySmsReport')->name('admin.smsreport');
+        Route::get('admin/activity/log','Portal\ReportController@activityLog')->name('admin.logreport');
 //        Route::get('joycall/login','Api\CampainController@getUserKey')->name('joycall.login');
 
     });
