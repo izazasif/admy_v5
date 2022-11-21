@@ -14,7 +14,7 @@ class ReportController extends Controller
     public function dailyUserReport(){
         $title = "AdMy | Daily Report";
         $is_active = "user_list";
-        $data = User::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy(DB::raw('DATE(created_at)'))->orderBy('id','DESC')->paginate(20);       
+        $data = User::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy('date')->orderBy('date','DESC')->paginate(20);       
         return view('portal.report.userreport', compact('title','is_active','data'));
     }
 
@@ -28,7 +28,7 @@ class ReportController extends Controller
     public function dailySmsReport(){
         $title = "AdMy | Daily Report";
         $is_active = "sms_report";
-        $data = UserSMS::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy(DB::raw('DATE(created_at)'))->orderBy('id','DESC')->paginate(20);       
+        $data = UserSMS::select(DB::raw('DATE(created_at) as date'),DB::raw('count(*) as total'))->where('status',1)->groupBy('date')->orderBy('date','DESC')->paginate(20);       
         return view('portal.report.smsreport', compact('title','is_active','data'));
     }
 
