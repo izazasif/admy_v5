@@ -32,6 +32,7 @@ class AdminController extends Controller
         'password' => 'required',
         'confirm_password' => 'required',
         'status' => 'required',
+        'user_permission' => 'required',
       ];
       
       $messages = [
@@ -41,6 +42,7 @@ class AdminController extends Controller
         'password.required' => 'Password field is required!',
         'confirm_password.required' => 'Confirm Password field is required!',
         'status.required' => 'Status field is required!',
+        'user_permission.required' => 'Permission field is required!',
       ];
       
       $this->validate($request, $rules, $messages);
@@ -62,6 +64,7 @@ class AdminController extends Controller
         $userData->role = 'admin';
         $userData->is_verified = 1;
         $userData->status = $request->status;
+        $userData->permission = $request->user_permission;
         $userData->save(); 
 
       $message = 'Admin user created successfully!';
@@ -102,6 +105,10 @@ class AdminController extends Controller
       $userData->username = $request->username;
       if($request->password){
         $userData->password = Hash::make($request->password);
+      }
+      
+      if($request->user_permission){
+        $userData->permission = $request->user_permission;
       }
       $userData->status = $request->status;
       $userData->save();

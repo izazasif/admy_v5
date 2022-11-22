@@ -102,33 +102,13 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     });
     //admin start
     Route::group(['middleware' => 'CheckAdmin'], function(){
-        Route::post('admin/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat');
-        Route::get('admin/campaing/stat-2','Api\CampainController@smsCampaingStat2')->name('sms.campaing.stat2');
-        Route::get('admin/campaing/stat','Portal\SMSController@campaingForAdmin')->name('sms.campaing.list.admin');        
+              
         Route::get('/category/create','CategoryController@create')->name('category.create');
         Route::post('/category/store','CategoryController@store')->name('category.store');
         Route::get('/category/list','CategoryController@index')->name('category.list');
         Route::get('/category/edit/{id}','CategoryController@edit')->name('category.edit');
-        Route::post('/category/update','CategoryController@update')->name('category.update');
-
-        Route::get('/clip/create','ClipController@create')->name('clip.create');
-        Route::post('/clip/store','ClipController@store')->name('clip.store');
-        Route::get('/clip/list','ClipController@index')->name('clip.list');
-        Route::get('/clip/edit/{id}','ClipController@edit')->name('clip.edit');
-        Route::post('/clip/update','ClipController@update')->name('clip.update');
-
-        Route::get('/pack/create','PackController@create')->name('pack.create');
-        Route::post('/pack/store','PackController@store')->name('pack.store');
-        Route::get('/pack/list','PackController@index')->name('pack.list');
-        Route::get('/pack/edit/{id}','PackController@edit')->name('pack.edit');
-        Route::post('/pack/update','PackController@update')->name('pack.update');
-
-        Route::get('/sms/create','Portal\SMSController@create')->name('portal.sms.create');
-        Route::post('/sms/store','Portal\SMSController@store')->name('portal.sms.store');
-        Route::get('/sms/list','Portal\SMSController@index')->name('portal.sms.list');
-        Route::get('/sms/edit/{id}','Portal\SMSController@edit')->name('portal.sms.edit');
-        Route::post('/sms/update','Portal\SMSController@update')->name('portal.sms.update');
-
+        Route::post('/category/update','CategoryController@update')->name('category.update');   
+        
         Route::get('/admin/create','AdminController@create')->name('admin.create');
         Route::post('/admin/store','AdminController@store')->name('admin.store');
         Route::get('/admin/list','AdminController@index')->name('admin.list');
@@ -138,13 +118,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::get('/user/list','AdminController@userList')->name('user.list');
         Route::get('/user/list/update/active/{id}','AdminController@userUpdateActive')->name('user.list.update.active');
         Route::get('/user/list/update/inactive/{id}','AdminController@userUpdateInactive')->name('user.list.update.inactive');
-
-        Route::get('/sms/text/create','Portal\SMSTextController@create')->name('sms.text.create');
-        Route::post('/sms/text/store','Portal\SMSTextController@store')->name('sms.text.store');
-        Route::get('/sms/text/list','Portal\SMSTextController@index')->name('sms.text.list');
-        Route::get('/sms/text/edit/{id}','Portal\SMSTextController@edit')->name('sms.text.edit');
-        Route::post('/sms/text/update','Portal\SMSTextController@update')->name('sms.text.update');
-
+        
         Route::get('/web/api/create','Portal\WebApiController@create')->name('web.api.create');
         Route::post('/web/api/store','Portal\WebApiController@store')->name('web.api.store');
         Route::get('/web/api/list','Portal\WebApiController@index')->name('web.api.list');
@@ -153,26 +127,66 @@ Route::group(['middleware' => 'CheckLogout'], function(){
 
         Route::get('web/api/schedule/delivered/{id}','Portal\WebAPIScheduleController@delivered')->name('web.api.schedule.delivered');
         Route::get('web/api/schedule/list','Portal\WebAPIScheduleController@list')->name('web.api.schedule.list');
-
-        Route::get('/schedule/list','ScheduleController@list')->name('schedule.list');
-        Route::post('/schedule/list','ScheduleController@list')->name('schedule.list');
-        Route::get('/schedule/list/reset','ScheduleController@resetList')->name('schedule.list.reset');
-        Route::post('/schedule/update','ScheduleController@update')->name('schedule.list.update');
-
+        
         Route::get('/ticket/list','TicketController@index')->name('ticket.list');
         Route::get('/ticket/edit/{id}','TicketController@edit')->name('ticket.edit');
         Route::post('/ticket/update','TicketController@update')->name('ticket.update');
-
-        Route::get('sms/schedule/list','Portal\SMSScheduleController@list')->name('sms.schedule.list');
-        Route::get('sms/campaign/start/{id}','Portal\SMSController@startCampaign')->name('sms.campaign.start');
-        Route::get('sms/campaign/information/{id}','Portal\SMSController@campaignInformation')->name('sms.campaign.information');
+   
         Route::get('admin/user/report','Portal\ReportController@dailyUserReport')->name('admin.userreport');
         Route::get('admin/obd/report','Portal\ReportController@dailyObdReport')->name('admin.obdreport');
         Route::get('admin/sms/report','Portal\ReportController@dailySmsReport')->name('admin.smsreport');
         Route::get('admin/activity/log','Portal\ReportController@activityLog')->name('admin.logreport');
-//        Route::get('joycall/login','Api\CampainController@getUserKey')->name('joycall.login');
+        //  Route::get('joycall/login','Api\CampainController@getUserKey')->name('joycall.login');
 
     });
+    // OBD Manager
+    Route::group(['middleware' => 'CheckOBDManager'], function(){
+        Route::get('/clip/create','ClipController@create')->name('clip.create');
+        Route::post('/clip/store','ClipController@store')->name('clip.store');        
+        Route::get('/clip/edit/{id}','ClipController@edit')->name('clip.edit');
+        Route::post('/clip/update','ClipController@update')->name('clip.update');
+
+        Route::get('/pack/create','PackController@create')->name('pack.create');
+        Route::post('/pack/store','PackController@store')->name('pack.store');        
+        Route::get('/pack/edit/{id}','PackController@edit')->name('pack.edit');
+        Route::post('/pack/update','PackController@update')->name('pack.update');        
+        Route::post('/schedule/update','ScheduleController@update')->name('schedule.list.update');
+    });
+    // OBD Viewer
+    Route::group(['middleware' => 'CheckOBDViewer'], function(){
+        Route::get('/clip/list','ClipController@index')->name('clip.list');
+        Route::get('/pack/list','PackController@index')->name('pack.list');
+        Route::get('/schedule/list','ScheduleController@list')->name('schedule.list');
+        Route::post('/schedule/list','ScheduleController@list')->name('schedule.list');
+        Route::get('/schedule/list/reset','ScheduleController@resetList')->name('schedule.list.reset');
+
+    });
+    // SMS Manager
+    Route::group(['middleware' => 'CheckSMSManager'], function(){
+        Route::get('/sms/create','Portal\SMSController@create')->name('portal.sms.create');
+        Route::post('/sms/store','Portal\SMSController@store')->name('portal.sms.store');        
+        Route::get('/sms/edit/{id}','Portal\SMSController@edit')->name('portal.sms.edit');
+        Route::post('/sms/update','Portal\SMSController@update')->name('portal.sms.update');
+
+        Route::get('/sms/text/create','Portal\SMSTextController@create')->name('sms.text.create');
+        Route::post('/sms/text/store','Portal\SMSTextController@store')->name('sms.text.store');        
+        Route::get('/sms/text/edit/{id}','Portal\SMSTextController@edit')->name('sms.text.edit');
+        Route::post('/sms/text/update','Portal\SMSTextController@update')->name('sms.text.update');
+
+        Route::get('sms/campaign/start/{id}','Portal\SMSController@startCampaign')->name('sms.campaign.start');
+          
+    });
+    // SMS Viewer
+    Route::group(['middleware' => 'CheckSMSViewer'], function(){
+        Route::get('/sms/list','Portal\SMSController@index')->name('portal.sms.list');
+        Route::get('/sms/text/list','Portal\SMSTextController@index')->name('sms.text.list');
+        Route::get('sms/schedule/list','Portal\SMSScheduleController@list')->name('sms.schedule.list');
+        
+        Route::get('sms/campaign/information/{id}','Portal\SMSController@campaignInformation')->name('sms.campaign.information');
+        Route::post('admin/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat');
+        Route::get('admin/campaing/stat-2','Api\CampainController@smsCampaingStat2')->name('sms.campaing.stat2');
+        Route::get('admin/campaing/stat','Portal\SMSController@campaingForAdmin')->name('sms.campaing.list.admin');
+    });      
 
 });
 

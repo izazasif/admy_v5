@@ -83,7 +83,9 @@
                                     <th class="text-center">Creation Time</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
-                                    <th class="text-center">Stat</th>
+                                    @if (session()->has('dateRangeStat'))
+                                        <th class="text-center">Stat</th>
+                                    @endif
                                 </tr>
                                 @php $sl=1 @endphp
                                 @php $sl = ($all_schedule_list->currentpage()-1)* $all_schedule_list->perpage()+1 @endphp
@@ -116,10 +118,12 @@
                                             @endif
                                         </td>
                                         @if (!$schedule->status)
-                                            <td class="text-center">
-                                                <a href="{{ route('sms.campaign.start', $schedule->id) }}"><i
-                                                        class="fa fa-rocket" aria-hidden="true"></i> Deliver</a>
-                                            </td>
+                                            @if (session()->get('permission') != 'sms_viewer')
+                                                <td class="text-center">
+                                                    <a href="{{ route('sms.campaign.start', $schedule->id) }}"><i
+                                                            class="fa fa-rocket" aria-hidden="true"></i> Deliver</a>
+                                                </td>
+                                            @endif
                                         @endif
                                         <td class="text-center">
                                             @if ($schedule->status)
@@ -128,7 +132,7 @@
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            @if ($schedule->status)
+                                            @if ($schedule->status && session()->has('dateRangeStat'))
                                                 <a
                                                     href="{{ route('sms.campaing.stat2', ['user' => $schedule->getUser->email, 'daterange' => session()->get('dateRangeStat')]) }}"><i
                                                         class="fa fa-line-chart" aria-hidden="true"></i>Check Stat</a>

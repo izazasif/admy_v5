@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-use Illuminate\Http\Response;
+
 use Closure;
 
-class CheckAdmin
+class CheckSMSViewer
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(session()->get('permission') == 'all')
+        if(session()->get('permission') == 'all' || session()->get('permission') == 'sms_creator'|| session()->get('permission') == 'sms_viewer')
         {
             return $next($request);
         } else{

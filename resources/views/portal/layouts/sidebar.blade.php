@@ -106,87 +106,123 @@
                             class="fa fa-question-circle text-aqua"></i> <span>FAQ</span></a></li>
             @endif
             @if (session()->get('user_role') == 'admin')
-                <li
-                    class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-music text-aqua"></i> <span>OBD</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'schedule_list' ? 'active' : '' }}"><a
-                                href="{{ route('schedule.list') }}"><i class="fa fa-neuter"></i> Schedule List </a>
-                        </li>
-                        <li class="{{ $is_active == 'clip_create' ? 'active' : '' }}"><a
-                                href="{{ route('clip.create') }}"><i class="fa fa-star-o"></i> Create OBD Clip</a></li>
-                        <li class="{{ $is_active == 'clip_list' ? 'active' : '' }}"><a
-                                href="{{ route('clip.list') }}"><i class="fa fa-stack-exchange"></i> OBD Clip
-                                List</a></li>
-                        <li class="{{ $is_active == 'pack_create' ? 'active' : '' }}"><a
-                                href="{{ route('pack.create') }}"><i class="fa fa-bug"></i> Create OBD pack</a></li>
-                        <li class="{{ $is_active == 'pack_list' ? 'active' : '' }}"><a
-                                href="{{ route('pack.list') }}"><i class="fa fa-recycle"></i> OBD pack List</a></li>
-                        <li class="{{ $is_active == 'obd_report' ? 'active' : '' }}"><a
-                                href="{{ route('admin.obdreport') }}"><i class="fa fa-file"></i> OBD Report</a></li>
-                    </ul>
-                </li>
-                <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
-                        href="{{ route('ticket.list') }}"><i class="fa fa-ticket text-aqua"></i> <span>Ticket
-                            List</span></a></li>
-                <li class="{{ $is_active == 'user_list' ? 'active' : '' }}"><a href="{{ route('user.list') }}"><i
-                            class="fa fa-users text-aqua"></i> <span>User List</span></a></li>
-                <li
-                    class="treeview {{ $is_active == 'category_list' || $is_active == 'category_create' || $is_active == 'category_edit' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-th-large text-aqua"></i> <span>Category</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'category_create' ? 'active' : '' }}"><a
-                                href="{{ route('category.create') }}"><i class="fa fa-tags"></i> Create Category</a>
-                        </li>
-                        <li class="{{ $is_active == 'category_list' ? 'active' : '' }}"><a
-                                href="{{ route('category.list') }}"><i class="fa fa-stack-exchange"></i> Category
-                                List</a></li>
-                    </ul>
-                </li>
-
-                <li
-                    class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' || $is_active == 'sms_report' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-whatsapp text-aqua"></i> <span>Push SMS</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a
-                                href="{{ route('sms.schedule.list') }}"><i class="fa fa-calendar text-aqua"></i>
-                                <span> SMS Schedule List</span></a></li>
-                        <li class="{{ $is_active == 'sms_create' ? 'active' : '' }}"><a
-                                href="{{ route('portal.sms.create') }}"><i class="fa fa-star-half-empty"></i> Create
-                                SMS Package</a></li>
-                        <li class="{{ $is_active == 'sms_list' ? 'active' : '' }}"><a
-                                href="{{ route('portal.sms.list') }}"><i class="fa fa-hacker-news"></i> SMS Package
-                                List</a></li>
-                        <li class="{{ $is_active == 'sms.text_create' ? 'active' : '' }}"><a
-                                href="{{ route('sms.text.create') }}"><i class="fa fa-battery-full"></i> Create SMS
-                                Text</a></li>
-                        <li class="{{ $is_active == 'sms.text_list' ? 'active' : '' }}"><a
-                                href="{{ route('sms.text.list') }}"><i class="fa fa-wechat"></i> SMS Text List</a>
-                        </li>
-                        <li class="{{ $is_active == 'campaing_stat_admin' ? 'active' : '' }}"><a
-                                href="{{ route('sms.campaing.list.admin') }}"><i
-                                    class="fa fa-line-chart text-aqua"></i>
-                                <span>SMS Campaing Stat</span></a></li>
-                        <li class="{{ $is_active == 'sms_report' ? 'active' : '' }}"><a
-                                href="{{ route('admin.smsreport') }}"><i class="fa fa-file"></i>Push SMS Report</a>
-                        </li>
-                    </ul>
-                </li>
+                @if (session()->get('permission') == 'all' ||
+                    session()->get('permission') == 'obd_creator' ||
+                    session()->get('permission') == 'obd_viewer')
+                    <li
+                        class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' ? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-music text-aqua"></i> <span>OBD</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="{{ $is_active == 'schedule_list' ? 'active' : '' }}"><a
+                                    href="{{ route('schedule.list') }}"><i class="fa fa-neuter"></i> Schedule List </a>
+                            </li>
+                            @if (session()->get('permission') != 'obd_viewer')
+                                <li class="{{ $is_active == 'clip_create' ? 'active' : '' }}"><a
+                                        href="{{ route('clip.create') }}"><i class="fa fa-star-o"></i> Create OBD
+                                        Clip</a>
+                                </li>
+                            @endif
+                            <li class="{{ $is_active == 'clip_list' ? 'active' : '' }}"><a
+                                    href="{{ route('clip.list') }}"><i class="fa fa-stack-exchange"></i> OBD Clip
+                                    List</a></li>
+                            @if (session()->get('permission') != 'obd_viewer')
+                                <li class="{{ $is_active == 'pack_create' ? 'active' : '' }}"><a
+                                        href="{{ route('pack.create') }}"><i class="fa fa-bug"></i> Create OBD
+                                        pack</a>
+                                </li>
+                            @endif
+                            <li class="{{ $is_active == 'pack_list' ? 'active' : '' }}"><a
+                                    href="{{ route('pack.list') }}"><i class="fa fa-recycle"></i> OBD pack List</a>
+                            </li>
+                            @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_creator')
+                                <li class="{{ $is_active == 'obd_report' ? 'active' : '' }}"><a
+                                        href="{{ route('admin.obdreport') }}"><i class="fa fa-file"></i> OBD
+                                        Report</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
+                @if (session()->get('permission') == 'all')
+                    <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
+                            href="{{ route('ticket.list') }}"><i class="fa fa-ticket text-aqua"></i> <span>Ticket
+                                List</span></a></li>
+                    <li class="{{ $is_active == 'user_list' ? 'active' : '' }}"><a
+                            href="{{ route('user.list') }}"><i class="fa fa-users text-aqua"></i> <span>User
+                                List</span></a></li>
+                    <li
+                        class="treeview {{ $is_active == 'category_list' || $is_active == 'category_create' || $is_active == 'category_edit' ? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-th-large text-aqua"></i> <span>Category</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="{{ $is_active == 'category_create' ? 'active' : '' }}"><a
+                                    href="{{ route('category.create') }}"><i class="fa fa-tags"></i> Create
+                                    Category</a>
+                            </li>
+                            <li class="{{ $is_active == 'category_list' ? 'active' : '' }}"><a
+                                    href="{{ route('category.list') }}"><i class="fa fa-stack-exchange"></i> Category
+                                    List</a></li>
+                        </ul>
+                    </li>
+                @endif
+                @if (session()->get('permission') == 'all' ||
+                    session()->get('permission') == 'sms_creator' ||
+                    session()->get('permission') == 'sms_viewer')
+                    <li
+                        class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' || $is_active == 'sms_report' ? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-whatsapp text-aqua"></i> <span>Push SMS</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a
+                                    href="{{ route('sms.schedule.list') }}"><i class="fa fa-calendar text-aqua"></i>
+                                    <span> SMS Schedule List</span></a></li>
+                            @if (session()->get('permission') != 'sms_viewer')
+                                <li class="{{ $is_active == 'sms_create' ? 'active' : '' }}"><a
+                                        href="{{ route('portal.sms.create') }}"><i class="fa fa-star-half-empty"></i>
+                                        Create
+                                        SMS Package</a></li>
+                            @endif
+                            <li class="{{ $is_active == 'sms_list' ? 'active' : '' }}"><a
+                                    href="{{ route('portal.sms.list') }}"><i class="fa fa-hacker-news"></i> SMS
+                                    Package
+                                    List</a></li>
+                            @if (session()->get('permission') != 'sms_viewer')
+                                <li class="{{ $is_active == 'sms.text_create' ? 'active' : '' }}"><a
+                                        href="{{ route('sms.text.create') }}"><i class="fa fa-battery-full"></i>
+                                        Create
+                                        SMS
+                                        Text</a></li>
+                            @endif
+                            <li class="{{ $is_active == 'sms.text_list' ? 'active' : '' }}"><a
+                                    href="{{ route('sms.text.list') }}"><i class="fa fa-wechat"></i> SMS Text
+                                    List</a>
+                            </li>
+                            <li class="{{ $is_active == 'campaing_stat_admin' ? 'active' : '' }}"><a
+                                    href="{{ route('sms.campaing.list.admin') }}"><i
+                                        class="fa fa-line-chart text-aqua"></i>
+                                    <span>SMS Campaing Stat</span></a></li>
+                            @if (session()->get('permission') != 'sms_creator' && session()->get('permission') != 'sms_viewer')
+                                <li class="{{ $is_active == 'sms_report' ? 'active' : '' }}"><a
+                                        href="{{ route('admin.smsreport') }}"><i class="fa fa-file"></i>Push SMS
+                                        Report</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
 
                 <!-- <li class="treeview {{ $is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active == 'web_api_schedule_list' ? 'active' : '' }}">
                     <a href="#">
@@ -201,24 +237,26 @@
                         <li class="{{ $is_active == 'web_api_list' ? 'active' : '' }}"><a href="{{ route('web.api.list') }}"><i class="fa fa-bar-chart"></i> Web API pack List</a></li>
                     </ul>
                 </li> -->
-
-                <li
-                    class="treeview {{ $is_active == 'admin_list' || $is_active == 'admin_create' || $is_active == 'admin_edit' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-user text-aqua"></i> <span>Admin</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'admin_create' ? 'active' : '' }}"><a
-                                href="{{ route('admin.create') }}"><i class="fa fa-circle-o"></i> Create Admin
-                                User</a></li>
-                        <li class="{{ $is_active == 'admin_list' ? 'active' : '' }}"><a
-                                href="{{ route('admin.list') }}"><i class="fa fa-circle-o"></i> Admin User List</a>
-                        </li>
-                    </ul>
-                </li>
+                @if (session()->get('permission') == 'all')
+                    <li
+                        class="treeview {{ $is_active == 'admin_list' || $is_active == 'admin_create' || $is_active == 'admin_edit' ? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-user text-aqua"></i> <span>Admin</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="{{ $is_active == 'admin_create' ? 'active' : '' }}"><a
+                                    href="{{ route('admin.create') }}"><i class="fa fa-circle-o"></i> Create Admin
+                                    User</a></li>
+                            <li class="{{ $is_active == 'admin_list' ? 'active' : '' }}"><a
+                                    href="{{ route('admin.list') }}"><i class="fa fa-circle-o"></i> Admin User
+                                    List</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             @endif
         </ul>
 

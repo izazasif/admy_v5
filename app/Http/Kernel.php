@@ -67,5 +67,9 @@ class Kernel extends HttpKernel
         'CheckLogout' => \App\Http\Middleware\CheckLogout::class,
         'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
         'CheckUser' => \App\Http\Middleware\CheckUser::class,
+        'CheckOBDManager' => \App\Http\Middleware\CheckOBDManager::class,
+        'CheckOBDViewer' => \App\Http\Middleware\CheckOBDViewer::class,
+        'CheckSMSManager' => \App\Http\Middleware\CheckSMSManager::class,
+        'CheckSMSViewer' => \App\Http\Middleware\CheckSMSViewer::class,
     ];
 }
