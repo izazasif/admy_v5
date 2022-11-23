@@ -49,6 +49,7 @@ class SMSTextController extends Controller
         $text->save();
 
         $message = 'SMS text created successfully!';
+        $log_write = storeActivityLog('SMS','SMS Text Create',json_encode($request->all()));
         return redirect()->route('sms.text.list')->with('message',$message);
     }
 
@@ -86,6 +87,7 @@ class SMSTextController extends Controller
         $smsData->save();
 
         $message = 'SMS Text updated successfully!';
+        $log_write = storeActivityLog('SMS','SMS Text Update',json_encode($request->all()));
         return redirect()->route('sms.text.list')->with('message',$message);
     }
 }

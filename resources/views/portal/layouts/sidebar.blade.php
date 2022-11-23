@@ -257,6 +257,12 @@
                         </ul>
                     </li>
                 @endif
+                @if (session()->get('permission') == 'all')
+                    <li class="{{ $is_active == 'log_report' ? 'active' : '' }}"><a
+                            href="{{ route('admin.logreport') }}"><i class="fa fa-history text-aqua"></i>
+                            <span>Activity
+                                Log</span></a></li>
+                @endif
             @endif
         </ul>
 

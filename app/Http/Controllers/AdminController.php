@@ -66,7 +66,7 @@ class AdminController extends Controller
         $userData->status = $request->status;
         $userData->permission = $request->user_permission;
         $userData->save(); 
-
+      $log_write = storeActivityLog('Admin','Admin Create',json_encode($request->all()));
       $message = 'Admin user created successfully!';
       return redirect()->route('admin.list')->with('message',$message);
     }
@@ -114,6 +114,7 @@ class AdminController extends Controller
       $userData->save();
 
       $message = 'Admin user updated successfully!';
+      $log_write = storeActivityLog('Admin','Admin Update',json_encode($request->all()));
       return redirect()->route('admin.list')->with('message',$message);
     }
 
@@ -132,6 +133,7 @@ class AdminController extends Controller
         $userData->save();
 
         $message = 'User status updated successfully!';
+        $log_write = storeActivityLog('User','User Update', $userData->username.'-'.$userData->email."User Activate");
         return redirect()->route('user.list')->with('message',$message);
     }
 
@@ -141,6 +143,7 @@ class AdminController extends Controller
         $userData->save();
 
         $message = 'User status updated successfully!';
+        $log_write = storeActivityLog('User','User Update', $userData->username.'-'.$userData->email."User Inctivate");
         return redirect()->route('user.list')->with('message',$message);
     }
 

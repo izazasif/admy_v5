@@ -61,6 +61,7 @@ class SMSController extends Controller
         $smsData->save();
 
         $message = 'SMS Package Created Successfully!';
+        $log_write = storeActivityLog('SMS','SMS Package Created',json_encode($request->all()));
         return redirect()->route('portal.sms.list')->with('message',$message);
     }
 
@@ -110,6 +111,7 @@ class SMSController extends Controller
         $smsData->save();
 
         $message = 'SMS Package Updated Successfully!';
+        $log_write = storeActivityLog('SMS','SMS Package Updated',json_encode($request->all()));
         return redirect()->route('portal.sms.list')->with('message',$message);
     }
 
@@ -167,6 +169,7 @@ class SMSController extends Controller
                $schedule->status = 1;
                $schedule->save();
                $message = "Campaign has created successfully, campaign id: ".$response->campaign_id;
+               $log_write = storeActivityLog('SMS','SMS Campaign Create',json_encode($request->all()));
            }elseif($response && $response->result==1){
                $message = "No balance remaining in purchased packages for specified channel";
            }else{

@@ -3,6 +3,7 @@ use App\SMSSchedule;
 use App\UserSMS;
 use App\Models\Schedule;
 use App\Models\UserPack;
+use App\Models\Log;
 
 if (! function_exists('getUserPushSMSBalance')) {
     function getUserPushSMSBalance($userID) {
@@ -35,5 +36,18 @@ if (! function_exists('getUserOBDBalance')) {
       }
 
       return $balance;
+  }
+}
+
+if (! function_exists('storeActivityLog')) {
+  function storeActivityLog($name,$activity,$data=null) {
+      $user_id = session()->get('user_id');
+      $logData = new Log;
+      $logData->module_name = $name;
+      $logData->module_activity = $activity;
+      $logData->user_data = $data;
+      $logData->user_id = $user_id;
+      $logData->save();
+      return true;
   }
 }

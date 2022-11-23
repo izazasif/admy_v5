@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UserPack; // OBD
 use App\UserSMS; // SMS
 use App\User; // SMS
+use App\Models\Log; // Log
 use DB;
 
 class ReportController extends Controller
@@ -35,7 +36,7 @@ class ReportController extends Controller
     public function activityLog(){
         $title = "AdMy | Activity Log";
         $is_active = "log_report";
-        $data = [];
+        $data = Log::select('logs.*','users.email','users.username')->leftJoin('users','users.id','=','logs.user_id')->paginate(15);
         return view('portal.report.activityLog', compact('title','is_active','data'));
     }
 }
