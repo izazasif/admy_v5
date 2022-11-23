@@ -127,7 +127,7 @@ class LoginController extends Controller
             session()->put('user_mail', $output->email);
             session()->put('user_username', $output->username);
             session()->put('user_role', $output->role);
-
+            session()->put('permission',$output->permission);
             // $logToken = strtotime("now").uniqid();
             // session()->put('login_token', $logToken);
 
@@ -199,6 +199,7 @@ class LoginController extends Controller
             session()->put('user_mail', $output->email);
             session()->put('user_username', $output->username);
             session()->put('user_role', $output->role);
+            session()->put('permission',$output->permission);
 
             // $user_credit = UserPack::where('user_id', $output->id)->where('valid_till', '>=', date('Y-m-d H:i:s'))->where('status', 1)->sum('amount');
             // $user_debit = Schedule::where('user_id', $output->id)->sum('obd_amount');

@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-12 col-xs-12">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">User List</h3>
