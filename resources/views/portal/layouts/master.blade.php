@@ -32,7 +32,7 @@
 
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-  <link rel="icon" type="image/gif/png" href="{{ asset('assets/admy/image/title.png') }}">
+  <link rel="icon" type="image/gif/png" href="{{ asset('assets/images/foot-logo.png') }}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
