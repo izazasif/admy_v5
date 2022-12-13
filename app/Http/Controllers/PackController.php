@@ -202,6 +202,7 @@ class PackController extends Controller
       $packData->save();
 
       $message = 'OBD Pack Created Successfully!';
+      $log_write = storeActivityLog('OBD','OBD Pack Create',json_encode($request->all()));
       return redirect()->route('pack.list')->with('message',$message);
     }
 
@@ -247,6 +248,7 @@ class PackController extends Controller
       $packData->save();
 
       $message = 'OBD Pack Updated Successfully!';
+      $log_write = storeActivityLog('OBD','OBD Pack Update',json_encode($request->all()));
       return redirect()->route('pack.list')->with('message',$message);
     }
 

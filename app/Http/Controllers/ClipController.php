@@ -65,6 +65,7 @@ class ClipController extends Controller
       $clipData->save();
 
       $message = 'OBD Clip created successfully!';
+      $log_write = storeActivityLog('OBD','OBD Clip Create',json_encode($request->all()));
       return redirect()->route('clip.list')->with('message',$message);
     }
 
@@ -119,6 +120,7 @@ class ClipController extends Controller
       $clipData->save();
 
       $message = 'OBD Clip updated successfully!';
+      $log_write = storeActivityLog('OBD','OBD Clip Update',json_encode($request->all()));
       return redirect()->route('clip.list')->with('message',$message);
     }
 

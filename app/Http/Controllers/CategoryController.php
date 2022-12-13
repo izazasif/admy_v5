@@ -43,6 +43,7 @@ class CategoryController extends Controller
       $categoryData->save();
 
       $message = 'Category created successfully!';
+      $log_write = storeActivityLog('Category','Category Create',json_encode($request->all()));
       return redirect()->route('category.list')->with('message',$message);
     }
 
@@ -76,6 +77,7 @@ class CategoryController extends Controller
       $categoryData->save();
 
       $message = 'Category updated successfully!';
+      $log_write = storeActivityLog('Category','Category Update',json_encode($request->all()));
       return redirect()->route('category.list')->with('message',$message);
     }
 

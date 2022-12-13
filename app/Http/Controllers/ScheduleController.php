@@ -373,6 +373,7 @@ class ScheduleController extends Controller
         $reportData->save();
 
         $message = 'Schedule updated successfully!';
+        $log_write = storeActivityLog('OBD','OBD Schedule Update',json_encode($request->all()));
         return redirect()->route('schedule.list')->with('message',$message);
     }
 

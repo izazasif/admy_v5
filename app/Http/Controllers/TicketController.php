@@ -48,6 +48,7 @@ class TicketController extends Controller
       $ticketData->save();
 
       $message = 'Ticket created successfully!';
+      $log_write = storeActivityLog('Ticket','Ticket Create',json_encode($request->all()));
       return redirect()->route('ticket.list.self')->with('message',$message);
     }
 
@@ -114,6 +115,8 @@ class TicketController extends Controller
         $discussionData->save();
   
         $message = 'Ticket replied successfully!';
+        $log_write = storeActivityLog('Ticket','Ticket Update',json_encode($request->all()));
+        
         return redirect()->back()->with('message',$message);
     }
 
