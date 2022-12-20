@@ -82,6 +82,7 @@
                     <label for="obd_amount">OBD Amount</label>
                     <select class="form-control" name="obd_amount" id="obd_amount">
                       <option value="">-- Select OBD Amount --</option>
+                      <option value="20000">{{ number_format(20000) }}</option>
                       <option value="50000">{{ number_format(50000) }}</option>
                       <option value="100000">{{ number_format(100000) }}</option>
                       <option value="150000">{{ number_format(150000) }}</option>
