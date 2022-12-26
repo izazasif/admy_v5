@@ -78,9 +78,15 @@
                                             <label for="sms_amount">SMS Amount</label>
                                             <select class="form-control" name="sms_amount" id="sms_amount">
                                                 <option value="">-- Select sms Amount --</option>
-                                                <option value="50">50</option>
+                                                <!-- <option value="50">50</option>
                                                 <option value="100">100</option>
-                                                <option value="200">200</option>
+                                                <option value="200">200</option> -->
+                                                <option value="1200">{{ number_format(1200) }}</option>
+                                                <option value="2500">{{ number_format(2500) }}</option>
+                                                <option value="5000">{{ number_format(5000) }}</option>
+                                                <option value="10000">{{ number_format(10000) }}</option>
+                                                <option value="15000">{{ number_format(15000) }}</option>
+                                                <option value="20000">{{ number_format(20000) }}</option>
                                                 <option value="50000">{{ number_format(50000) }}</option>
                                                 <option value="100000">{{ number_format(100000) }}</option>
                                                 <option value="150000">{{ number_format(150000) }}</option>
