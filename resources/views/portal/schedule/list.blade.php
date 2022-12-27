@@ -27,14 +27,14 @@
                                                 value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
                                         </div>
                                         <!-- <div class="form-group distable-cell">
-                              <label for="shfromdate">From Date</label>
-                              <input class="form-control input-sm datepicker" type="text" name="shfromdate" placeholder="From date" value="{{ session()->has('shfromdate') ? session()->get('shfromdate') : '' }}">
-                            </div>
+                                                                                                  <label for="shfromdate">From Date</label>
+                                                                                                  <input class="form-control input-sm datepicker" type="text" name="shfromdate" placeholder="From date" value="{{ session()->has('shfromdate') ? session()->get('shfromdate') : '' }}">
+                                                                                                </div>
 
-                            <div class="form-group distable-cell">
-                              <label for="shtodate">To Date</label>
-                              <input class="form-control input-sm datepicker" type="text" name="shtodate" placeholder="To date" value="{{ session()->has('shtodate') ? session()->get('shtodate') : '' }}">
-                            </div> -->
+                                                                                                <div class="form-group distable-cell">
+                                                                                                  <label for="shtodate">To Date</label>
+                                                                                                  <input class="form-control input-sm datepicker" type="text" name="shtodate" placeholder="To date" value="{{ session()->has('shtodate') ? session()->get('shtodate') : '' }}">
+                                                                                                </div> -->
                                         <div class="form-group distable-cell">
                                             <label for="shcategory">Category</label>
                                             <select class="form-control input-sm" id="shcategory" name="shcategory">
@@ -98,7 +98,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-10 col-xs-12">
+                <div class="col-sm-12 col-xs-12">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Schedule List</h3>
@@ -153,22 +153,25 @@
                                         <td class="text-center">
                                             {{ date('d-m-Y h:i A', strtotime($schedule->created_at)) }}</td>
                                         <td class="text-center">
-                                            @if ($schedule->status)
+                                            @if ($schedule->status == -1)
+                                                <span style="color:red"><b><i class="fa fa-times"
+                                                            aria-hidden="true"></i>&nbsp;Rejected</b></span>
+                                            @elseif ($schedule->status == 1)
                                                 <span style="color:green"><b><i class="fa fa-check"
                                                             aria-hidden="true"></i>&nbsp;Delivered</b></span>
                                             @else
-                                                <span style="color:red"><b><i class="fa fa-clock-o"
+                                                <span style="color:blue"><b><i class="fa fa-clock-o"
                                                             aria-hidden="true"></i>&nbsp;Pending</b></span>
                                             @endif
                                         </td>
                                         @if (!$schedule->status)
                                             <!-- <td class="text-center">
-                          <a href="{{ route('schedule.list.update', $schedule->id) }}">
-                            <button type="button" class="btn btn-primary btn-xs">
-                              <i class="fa fa-rocket" aria-hidden="true"></i> Deliver
-                            </button>
-                          </a>
-                        </td> -->
+                                                                                              <a href="{{ route('schedule.list.update', $schedule->id) }}">
+                                                                                                <button type="button" class="btn btn-primary btn-xs">
+                                                                                                  <i class="fa fa-rocket" aria-hidden="true"></i> Deliver
+                                                                                                </button>
+                                                                                              </a>
+                                                                                            </td> -->
                                             @if (session()->get('permission') != 'obd_viewer')
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-primary btn-xs deliver_btn"
@@ -176,6 +179,11 @@
                                                         data-id="{{ $schedule->id }}">
                                                         <i class="fa fa-rocket" aria-hidden="true"></i> Deliver
                                                     </button>
+                                                    <a href="{{ route('obdSreject', $schedule->id) }}">
+                                                        <button type="button" class="btn btn-danger btn-xs deliver_btn">
+                                                            <i class="fa fa-times" aria-hidden="true"></i> Reject
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             @endif
                                         @endif
@@ -201,8 +209,8 @@
                 <div class="modal-header text-center">
                     <h5 class="modal-title" style="font-size: 24px; font-weight:bold;">Report Data</h5>
                     <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button> -->
+                                                                                      <span aria-hidden="true">&times;</span>
+                                                                                    </button> -->
                 </div>
                 <form method="POST" action="{{ route('schedule.list.update') }}" enctype="multipart/form-data">
                     <div class="modal-body">
@@ -239,8 +247,8 @@
                         <!-- /.box-body -->
 
                         <!-- <div class="box-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div> -->
+                                                                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                        </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -216,6 +216,22 @@ class SMSController extends Controller
         $users = User::where('status',1)->where('role','user')->get();
         $data = [];
         return view('portal.sms_schedule.campain_stat_admin', compact('title','is_active','users','data'));
-    }    
+    }
+    
+    public function reject ($id){
+      $scheduleData = SMSSchedule::where('id', $id)->first();
+      $scheduleData->status = -1; //"-1" means push sms schedule reject 
+      $scheduleData->sms_amount = 0; 
+      $scheduleData->save();
+      
+      $user_email = User::where('id',$scheduleData->user_id)->first();
+      $message = 'Push SMS Schedule rejected successfully!';
+      $msgString = 'App-'.$scheduleData->app_name.' App Id-'.$scheduleData->app_id.' USSD Code-'.$scheduleData->ussd_code;
+      $log_write = storeActivityLog('SMS','Push SMS Schedule reject',$msgString);
+      $body = "Your Push SMS Schedule has been rejected!".' '.$msgString;
+      $sendTo = $user_email->email;
+      \Mail::to($sendTo)->send(new \App\Mail\ScheduleRejectMail($body));
+      return redirect()->back()->with('message',$message);
+    }
     
 }

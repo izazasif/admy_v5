@@ -11,6 +11,7 @@ use App\Models\AudioClip;
 use App\Models\Schedule;
 use App\Models\UserPack;
 use App\Models\Report;
+use App\Models\User;
 
 class ScheduleController extends Controller
 {
@@ -394,6 +395,21 @@ class ScheduleController extends Controller
       $report_data = $this->getContentQueryBuilderReport();
       $report_data = $report_data->paginate(50);
       return view('portal.schedule.report', compact('title', 'is_active', 'categories', 'report_data'));
+    }
+    public function reject ($id){
+      $scheduleData = Schedule::where('id', $id)->first();
+      $scheduleData->status = -1; //"-1" means schedule reject 
+      $scheduleData->obd_amount = 0; 
+      $scheduleData->save();
+      
+      $user_email = User::where('id',$scheduleData->user_id)->first();
+      $message = 'Schedule rejected successfully!';
+      $msgString = 'App-'.$scheduleData->app_name.' App Id-'.$scheduleData->app_id.' USSD Code-'.$scheduleData->ussd_code;
+      $log_write = storeActivityLog('OBD','OBD Schedule reject',$msgString);
+      $body = "Your OBD Schedule has been rejected!".' '.$msgString;
+      $sendTo = $user_email->email;
+      \Mail::to($sendTo)->send(new \App\Mail\ScheduleRejectMail($body));
+      return redirect()->route('schedule.list')->with('message',$message);
     }
 
 }
