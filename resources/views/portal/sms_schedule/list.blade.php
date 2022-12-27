@@ -109,19 +109,29 @@
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($schedule->created_at)) }}
                                         </td>
                                         <td class="text-center">
-                                            @if ($schedule->status)
+                                            @if ($schedule->status == -1)
+                                                <span style="color:red"><b><i class="fa fa-times"
+                                                            aria-hidden="true"></i>&nbsp;Rejected</b></span>
+                                            @elseif ($schedule->status == 1)
                                                 <span style="color:green"><b><i class="fa fa-check"
                                                             aria-hidden="true"></i>&nbsp;Delivered</b></span>
                                             @else
-                                                <span style="color:red"><b><i class="fa fa-clock-o"
+                                                <span style="color:blue"><b><i class="fa fa-clock-o"
                                                             aria-hidden="true"></i>&nbsp;Pending</b></span>
                                             @endif
                                         </td>
                                         @if (!$schedule->status)
                                             @if (session()->get('permission') != 'sms_viewer')
                                                 <td class="text-center">
-                                                    <a href="{{ route('sms.campaign.start', $schedule->id) }}"><i
-                                                            class="fa fa-rocket" aria-hidden="true"></i> Deliver</a>
+                                                    <span>
+                                                        <a href="{{ route('sms.campaign.start', $schedule->id) }}"><i
+                                                                class="fa fa-rocket" aria-hidden="true"></i> Deliver</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="{{ route('portal.sms.reject', $schedule->id) }}"><i
+                                                                class="fa fa-times" style="color: red"
+                                                                aria-hidden="true"></i> Reject</a>
+                                                    </span>
                                                 </td>
                                             @endif
                                         @endif

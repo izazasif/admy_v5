@@ -145,7 +145,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::post('/clip/store','ClipController@store')->name('clip.store');        
         Route::get('/clip/edit/{id}','ClipController@edit')->name('clip.edit');
         Route::post('/clip/update','ClipController@update')->name('clip.update');
-
+        Route::get('/schedule/reject/{id}','ScheduleController@reject')->name('obdSreject');
         Route::get('/pack/create','PackController@create')->name('pack.create');
         Route::post('/pack/store','PackController@store')->name('pack.store');        
         Route::get('/pack/edit/{id}','PackController@edit')->name('pack.edit');
@@ -167,6 +167,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::post('/sms/store','Portal\SMSController@store')->name('portal.sms.store');        
         Route::get('/sms/edit/{id}','Portal\SMSController@edit')->name('portal.sms.edit');
         Route::post('/sms/update','Portal\SMSController@update')->name('portal.sms.update');
+        Route::get('/sms/schedule/reject/{id}','Portal\SMSController@reject')->name('portal.sms.reject');
 
         Route::get('/sms/text/create','Portal\SMSTextController@create')->name('sms.text.create');
         Route::post('/sms/text/store','Portal\SMSTextController@store')->name('sms.text.store');        
