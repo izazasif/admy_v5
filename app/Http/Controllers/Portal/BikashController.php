@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Model\PaymentHistory;
 use App\UserSMS;
 use Illuminate\Http\Request;
+use PDF;
+use App\Http\Controllers\Portal\SMSController;
 
 class BikashController extends Controller
 {
@@ -190,6 +192,11 @@ class BikashController extends Controller
 
            $userPushSMSBalance = getUserPushSMSBalance($user_id);
            session()->put('user_sms_credit', $userPushSMSBalance);
+
+           $data = SMSController::invoiceData($payment->user_sms_id);
+           $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+           $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';
+           \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body))->attachData($pdf->output(), 'PushSMS'.$payment->user_sms_id.'-invoice.pdf'); 
 
            $message = 'Payment is successful! Pack purchase completed.';
            return redirect()->route('sms.purchase')->with('message', $message);

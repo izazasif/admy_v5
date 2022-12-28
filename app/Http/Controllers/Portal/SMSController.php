@@ -10,6 +10,7 @@ use App\SMSSchedule;
 use App\UserSMS;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class SMSController extends Controller
 {
@@ -232,6 +233,21 @@ class SMSController extends Controller
       $sendTo = $user_email->email;
       \Mail::to($sendTo)->send(new \App\Mail\ScheduleRejectMail($body));
       return redirect()->back()->with('message',$message);
+    }
+    public function invoicePdf($id){
+      $data = $this->invoiceData($id);
+      $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+      return $pdf->download('PushSMS'.$id.'-invoice.pdf');
+    return [];
+    }
+
+    function invoiceData($id){
+      $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','s_m_s.*')
+                          ->join('users', 'users.id', '=', 'user_s_m_s.user_id') 
+                          ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id') 
+                          ->where('user_s_m_s.id',$id)
+                          ->first();
+      return $content;                    
     }
     
 }
