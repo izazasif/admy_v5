@@ -38,7 +38,8 @@ Route::group(['middleware' => 'CheckLogin'], function(){
 });
 
 Route::group(['middleware' => 'CheckLogout'], function(){
-    Route::group(['middleware' => 'CheckUser'], function(){      
+    Route::group(['middleware' => 'CheckUser'], function(){ 
+        Route::get('/obd/invoice/{id}','PackController@invoicePdf')->name("obd.invoice");      
         Route::post('user/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat.user');
         Route::get('/campaing/stat','Portal\SMSController@campaingForUser')->name('sms.campaing.list.user');
         Route::get('/schedule/create','ScheduleController@create')->name('schedule.create');

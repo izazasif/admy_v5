@@ -8,6 +8,8 @@ use App\Models\Transaction;
 use App\Models\UserPack;
 use App\Models\Pack;
 use App\Models\Schedule;
+use PDF;
+use App\Http\Controllers\PackController;
 
 class PaymentController extends Controller
 {
@@ -100,6 +102,10 @@ class PaymentController extends Controller
                 $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
                 session()->put('user_credit', $user_credit-$user_debit);
 
+                $data = PackController::invoiceData($userPackData->id);
+                $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
+                $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';
+                \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body))->attachData($pdf->output(), 'OBD'.$userPackData->id.'-invoice.pdf');
                 echo $getQueryPaymentData;
             }else{
                 $message = 'Something went wrong! Please try again.';
