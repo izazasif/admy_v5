@@ -221,7 +221,7 @@ class SMSController extends Controller
     public function reject ($id){
       $scheduleData = SMSSchedule::where('id', $id)->first();
       $scheduleData->status = -1; //"-1" means push sms schedule reject 
-      $scheduleData->sms_amount = 0; 
+    //   $scheduleData->sms_amount = 0; 
       $scheduleData->save();
       
       $user_email = User::where('id',$scheduleData->user_id)->first();

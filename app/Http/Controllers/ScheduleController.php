@@ -399,7 +399,7 @@ class ScheduleController extends Controller
     public function reject ($id){
       $scheduleData = Schedule::where('id', $id)->first();
       $scheduleData->status = -1; //"-1" means schedule reject 
-      $scheduleData->obd_amount = 0; 
+      // $scheduleData->obd_amount = 0; 
       $scheduleData->save();
       
       $user_email = User::where('id',$scheduleData->user_id)->first();
