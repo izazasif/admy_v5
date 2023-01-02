@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pack;
 use App\Models\UserPack;
 use App\Models\Schedule;
+use PDF;
 
 class PackController extends Controller
 {
@@ -251,5 +252,20 @@ class PackController extends Controller
       $log_write = storeActivityLog('OBD','OBD Pack Update',json_encode($request->all()));
       return redirect()->route('pack.list')->with('message',$message);
     }
+
+    public function invoicePdf($id){
+      $data = $this->invoiceData($id);
+      $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
+      return $pdf->download('OBD'.$id.'-invoice.pdf');
+    }
+
+    function invoiceData($id){
+      $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','packs.*')
+                          ->join('users', 'users.id', '=', 'user_packs.user_id') 
+                          ->join('packs', 'packs.id', '=', 'user_packs.pack_id') 
+                          ->where('user_packs.id',$id)
+                          ->first();
+      return $content;                    
+    }  
 
 }

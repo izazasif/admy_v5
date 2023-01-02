@@ -14,7 +14,7 @@
                             <div class="alert alert-success text-center">
                                 <ul style="list-style-type: none">
                                     <li>
-                                        <a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                         {{ session('message') }}
                                     </li>
                                 </ul>
@@ -23,7 +23,8 @@
 
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <table class="table table-bordered table-hover" style="margin-top:20px; margin-bottom:30px;width:100%">
+                            <table class="table table-bordered table-hover"
+                                style="margin-top:20px; margin-bottom:30px;width:100%">
                                 <tr>
                                     <th class="text-center">SL</th>
                                     <th class="text-center">Package ID</th>
@@ -33,10 +34,11 @@
                                     <th class="text-center">Validity</th>
                                     <th class="text-center">Creation Time</th>
                                     <th class="text-center">Status</th>
+                                    <th class="text-center">Invoice</th>
                                 </tr>
                                 @php $sl=1 @endphp
                                 @php $sl = ($lists->currentpage()-1)* $lists->perpage()+1 @endphp
-                                @foreach( $lists as $list)
+                                @foreach ($lists as $list)
                                     <tr>
                                         <td class="text-center">{{ $sl++ }}</td>
                                         <td class="text-center">{{ $list->package_id }}</td>
@@ -46,11 +48,18 @@
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->valid_til)) }}</td>
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->created_at)) }}</td>
                                         <td class="text-center">
-                                            @if($list->is_status)
-                                                <span style="color:green"><b><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Active</b></span>
+                                            @if ($list->is_status)
+                                                <span style="color:green"><b><i class="fa fa-check"
+                                                            aria-hidden="true"></i>&nbsp;Active</b></span>
                                             @else
-                                                <span style="color:red"><b><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp In Active</b></span>
+                                                <span style="color:red"><b><i class="fa fa-clock-o"
+                                                            aria-hidden="true"></i>&nbsp In Active</b></span>
                                             @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ route('pushsms.invoice', $list->id) }}">
+                                                <i class="fa fa-file-pdf-o" style="font-size:24px;"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
