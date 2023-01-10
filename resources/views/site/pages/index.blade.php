@@ -399,10 +399,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="obd-pack-plan text-center" data-aos="zoom-in">OBD PACKAGES PLAN</h2>
-                    <div class="row" style="padding: 5%">
+                    <div class="row" style="margin-left: 7%; margin-right: 7%;">
                         {{-- <div class="col-md-1"></div> --}}
                         @foreach ($packs as $pack)
-                            <div class="col-md-2 pd">
+                            <div class="col-md-3 " style="margin-bottom: 2%">
                                 <div class="wrap text-center " data-aos="zoom-in">
                                     <h3>{{ $pack->name }}</h3>
                                     <h2>{{ $pack->unit_price }} Taka</h2>
@@ -457,7 +457,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="text-center bulk-plan"><b>MY PUSH SMS PRICE PLAN</b></h2>
-                    <div class="row" style="padding: 5%">
+                    <div class="row" style="margin-left:13%">
                         {{-- <div class="col-md-1"></div> --}}
                         @foreach ($push_sms as $sm)
                             <div class="col-md-3 text-center" data-aos="zoom-out"
