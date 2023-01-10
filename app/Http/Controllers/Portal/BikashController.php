@@ -196,7 +196,7 @@ class BikashController extends Controller
            $data = SMSController::invoiceData($payment->user_sms_id);
            $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
            $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';
-           \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body))->attachData($pdf->output(), 'PushSMS'.$payment->user_sms_id.'-invoice.pdf'); 
+           \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
 
            $message = 'Payment is successful! Pack purchase completed.';
            return redirect()->route('sms.purchase')->with('message', $message);
