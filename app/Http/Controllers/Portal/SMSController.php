@@ -241,7 +241,7 @@ class SMSController extends Controller
     return [];
     }
 
-    function invoiceData($id){
+    public static function invoiceData($id){
       $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','s_m_s.*')
                           ->join('users', 'users.id', '=', 'user_s_m_s.user_id') 
                           ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id') 
