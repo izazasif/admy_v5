@@ -17,12 +17,10 @@ class InvoiceMail extends Mailable
      * @return void
      */
     public $body;
-    protected $pdf;
 
-    public function __construct($body,$pdf)
+    public function __construct($body)
     {
         $this->body = $body;
-        $this->pdf = $pdf;
     }
 
     /**
@@ -34,10 +32,6 @@ class InvoiceMail extends Mailable
     {
         return $this->subject('Admy: Invoice')
                     ->from('notification@admybd.com', 'Admy Mail')
-                    ->view('emails.invoice')
-                    ->attach($this->pdf, [
-                        'as' => 'Invoice.pdf',
-                        'mime' => 'application/pdf',
-                    ]);
+                    ->view('emails.invoice');
     }
 }
