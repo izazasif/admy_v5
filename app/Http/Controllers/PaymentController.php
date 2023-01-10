@@ -106,7 +106,7 @@ class PaymentController extends Controller
                 $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
                 $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';
                 $msg = new \App\Mail\InvoiceMail($body);
-                $msg->attachData($pdf->output(), 'OBD'.$userPackData->id.'-invoice.pdf');
+                $msg->attach($pdf->output(), 'OBD'.$userPackData->id.'-invoice.pdf');
                 \Mail::to($data->email)->send($msg);
             }else{
                 $message = 'Something went wrong! Please try again.';
