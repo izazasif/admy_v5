@@ -15,7 +15,8 @@ class HomeController extends Controller
         $title = "AdMy";
         $packs = Pack::where('status', 1)->get();
         $sms = SMS::where('status', 1)->where('sms_category','bulk')->get();
-        $push_sms = SMS::where('status', 1)->where('sms_category','push')->limit(3)->get();
+        $push_sms = SMS::where('status', 1)->where('sms_category','push')->get();
+        // $push_sms = SMS::where('status', 1)->where('sms_category','push')->limit(3)->get();
         $condition = "in";
         return view('site.pages.index', compact('title', 'packs', 'condition','sms','push_sms'));
     }
