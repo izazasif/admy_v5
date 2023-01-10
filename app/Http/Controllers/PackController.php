@@ -259,7 +259,7 @@ class PackController extends Controller
       return $pdf->download('OBD'.$id.'-invoice.pdf');
     }
 
-    function invoiceData($id){
+    public static function invoiceData($id){
       $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','packs.*')
                           ->join('users', 'users.id', '=', 'user_packs.user_id') 
                           ->join('packs', 'packs.id', '=', 'user_packs.pack_id') 
