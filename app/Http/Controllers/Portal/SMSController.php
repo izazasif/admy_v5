@@ -170,7 +170,8 @@ class SMSController extends Controller
                $schedule->status = 1;
                $schedule->save();
                $message = "Campaign has created successfully, campaign id: ".$response->campaign_id;
-               $log_write = storeActivityLog('SMS','SMS Campaign Create',json_encode($request->all()));
+               $text = "campaign-id =".$response->campaign_id .", app-id=".$schedule->app_id.", SMS amount=".$schedule->sms_amount.", user-id=".$schedule->user_id;
+               $log_write = storeActivityLog('SMS','SMS Campaign Create',$text);
            }elseif($response && $response->result==1){
                $message = "No balance remaining in purchased packages for specified channel";
            }else{
