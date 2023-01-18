@@ -132,6 +132,9 @@ class SMSController extends Controller
             $userPackData->user_id = $user_id;
             $userPackData->sms_id = $id;
             $userPackData->amount = $packDetails->amount;
+            $userPackData->base_price = $packDetails->price;
+            $userPackData->vat = 15; // percentage
+            $userPackData->gateway_charge = 1.5; // percentage
             $userPackData->channel = 'push';
             $userPackData->is_active = 0;
             $userPackData->payment_status = 'Pending';
@@ -145,7 +148,8 @@ class SMSController extends Controller
                     return back();
                 }
                 session()->put('bkash_token',$token);
-                return view('portal.sms.checkout', compact('title', 'is_active', 'packDetails','user_pack_id'));
+                $total_amount = $packDetails->price + ($packDetails->price * (16.5 / 100));
+                return view('portal.sms.checkout', compact('title', 'is_active', 'packDetails','user_pack_id','total_amount'));
             }else{
                 $message = 'Something is wrong, try again';
                 return redirect()->back()->with('message',$message);
@@ -243,7 +247,7 @@ class SMSController extends Controller
     }
 
     public static function invoiceData($id){
-      $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','s_m_s.*')
+      $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','user_s_m_s.vat as vat','user_s_m_s.gateway_charge as charge','s_m_s.*')
                           ->join('users', 'users.id', '=', 'user_s_m_s.user_id') 
                           ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id') 
                           ->where('user_s_m_s.id',$id)

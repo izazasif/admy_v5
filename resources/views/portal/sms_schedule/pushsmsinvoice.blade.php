@@ -169,11 +169,13 @@
             <tr class="total">
                 <td></td>
 
-                <td>Total: {{ number_format($data->price) }}BDT</td>
+                <td>Total: {{ number_format($data->price + $data->price * (($data->vat + $data->charge) / 100)) }}BDT
+                </td>
             </tr>
         </table>
         <p style="font-size: 10px;">*Validity: {{ $data->validity }} Days & Valid Till
-            {{ date('d-m-Y h:i A', strtotime($data->validTill)) }}<br />*VAT 5% and Getway Charge 1% are added with the
+            {{ date('d-m-Y h:i A', strtotime($data->validTill)) }}<br />*VAT 15% and Getway Charge 1.5% are added with
+            the
             price.</p>
     </div>
 </body>
