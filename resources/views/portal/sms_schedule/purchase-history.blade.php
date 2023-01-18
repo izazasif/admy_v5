@@ -29,7 +29,7 @@
                                     <th class="text-center">SL</th>
                                     <th class="text-center">Package ID</th>
                                     <th class="text-center">Chanel</th>
-                                    <th class="text-center">Price</th>
+                                    <th class="text-center">SMS Credits</th>
                                     <th class="text-center">Payment Status</th>
                                     <th class="text-center">Validity</th>
                                     <th class="text-center">Creation Time</th>
