@@ -147,11 +147,13 @@
 
                 <td>Amount(BDT)</td>
             </tr>
-
+            @php
+                $p = $data->price + $data->price * (($data->vat + $data->charge) / 100);
+            @endphp
             <tr class="details">
                 <td>BKash</td>
 
-                <td>{{ number_format($data->price) }}BDT</td>
+                <td>{{ $p }}BDT</td>
             </tr>
 
             <tr class="heading">
@@ -168,8 +170,7 @@
 
             <tr class="total">
                 <td></td>
-
-                <td>Total: {{ number_format($data->price + $data->price * (($data->vat + $data->charge) / 100)) }}BDT
+                <td>Total: {{ $p }}BDT
                 </td>
             </tr>
         </table>
