@@ -141,19 +141,6 @@
                     </table>
                 </td>
             </tr>
-
-            <tr class="heading">
-                <td>Payment Method</td>
-
-                <td>Amount(BDT)</td>
-            </tr>
-
-            <tr class="details">
-                <td>BKash</td>
-
-                <td>{{ number_format($data->price) }}BDT</td>
-            </tr>
-
             <tr class="heading">
                 <td>Item</td>
 
@@ -165,6 +152,26 @@
 
                 <td>{{ number_format($data->amount) }}</td>
             </tr>
+            <tr class="heading">
+                <td>Payment Method(bKash)</td>
+
+                <td>Amount(BDT)</td>
+            </tr>
+            <tr class="">
+                <td>Price</td>
+
+                <td>{{ number_format($data->price) }}BDT</td>
+            </tr>
+            <tr class="">
+                <td>Vat(0%)</td>
+
+                <td>0BDT</td>
+            </tr>
+            <tr class="">
+                <td>bKash Charge(0%)</td>
+
+                <td>0BDT</td>
+            </tr>
 
             <tr class="total">
                 <td></td>
@@ -173,8 +180,7 @@
             </tr>
         </table>
         <p style="font-size: 10px;">*Validity: {{ $data->validity }} Days & Valid Till
-            {{ date('d-m-Y h:i A', strtotime($data->validTill)) }}<br />*VAT 5% and Getway Charge 1% are added with the
-            price.</p>
+            {{ date('d-m-Y h:i A', strtotime($data->validTill)) }}</p>
     </div>
 </body>
 
