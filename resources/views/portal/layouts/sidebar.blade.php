@@ -109,6 +109,10 @@
                 @if (session()->get('permission') == 'all' ||
                     session()->get('permission') == 'obd_creator' ||
                     session()->get('permission') == 'obd_viewer')
+                    <li class="{{ $is_active == 'dashboard_view' ? 'active' : '' }}"><a
+                            href="{{ route('dashboard.view') }}"><i class="fa fa-ticket text-aqua"></i> <span>Dashboard
+                                </span></a>
+                    </li>
                     <li
                         class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' ? 'active' : '' }}">
                         <a href="#">
