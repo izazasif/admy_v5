@@ -166,8 +166,92 @@ class AdminController extends Controller
          $data = [];
         
          if($tm_period== "daily"){
-         
-           //new register 
+
+
+          $today = Carbon::today();
+          $lastSevenDays = Carbon::today()->subDays(7)->format('Y-m-d');
+
+             // Bar chart _sms
+             $data['today_sells_1']  = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at', [Carbon::today()])
+             ->sum('s_m_s.price');
+  
+             $data['today_sells_2']  = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::yesterday()])
+             ->sum('s_m_s.price');
+  
+             $data['today_sells_3']  = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(2)->format('Y-m-d H:i:s')])
+             ->sum('s_m_s.price');
+             
+             $data['today_sells_4'] = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(3)->format('Y-m-d H:i:s')])
+             ->sum('s_m_s.price');
+             $data['today_sells_5']  = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(4)->format('Y-m-d H:i:s')])
+             ->sum('s_m_s.price');
+             $data['today_sells_6']  = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(5)->format('Y-m-d H:i:s')])
+             ->sum('s_m_s.price');
+           $data['today_sells_7'] = DB::table('s_m_s')
+             ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+             ->where('s_m_s.status','=',1)
+             ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(6)->format('Y-m-d H:i:s')])
+             ->sum('s_m_s.price');
+             
+             // Bar chart _obd
+             $data['today_sells_obd_1']  = DB::table('packs')
+                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                  ->where('packs.status','=',1)
+                                  ->whereDate('user_packs.created_at', [Carbon::today()])
+                                  ->sum('packs.price');
+        
+             $data['today_sells_obd_2']  = DB::table('packs')
+                                    ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                    ->where('packs.status','=',1)
+                                    ->whereDate('user_packs.created_at',[Carbon::yesterday()])
+                                    ->sum('packs.price');
+                      
+             $data['today_sells_obd_3']  = DB::table('packs')
+                                    ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                    ->where('packs.status','=',1)
+                                    ->whereDate('user_packs.created_at',[Carbon::today()->subDays(2)->format('Y-m-d H:i:s')])
+                                    ->sum('packs.price');
+             
+             $data['today_sells_obd_4'] = DB::table('packs')
+                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                  ->where('packs.status','=',1)
+                                  ->whereDate('user_packs.created_at',[Carbon::today()->subDays(3)->format('Y-m-d H:i:s')])
+                                  ->sum('packs.price');
+             $data['today_sells_obd_5']  = DB::table('packs')
+                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                  ->where('packs.status','=',1)
+                                  ->whereDate('user_packs.created_at',[Carbon::today()->subDays(4)->format('Y-m-d H:i:s')])
+                                  ->sum('packs.price');
+             $data['today_sells_obd_6']  = DB::table('packs')
+                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                  ->where('packs.status','=',1)
+                                  ->whereDate('user_packs.created_at',[Carbon::today()->subDays(5)->format('Y-m-d H:i:s')])
+                                  ->sum('packs.price');
+           $data['today_sells_obd_7'] = DB::table('packs')
+                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                                  ->where('packs.status','=',1)
+                                  ->whereDate('user_packs.created_at',[Carbon::today()->subDays(6)->format('Y-m-d H:i:s')])
+                                  ->sum('packs.price');   
+
+          //new register 
           $data['user'] = User::whereDate('created_at', Carbon::today())->count();
         
           //package_sold
@@ -186,6 +270,7 @@ class AdminController extends Controller
                     ->where('s_m_s.status', '=', 1)
                     ->whereDate('s_m_s.created_at', Carbon::today())
                     ->sum('s_m_s.price');
+                 
 
           $pack_pur =  DB::table('packs')
                     ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
@@ -217,22 +302,40 @@ class AdminController extends Controller
                     ->select('packs.price')
                     ->get();
             $data['total_five'] = $purchases_1;
-            $data['total_five_1'] = $purchases_1;          
-          
+            $data['total_five_1'] = $purchases_1;
+
+           
+            //Bar chart new
+
+            // $today_sells = DB::table('s_m_s')
+            //     ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+            //     ->whereDate('user_s_m_s.created_at', Carbon::today())
+            //     ->sum('s_m_s.sell');
+
+             
+
+            
+                           
+            
+          // $results = DB::select(DB::raw("SELECT SUM(s_m_s.price) as total_price
+          //               FROM user_s_m_s
+          //              LEFT JOIN s_m_s ON user_s_m_s.sms_id = s_m_s.id
+          //               WHERE user_s_m_s.created_at BETWEEN NOW() - INTERVAL 7 DAY AND NOW();"));
+          // dd($results);    
+
           //Total_sms_SOLD  
           $data['to_sms'] = DB::table('s_m_s')
                           ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                           ->where('s_m_s.status', '=', 1)
-                          ->whereDate('s_m_s.created_at', Carbon::today())
+                          ->whereDate('user_s_m_s.created_at', Carbon::today())
                           ->sum('s_m_s.amount');
           //Total_OBD_SOLD 
           $data['to_odb'] = DB::table('packs')
                           ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                           ->where('packs.status', '=', 1)
-                          ->whereDate('packs.created_at', Carbon::today())
+                          ->whereDate('user_packs.created_at', Carbon::today())
                           ->sum('packs.amount');          
           
-    
          }
          if ($tm_period == "weekly")
          {
@@ -278,26 +381,27 @@ class AdminController extends Controller
           $data['to_sms'] = DB::table('s_m_s')
                           ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                           ->where('s_m_s.status', '=', 1)
-                          ->whereDate('s_m_s.created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                          ->whereDate('user_s_m_s.created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
                           ->sum('s_m_s.amount');
            //Total_obd_SOLD               
           $data['to_odb'] = DB::table('packs')
                           ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                           ->where('packs.status', '=', 1)
-                          ->whereDate('packs.created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                          ->whereDate('user_packs.created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
                           ->sum('packs.amount');
 
          }
          if($tm_period == "monthly")
          {
             //new register
+            $currentMonth = Carbon::now()->month;  
 
-          $data['user'] = User::whereMonth('created_at', Carbon::now()->month)->count();
+          $data['user'] = User::whereMonth('created_at', $currentMonth)->count();
 
         //Package_sold
 
-          $pack_sms = UserSMS::whereMonth('created_at', Carbon::now()->month)->where('payment_status','=',"Completed")->count();
-          $pack = UserPack::whereMonth('created_at', Carbon::now()->month)->where('status','=',1)->count();
+          $pack_sms = UserSMS::whereMonth('created_at', $currentMonth)->where('payment_status','=',"Completed")->count();
+          $pack = UserPack::whereMonth('created_at', $currentMonth)->where('status','=',1)->count();
           
           $data['pack_sold1'] = $pack_sms ;
           $data['pack_sold2'] = $pack ;
@@ -307,21 +411,21 @@ class AdminController extends Controller
           $purchases = DB::table('s_m_s')
                         ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                         ->where('s_m_s.status', '=', 1)
-                        ->whereMonth('s_m_s.created_at', Carbon::now()->month)
+                        ->whereMonth('s_m_s.created_at', $currentMonth)
                         ->sum('s_m_s.price');
 
           $pack_pur =  DB::table('packs')
                     ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                     ->where('packs.status', '=', 1)
-                    ->whereMonth('packs.created_at', Carbon::now()->month)
+                    ->whereMonth('packs.created_at', $currentMonth)
                     ->sum('packs.price');
           $data['total1'] = $purchases;
           $data['total2'] = $pack_pur;
           $data['total'] = $purchases + $pack_pur;
 
           //schdeule
-          $schdeule_1 = SMSSchedule::whereMonth('created_at', Carbon::now()->month)->where('status','=',1)->count();
-          $schdeule_2 = Schedule::whereMonth('created_at', Carbon::now()->month)->where('status','=',1)->count();
+          $schdeule_1 = SMSSchedule::whereMonth('created_at', $currentMonth)->where('status','=',1)->count();
+          $schdeule_2 = Schedule::whereMonth('created_at', $currentMonth)->where('status','=',1)->count();
           $data['schdeule'] = $schdeule_1 + $schdeule_2;
           
          
@@ -329,15 +433,15 @@ class AdminController extends Controller
           $data['to_sms'] = DB::table('s_m_s')
                         ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                         ->where('s_m_s.status', '=', 1)
-                        ->whereDate('user_s_m_s.created_at', Carbon::today())
+                        ->whereMonth('user_s_m_s.created_at', $currentMonth)
                         ->sum('s_m_s.amount');
          //Total_obd_SOLD 
         $data['to_odb'] = DB::table('packs')
                         ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                         ->where('packs.status', '=', 1)
-                        ->whereDate('packs.created_at', Carbon::today())
-                        ->sum('user_packs.amount'); 
-
+                        ->whereMonth('user_packs.created_at', $currentMonth)
+                        ->sum('packs.amount'); 
+             
          }
          return response()->json($data); 
     }

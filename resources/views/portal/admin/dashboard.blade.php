@@ -77,36 +77,38 @@
                   </div>
                   <div class="col">
                       <div class="col-md-6">
-                        <div class="info-box" style="height: 160px;background-color:#718997;">
+                        <div class="info-box" style="height: 120px;background-color:#718997;">
                           <h3 class="text-center">
                           <div class="external-event bg-light-blue">OBD</div>
                           </h3>
                         
                     
-                                  <div class="col-lg-4 col-xs-4">
+                                  <div class="col-lg-4 col-xs-">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
+                                      
                                         <h3><span id="pack_sold_1">0</span></h3>
                                         <p>Package Sold </p>
-                                      </div>
+                                      
                                     </div>
                                   </div>
                                   
-                                  <div class="col-lg-4 col-xs-4">
+                                  <div class="col-lg-4 col-xs-5">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
+                                      
                                         <h3><span id="pack_total_bdt">0</span></h3>
                                         <p>Total BDT.</p>
-                                      </div>
+                                      
                                     </div>
                                   </div> 
 
-                                  <div class="col-lg-4 col-xs-4">
+                                  <div class="col-lg-4 col-xs-5">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
-                                        <h3><span id="total_obd">0</span></h3>
-                                        <p>Total OBD Sold</p>
-                                      </div>
+                                    
+                                        <!-- <h3><span id="total_obd" >0</span></h3>
+                                        <p>Total OBD Sold</p> -->
+                                        <h3 class="description-header" id="total_obd">0</h3>
+                                        <span class="description-text">Total OBD Sold</span>
+                                 
                                     </div>
                                   </div> 
                             </div> 
@@ -114,7 +116,7 @@
                         </div>
                    <div class="col">
                       <div class="col-md-6">
-                        <div class="info-box bg-Primary" style="height: 160px;background-color:#8cc177;">
+                        <div class="info-box bg-Primary" style="height: 120px;background-color:#8cc177;">
                         
                         <h3 class="text-center">
                           <div class="external-event bg-green">My Push</div>
@@ -122,28 +124,31 @@
                              
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
+                                      
                                         <h3><span id="pack_sold_2">0</span></h3>
                                         <p>Package Sold </p>
-                                      </div>
+                                    
                                     </div>
                                   </div>
                                   
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
+                                      
                                         <h3><span id="sms_total_bdt">0</span></h3>
                                         <p>Total BDT.  </p>
-                                      </div>
+                                   
                                     </div>
                                   </div> 
 
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      <div class="inner">
-                                        <h3><span id="sms_total">0</span></h3>
-                                        <p>Total SMS Sold</p>
-                                      </div>
+                                      
+                                        <!-- <h3><span id="sms_total"  >0</span></h3>
+                                        <p>Total SMS Sold</p> -->
+
+                                        <h3 class="description-header" id="sms_total">0</h3>
+                                        <span class="description-text">Total SMS Sold</span>
+                                      
                                     </div>
                                   </div> 
                             </div> 
@@ -227,33 +232,33 @@
           let as5 = days[5] ;
           let as6 = days[6] ;
 
-          let on = to_five[0].price;
-          let on1 = to_five[0].price;
-          let on2 = to_five[0].price;
-          let on3 = to_five[0].price;
-          let on4 = to_five[0].price;
-          let on5 = to_five[0].price;
-          let on6 = to_five[0].price;
+          let on = response.today_sells_1;
+          let on1 = response.today_sells_2;
+          let on2 = response.today_sells_3;
+          let on3 = response.today_sells_4;
+          let on4 = response.today_sells_5;
+          let on5 = response.today_sells_6;
+          let on6 = response.today_sells_7;
 
-          let on_1 = to_five_1[0].price;
-          let on1_2 = to_five_1[0].price;
-          let on2_3 = to_five_1[0].price;
-          let on3_4 = to_five_1[0].price;
-          let on4_5 = to_five_1[0].price;
-          let on3_6 = to_five_1[0].price;
-          let on4_7 = to_five_1[0].price;
+          let on_1 = response.today_sells_obd_1;
+          let on1_2 = response.today_sells_obd_2;
+          let on2_3 = response.today_sells_obd_3;
+          let on3_4 = response.today_sells_obd_4;
+          let on4_5 = response.today_sells_obd_5;
+          let on5_6 = response.today_sells_obd_6;
+          let on6_7 = response.today_sells_obd_7;
 
             var bar = Morris.Bar({
               element: 'bar-chart',
               resize: true,
               data: [
-                {y: as, a: on, b: on_1,c:  3000},
-                {y: as1, a: on1, b:on1_2, c: 8000},
-                {y: as2, a: on2, b:on2_3, c: 4000},
-                {y: as3, a: on3, b: on3_4, c: 8598},
-                {y: as4, a: on4, b: on4_5, c: 8089},
-                {y: as5, a: on4, b: on4_5, c: 8000},
-                {y: as6, a: on4, b: on4_5, c: 8000},
+                {y: as, a: on6, b: on_1,c:  on6 + on_1},
+                {y: as1, a: on5, b:on1_2, c: on5+on1_2},
+                {y: as2, a: on4, b:on2_3, c: on4+on2_3},
+                {y: as3, a: on3, b: on3_4, c: on3+on3_4},
+                {y: as4, a: on2, b: on4_5, c: on2+on4_5},
+                {y: as5, a: on1, b: on5_6, c: on1+on5_6},
+                {y: as6, a: on, b: on4_5, c: on+on6_7},
               ],
               barColors: ['#3c8dbc', '#8cc177','#718997'],
               xkey: 'y',
@@ -296,11 +301,10 @@
             // bar.setData(to_five);
             // bar.redraw();
 
-            "use strict";
             
+            "use strict";
             let days =  lastsevendaysOfWeek();
-
-         
+           
         
           let as = days[0];
           let as1 = days[1] ;
@@ -310,33 +314,33 @@
           let as5 = days[5] ;
           let as6 = days[6] ;
 
-          let on = to_five[0].price;
-          let on1 = to_five[0].price;
-          let on2 = to_five[0].price;
-          let on3 = to_five[0].price;
-          let on4 = to_five[0].price;
-          let on5 = to_five[0].price;
-          let on6 = to_five[0].price;
+          let on = response.today_sells_1;
+          let on1 = response.today_sells_2;
+          let on2 = response.today_sells_3;
+          let on3 = response.today_sells_4;
+          let on4 = response.today_sells_5;
+          let on5 = response.today_sells_6;
+          let on6 = response.today_sells_7;
 
-          let on_1 = to_five_1[0].price;
-          let on1_2 = to_five_1[0].price;
-          let on2_3 = to_five_1[0].price;
-          let on3_4 = to_five_1[0].price;
-          let on4_5 = to_five_1[0].price;
-          let on3_6 = to_five_1[0].price;
-          let on4_7 = to_five_1[0].price;
+          let on_1 = response.today_sells_obd_1;
+          let on1_2 = response.today_sells_obd_2;
+          let on2_3 = response.today_sells_obd_3;
+          let on3_4 = response.today_sells_obd_4;
+          let on4_5 = response.today_sells_obd_5;
+          let on5_6 = response.today_sells_obd_6;
+          let on6_7 = response.today_sells_obd_7;
 
             var bar = Morris.Bar({
               element: 'bar-chart',
               resize: true,
               data: [
-                {y: as, a: on, b: on_1,   c:  3500},
-                {y: as1, a: on1, b:on1_2, c: 7500},
-                {y: as2, a: on2, b:on2_3, c: 4500},
-                {y: as3, a: on3, b: on3_4, c: 4500},
-                {y: as4, a: on4, b: on4_5, c: 7500},
-                {y: as5, a: on3, b: on3_4, c: 4500},
-                {y: as6, a: on4, b: on4_5, c: 7500}
+                {y: as, a: on6, b: on_1,c:  on6 + on_1},
+                {y: as1, a: on5, b:on1_2, c: on5+on1_2},
+                {y: as2, a: on4, b:on2_3, c: on4+on2_3},
+                {y: as3, a: on3, b: on3_4, c: on3+on3_4},
+                {y: as4, a: on2, b: on4_5, c: on2+on4_5},
+                {y: as5, a: on1, b: on5_6, c: on1+on5_6},
+                {y: as6, a: on, b: on4_5, c: on+on6_7},
               ],
               barColors: ['#3c8dbc', '#8cc177','#718997'],
               xkey: 'y',
