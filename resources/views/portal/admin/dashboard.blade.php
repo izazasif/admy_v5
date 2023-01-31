@@ -163,9 +163,9 @@
 
               <div class="box-tools pull-right">
                 
-               <a class="text-blue" href="#"><i class="fa fa-square"></i>OBD</a>
-                <a class="text-green" href="#"><i class="fa fa-square"></i>SMS</a>
-                <a class="text-muted" href="#"><i class="fa fa-square"></i>Total</a>
+               <a class="text-blue" style="color:#0a5987;"><i class="fa fa-square"></i>OBD</a>
+                <a class="text-Green" style="color:#8cc177;"><i class="fa fa-square"></i>SMS</a>
+                <a class="text-Grey" style="color:#718997;"><i class="fa fa-square"></i>Total</a>
                 
                
               </div>
@@ -191,14 +191,17 @@
 
 <script>
 
+
+
     $(document).ready(function(){
       
       $.ajax({
-           url: 'get_data/dashboard/'+"daily",
+           url: '/get_bar_chart/dashboard',
            type: 'get',
            dataType: 'json',
            
            success: function(response){
+
             $('#new_reg').text(response.user);
             $('#pack_sold').text(response.package_sold);
             $('#total_bdt').text(response.total);
@@ -216,11 +219,7 @@
             $('#bar-chart').text(response.total_five);
             to_five = response.total_five;
             to_five_1 = response.total_five_1;
-        
-            // bar.setData(to_five);
-            // bar.redraw();
-
-            "use strict";
+           
             let days =  lastsevendaysOfWeek();
            
         
@@ -252,15 +251,15 @@
               element: 'bar-chart',
               resize: true,
               data: [
-                {y: as, a: on6, b: on_1,c:  on6 + on_1},
-                {y: as1, a: on5, b:on1_2, c: on5+on1_2},
-                {y: as2, a: on4, b:on2_3, c: on4+on2_3},
-                {y: as3, a: on3, b: on3_4, c: on3+on3_4},
-                {y: as4, a: on2, b: on4_5, c: on2+on4_5},
-                {y: as5, a: on1, b: on5_6, c: on1+on5_6},
-                {y: as6, a: on, b: on4_5, c: on+on6_7},
+                {y: as, a: on_1, b: on,    c:  on+ on_1},
+                {y: as1, a: on1_2, b:on1,  c: on1+on1_2},
+                {y: as2, a: on2_3, b:on2,  c: on2+on2_3},
+                {y: as3, a: on3_4, b: on3, c: on3+on3_4},
+                {y: as4, a: on4_5, b: on4, c: on4+on4_5},
+                {y: as5, a: on5_6, b: on5, c: on5+on5_6},
+                {y: as6, a: on6_7, b: on6, c: on6+on6_7},
               ],
-              barColors: ['#3c8dbc', '#8cc177','#718997'],
+              barColors: ['#0a5987', '#8cc177','#808080'],
               xkey: 'y',
               ykeys: ['a', 'b','c'],
               labels: ['OBD', 'SMS','Total'],
@@ -270,7 +269,6 @@
           
 
         })
-    
       $('#time').change(function(){
          var tm_period = $(this).val();
           
@@ -301,53 +299,7 @@
             // bar.setData(to_five);
             // bar.redraw();
 
-            
-            "use strict";
-            let days =  lastsevendaysOfWeek();
-           
-        
-          let as = days[0];
-          let as1 = days[1] ;
-          let as2 = days[2] ;
-          let as3 = days[3] ;
-          let as4 = days[4] ;
-          let as5 = days[5] ;
-          let as6 = days[6] ;
-
-          let on = response.today_sells_1;
-          let on1 = response.today_sells_2;
-          let on2 = response.today_sells_3;
-          let on3 = response.today_sells_4;
-          let on4 = response.today_sells_5;
-          let on5 = response.today_sells_6;
-          let on6 = response.today_sells_7;
-
-          let on_1 = response.today_sells_obd_1;
-          let on1_2 = response.today_sells_obd_2;
-          let on2_3 = response.today_sells_obd_3;
-          let on3_4 = response.today_sells_obd_4;
-          let on4_5 = response.today_sells_obd_5;
-          let on5_6 = response.today_sells_obd_6;
-          let on6_7 = response.today_sells_obd_7;
-
-            var bar = Morris.Bar({
-              element: 'bar-chart',
-              resize: true,
-              data: [
-                {y: as, a: on6, b: on_1,c:  on6 + on_1},
-                {y: as1, a: on5, b:on1_2, c: on5+on1_2},
-                {y: as2, a: on4, b:on2_3, c: on4+on2_3},
-                {y: as3, a: on3, b: on3_4, c: on3+on3_4},
-                {y: as4, a: on2, b: on4_5, c: on2+on4_5},
-                {y: as5, a: on1, b: on5_6, c: on1+on5_6},
-                {y: as6, a: on, b: on4_5, c: on+on6_7},
-              ],
-              barColors: ['#3c8dbc', '#8cc177','#718997'],
-              xkey: 'y',
-              ykeys: ['a', 'b','c'],
-              labels: ['OBD', 'SMS','Total'],
-              hideHover: 'auto'
-            });
+          
           }
           
 
