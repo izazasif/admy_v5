@@ -26,7 +26,7 @@
                           <div class="col-lg-3 col-xs-6">
                             <div class="small-box" style="color:#111111;">
                               <div class="inner">
-                                <h3><span id="new_reg">0</span></h3>
+                                <h4><span id="new_reg" style="font-weight:800;">0</span></h4>
                                 <p> New Register </p>
                               </div>
                               <div class="icon">
@@ -39,7 +39,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box" style="color:#111111;">
                               <div class="inner">
-                                <h3><span id="pack_sold">0</span></h3>
+                                <h4><span id="pack_sold" style="font-weight:800;">0</span></h4>
                                 <p>Package Sold </p>
                               </div>
                               <div class="icon">
@@ -52,7 +52,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box" style="color:#111111;">
                               <div class="inner">
-                                <h3><span id="total_bdt">0</span></h3>
+                                <h4><span id="total_bdt" style="font-weight:800;">0</span></h4>
                                 <p>Total BDT.</p>
                               </div>
                               <div class="icon">
@@ -65,7 +65,7 @@
                              <div class="col-lg-3 col-xs-6">
                               <div class="small-box" style="color:#111111;">
                                   <div class="inner">
-                                    <h3><span id="schdeule">0</span></h3>
+                                    <h4><span id="schdeule" style="font-weight:800;">0</span></h4>
                                     <p>Schedule </p>
                                   </div>
                                   <div class="icon">
@@ -75,40 +75,39 @@
                             </div> 
                         </div>
                   </div>
+                  
                   <div class="col">
                       <div class="col-md-6">
-                        <div class="info-box" style="height: 120px;background-color:#718997;">
+                        <div class="info-box" style="height: 140px;background-color:#58a8d9;!important;">
                           <h3 class="text-center">
                           <div class="external-event bg-light-blue">OBD</div>
                           </h3>
-                        
-                    
-                                  <div class="col-lg-4 col-xs-">
+                               
+                     
+                                  <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      
-                                        <h3><span id="pack_sold_1">0</span></h3>
+                                    <div class="inner">
+                                        <h4><span id="pack_sold_1" style="font-weight:800;">0</span></h4>
                                         <p>Package Sold </p>
-                                      
+                                        </div>
                                     </div>
                                   </div>
                                   
-                                  <div class="col-lg-4 col-xs-5">
+                                  <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      
-                                        <h3><span id="pack_total_bdt">0</span></h3>
+                                    <div class="inner">
+                                        <h4><span id="pack_total_bdt" style="font-weight:800;">0</span></h4>
                                         <p>Total BDT.</p>
-                                      
+                                        </div>
                                     </div>
                                   </div> 
 
-                                  <div class="col-lg-4 col-xs-5">
+                                  <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                    
-                                        <!-- <h3><span id="total_obd" >0</span></h3>
-                                        <p>Total OBD Sold</p> -->
-                                        <h3 class="description-header" id="total_obd">0</h3>
-                                        <span class="description-text">Total OBD Sold</span>
-                                 
+                                       <div class="inner">
+                                        <h4 class="description-header"><span id="total_obd" style="font-weight:800;">0</span></h4>
+                                        <p>Total OBD Sold</p>
+                                        </div>
                                     </div>
                                   </div> 
                             </div> 
@@ -116,7 +115,7 @@
                         </div>
                    <div class="col">
                       <div class="col-md-6">
-                        <div class="info-box bg-Primary" style="height: 120px;background-color:#8cc177;">
+                        <div class="info-box bg-Primary" style="height: 140px;background-color:#8cc177;!important;">
                         
                         <h3 class="text-center">
                           <div class="external-event bg-green">My Push</div>
@@ -124,19 +123,19 @@
                              
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      
-                                        <h3><span id="pack_sold_2">0</span></h3>
+                                      <div class="inner">
+                                        <h4><span id="pack_sold_2" style="font-weight:800;">0</span></h4>
                                         <p>Package Sold </p>
-                                    
+                                      </div>
                                     </div>
                                   </div>
                                   
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
-                                      
-                                        <h3><span id="sms_total_bdt">0</span></h3>
+                                      <div class="inner">
+                                        <h4><span id="sms_total_bdt" style="font-weight:800;">0</span></h4>
                                         <p>Total BDT.  </p>
-                                   
+                                      </div>
                                     </div>
                                   </div> 
 
@@ -145,10 +144,10 @@
                                       
                                         <!-- <h3><span id="sms_total"  >0</span></h3>
                                         <p>Total SMS Sold</p> -->
-
-                                        <h3 class="description-header" id="sms_total">0</h3>
-                                        <span class="description-text">Total SMS Sold</span>
-                                      
+                                        <div class="inner">
+                                        <h4 class="description-header"> <span id="sms_total" style="font-weight:800;">0</span></h4>
+                                        <p>Total SMS Sold</p>
+                                        </div>
                                     </div>
                                   </div> 
                             </div> 
@@ -163,7 +162,7 @@
 
               <div class="box-tools pull-right">
                 
-               <a class="text-blue" style="color:#0a5987;"><i class="fa fa-square"></i>OBD</a>
+               <a class="text-blue" style="color:#58a8d9;"><i class="fa fa-square"></i>OBD</a>
                 <a class="text-Green" style="color:#8cc177;"><i class="fa fa-square"></i>SMS</a>
                 <a class="text-Grey" style="color:#718997;"><i class="fa fa-square"></i>Total</a>
                 
@@ -186,9 +185,9 @@
 
 
 <!-- /.content-wrapper -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+@endsection
+@section('extra-foot-scripts')
 <script>
 
 
@@ -231,6 +230,8 @@
           let as5 = days[5] ;
           let as6 = days[6] ;
 
+          
+
           let on = response.today_sells_1;
           let on1 = response.today_sells_2;
           let on2 = response.today_sells_3;
@@ -251,15 +252,15 @@
               element: 'bar-chart',
               resize: true,
               data: [
-                {y: as, a: on_1, b: on,    c:  on+ on_1},
-                {y: as1, a: on1_2, b:on1,  c: on1+on1_2},
-                {y: as2, a: on2_3, b:on2,  c: on2+on2_3},
+                {y: as6,  a: on_1, b: on,    c:  on+ on_1},
+                {y: as5, a: on1_2, b:on1,  c: on1+on1_2},
+                {y: as4, a: on2_3, b:on2,  c: on2+on2_3},
                 {y: as3, a: on3_4, b: on3, c: on3+on3_4},
-                {y: as4, a: on4_5, b: on4, c: on4+on4_5},
-                {y: as5, a: on5_6, b: on5, c: on5+on5_6},
-                {y: as6, a: on6_7, b: on6, c: on6+on6_7},
+                {y: as2, a: on4_5, b: on4, c: on4+on4_5},
+                {y: as1, a: on5_6, b: on5, c: on5+on5_6},
+                {y: as, a: on6_7, b: on6, c: on6+on6_7},
               ],
-              barColors: ['#0a5987', '#8cc177','#808080'],
+              barColors: ['#58a8d9', '#8cc177','#808080'],
               xkey: 'y',
               ykeys: ['a', 'b','c'],
               labels: ['OBD', 'SMS','Total'],
@@ -278,6 +279,11 @@
            dataType: 'json',
            
            success: function(response){
+            for (var key in response) {
+                  if (response[key] === null) {
+                    response[key] = 0;
+                  }
+                }
             $('#new_reg').text(response.user);
             $('#pack_sold').text(response.package_sold);
             $('#total_bdt').text(response.total);

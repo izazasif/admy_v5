@@ -182,11 +182,16 @@ class AdminController extends Controller
 
       //Total_BDT
 
-      $purchases = DB::table('s_m_s')
+      $test = DB::table('s_m_s')
+                ->select(
+                  DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
+                )
                 ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                 ->where('s_m_s.status', '=', 1)
-                ->whereBetween('s_m_s.created_at', [$strat_date,$end_date])
-                ->sum('s_m_s.price');
+                ->where('user_s_m_s.gateway_charge','!=',null)
+                ->whereBetween('user_s_m_s.created_at', [$strat_date, $end_date])
+                ->get();
+       $purchases = $test[0]->tot_base; 
              
 
       $pack_pur =  DB::table('packs')
@@ -194,9 +199,9 @@ class AdminController extends Controller
                 ->where('packs.status', '=', 1)
                 ->whereBetween('packs.created_at', [$strat_date,$end_date])
                 ->sum('packs.price');
-   $data['total1'] = $purchases;
-   $data['total2'] = $pack_pur;          
-   $data['total'] = $purchases + $pack_pur;                     
+    $data['total1'] = $purchases;
+    $data['total2'] = $pack_pur;          
+    $data['total'] = $purchases + $pack_pur;                     
 
      //Schdeule
       $schdeule_1 = SMSSchedule::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
@@ -231,12 +236,13 @@ class AdminController extends Controller
                                   ->whereDate('user_s_m_s.created_at',[Carbon::yesterday()])
                                   ->sum('s_m_s.price');
 
-           $data['today_sells_3']  = DB::table('s_m_s')
+       
+          $data['today_sells_3'] = DB::table('s_m_s')
                                   ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                                   ->where('s_m_s.status','=',1)
                                   ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(2)->format('Y-m-d H:i:s')])
                                   ->sum('s_m_s.price');
-           
+
            $data['today_sells_4'] = DB::table('s_m_s')
                                   ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                                   ->where('s_m_s.status','=',1)
@@ -308,10 +314,6 @@ class AdminController extends Controller
         
          if($tm_period== "daily"){
 
-          
-
-           
-          
           //new register 
           $data['user'] = User::whereBetween('created_at',[$strat_date,$end_date])->count();
         
@@ -326,14 +328,21 @@ class AdminController extends Controller
 
           //Total_BDT
 
-          $purchases = DB::table('s_m_s')
-                    ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                    ->where('s_m_s.status', '=', 1)
-                    ->whereBetween('s_m_s.created_at', [$strat_date,$end_date])
-                    ->sum('s_m_s.price');
-                 
+           //Total_BDT
+           $test = DB::table('s_m_s')
+                ->select(
+                  DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
+                )
+                ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+                ->where('s_m_s.status', '=', 1)
+                ->where('user_s_m_s.gateway_charge','!=',null)
+                ->whereBetween('user_s_m_s.created_at', [$strat_date, $end_date])
+                ->get();
+       $purchases = $test[0]->tot_base;          
+       
 
-          $pack_pur =  DB::table('packs')
+       
+      $pack_pur =  DB::table('packs')
                     ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                     ->where('packs.status', '=', 1)
                     ->whereBetween('packs.created_at', [$strat_date,$end_date])
@@ -385,14 +394,26 @@ class AdminController extends Controller
           $data['pack_sold2'] = $pack ;
           $data['package_sold'] = $pack_sms + $pack ;
           
-         //Total_BDT
-         
-         $purchases = DB::table('s_m_s')
-                    ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                    ->where('s_m_s.status', '=', 1)
-                    ->whereBetween('s_m_s.created_at', [$lastSevenDays, $today])
-                    ->sum('s_m_s.price');
 
+              
+          //Total_BDT
+          $test = DB::table('s_m_s')
+                  ->select(
+                    
+                    DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
+                  )
+                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+              ->where('s_m_s.status', '=', 1)
+              ->where('user_s_m_s.gateway_charge','!=',null)
+              ->whereBetween('user_s_m_s.created_at', [$lastSevenDays, $today])
+              ->get();
+
+
+          
+          $purchases = $test[0]->tot_base;
+           
+         
+         
           $pack_pur =  DB::table('packs')
                     ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                     ->where('packs.status', '=', 1)
@@ -426,8 +447,8 @@ class AdminController extends Controller
          if($tm_period == "monthly")
          {
             //new register
-            $today = Carbon::today()->format('Y-m-d 00:00:00');
-          $month = Carbon::today()->subDays(10)->format('Y-m-d 12:59:59');
+           $today = Carbon::today()->format('Y-m-d 00:00:00');
+          $month = Carbon::today()->subDays(30)->format('Y-m-d 12:59:59');
 
           $data['user'] = User::whereBetween('created_at', [$month,$today])->count();
 
@@ -440,13 +461,29 @@ class AdminController extends Controller
           $data['pack_sold2'] = $pack ;
           $data['package_sold'] = $pack_sms + $pack ;
 
-         //Total_BDT
-          $purchases = DB::table('s_m_s')
-                        ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                        ->where('s_m_s.status', '=', 1)
-                        ->whereBetween('s_m_s.created_at', [$month,$today])
-                        ->sum('s_m_s.price');
+          $check_1 = DB::table('s_m_s')
+                    ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+                    ->where('s_m_s.status', '=', 1)
+                    ->whereBetween('s_m_s.created_at', [$month,$today])
+                    ->get();
+                    
+         
+          //Total_BDT
+          $test = DB::table('s_m_s')
+                  ->select(
+                    
+                    DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
+                  )
+                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+              ->where('s_m_s.status', '=', 1)
+              ->where('user_s_m_s.gateway_charge','!=',null)
+              ->whereBetween('user_s_m_s.created_at', [$month, $today])
+              ->get();
 
+
+          
+          $purchases = $test[0]->tot_base;
+         
           $pack_pur =  DB::table('packs')
                     ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                     ->where('packs.status', '=', 1)
@@ -455,6 +492,7 @@ class AdminController extends Controller
           $data['total1'] = $purchases;
           $data['total2'] = $pack_pur;
           $data['total'] = $purchases + $pack_pur;
+        
 
           //schdeule
           $schdeule_1 = SMSSchedule::whereBetween('created_at', [$month,$today])->where('status','=',1)->count();
