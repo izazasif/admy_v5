@@ -584,7 +584,8 @@ class AdminController extends Controller
                             ->where('status', 1)
                             ->whereBetween('created_at', [$strat_date,$end_date])
                             ->sum('amount');
-        
+
+        $bar_chart = self::bar_chart_data();
         return response()->json($data); 
     }
 
@@ -618,8 +619,10 @@ class AdminController extends Controller
       return $push_sms_price;
     }
 
-    public function bar_chart_data(){
-      
+    public static function bar_chart_data(){
+
+      $data=[];      
+
       //obd data
       $data['obd_1'] = self::obd_price_calculation(Carbon::today()->format('Y-m-d 00:00:00'),Carbon::today()->format('Y-m-d 23:59:59'));
       $data['obd_2'] = self::obd_price_calculation(Carbon::yesterday()->format('Y-m-d 00:00:00'),Carbon::yesterday()->format('Y-m-d 23:59:59'));
