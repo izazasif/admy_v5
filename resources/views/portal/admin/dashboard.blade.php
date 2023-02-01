@@ -200,7 +200,12 @@
            dataType: 'json',
            
            success: function(response){
-
+             
+            for (var key in response) {
+                  if (response[key] === null) {
+                    response[key] = 0;
+                  }
+                }
             $('#new_reg').text(response.user);
             $('#pack_sold').text(response.package_sold);
             $('#total_bdt').text(response.total);
