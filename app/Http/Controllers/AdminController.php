@@ -184,14 +184,14 @@ class AdminController extends Controller
         }
 
         //user count
-        $data['user'] = User::whereBetween('created_at', [$end_date,$strat_date])->count();
-   
+        $data['user'] = User::whereBetween('created_at', [$end_date,$strat_date])->count();   
        
         //all pkg sold count
-        $data['push_sms_sold'] = UserSMS::whereBetween('created_at', [$end_date,$strat_date])->where('payment_status','=',"Completed")->count();
+        $data['push_sms_sold'] = UserSMS::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->where('is_active', 1)->count();
         $data['obd_sold'] = UserPack::whereBetween('created_at', [$end_date,$strat_date])->where('status','=',1)->count();
-        //izaz update 
+        //Izaz_Update
         $data['total_package_sold'] = $data['push_sms_sold'] + $data['obd_sold'];
+
         //all sum price(bdt) 
         $data['obd_price'] = DB::table('packs')
                             ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
@@ -202,6 +202,7 @@ class AdminController extends Controller
         $push_sms_price_vat = DB::table('user_s_m_s')
                           ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
                           ->where('status', 1)
+                          ->where('is_active', 1)
                           ->whereNotNull('base_price')
                           ->whereBetween('created_at', [$end_date,$strat_date])
                           ->value('price_with_vat');
@@ -209,6 +210,7 @@ class AdminController extends Controller
         $push_sms_price = DB::table('s_m_s')
                           ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                           ->where('user_s_m_s.status', 1)
+                          ->where('user_s_m_s.is_active', 1)
                           ->whereNull('user_s_m_s.base_price')
                           ->whereBetween('user_s_m_s.created_at', [$end_date,$strat_date])
                           ->sum('s_m_s.price');
@@ -218,9 +220,7 @@ class AdminController extends Controller
           $data['sms_price'] = $push_sms_price + $push_sms_price_vat; 
         }
         //Izaz update
-        $data['total_price_bdt'] = $data['obd_price']+ $data['sms_price'];
-
-       
+        $data['total_price_bdt'] = $data['obd_price']+ $data['sms_price'];       
         
         //all schedule count
         $data['sms_schdeule'] = SMSSchedule::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->count();
@@ -231,6 +231,7 @@ class AdminController extends Controller
         //all credit count
         $data['sms_credit'] = DB::table('user_s_m_s')
                             ->where('status', 1)
+                            ->where('is_active', 1)
                             ->whereBetween('created_at', [$end_date,$strat_date])
                             ->sum('amount');
 
@@ -254,6 +255,7 @@ class AdminController extends Controller
       $push_sms_price_vat = DB::table('user_s_m_s')
                           ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
                           ->where('status', 1)
+                          ->where('is_active', 1)
                           ->whereNotNull('base_price')
                           ->whereBetween('created_at', [$start_date, $end_date])
                           ->value('price_with_vat');
@@ -261,6 +263,7 @@ class AdminController extends Controller
       $push_sms_price = DB::table('s_m_s')
                           ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                           ->where('user_s_m_s.status', 1)
+                          ->where('user_s_m_s.is_active', 1)
                           ->whereNull('user_s_m_s.base_price')
                           ->whereBetween('user_s_m_s.created_at', [$start_date, $end_date])
                           ->sum('s_m_s.price');
