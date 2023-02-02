@@ -11,7 +11,7 @@
             <small class="pull-right">
             <div class="form-group">
                 <select class="form-control input-sm" id="time">
-                 <option value="daily" >Daily</option>
+                 <option value="daily" selected >Daily</option>
                  <option value="weekly"> Weekly</option>
                  <option value="monthly"> Monthly</option>
                 </select>
@@ -39,7 +39,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box" style="color:#111111;">
                               <div class="inner">
-                                <h4><span id="pack_sold" style="font-weight:800;">0</span></h4>
+                                <h4><span id="total_package_sold" style="font-weight:800;">0</span></h4>
                                 <p>Package Sold </p>
                               </div>
                               <div class="icon">
@@ -52,7 +52,7 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box" style="color:#111111;">
                               <div class="inner">
-                                <h4><span id="total_bdt" style="font-weight:800;">0</span></h4>
+                                <h4><span id="total_price_bdt" style="font-weight:800;">0</span></h4>
                                 <p>Total BDT.</p>
                               </div>
                               <div class="icon">
@@ -65,7 +65,7 @@
                              <div class="col-lg-3 col-xs-6">
                               <div class="small-box" style="color:#111111;">
                                   <div class="inner">
-                                    <h4><span id="schdeule" style="font-weight:800;">0</span></h4>
+                                    <h4><span id="total_schdeule" style="font-weight:800;">0</span></h4>
                                     <p>Schedule </p>
                                   </div>
                                   <div class="icon">
@@ -87,7 +87,7 @@
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                     <div class="inner">
-                                        <h4><span id="pack_sold_1" style="font-weight:800;">0</span></h4>
+                                        <h4><span id="obd_sold" style="font-weight:800;">0</span></h4>
                                         <p>Package Sold </p>
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                     <div class="inner">
-                                        <h4><span id="pack_total_bdt" style="font-weight:800;">0</span></h4>
+                                        <h4><span id="obd_price" style="font-weight:800;">0</span></h4>
                                         <p>Total BDT.</p>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                        <div class="inner">
-                                        <h4 class="description-header"><span id="total_obd" style="font-weight:800;">0</span></h4>
+                                        <h4 class="description-header"><span id="obd_credit" style="font-weight:800;">0</span></h4>
                                         <p>Total OBD Sold</p>
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                       <div class="inner">
-                                        <h4><span id="pack_sold_2" style="font-weight:800;">0</span></h4>
+                                        <h4><span id="push_sms_sold" style="font-weight:800;">0</span></h4>
                                         <p>Package Sold </p>
                                       </div>
                                     </div>
@@ -133,7 +133,7 @@
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                       <div class="inner">
-                                        <h4><span id="sms_total_bdt" style="font-weight:800;">0</span></h4>
+                                        <h4><span id="sms_price" style="font-weight:800;">0</span></h4>
                                         <p>Total BDT.  </p>
                                       </div>
                                     </div>
@@ -145,7 +145,7 @@
                                         <!-- <h3><span id="sms_total"  >0</span></h3>
                                         <p>Total SMS Sold</p> -->
                                         <div class="inner">
-                                        <h4 class="description-header"> <span id="sms_total" style="font-weight:800;">0</span></h4>
+                                        <h4 class="description-header"> <span id="sms_credit" style="font-weight:800;">0</span></h4>
                                         <p>Total SMS Sold</p>
                                         </div>
                                     </div>
@@ -190,80 +190,48 @@
 @section('extra-foot-scripts')
 <script>
 
+$(document).ready(function(){
+        $("#time").change(function() {
+          makeAjaxCall();
+        });
 
-
-    $(document).ready(function(){
-      
-      $.ajax({
-           url: '/get_bar_chart/dashboard',
-           type: 'get',
-           dataType: 'json',
-           
-           success: function(response){
-             
-            for (var key in response) {
-                  if (response[key] === null) {
-                    response[key] = 0;
-                  }
-                }
-            $('#new_reg').text(response.user);
-            $('#pack_sold').text(response.package_sold);
-            $('#total_bdt').text(response.total);
-            $('#schdeule').text(response.schdeule);
-
-            $('#pack_sold_2').text(response.pack_sold1);
-            $('#pack_sold_1').text(response.pack_sold2);
-
-            $('#pack_total_bdt').text(response.total2);
-            $('#sms_total_bdt').text(response.total1);
-
-            $('#total_obd').text(response.to_sms);
-            $('#sms_total').text(response.to_odb);
+        makeAjaxCall();
+  });
+  function makeAjaxCall() {
+            var tm_period = $("#time").val();
+          $.ajax({
+            url: 'get_data/dashboard/'+tm_period,
+            type: 'get',
+            dataType: 'json',
             
-            $('#bar-chart').text(response.total_five);
-            to_five = response.total_five;
-            to_five_1 = response.total_five_1;
-           
-            let days =  lastsevendaysOfWeek();
-           
-        
-          let as = days[0];
-          let as1 = days[1] ;
-          let as2 = days[2] ;
-          let as3 = days[3] ;
-          let as4 = days[4] ;
-          let as5 = days[5] ;
-          let as6 = days[6] ;
+            success: function(response){
+            
+            $('#new_reg').text(response.user);
+            $('#total_package_sold').text(response.total_package_sold);
+            $('#total_price_bdt').text(response.total_price_bdt);
+            $('#total_schdeule').text(response.total_schdeule);
 
-          
+            $('#push_sms_sold').text(response.push_sms_sold);
+            $('#obd_sold').text(response.obd_sold);
 
-          let on = response.today_sells_1;
-          let on1 = response.today_sells_2;
-          let on2 = response.today_sells_3;
-          let on3 = response.today_sells_4;
-          let on4 = response.today_sells_5;
-          let on5 = response.today_sells_6;
-          let on6 = response.today_sells_7;
+            $('#sms_price').text(response.sms_price);
+            $('#obd_price').text(response.obd_price);
 
-          let on_1 = response.today_sells_obd_1;
-          let on1_2 = response.today_sells_obd_2;
-          let on2_3 = response.today_sells_obd_3;
-          let on3_4 = response.today_sells_obd_4;
-          let on4_5 = response.today_sells_obd_5;
-          let on5_6 = response.today_sells_obd_6;
-          let on6_7 = response.today_sells_obd_7;
+            $('#sms_credit').text(response.sms_credit);
+            $('#obd_credit').text(response.to_odb);
+
 
             var bar = Morris.Bar({
               element: 'bar-chart',
               resize: true,
               data: [
-                {y: as6,  a: on_1, b: on,    c:  on+ on_1},
-                {y: as5, a: on1_2, b:on1,  c: on1+on1_2},
-                {y: as4, a: on2_3, b:on2,  c: on2+on2_3},
-                {y: as3, a: on3_4, b: on3, c: on3+on3_4},
-                {y: as2, a: on4_5, b: on4, c: on4+on4_5},
-                {y: as1, a: on5_6, b: on5, c: on5+on5_6},
-                {y: as, a: on6_7, b: on6, c: on6+on6_7},
+                {y: response.bar_chart.date_1, a: response.bar_chart.obd_1,  b: response.bar_chart.push_sms_1,    c: response.bar_chart.obd_1+response.bar_chart.push_sms_1},
+                {y: response.bar_chart.date_2, a: response.bar_chart.obd_2,  b: response.bar_chart.push_sms_2,    c: response.bar_chart.obd_2+response.bar_chart.push_sms_2},
+                {y: response.bar_chart.date_3, a: response.bar_chart.obd_3,  b: response.bar_chart.push_sms_3,    c: response.bar_chart.obd_3+response.bar_chart.push_sms_3},
+                {y: response.bar_chart.date_4, a: response.bar_chart.obd_4,  b: response.bar_chart.push_sms_4,    c: response.bar_chart.obd_4+response.bar_chart.push_sms_4},
+                {y: response.bar_chart.date_5, a: response.bar_chart.obd_5,  b: response.bar_chart.push_sms_5,    c: response.bar_chart.obd_5+response.bar_chart.push_sms_5},
+                {y: response.bar_chart.date_6, a: response.bar_chart.obd_6,  b: response.bar_chart.push_sms_6,    c: response.bar_chart.obd_6+response.bar_chart.push_sms_6},
+                {y: response.bar_chart.date_7, a: response.bar_chart.obd_7,  b: response.bar_chart.push_sms_7,    c: response.bar_chart.obd_7+response.bar_chart.push_sms_7},
               ],
               barColors: ['#58a8d9', '#8cc177','#808080'],
               xkey: 'y',
@@ -271,70 +239,18 @@
               labels: ['OBD', 'SMS','Total'],
               hideHover: 'auto'
             });
-          }
-          
-
-        })
-      $('#time').change(function(){
-         var tm_period = $(this).val();
-          
-         $.ajax({
-           url: 'get_data/dashboard/'+tm_period,
-           type: 'get',
-           dataType: 'json',
-           
-           success: function(response){
-            for (var key in response) {
-                  if (response[key] === null) {
-                    response[key] = 0;
-                  }
-                }
-            $('#new_reg').text(response.user);
-            $('#pack_sold').text(response.package_sold);
-            $('#total_bdt').text(response.total);
-            $('#schdeule').text(response.schdeule);
-
-            $('#pack_sold_2').text(response.pack_sold1);
-            $('#pack_sold_1').text(response.pack_sold2);
-
-            $('#pack_total_bdt').text(response.total2);
-            $('#sms_total_bdt').text(response.total1);
-
-            $('#total_obd').text(response.to_sms);
-            $('#sms_total').text(response.to_odb);
             
-            $('#bar-chart').text(response.total_five);
-            to_five = response.total_five;
-            to_five_1 = response.total_five_1;
-        
-            // bar.setData(to_five);
-            // bar.redraw();
-
           
           }
           
 
-        })
-
-    });
-    
+       })
+}
   
-      
-  });
-  
-  
-    function lastsevendaysOfWeek() {
-      const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const today = new Date();
-        const lastSevenDays = [];
-        
-        for (let i = 0; i < 7; i++) {
-          const date = new Date(today.getTime() - i * 24 * 60 * 60 * 1000);
-          lastSevenDays.unshift(daysOfWeek[date.getUTCDay()]);
-        }
-        
-        return lastSevenDays;
-      }
         
 </script>
 @endsection
+
+            
+        
+     

@@ -161,361 +161,7 @@ class AdminController extends Controller
       return view('portal.admin.dashboard',compact('is_active'));
     }
 
-    public function bar_chart()
-    {     
-      $strat_date = Carbon::today()->format('Y-m-d 00:00:00');
-      $end_date  =  Carbon::today()->format('Y-m-d 12:59:59');
-
-
-
-      //new register 
-      $data['user'] = User::whereBetween('created_at',[$strat_date,$end_date])->count();
-        
-      //package_sold
-
-      $pack_sms = UserSMS::whereBetween('created_at', [$strat_date,$end_date])->where('payment_status','=',"Completed")->count();
-      $pack = UserPack::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-      
-      $data['pack_sold1'] = $pack_sms ;
-      $data['pack_sold2'] = $pack ;
-      $data['package_sold'] = $pack_sms + $pack ;
-
-      //Total_BDT
-
-      $test = DB::table('s_m_s')
-                ->select(
-                  DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
-                )
-                ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                ->where('s_m_s.status', '=', 1)
-                ->where('user_s_m_s.gateway_charge','!=',null)
-                ->whereBetween('user_s_m_s.created_at', [$strat_date, $end_date])
-                ->get();
-       $purchases = $test[0]->tot_base; 
-             
-
-      $pack_pur =  DB::table('packs')
-                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                ->where('packs.status', '=', 1)
-                ->whereBetween('packs.created_at', [$strat_date,$end_date])
-                ->sum('packs.price');
-    $data['total1'] = $purchases;
-    $data['total2'] = $pack_pur;          
-    $data['total'] = $purchases + $pack_pur;                     
-
-     //Schdeule
-      $schdeule_1 = SMSSchedule::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-      $schdeule_2 = Schedule::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-      $data['schdeule'] = $schdeule_1 + $schdeule_2;
- 
-
-
-      //Total_sms_SOLD  
-      $data['to_sms'] = DB::table('s_m_s')
-                      ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                      ->where('s_m_s.status', '=', 1)
-                      ->whereBetween('user_s_m_s.created_at', [$strat_date,$end_date])
-                      ->sum('s_m_s.amount');
-      //Total_OBD_SOLD 
-      $data['to_odb'] = DB::table('packs')
-                      ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                      ->where('packs.status', '=', 1)
-                      ->whereBetween('user_packs.created_at', [$strat_date,$end_date])
-                      ->sum('packs.amount');
-        
-           // Bar chart _sms
-           $data['today_sells_1']  = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereBetween('user_s_m_s.created_at', [$strat_date,$end_date])
-                                  ->sum('s_m_s.price');
-
-           $data['today_sells_2']  = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereDate('user_s_m_s.created_at',[Carbon::yesterday()])
-                                  ->sum('s_m_s.price');
-
-       
-          $data['today_sells_3'] = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(2)->format('Y-m-d H:i:s')])
-                                  ->sum('s_m_s.price');
-
-           $data['today_sells_4'] = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(3)->format('Y-m-d H:i:s')])
-                                  ->sum('s_m_s.price');
-           $data['today_sells_5']  = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(4)->format('Y-m-d H:i:s')])
-                                  ->sum('s_m_s.price');
-           $data['today_sells_6']  = DB::table('s_m_s')
-                                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                  ->where('s_m_s.status','=',1)
-                                  ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(5)->format('Y-m-d H:i:s')])
-                                  ->sum('s_m_s.price');
-         $data['today_sells_7'] = DB::table('s_m_s')
-                                ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                                ->where('s_m_s.status','=',1)
-                                ->whereDate('user_s_m_s.created_at',[Carbon::today()->subDays(6)->format('Y-m-d H:i:s')])
-                                ->sum('s_m_s.price');
-           // Bar chart _obd
-           $data['today_sells_obd_1']  = DB::table('packs')
-                                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                ->where('packs.status','=',1)
-                                ->whereDate('user_packs.created_at', [Carbon::today()])
-                                ->sum('packs.price');
-           $data['today_sells_obd_2']  = DB::table('packs')
-                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                  ->where('packs.status','=',1)
-                                  ->whereDate('user_packs.created_at',[Carbon::yesterday()])
-                                  ->sum('packs.price');
-                    
-           $data['today_sells_obd_3']  = DB::table('packs')
-                                  ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                  ->where('packs.status','=',1)
-                                  ->whereDate('user_packs.created_at',[Carbon::today()->subDays(2)->format('Y-m-d H:i:s')])
-                                  ->sum('packs.price');
-           
-           $data['today_sells_obd_4'] = DB::table('packs')
-                                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                ->where('packs.status','=',1)
-                                ->whereDate('user_packs.created_at',[Carbon::today()->subDays(3)->format('Y-m-d H:i:s')])
-                                ->sum('packs.price');
-           $data['today_sells_obd_5']  = DB::table('packs')
-                                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                ->where('packs.status','=',1)
-                                ->whereDate('user_packs.created_at',[Carbon::today()->subDays(4)->format('Y-m-d H:i:s')])
-                                ->sum('packs.price');
-           $data['today_sells_obd_6']  = DB::table('packs')
-                                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                ->where('packs.status','=',1)
-                                ->whereDate('user_packs.created_at',[Carbon::today()->subDays(5)->format('Y-m-d H:i:s')])
-                                ->sum('packs.price');
-         $data['today_sells_obd_7'] = DB::table('packs')
-                                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                                ->where('packs.status','=',1)
-                                ->whereDate('user_packs.created_at',[Carbon::today()->subDays(6)->format('Y-m-d H:i:s')])
-                                ->sum('packs.price');
-
-          return response()->json($data);   
-    }
-    
-    public function get_data($tm_period)
-    {   
-         $data = [];
-     
-         $strat_date = Carbon::today()->format('Y-m-d 00:00:00');
-         $end_date  =  Carbon::today()->format('Y-m-d 12:59:59');
-        
-         if($tm_period== "daily"){
-
-          //new register 
-          $data['user'] = User::whereBetween('created_at',[$strat_date,$end_date])->count();
-        
-          //package_sold
-
-          $pack_sms = UserSMS::whereBetween('created_at', [$strat_date,$end_date])->where('payment_status','=',"Completed")->count();
-          $pack = UserPack::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-          
-          $data['pack_sold1'] = $pack_sms ;
-          $data['pack_sold2'] = $pack ;
-          $data['package_sold'] = $pack_sms + $pack ;
-
-          //Total_BDT
-
-           //Total_BDT
-           $test = DB::table('s_m_s')
-                ->select(
-                  DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
-                )
-                ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                ->where('s_m_s.status', '=', 1)
-                ->where('user_s_m_s.gateway_charge','!=',null)
-                ->whereBetween('user_s_m_s.created_at', [$strat_date, $end_date])
-                ->get();
-       $purchases = $test[0]->tot_base;          
-       
-
-       
-      $pack_pur =  DB::table('packs')
-                    ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                    ->where('packs.status', '=', 1)
-                    ->whereBetween('packs.created_at', [$strat_date,$end_date])
-                    ->sum('packs.price');
-       $data['total1'] = $purchases;
-       $data['total2'] = $pack_pur;          
-       $data['total'] = $purchases + $pack_pur;                     
-
-         //Schdeule
-          $schdeule_1 = SMSSchedule::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-          $schdeule_2 = Schedule::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-          $data['schdeule'] = $schdeule_1 + $schdeule_2;
-          
-
-          //Total_sms_SOLD  
-          $data['to_sms'] = DB::table('s_m_s')
-                          ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                          ->where('s_m_s.status', '=', 1)
-                          ->whereBetween('user_s_m_s.created_at', [$strat_date,$end_date])
-                          ->sum('s_m_s.amount');
-          //Total_OBD_SOLD 
-          $data['to_odb'] = DB::table('packs')
-                          ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                          ->where('packs.status', '=', 1)
-                          ->whereBetween('user_packs.created_at', [$strat_date,$end_date])
-                          ->sum('packs.amount');
-                                  
-          self::bar_chart();
-         }
-         if ($tm_period == "weekly")
-         {
-
-          $today = Carbon::today()->format('Y-m-d 00:00:00');
-          $lastSevenDays = Carbon::today()->subDays(7)->format('Y-m-d 12:59:59');
-          
-
-       
-           
-          //new register 
-          $data['user'] = User::whereBetween('created_at', [$lastSevenDays, $today])->count();
-          
-          
-          //Package_sold
-
-          $pack_sms = UserSMS::whereBetween('created_at', [$lastSevenDays, $today])->where('payment_status','=',"Completed")->count();
-          $pack = UserPack::whereBetween('created_at', [$lastSevenDays, $today])->where('status','=',1)->count();
-          
-          $data['pack_sold1'] = $pack_sms ;
-          $data['pack_sold2'] = $pack ;
-          $data['package_sold'] = $pack_sms + $pack ;
-          
-
-              
-          //Total_BDT
-          $test = DB::table('s_m_s')
-                  ->select(
-                    
-                    DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
-                  )
-                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-              ->where('s_m_s.status', '=', 1)
-              ->where('user_s_m_s.gateway_charge','!=',null)
-              ->whereBetween('user_s_m_s.created_at', [$lastSevenDays, $today])
-              ->get();
-
-
-          
-          $purchases = $test[0]->tot_base;
-           
-         
-         
-          $pack_pur =  DB::table('packs')
-                    ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                    ->where('packs.status', '=', 1)
-                    ->whereBetween('packs.created_at', [$lastSevenDays, $today])
-                    ->sum('packs.price');
-          $data['total1'] = $purchases;
-          $data['total2'] = $pack_pur;
-          $data['total'] = $purchases + $pack_pur;
-
-          //schdeule
-
-          $schdeule_1 = SMSSchedule::whereBetween('created_at', [$lastSevenDays, $today])->where('status','=',1)->count();
-          $schdeule_2 = Schedule::whereBetween('created_at', [$lastSevenDays, $today])->where('status','=',1)->count();
-          $data['schdeule'] = $schdeule_1 + $schdeule_2;
-
-          
-          //Total_sms_SOLD
-          $data['to_sms'] = DB::table('s_m_s')
-                          ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                          ->where('s_m_s.status', '=', 1)
-                          ->whereBetween('user_s_m_s.created_at',[$lastSevenDays, $today])
-                          ->sum('s_m_s.amount');
-           //Total_obd_SOLD               
-          $data['to_odb'] = DB::table('packs')
-                          ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                          ->where('packs.status', '=', 1)
-                          ->whereBetween('user_packs.created_at',[$lastSevenDays, $today])
-                          ->sum('packs.amount');
-
-         }
-         if($tm_period == "monthly")
-         {
-            //new register
-           $today = Carbon::today()->format('Y-m-d 00:00:00');
-          $month = Carbon::today()->subDays(30)->format('Y-m-d 12:59:59');
-
-          $data['user'] = User::whereBetween('created_at', [$month,$today])->count();
-
-        //Package_sold
-
-          $pack_sms = UserSMS::whereBetween('created_at', [$month,$today])->where('payment_status','=',"Completed")->count();
-          $pack = UserPack::whereBetween('created_at', [$month,$today])->where('status','=',1)->count();
-          
-          $data['pack_sold1'] = $pack_sms ;
-          $data['pack_sold2'] = $pack ;
-          $data['package_sold'] = $pack_sms + $pack ;
-
-          $check_1 = DB::table('s_m_s')
-                    ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                    ->where('s_m_s.status', '=', 1)
-                    ->whereBetween('s_m_s.created_at', [$month,$today])
-                    ->get();
-                    
-         
-          //Total_BDT
-          $test = DB::table('s_m_s')
-                  ->select(
-                    
-                    DB::raw('sum( base_price * ((gateway_charge + vat)/100)) + sum(price) as tot_base'),
-                  )
-                  ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-              ->where('s_m_s.status', '=', 1)
-              ->where('user_s_m_s.gateway_charge','!=',null)
-              ->whereBetween('user_s_m_s.created_at', [$month, $today])
-              ->get();
-
-
-          
-          $purchases = $test[0]->tot_base;
-         
-          $pack_pur =  DB::table('packs')
-                    ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                    ->where('packs.status', '=', 1)
-                    ->whereBetween('packs.created_at', [$month,$today])
-                    ->sum('packs.price');
-          $data['total1'] = $purchases;
-          $data['total2'] = $pack_pur;
-          $data['total'] = $purchases + $pack_pur;
-        
-
-          //schdeule
-          $schdeule_1 = SMSSchedule::whereBetween('created_at', [$month,$today])->where('status','=',1)->count();
-          $schdeule_2 = Schedule::whereBetween('created_at', [$month,$today])->where('status','=',1)->count();
-          $data['schdeule'] = $schdeule_1 + $schdeule_2;
-          
-         
-            //Total_sms_SOLD
-          $data['to_sms'] = DB::table('s_m_s')
-                        ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                        ->where('s_m_s.status', '=', 1)
-                        ->whereBetween('user_s_m_s.created_at', [$month,$today])
-                        ->sum('s_m_s.amount');
-         //Total_obd_SOLD 
-        $data['to_odb'] = DB::table('packs')
-                        ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                        ->where('packs.status', '=', 1)
-                        ->whereBetween('user_packs.created_at', [$month,$today])
-                        ->sum('packs.amount'); 
-             
-         }
-         return response()->json($data); 
-    }
+   
 
     // code added by Tnvr1
     public function get_dashboard_data($tm_period)
@@ -523,8 +169,8 @@ class AdminController extends Controller
         $data = [];  
 
         if($tm_period== "daily"){
-          $strat_date = Carbon::today()->format('Y-m-d 00:00:00');
-          $end_date  =  Carbon::today()->format('Y-m-d 23:59:59');
+          $strat_date = Carbon::today()->format('Y-m-d 23:59:59');
+          $end_date  =  Carbon::today()->format('Y-m-d 00:00:00');
         }
         
         if($tm_period== "weekly"){
@@ -538,63 +184,70 @@ class AdminController extends Controller
         }
 
         //user count
-        $data['user'] = User::whereBetween('created_at', [$strat_date, $end_date])->count();
-
+        $data['user'] = User::whereBetween('created_at', [$end_date,$strat_date])->count();
+   
+       
         //all pkg sold count
-        $data['push_sms_sold'] = UserSMS::whereBetween('created_at', [$strat_date,$end_date])->where('payment_status','=',"Completed")->count();
-        $data['obd_sold'] = UserPack::whereBetween('created_at', [$strat_date,$end_date])->where('status','=',1)->count();
-
+        $data['push_sms_sold'] = UserSMS::whereBetween('created_at', [$end_date,$strat_date])->where('payment_status','=',"Completed")->count();
+        $data['obd_sold'] = UserPack::whereBetween('created_at', [$end_date,$strat_date])->where('status','=',1)->count();
+        //izaz update 
+        $data['total_package_sold'] = $data['push_sms_sold'] + $data['obd_sold'];
         //all sum price(bdt) 
         $data['obd_price'] = DB::table('packs')
                             ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                             ->where('user_packs.status', '=', 1)
-                            ->whereBetween('user_packs.created_at', [$strat_date, $end_date])
+                            ->whereBetween('user_packs.created_at', [$end_date,$strat_date])
                             ->sum('packs.price'); 
 
         $push_sms_price_vat = DB::table('user_s_m_s')
                           ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
                           ->where('status', 1)
                           ->whereNotNull('base_price')
-                          ->whereBetween('created_at', [$strat_date, $end_date])
+                          ->whereBetween('created_at', [$end_date,$strat_date])
                           ->value('price_with_vat');
 
         $push_sms_price = DB::table('s_m_s')
                           ->join('user_s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
                           ->where('user_s_m_s.status', 1)
                           ->whereNull('user_s_m_s.base_price')
-                          ->whereBetween('user_s_m_s.created_at', [$strat_date, $end_date])
+                          ->whereBetween('user_s_m_s.created_at', [$end_date,$strat_date])
                           ->sum('s_m_s.price');
         
         $data['sms_price'] = $push_sms_price;
         if($push_sms_price_vat != null){
           $data['sms_price'] = $push_sms_price + $push_sms_price_vat; 
-        } 
+        }
+        //Izaz update
+        $data['total_price_bdt'] = $data['obd_price']+ $data['sms_price'];
+
+       
         
         //all schedule count
-        $data['sms_schdeule'] = SMSSchedule::whereBetween('created_at', [$strat_date,$end_date])->where('status', 1)->count();
-        $data['obd_schdeule'] = Schedule::whereBetween('created_at', [$strat_date,$end_date])->where('status', 1)->count();
-        
+        $data['sms_schdeule'] = SMSSchedule::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->count();
+        $data['obd_schdeule'] = Schedule::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->count();
+        //Izaz_Update
+        $data['total_schdeule'] = $data['sms_schdeule'] + $data['obd_schdeule'];
+
         //all credit count
         $data['sms_credit'] = DB::table('user_s_m_s')
                             ->where('status', 1)
-                            ->whereBetween('created_at', [$strat_date,$end_date])
+                            ->whereBetween('created_at', [$end_date,$strat_date])
                             ->sum('amount');
 
         $data['obd_credit'] = DB::table('user_packs')
                             ->where('status', 1)
-                            ->whereBetween('created_at', [$strat_date,$end_date])
+                            ->whereBetween('created_at', [$end_date,$strat_date])
                             ->sum('amount');
-
-        $bar_chart = self::bar_chart_data();
+        $data['bar_chart'] = self::bar_chart_data();
         return response()->json($data); 
     }
-
+   
     public static function obd_price_calculation($start_date,$end_date){
-      return DB::table('packs')
-                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                ->where('user_packs.status',1)
-                ->whereBetween('user_packs.created_at', [$start_date, $end_date])
-                ->sum('packs.price');
+                  return DB::table('packs')
+                            ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                            ->where('user_packs.status',1)
+                            ->whereBetween('user_packs.created_at', [$start_date, $end_date])
+                            ->sum('packs.price');
     }
 
     public static function push_sms_price_calculation($start_date,$end_date){
