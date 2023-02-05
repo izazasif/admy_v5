@@ -104,12 +104,15 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     });
     //admin start
     Route::group(['middleware' => 'CheckAdmin'], function(){
-              
+            
         Route::get('/category/create','CategoryController@create')->name('category.create');
         Route::post('/category/store','CategoryController@store')->name('category.store');
         Route::get('/category/list','CategoryController@index')->name('category.list');
         Route::get('/category/edit/{id}','CategoryController@edit')->name('category.edit');
-        Route::post('/category/update','CategoryController@update')->name('category.update');   
+        Route::post('/category/update','CategoryController@update')->name('category.update');
+        
+        Route::get('/dashboard','AdminController@dashboard')->name('dashboard.view');
+        Route::get('/get_data/dashboard/{tm_period}','AdminController@get_dashboard_data')->name('dashboard.get_data');  
         
         Route::get('/admin/create','AdminController@create')->name('admin.create');
         Route::post('/admin/store','AdminController@store')->name('admin.store');

@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
 
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+  
   <link rel="icon" type="image/gif/png" href="{{ asset('assets/images/foot-logo.png') }}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,6 +94,13 @@
 <script src="{{ asset('assets/admin_lte/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/admin_lte/dist/js/demo.js') }}"></script>
+
+
+<!-- ChartJS -->
+
+
+<script src="{{asset('assets/admin_lte/bower_components/morris.js/morris.min.js') }}"></script>
+<script src="{{asset('assets/admin_lte/bower_components/raphael/raphael.min.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 
