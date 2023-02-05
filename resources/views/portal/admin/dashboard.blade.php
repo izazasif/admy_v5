@@ -218,7 +218,7 @@ $(document).ready(function(){
             $('#obd_price').text(response.obd_price.toFixed(2));
 
             $('#sms_credit').text(response.sms_credit);
-            $('#obd_credit').text(response.to_odb);
+            $('#obd_credit').text(response.obd_credit);
 
 
             var bar = Morris.Bar({
