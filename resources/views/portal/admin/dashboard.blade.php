@@ -83,7 +83,6 @@
                           <div class="external-event bg-light-blue">OBD</div>
                           </h3>
                                
-                     
                                   <div class="col-lg-4 col-xs-4">
                                     <div class="small-box bg-grey">
                                     <div class="inner">
@@ -216,7 +215,7 @@ $(document).ready(function(){
 
 
             $('#sms_price').text(response.sms_price.toFixed(2));
-            $('#obd_price').val(response.obd_price.toFixed(2));
+            $('#obd_price').text(response.obd_price.toFixed(2));
 
             $('#sms_credit').text(response.sms_credit);
             $('#obd_credit').text(response.to_odb);
