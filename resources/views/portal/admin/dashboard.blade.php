@@ -208,14 +208,15 @@ $(document).ready(function(){
             
             $('#new_reg').text(response.user);
             $('#total_package_sold').text(response.total_package_sold);
-            $('#total_price_bdt').text(response.total_price_bdt);
+            $('#total_price_bdt').text(response.total_price_bdt.toFixed(2));
             $('#total_schdeule').text(response.total_schdeule);
 
             $('#push_sms_sold').text(response.push_sms_sold);
             $('#obd_sold').text(response.obd_sold);
 
-            $('#sms_price').text(response.sms_price);
-            $('#obd_price').text(response.obd_price);
+
+            $('#sms_price').text(response.sms_price.toFixed(2));
+            $('#obd_price').val(response.obd_price.toFixed(2));
 
             $('#sms_credit').text(response.sms_credit);
             $('#obd_credit').text(response.to_odb);
@@ -241,8 +242,7 @@ $(document).ready(function(){
             });
             
           
-          }
-          
+          }         
 
        })
 }
