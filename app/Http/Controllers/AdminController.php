@@ -175,7 +175,7 @@ class AdminController extends Controller
         
         if($tm_period== "weekly"){
           $strat_date = Carbon::today()->format('Y-m-d 23:59:59');
-          $end_date  =  Carbon::today()->subDays(7)->format('Y-m-d 00:00:00');
+          $end_date  =  Carbon::today()->subDays(6)->format('Y-m-d 00:00:00');
         }
         
         if($tm_period== "monthly"){
@@ -223,8 +223,8 @@ class AdminController extends Controller
         $data['total_price_bdt'] = $data['obd_price']+ $data['sms_price'];       
         
         //all schedule count
-        $data['sms_schdeule'] = SMSSchedule::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->count();
-        $data['obd_schdeule'] = Schedule::whereBetween('created_at', [$end_date,$strat_date])->where('status', 1)->count();
+        $data['sms_schdeule'] = SMSSchedule::whereBetween('created_at', [$end_date,$strat_date])->count();
+        $data['obd_schdeule'] = Schedule::whereBetween('created_at', [$end_date,$strat_date])->count();
         //Izaz_Update
         $data['total_schdeule'] = $data['sms_schdeule'] + $data['obd_schdeule'];
 
@@ -238,7 +238,7 @@ class AdminController extends Controller
         $data['obd_credit'] = DB::table('user_packs')
                             ->where('status', 1)
                             ->whereBetween('created_at', [$end_date,$strat_date])
-                            ->sum('amount');
+                            ->sum('amount');         
         $data['bar_chart'] = self::bar_chart_data();
         return response()->json($data); 
     }
