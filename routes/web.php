@@ -144,14 +144,14 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         //  Route::get('joycall/login','Api\CampainController@getUserKey')->name('joycall.login');
 
         //User report 
-        Route::get('/report/user','reportController@index')->name('report.user');
-        Route::post('/report/user','reportController@index')->name('report.user');
-        Route::get('/report/schedule','reportController@schedule')->name('schedule.report');
-        Route::post('/report/schedule','reportController@schedule')->name('schedule.report');
-        Route::get('/report/package','reportController@package')->name('package.report');
-        Route::post('/report/package','reportController@package')->name('package.report');
-        Route::get('/report/obd','reportController@obd_report')->name('obd.report');
-        Route::post('/report/obd','reportController@obd_report')->name('obd.report');
+        Route::get('/report/user','ReportController@index')->name('report.user');
+        Route::post('/report/user','ReportController@index')->name('report.user');
+        Route::get('/report/schedule','ReportController@schedule')->name('schedule.report');
+        Route::post('/report/schedule','ReportController@schedule')->name('schedule.report');
+        Route::get('/report/package','ReportController@package')->name('package.report');
+        Route::post('/report/package','ReportController@package')->name('package.report');
+        Route::get('/report/obd','ReportController@obd_report')->name('obd.report');
+        Route::post('/report/obd','ReportController@obd_report')->name('obd.report');
         
     });
     // OBD Manager

@@ -74,7 +74,7 @@
                                 @foreach ($total_package_sold as $pack_sold)
                                     <tr>
                                       <td class="text-center">{{ $sl++ }}</td>
-                                      <td class="text-center">{{ $pack_sold->date }}</td>
+                                      <td class="text-center">{{ date('d-m-Y', strtotime($pack_sold->date)) }}</td>
                                       <td class="text-center">{{ $pack_sold->type }}</td>
                                       <td class="text-center">{{ $pack_sold->total }}</td>
                                       <td class="text-center">{{ $pack_sold->tot_amount }}</td>
