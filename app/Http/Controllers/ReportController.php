@@ -167,13 +167,13 @@ class ReportController extends Controller
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
             $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
-            $all_schedule_list = Schedule::join('reports', 'schedules.id', '=', 'reports.schedule_id')
-                                        ->join('categories', 'categories.id', '=', 'schedules.category_id')
-                                        ->join('audio_clips', 'audio_clips.id', '=', 'schedules.clip_id')
-                                        ->whereBetween('schedules.created_at',[$from, $to])
+            $all_schedule_list = Schedule::leftjoin('reports', 'schedules.id', '=', 'reports.schedule_id')
+                                        ->leftjoin('categories', 'categories.id', '=', 'schedules.category_id')
+                                        ->leftjoin('audio_clips', 'audio_clips.id', '=', 'schedules.clip_id')
+                                        ->whereBetween('schedules.schedule_time',[$from, $to])
                                         ->select('categories.title as category_name', 'audio_clips.title as clip_name','reports.*','schedules.*')
                                         ->get();
-
+            dd($all_schedule_list);
         }
         else {
             
