@@ -28,7 +28,7 @@ class ReportController extends Controller
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             $user_total = User::select(DB::raw("DATE(created_at) as date"), DB::raw("count(*) as total"))
                                      ->whereBetween('created_at',[$from, $to])
                                      ->groupBy(DB::raw("DATE(created_at)"))
@@ -70,7 +70,7 @@ class ReportController extends Controller
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             $appends = ['sms'];
             $schedule_total_sms = SMSSchedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(sms_amount) as total"),DB::raw('("My Push") as type'),'app_id','app_name')
                                      ->whereBetween('created_at',[$from, $to])
@@ -109,7 +109,7 @@ class ReportController extends Controller
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             
             
             $push_sms_sold = DB::table('user_s_m_s')
@@ -166,7 +166,7 @@ class ReportController extends Controller
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             $all_schedule_list = Schedule::leftjoin('reports', 'schedules.id', '=', 'reports.schedule_id')
                                         ->leftjoin('categories', 'categories.id', '=', 'schedules.category_id')
                                         ->leftjoin('audio_clips', 'audio_clips.id', '=', 'schedules.clip_id')
