@@ -154,7 +154,7 @@
                             @endif
                         </ul>
                     </li>
-                    <li
+                    <!-- <li
                         class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count'  ? 'active' : '' }}">
                         <a href="#">
                             <i class="fa fa-th-large text-aqua"></i> <span>Report </span>
@@ -175,7 +175,7 @@
                                     href="{{ route('obd.report') }}"><i class="fa fa-stack-exchange"></i> OBD Report Count
                                     </a></li>        
                         </ul>
-                    </li>
+                    </li> -->
                 @endif
                 @if (session()->get('permission') == 'all')
                     <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
