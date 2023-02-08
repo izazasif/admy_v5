@@ -173,7 +173,7 @@ class ReportController extends Controller
                                         ->whereBetween('schedules.schedule_time',[$from, $to])
                                         ->select('categories.title as category_name', 'audio_clips.title as clip_name','reports.*','schedules.*')
                                         ->get();
-            dd($all_schedule_list);
+            
         }
         else {
             
