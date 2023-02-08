@@ -84,8 +84,8 @@
                                     <th></th>
                                     <th></th>
                                     <th class="text-center">Total</th>
-                                    <th class="text-center">{{$total_1}}</th>
                                     <th class="text-center">{{$total_2}}</th>
+                                    <th class="text-center">{{$total_1}}</th>
                                 </tfoot>
                                
                             </table>
