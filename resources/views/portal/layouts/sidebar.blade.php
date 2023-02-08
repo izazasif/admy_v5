@@ -154,6 +154,28 @@
                             @endif
                         </ul>
                     </li>
+                    <li
+                        class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count'  ? 'active' : '' }}">
+                        <a href="#">
+                            <i class="fa fa-th-large text-aqua"></i> <span>Report </span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="{{ $is_active == 'user_report' ? 'active' : '' }}"><a
+                                    href="{{ route('report.user') }}"><i class="fa fa-tags"></i> User Registration Count </a>
+                            </li>
+                            <li class="{{ $is_active == 'package_report'  ? 'active' : '' }}"><a
+                                    href="{{ route('package.report') }}"><i class="fa fa-stack-exchange"></i> Number of Package Sold 
+                            <li class="{{ $is_active == 'schedule_report'  ? 'active' : '' }}"><a
+                                    href="{{ route('schedule.report') }}"><i class="fa fa-stack-exchange"></i> Daily Scheduled Count
+                                    </a></li>
+                            <li class="{{ $is_active == 'obd_report_count'  ? 'active' : '' }}"><a
+                                    href="{{ route('obd.report') }}"><i class="fa fa-stack-exchange"></i> OBD Report Count
+                                    </a></li>        
+                        </ul>
+                    </li>
                 @endif
                 @if (session()->get('permission') == 'all')
                     <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a

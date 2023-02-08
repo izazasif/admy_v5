@@ -122,11 +122,11 @@ class SMSScheduleController extends Controller
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
             $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
-            $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->paginate(20);
+            $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->orderBy('created_at', 'desc')->paginate(20);
         }
         else{
             session()->forget('dateRangeStat');
-            $all_schedule_list = SMSSchedule::paginate(20);
+            $all_schedule_list = SMSSchedule::orderBy('created_at', 'desc')->paginate(20);
         }
         $title = "AdMy | SMS Schedule List";
         $is_active = "sms_schedule_list";

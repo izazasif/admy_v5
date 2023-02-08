@@ -59,7 +59,9 @@
                                 <a href="{{ route('sms.schedule.list') }}" class="btn btn-danger btn-calculate"
                                     role="button">Portal</a>
                             @else
-                                <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate"
+                                <!-- <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate"
+                                    role="button">Portal</a> -->
+                                    <a href="{{ route('dashboard.view') }}" class="btn btn-danger btn-calculate"
                                     role="button">Portal</a>
                             @endif
                             <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate"

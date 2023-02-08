@@ -186,8 +186,76 @@
                                                     </a>
                                                 </td>
                                             @endif
+
+                                            @elseif ($schedule->status == 1)
+                                              <td class="text-center">
+                                              <a class="btn btn-primary btn-xs deliver_btn" href="" data-toggle="modal"  data-target="#exampleModal_view{{ $schedule->id   }}"> <i class="fa fa-eye" aria-hidden="true"></i> view</a>
+                                              </td>
                                         @endif
                                     </tr>
+                                                                                                            <!-- /.content-wrapper -->
+                                                                            <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal_view{{$schedule->id}}">
+                                                                                <div class="modal-dialog" role="document">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header text-center">
+                                                                                            <h5 class="modal-title" style="font-size: 24px; font-weight:bold;">Report Data</h5>
+                                                                                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                                                                                            </button> -->
+                                                                                        </div>
+                                                                                        
+                                                                                            <div class="modal-body">
+                                                                                            @php                          
+                                                                                            $data =  \App\Models\Report::where(['schedule_id' => $schedule->id])->first();
+                                                                                            $data_actual_time = \App\Models\Schedule::where(['id' => $schedule->id])->pluck('actual_delivery_time')->first(); 
+                                                                                         
+                                                                                            @endphp
+                                                                                                <input type="hidden" name="schedule_id" id="schedule_id">
+                                                                                                <div class="box-body">
+                                                                                                    <div class="form-group">
+                                                                                                        <label for="actual_delivery_time">Actual Delivery Time</label>
+                                                                                                       
+                                                                                                        <h4 class="box-title"> <span>{{ date('d-m-Y H:i:s', strtotime($data_actual_time)) }} </span> </h4>
+                                                                                                    </div>
+                                                                                                  
+                                                                                                    <div class="form-group">
+                                                                                                        <label for="sent_amount">Send Amount</label>
+                                                                                                        <!-- <input type="number" class="form-control" name="sent_amount"
+                                                                                                             value="{{ $data->sent_amount ?? 'None' }}" disabled> -->
+                                                                                                             <h4 class="box-title"> <span>{{ $data->sent_amount ?? 'None' }} </span> </h4>
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <label for="sent_amount">Success Amount</label>
+                                                                                                 
+                                                                                                             <h4 class="box-title"> <span>{{ $data->success_amount ?? 'None' }} </span> </h4>
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <label for="sent_amount">Failed Amount</label>
+                                                                                                        
+                                                                                                             <h4 class="box-title"> <span>{{$data->failed_amount ?? 'None' }} </span> </h4>
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <label for="sent_amount">Subscribed Amount</label>
+                                                                                                        
+                                                                                                             <h4 class="box-title"> <span>{{$data->subscribed_amount ?? 'None'  }} </span> </h4>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    
+                                                                                                </div>
+                                                                                                <!-- /.box-body -->
+
+                                                                                                <!-- <div class="box-footer">
+                                                                                                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                                                                                                </div> -->
+                                                                                            </div>
+                                                                                            <!-- <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                            </div> -->
+                                                                                      
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                 @endforeach
                             </table>
                             <div class="text-center">
@@ -258,4 +326,5 @@
             </div>
         </div>
     </div>
+   
 @endsection
