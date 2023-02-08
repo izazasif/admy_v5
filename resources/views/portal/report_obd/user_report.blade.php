@@ -21,10 +21,10 @@
 
                                     <div class="distable-row">
                                         <div class="form-group distable-cell">
-                                            <label for="shdaterange">Schedule Date Range</label>
+                                            <label for="shdaterange"> Date Range</label>
                                             <input style="position: inherit;" class="form-control input-sm daterangepicker"
-                                                type="text" name="shdaterange" placeholder="Choose Date Range"
-                                                value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
+                                                type="text" name="search_date" placeholder="Choose Date Range"
+                                                value="{{ session()->has('search_date') ? session()->get('search_date') : '' }}">
                                         </div>
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="distable-cell search-btns">
                                             <a class="btn btn-sm btn-flat btn-warning"
-                                                href="{{ route('schedule.list.reset') }}">Reset</a>
+                                                href="{{ route('user_report.reset') }}">Reset</a>
                                         </div>
                                     </div>
 

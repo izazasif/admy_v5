@@ -145,6 +145,7 @@ class ScheduleController extends Controller
 
     public function resetList(){
         session()->forget('shdaterange');
+        session()->forget('search_daterange');
         session()->forget('shcategory');
         session()->forget('shstatus');
         session()->forget('app_id');

@@ -20,11 +20,11 @@ class ReportController extends Controller
     public function index(Request $request)
     {
         
-        $daterange = $request->shdaterange;
+        $daterange = $request->search_date;
         
 
         if($daterange){
-            session()->put('dateRangeStat', $daterange);
+            session()->put('search_date', $daterange);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
@@ -66,17 +66,17 @@ class ReportController extends Controller
         $daterange = $request->shdaterange;
 
         if($daterange){
-            session()->put('dateRangeStat', $daterange);
+            session()->put('search_date_schedule', $daterange);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
             $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
             $appends = ['sms'];
-            $schedule_total_sms = SMSSchedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(sms_amount) as total"),DB::raw('("sms") as type'),'app_id','app_name')
+            $schedule_total_sms = SMSSchedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(sms_amount) as total"),DB::raw('("My Push") as type'),'app_id','app_name')
                                      ->whereBetween('created_at',[$from, $to])
                                      ->groupBy(DB::raw("DATE(created_at)"),'app_id','app_name')
                                      ->get();
-            $schedule_total_obd = Schedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(obd_amount) as total"),DB::raw('("obd") as type'),'app_id','app_name')
+            $schedule_total_obd = Schedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(obd_amount) as total"),DB::raw('("OBD") as type'),'app_id','app_name')
                                      ->whereBetween('created_at',[$from, $to])
                                      ->groupBy(DB::raw("DATE(created_at)"),'app_id','app_name')
                                      ->get();
@@ -105,7 +105,7 @@ class ReportController extends Controller
         
 
         if($daterange){
-            session()->put('dateRangeStat', $daterange);
+            session()->put('search_date_package', $daterange);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
@@ -114,7 +114,7 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                             ->select(DB::raw("sum(tbl_s_m_s.price) as total"),DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),DB::raw('("sms") as type'))
+                             ->select(DB::raw("sum(tbl_s_m_s.price) as total"),DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),DB::raw('("My Push") as type'))
                              ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
                             ->whereBetween('user_s_m_s.created_at',[$from, $to])
@@ -122,7 +122,7 @@ class ReportController extends Controller
                             ->get();
             $obd_sold = DB::table('user_packs')
                             ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                             ->select(DB::raw("sum(tbl_packs.price) as total"),DB::raw( "DATE(tbl_user_packs.created_at) as date"),DB::raw( "sum(tbl_user_packs.amount) as tot_amount"),DB::raw('("obd") as type'))
+                             ->select(DB::raw("sum(tbl_packs.price) as total"),DB::raw( "DATE(tbl_user_packs.created_at) as date"),DB::raw( "sum(tbl_user_packs.amount) as tot_amount"),DB::raw('("OBD") as type'))
                              ->where('user_packs.status', 1)
                             ->whereBetween('user_packs.created_at',[$from, $to])
                             ->groupBy('date')
@@ -162,15 +162,15 @@ class ReportController extends Controller
         
 
         if($daterange){
-            session()->put('dateRangeStat', $daterange);
+            session()->put('search_date_obd', $daterange);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
             $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
-            $all_schedule_list = Report::join('schedules', 'schedules.id', '=', 'reports.schedule_id')
+            $all_schedule_list = Schedule::join('reports', 'schedules.id', '=', 'reports.schedule_id')
                                         ->join('categories', 'categories.id', '=', 'schedules.category_id')
                                         ->join('audio_clips', 'audio_clips.id', '=', 'schedules.clip_id')
-                                        ->whereBetween('reports.created_at',[$from, $to])
+                                        ->whereBetween('schedules.created_at',[$from, $to])
                                         ->select('categories.title as category_name', 'audio_clips.title as clip_name','reports.*','schedules.*')
                                         ->get();
 
@@ -184,8 +184,26 @@ class ReportController extends Controller
         $is_active = "obd_report_count";
 
         return view('portal.report_obd.obd_report', compact('title', 'is_active','all_schedule_list'));
-    }
+    }  
 
+    public function report_reset_user(){
+        session()->forget('search_date');
+        // return redirect()->route('report.user');
+        return redirect()->back();
+    }
+    public function report_reset_package(){
+        session()->forget('search_date_package');
+        return redirect()->back();
+    }
+    public function report_reset_schedule(){
+        session()->forget('search_date_schedule');
+        return redirect()->back();
+    }
+    
+    public function reset_obd_report(){
+        session()->forget('search_date_obd');
+        return redirect()->back();
+    }
     /**
      * Store a newly created resource in storage.
      *

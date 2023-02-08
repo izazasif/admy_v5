@@ -152,7 +152,11 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::post('/report/package','ReportController@package')->name('package.report');
         Route::get('/report/obd','ReportController@obd_report')->name('obd.report');
         Route::post('/report/obd','ReportController@obd_report')->name('obd.report');
-        
+
+        Route::get('/reset/user','ReportController@report_reset_user')->name('user_report.reset');
+        Route::get('/reset/package','ReportController@report_reset_package')->name('package_report.reset');
+        Route::get('/reset/schedule','ReportController@report_reset_schedule')->name('schedule_report.reset');
+        Route::get('/reset/obd_report','ReportController@reset_obd_report')->name('obd_report.reset');
     });
     // OBD Manager
     Route::group(['middleware' => 'CheckOBDManager'], function(){
