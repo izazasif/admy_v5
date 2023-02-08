@@ -121,7 +121,7 @@ class SMSScheduleController extends Controller
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->orderBy('created_at', 'desc')->paginate(20);
         }
         else{
