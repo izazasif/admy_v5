@@ -16,9 +16,15 @@ class Report extends Model {
         //
     ];
 
+    
+
     public function getSchedule(){
         return $this->belongsTo(
                 'App\Models\Schedule','schedule_id');
+    }
+    public function getUser(){
+        return $this->belongsTo(
+            'App\Models\User','user_id');
     }
 
 

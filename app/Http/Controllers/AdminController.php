@@ -191,7 +191,7 @@ class AdminController extends Controller
         $data['obd_sold'] = UserPack::whereBetween('created_at', [$end_date,$strat_date])->where('status','=',1)->count();
         //Izaz_Update
         $data['total_package_sold'] = $data['push_sms_sold'] + $data['obd_sold'];
-
+ 
         //all sum price(bdt) 
         $data['obd_price'] = DB::table('packs')
                             ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
