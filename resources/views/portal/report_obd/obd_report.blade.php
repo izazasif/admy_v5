@@ -21,10 +21,10 @@
 
                                     <div class="distable-row">
                                         <div class="form-group distable-cell">
-                                            <label for="shdaterange">Schedule Date Range</label>
+                                            <label for="shdaterange"> Date Range</label>
                                             <input style="position: inherit;" class="form-control input-sm daterangepicker"
                                                 type="text" name="shdaterange" placeholder="Choose Date Range"
-                                                value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
+                                                value="{{ session()->has('search_date_obd') ? session()->get('search_date_obd') : '' }}">
                                         </div>
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="distable-cell search-btns">
                                             <a class="btn btn-sm btn-flat btn-warning"
-                                                href="{{ route('schedule.list.reset') }}">Reset</a>
+                                                href="{{ route('obd_report.reset') }}">Reset</a>
                                         </div>
                                     </div>
 
@@ -87,7 +87,7 @@
                                       <td class="text-center">{{ $sl++ }}</td>
                                       <td class="text-center">{{$schedule->getUser->email }}</td>
                                       <td class="text-center"> {{ date('d-m-Y h:i A', strtotime($schedule->created_at)) }}</td>
-                                      <td class="text-center">{{ date('h:i A', strtotime($schedule->schedule_time)) }}</td>
+                                      <td class="text-center">{{ date('d-m-Y h:i A', strtotime($schedule->schedule_time)) }}</td>
                                       <td class="text-center">{{$schedule->category_name }}</td>     
                                       <td class="text-center">{{$schedule->app_id}}</td>
                                       <td class="text-center">{{$schedule->app_name}}</td>

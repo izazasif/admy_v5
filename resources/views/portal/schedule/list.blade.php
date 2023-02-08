@@ -215,7 +215,7 @@
                                                                                                     <div class="form-group">
                                                                                                         <label for="actual_delivery_time">Actual Delivery Time</label>
                                                                                                        
-                                                                                                        <h4 class="box-title"> <span>{{ date('d-m-Y H:i:s', strtotime($data_actual_time)) }} </span> </h4>
+                                                                                                        <h4 class="box-title"> <span> {{ date('d-m-Y h:i A', strtotime($data_actual_time)) }} </span> </h4>
                                                                                                     </div>
                                                                                                   
                                                                                                     <div class="form-group">

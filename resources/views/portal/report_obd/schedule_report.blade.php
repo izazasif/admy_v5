@@ -21,10 +21,10 @@
 
                                     <div class="distable-row">
                                         <div class="form-group distable-cell">
-                                            <label for="shdaterange">Schedule Date Range</label>
+                                            <label for="shdaterange">Date Range</label>
                                             <input style="position: inherit;" class="form-control input-sm daterangepicker"
                                                 type="text" name="shdaterange" placeholder="Choose Date Range"
-                                                value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
+                                                value="{{ session()->has('search_date_schedule') ? session()->get('search_date_schedule') : '' }}">
                                         </div>
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="distable-cell search-btns">
                                             <a class="btn btn-sm btn-flat btn-warning"
-                                                href="{{ route('schedule.list.reset') }}">Reset</a>
+                                                href="{{ route('schedule_report.reset') }}">Reset</a>
                                         </div>
                                     </div>
 
@@ -67,8 +67,8 @@
                                     <th class="text-center">SL</th>
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Type</th>
-                                    <th class="text-center">App Id </th>
                                     <th class="text-center">App Name</th>
+                                    <th class="text-center">App Id </th>
                                     <th class="text-center">Schedule Amount</th>
                                 </tr>
                                 @php $sl = 1; @endphp
@@ -77,8 +77,8 @@
                                       <td class="text-center">{{ $sl++ }}</td>
                                       <td class="text-center">{{ date('d-m-Y', strtotime($schedule->date)) }}</td>
                                       <td class="text-center">{{ $schedule->type }}</td>
-                                      <td class="text-center">{{ $schedule->app_id }}</td>
                                       <td class="text-center">{{ $schedule->app_name }}</td>     
+                                      <td class="text-center">{{ $schedule->app_id }}</td>
                                       <td class="text-center">{{ $schedule->total }}</td>
                                    </tr>  
                                 @endforeach

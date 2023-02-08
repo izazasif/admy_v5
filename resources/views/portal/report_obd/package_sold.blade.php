@@ -21,10 +21,10 @@
 
                                     <div class="distable-row">
                                         <div class="form-group distable-cell">
-                                            <label for="shdaterange">Schedule Date Range</label>
+                                            <label for="shdaterange"> Date Range</label>
                                             <input style="position: inherit;" class="form-control input-sm daterangepicker"
                                                 type="text" name="shdaterange" placeholder="Choose Date Range"
-                                                value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
+                                                value="{{ session()->has('search_date_package') ? session()->get('search_date_package') : '' }}">
                                         </div>
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="distable-cell search-btns">
                                             <a class="btn btn-sm btn-flat btn-warning"
-                                                href="{{ route('schedule.list.reset') }}">Reset</a>
+                                                href="{{ route('package_report.reset') }}">Reset</a>
                                         </div>
                                     </div>
 
@@ -76,14 +76,14 @@
                                       <td class="text-center">{{ $sl++ }}</td>
                                       <td class="text-center">{{ date('d-m-Y', strtotime($pack_sold->date)) }}</td>
                                       <td class="text-center">{{ $pack_sold->type }}</td>
-                                      <td class="text-center">{{ $pack_sold->total }}</td>
                                       <td class="text-center">{{ $pack_sold->tot_amount }}</td>
+                                      <td class="text-center">{{ $pack_sold->total }}</td>
                                    </tr>  
                                 @endforeach
                                 <tfoot>
                                     <th></th>
                                     <th></th>
-                                    <th>Total</th>
+                                    <th class="text-center">Total</th>
                                     <th class="text-center">{{$total_1}}</th>
                                     <th class="text-center">{{$total_2}}</th>
                                 </tfoot>
