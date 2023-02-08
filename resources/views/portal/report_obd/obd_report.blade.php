@@ -105,7 +105,7 @@
                                                             aria-hidden="true"></i>&nbsp;Pending</b></span>
                                             @endif
                                       </td>
-                                      <td class="text-center">{{$schedule->actual_delivery_time}}</td>     
+                                      <td class="text-center">{{ date('d-m-Y h:i A', strtotime($schedule->actual_delivery_time))}}</td>     
                                       <td class="text-center">{{$schedule->sent_amount}}</td>
                                       <td class="text-center">{{$schedule->success_amount}}</td>
                                       <td class="text-center">{{$schedule->failed_amount}}</td>     

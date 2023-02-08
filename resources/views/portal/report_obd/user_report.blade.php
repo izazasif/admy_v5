@@ -68,11 +68,11 @@
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Reg Count </th>
                                 </tr>
-                                @php $sl = 0; @endphp
+                                @php $sl = 1; @endphp
                                 @foreach ($user_total as $user)
                                     <tr>
                                       <td class="text-center">{{ $sl++ }}</td>
-                                      <td class="text-center">{{ $user->date }}</td>
+                                      <td class="text-center">{{ date('d-m-Y', strtotime($user->date)) }}</td>
                                       <td class="text-center">{{ $user->total }}</td>  
                                    </tr>  
                                 @endforeach

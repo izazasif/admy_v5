@@ -75,7 +75,7 @@
                                 @foreach ($schedule_total_obd1 as $schedule)
                                     <tr>
                                       <td class="text-center">{{ $sl++ }}</td>
-                                      <td class="text-center">{{ $schedule->date }}</td>
+                                      <td class="text-center">{{ date('d-m-Y', strtotime($schedule->date)) }}</td>
                                       <td class="text-center">{{ $schedule->type }}</td>
                                       <td class="text-center">{{ $schedule->app_id }}</td>
                                       <td class="text-center">{{ $schedule->app_name }}</td>     
