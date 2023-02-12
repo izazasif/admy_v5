@@ -189,12 +189,18 @@
 
                                             @elseif ($schedule->status == 1)
                                               <td class="text-center">
-                                              <a class="btn btn-primary btn-xs deliver_btn" href="" data-toggle="modal"  data-target="#exampleModal_view{{ $schedule->id   }}"> <i class="fa fa-eye" aria-hidden="true"></i> view</a>
-                                              </td>
+                                              <!-- <a class="btn btn-primary btn-xs deliver_btn" href="" data-toggle="modal"  data-target="#exampleModal_view{{ $schedule->id   }}"> <i class="fa fa-eye" aria-hidden="true"></i> view</a> -->
+                                              <button type="button" class="btn btn-primary btn-xs deliver_btn"
+                                                        data-toggle="modal" data-target="#exampleModal_view{{$schedule->id}}"
+                                                        data-id="{{ $schedule->id }}">
+                                                        <i class="fa fa-rocket" aria-hidden="true"></i> View
+                                                    </button>  
+                                            </td>
                                         @endif
                                     </tr>
-                                                                                                            <!-- /.content-wrapper -->
-                                                                            <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal_view{{$schedule->id}}">
+
+                                       <!-- /.content-wrapper -->
+                                       <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal_view{{$schedule->id}}">
                                                                                 <div class="modal-dialog" role="document">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header text-center">
@@ -203,14 +209,14 @@
                                                                                                                                                             <span aria-hidden="true">&times;</span>
                                                                                                                                                             </button> -->
                                                                                         </div>
-                                                                                        
+                                                                                      
                                                                                             <div class="modal-body">
                                                                                             @php                          
                                                                                             $data =  \App\Models\Report::where(['schedule_id' => $schedule->id])->first();
                                                                                             $data_actual_time = \App\Models\Schedule::where(['id' => $schedule->id])->pluck('actual_delivery_time')->first(); 
                                                                                          
                                                                                             @endphp
-                                                                                                <input type="hidden" name="schedule_id" id="schedule_id">
+                                                                                                
                                                                                                 <div class="box-body">
                                                                                                     <div class="form-group">
                                                                                                         <label for="actual_delivery_time">Actual Delivery Time</label>
@@ -269,7 +275,7 @@
             </div>
         </section>
         <!-- /.content -->
-    </div>
+    </div>                                  
     <!-- /.content-wrapper -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
         <div class="modal-dialog" role="document">

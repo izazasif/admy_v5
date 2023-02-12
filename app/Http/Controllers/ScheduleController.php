@@ -361,6 +361,7 @@ class ScheduleController extends Controller
     }
 
     public function update(Request $request){
+   
         $scheduleData = Schedule::where('id', $request->schedule_id)->first();
         $scheduleData->actual_delivery_time = date('Y-m-d H:i:s', strtotime($request->actual_delivery_time));
         $scheduleData->status = 1;
