@@ -380,6 +380,40 @@ class ScheduleController extends Controller
         return redirect()->route('schedule.list')->with('message',$message);
     }
 
+    public function update_view(Request $request){
+      
+    
+
+
+      if( $request->actual_delivery_time == null){
+       
+        $reportData = Report::where('schedule_id', $request->schedule_id)->first();
+        $reportData->sent_amount = $request->sent_amount;
+        $reportData->success_amount = $request->success_amount;
+        $reportData->failed_amount = $request->failed_amount;
+        $reportData->subscribed_amount = $request->subscribed_amount;
+        $reportData->save();
+      }
+      else {
+        
+      $scheduleData = Schedule::where('id', $request->schedule_id)->first();
+      $scheduleData->actual_delivery_time = date('Y-m-d H:i:s', strtotime($request->actual_delivery_time));
+      $scheduleData->save();
+
+      $reportData = Report::where('schedule_id', $request->schedule_id)->first();
+      $reportData->sent_amount = $request->sent_amount;
+      $reportData->success_amount = $request->success_amount;
+      $reportData->failed_amount = $request->failed_amount;
+      $reportData->subscribed_amount = $request->subscribed_amount;
+      $reportData->save();
+
+      }
+      
+      $message = 'Schedule updated successfully!';
+      $log_write = storeActivityLog('OBD','OBD Schedule Update',json_encode($request->all()));
+      return redirect()->route('schedule.list')->with('message',$message);
+  }
+
     public function report(Request $request){
       $title = "AdMy | Schedule Report";
       $is_active = "schedule_report";
