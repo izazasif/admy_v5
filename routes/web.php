@@ -170,6 +170,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::get('/pack/edit/{id}','PackController@edit')->name('pack.edit');
         Route::post('/pack/update','PackController@update')->name('pack.update');        
         Route::post('/schedule/update','ScheduleController@update')->name('schedule.list.update');
+        Route::post('/schedule/update_view','ScheduleController@update_view')->name('schedule.list.update_view');
     });
     // OBD Viewer
     Route::group(['middleware' => 'CheckOBDViewer'], function(){

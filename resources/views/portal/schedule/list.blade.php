@@ -209,41 +209,50 @@
                                                                                                                                                             <span aria-hidden="true">&times;</span>
                                                                                                                                                             </button> -->
                                                                                         </div>
-                                                                                      
+                                                                                        <form method="POST" action="{{ route('schedule.list.update_view') }}" enctype="multipart/form-data">
+                                                                                            @csrf
                                                                                             <div class="modal-body">
                                                                                             @php                          
                                                                                             $data =  \App\Models\Report::where(['schedule_id' => $schedule->id])->first();
                                                                                             $data_actual_time = \App\Models\Schedule::where(['id' => $schedule->id])->pluck('actual_delivery_time')->first(); 
                                                                                          
                                                                                             @endphp
-                                                                                                
+                                                                                                 <input type="hidden" value="{{$schedule->id}}" name="schedule_id">
                                                                                                 <div class="box-body">
                                                                                                     <div class="form-group">
                                                                                                         <label for="actual_delivery_time">Actual Delivery Time</label>
-                                                                                                       
-                                                                                                        <h4 class="box-title"> <span> {{ date('d-m-Y h:i A', strtotime($data_actual_time)) }} </span> </h4>
-                                                                                                    </div>
+                                                                                                        <h4 class="box-title"> <span>{{ date('d-m-Y h:i A', strtotime($data_actual_time)) }}</span> </h4>
+                                                                                                        <!-- <input type="text" id='datetimepicker' class="form-control"
+                                                                                                    name="actual_delivery_time" placeholder="Enter Actual Delivery Time" value=""
+                                                                                                    required> -->
+                                                                                                    <input type="datetime-local" id="meeting-time" class="form-control"
+                                                                                                    name="actual_delivery_time" value=""
+                                                                                                    min="2020-12-07T00:00" max="2030-12-14T00:00">
+                                                                                                                                                                                                    </div>
                                                                                                   
                                                                                                     <div class="form-group">
                                                                                                         <label for="sent_amount">Send Amount</label>
-                                                                                                        <!-- <input type="number" class="form-control" name="sent_amount"
-                                                                                                             value="{{ $data->sent_amount ?? 'None' }}" disabled> -->
-                                                                                                             <h4 class="box-title"> <span>{{ $data->sent_amount ?? 'None' }} </span> </h4>
+                                                                                                        <input type="number" class="form-control" name="sent_amount"
+                                                                                                             value="{{ $data->sent_amount ?? 'None' }}" >
+                                                                                                             
                                                                                                     </div>
                                                                                                     <div class="form-group">
                                                                                                         <label for="sent_amount">Success Amount</label>
-                                                                                                 
-                                                                                                             <h4 class="box-title"> <span>{{ $data->success_amount ?? 'None' }} </span> </h4>
+                                                                                                        <input type="number" class="form-control" name="success_amount"
+                                                                                                             value="{{ $data->success_amount ?? 'None' }}" >
+                                                                                                             
                                                                                                     </div>
                                                                                                     <div class="form-group">
                                                                                                         <label for="sent_amount">Failed Amount</label>
-                                                                                                        
-                                                                                                             <h4 class="box-title"> <span>{{$data->failed_amount ?? 'None' }} </span> </h4>
+                                                                                                        <input type="number" class="form-control" name="failed_amount"
+                                                                                                             value="{{ $data->failed_amount ?? 'None' }}">
+                                                                                                          
                                                                                                     </div>
                                                                                                     <div class="form-group">
                                                                                                         <label for="sent_amount">Subscribed Amount</label>
-                                                                                                        
-                                                                                                             <h4 class="box-title"> <span>{{$data->subscribed_amount ?? 'None'  }} </span> </h4>
+                                                                                                        <input type="number" class="form-control" name="subscribed_amount"
+                                                                                                             value="{{ $data->subscribed_amount ?? 'None' }}">
+                                                                                                             
                                                                                                     </div>
                                                                                                     
                                                                                                     
@@ -254,11 +263,11 @@
                                                                                                                                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                                                                                                                                 </div> -->
                                                                                             </div>
-                                                                                            <!-- <div class="modal-footer">
+                                                                                            <div class="modal-footer">
                                                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                                                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                                                                            </div> -->
-                                                                                      
+                                                                                            </div>
+                                                                                        </form>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

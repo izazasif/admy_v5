@@ -19,7 +19,9 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $title = "AdMy | Report User";
+        $is_active = "user_report";
+
         $daterange = $request->search_date;
         
 
@@ -47,8 +49,7 @@ class ReportController extends Controller
             $user_total = [];
         }
         
-        $title = "AdMy | Report User";
-        $is_active = "user_report";
+     
 
         return view('portal.report_obd.user_report', compact('title', 'is_active','user_total','total_1'));
     }
@@ -65,8 +66,11 @@ class ReportController extends Controller
 
         $daterange = $request->shdaterange;
 
-        if($daterange){
+        $type = $request->type;
+
+        if($daterange && $type==1 ){
             session()->put('search_date_schedule', $daterange);
+            session()->put('type', $type);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
@@ -81,17 +85,64 @@ class ReportController extends Controller
                                      ->groupBy(DB::raw("DATE(created_at)"),'app_id','app_name')
                                      ->get();
 
-    foreach($schedule_total_sms as $tot_sms) {
-        $schedule_total_obd->add($tot_sms);
-    }
-    $schedule_total_obd1 = $schedule_total_obd->sortBy('date');
+                foreach($schedule_total_sms as $tot_sms) {
+                    $schedule_total_obd->add($tot_sms);
+                }
+                $schedule_total_obd1 = $schedule_total_obd->sortBy('date');
 
-        $total_1 = 0;
-        foreach ($schedule_total_obd1 as $result) {
-        
-              $total_1 += $result->total;
-           }                                                 
-      }
+                    $total_1 = 0;
+                    foreach ($schedule_total_obd1 as $result) {
+                    
+                        $total_1 += $result->total;
+                    }                                                 
+                }
+        elseif($daterange && $type==2 ){
+                    session()->put('search_date_schedule', $daterange);
+                    session()->put('type', $type);
+                    $f = trim(explode("-",$daterange)[0]," ");
+                    $t = trim(explode("-",$daterange)[1]," ");
+                    $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+                    $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
+                    $appends = ['sms'];
+                   
+                    
+
+                     $schedule_total_obd = Schedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(obd_amount) as total"),DB::raw('("OBD") as type'),'app_id','app_name')
+                                                        ->whereBetween('created_at',[$from, $to])
+                                                        ->groupBy(DB::raw("DATE(created_at)"),'app_id','app_name')
+                                                        ->get();
+                
+            $schedule_total_obd1 = $schedule_total_obd->sortBy('date');
+
+                $total_1 = 0;
+                foreach ($schedule_total_obd1 as $result) {
+                
+                    $total_1 += $result->total;
+                }                                                 
+            }
+            elseif($daterange && $type==3 ){
+                session()->put('search_date_schedule', $daterange);
+                session()->put('type', $type);
+                $f = trim(explode("-",$daterange)[0]," ");
+                $t = trim(explode("-",$daterange)[1]," ");
+                $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+                $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
+                $appends = ['sms'];
+               
+                $schedule_total_sms = SMSSchedule::select(DB::raw("DATE(created_at) as date"), DB::raw("sum(sms_amount) as total"),DB::raw('("My Push") as type'),'app_id','app_name')
+                                    ->whereBetween('created_at',[$from, $to])
+                                    ->groupBy(DB::raw("DATE(created_at)"),'app_id','app_name')
+                                    ->get();
+
+       
+        $schedule_total_obd1 = $schedule_total_sms->sortBy('date');
+
+            $total_1 = 0;
+            foreach ($schedule_total_obd1 as $result) {
+            
+                $total_1 += $result->total;
+            }                                                 
+        }
        else {
             $total_1 = 0;
             $schedule_total_obd1 = [];
@@ -100,12 +151,20 @@ class ReportController extends Controller
     }
 
     public function  package(Request $request)
-    {
+    {   
+        $title = "AdMy | Report User";
+        $is_active = "package_report";
+
         $daterange = $request->shdaterange;
+
+        $type = $request->type;
+
+       
         
 
-        if($daterange){
+        if($daterange && $type==1){
             session()->put('search_date_package', $daterange);
+            session()->put('type', $type);
             $f = trim(explode("-",$daterange)[0]," ");
             $t = trim(explode("-",$daterange)[1]," ");
             $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
@@ -114,7 +173,10 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                             ->select(DB::raw("sum(tbl_s_m_s.price) as total"),DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),DB::raw('("My Push") as type'))
+                             ->select(DB::raw("sum(tbl_s_m_s.price) as total"),
+                             DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),
+                             DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),
+                             DB::raw('("My Push") as type'))
                              ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
                             ->whereBetween('user_s_m_s.created_at',[$from, $to])
@@ -122,7 +184,10 @@ class ReportController extends Controller
                             ->get();
             $obd_sold = DB::table('user_packs')
                             ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                             ->select(DB::raw("sum(tbl_packs.price) as total"),DB::raw( "DATE(tbl_user_packs.created_at) as date"),DB::raw( "sum(tbl_user_packs.amount) as tot_amount"),DB::raw('("OBD") as type'))
+                             ->select(DB::raw("sum(tbl_packs.price) as total")
+                             ,DB::raw( "DATE(tbl_user_packs.created_at) as date")
+                             ,DB::raw( "sum(tbl_user_packs.amount) as tot_amount")
+                             ,DB::raw('("OBD") as type'))
                              ->where('user_packs.status', 1)
                             ->whereBetween('user_packs.created_at',[$from, $to])
                             ->groupBy('date')
@@ -131,6 +196,38 @@ class ReportController extends Controller
           foreach($push_sms_sold as $tot_sms_sold) {
                   $obd_sold->add($tot_sms_sold);
               }
+            $total_package_sold = $obd_sold->sortBy('date');
+            $total_1 = 0;
+            $total_2 = 0;
+         foreach ($total_package_sold as $result) {
+            $total_1 += $result->total;
+         }
+          
+         foreach ($total_package_sold as $result) {
+            $total_2 += $result->tot_amount;
+         }
+                                      
+        }
+       elseif($daterange && $type==2){
+            session()->put('search_date_package', $daterange);
+            session()->put('type', $type);
+            $f = trim(explode("-",$daterange)[0]," ");
+            $t = trim(explode("-",$daterange)[1]," ");
+            $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
+            
+            $obd_sold = DB::table('user_packs')
+                            ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
+                             ->select(DB::raw("sum(tbl_packs.price) as total"),
+                             DB::raw( "DATE(tbl_user_packs.created_at) as date"),
+                             DB::raw( "sum(tbl_user_packs.amount) as tot_amount"),
+                             DB::raw('("OBD") as type'))
+                             ->where('user_packs.status', 1)
+                            ->whereBetween('user_packs.created_at',[$from, $to])
+                            ->groupBy('date')
+                            ->get();                
+            
+         
             $total_package_sold = $obd_sold->sortBy('date');
 
             $total_1 = 0;
@@ -144,15 +241,49 @@ class ReportController extends Controller
          }
                                       
         }
+        elseif($daterange && $type==3){
+            session()->put('search_date_package', $daterange);
+            session()->put('type', $type);
+            $f = trim(explode("-",$daterange)[0]," ");
+            $t = trim(explode("-",$daterange)[1]," ");
+            $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
+            
+            $push_sms_sold = DB::table('user_s_m_s')
+                            ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
+                            ->select(DB::raw("sum(tbl_s_m_s.price) as total"),
+                            DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),
+                            DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),
+                            DB::raw('("My Push") as type'))
+                            ->where('user_s_m_s.status', 1)
+                            ->where('user_s_m_s.is_active', 1)
+                            ->whereBetween('user_s_m_s.created_at',[$from, $to])
+                            ->groupBy('date')
+                            ->get();               
+            
+         
+            $total_package_sold = $push_sms_sold->sortBy('date');
+
+            $total_1 = 0;
+            $total_2 = 0;
+         foreach ($total_package_sold as $result) {
+            $total_1 += $result->total;
+         }
+          
+         foreach ($total_package_sold as $result) {
+            $total_2 += $result->tot_amount;
+         }
+                                      
+        }
+
         else {
             $total_1 = 0;
             $total_2 = 0;  
             $total_package_sold = [];
         }
         
-        $title = "AdMy | Report User";
-        $is_active = "package_report";
-
+        
+       
         return view('portal.report_obd.package_sold', compact('title', 'is_active','total_package_sold','total_1','total_2'));
     }
 
@@ -193,10 +324,12 @@ class ReportController extends Controller
     }
     public function report_reset_package(){
         session()->forget('search_date_package');
+        session()->forget('type');
         return redirect()->back();
     }
     public function report_reset_schedule(){
         session()->forget('search_date_schedule');
+        session()->forget('type');
         return redirect()->back();
     }
     

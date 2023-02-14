@@ -26,6 +26,19 @@
                                                 type="text" name="shdaterange" placeholder="Choose Date Range"
                                                 value="{{ session()->has('search_date_schedule') ? session()->get('search_date_schedule') : '' }}">
                                         </div>
+                                        <div class="form-group distable-cell">
+                                            <label for="shcategory">Type</label>
+                                            <select class="form-control input-sm" id="type" name="type">
+                                                <option >Choose Type</option>
+                                              
+                                                    <option value="1"{{ session()->has('type') && session()->get('type') == 1 ? 'selected' : '' }}>
+                                                        All  </option>
+                                                        <option value="2"{{ session()->has('type') && session()->get('type') == 2 ? 'selected' : '' }}>
+                                                        OBD  </option>
+                                                        <option value="3"{{ session()->has('type') && session()->get('type') == 3 ? 'selected' : '' }}>
+                                                        My Push  </option>
+                                            </select>
+                                       </div>
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"
                                                 name="search">Search</button>
