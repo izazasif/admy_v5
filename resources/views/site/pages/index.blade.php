@@ -463,8 +463,8 @@
                             <div class="col-md-2 text-center" data-aos="zoom-out"
                                 style=" padding-bottom:2%">
                                 <div class="package">
-                                    <h2>{{ $sm->unit_price }} BDT</h2>
-                                    <p> Per SMS</p>
+                                    <h2>BDT {{ number_format($sm->price) }}</h2>
+                                    <!-- <p> Per SMS</p> -->
                                     <h3><b>{{ number_format($sm->amount) }} SMS</b></h3>
                                     <b>Validity: {{ $sm->validity }} Day</b>
                                 </div>
