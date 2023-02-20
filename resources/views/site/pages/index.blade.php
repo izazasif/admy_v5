@@ -457,10 +457,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="text-center bulk-plan"><b>MY PUSH SMS PRICE PLAN</b></h2>
-                    <div class="row">
-                       <div class="col-md-1"></div>
+                    <div class="" style="margin-left: 7%; margin-right: 7%;">
+                       <!-- <div class="col-md-1"></div> -->
                         @foreach ($push_sms as $sm)
-                            <div class="col-md-2 text-center" data-aos="zoom-out"
+                            <div class="col-md-3 text-center" data-aos="zoom-out"
                                 style=" padding-bottom:2%">
                                 <div class="package">
                                     <h2>BDT {{ number_format($sm->price) }}</h2>
@@ -472,7 +472,7 @@
                                     role="button"><b>BUY NOW</b></a>
                             </div>
                         @endforeach
-                        <div class="col-md-1"></div>
+                        <!-- <div class="col-md-1"></div> -->
                     </div>
                 </div>
             </div>
