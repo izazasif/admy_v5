@@ -9,7 +9,7 @@ class ContactUsController extends Controller
 {
     public function contact()
     {
-        $title = "AdMy | Contact Us";
+        $title = "MyBdApps | Contact Us";
         return view('site.pages.contact', compact('title'));
     }
 }

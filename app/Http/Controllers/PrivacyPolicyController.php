@@ -8,7 +8,7 @@ class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $title = "AdMy | Privacy Policy";
+        $title = "MyBdApps | Privacy Policy";
         return view('site.pages.privacy', compact('title'));
     }
 }

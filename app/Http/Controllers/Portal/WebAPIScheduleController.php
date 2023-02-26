@@ -11,7 +11,7 @@ class WebAPIScheduleController extends Controller
 {
     public function create()
     {
-        $title = "AdMy | Create Web API Schedule";
+        $title = "MyBdApps | Create Web API Schedule";
         $is_active = "create_web_schedule";
         $categories = Category::where('status', 1)->get();
 
@@ -70,7 +70,7 @@ class WebAPIScheduleController extends Controller
 
     public function list(Request $request)
     {
-        $title = "AdMy | Web API Schedule List";
+        $title = "MyBdApps | Web API Schedule List";
         $is_active = "web_api_schedule_list";
         $all_schedule_list = WebAPISchedule::paginate(20);
         return view('portal.web-api.schedule_list', compact('title', 'is_active', 'all_schedule_list'));
@@ -78,7 +78,7 @@ class WebAPIScheduleController extends Controller
     public function userList(Request $request)
     {
         $user_id = session()->get('user_id');
-        $title = "AdMy | Web API Schedule List";
+        $title = "MyBdApps | Web API Schedule List";
         $is_active = "web_api_schedule_list";
         $all_schedule_list = WebAPISchedule::where('user_id',$user_id)->paginate(20);
         return view('portal.web-api.user_schedule_list', compact('title', 'is_active', 'all_schedule_list'));

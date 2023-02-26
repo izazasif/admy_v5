@@ -67,7 +67,7 @@ class SMSController extends Controller
     }
 
     public function edit($id){
-        $title = "AdMy | Edit SMS Package";
+        $title = "MyBdApps | Edit SMS Package";
         $is_active = "sms_edit";
         $smsDetail = SMS::where('id', $id)->first();
         return view('portal.sms.edit', compact('title', 'is_active', 'smsDetail'));
@@ -117,14 +117,14 @@ class SMSController extends Controller
     }
 
     public function purchase(){
-        $title = "AdMy | SMS Purchase";
+        $title = "MyBdApps | SMS Purchase";
         $is_active = "purchase_sms";
         $sms = SMS::where('status', 1)->get();
         return view('portal.sms.purchase', compact('title', 'is_active', 'sms'));
     }
 
     public function checkout($id){
-        $title = "AdMy | SMS Checkout";
+        $title = "MyBdApps | SMS Checkout";
         $is_active = "purchase_sms";
         $packDetails = SMS::where('id', $id)->where('status', 1)->first();
             $user_id = session()->get('user_id');
@@ -188,7 +188,7 @@ class SMSController extends Controller
     }
 
     public function campaignInformation($id){
-        $title = "AdMy | Campaign Stat";
+        $title = "MyBdApps | Campaign Stat";
         $is_active = "campaign_stat";
         $cam = Campaign::where('schedule_id',$id)->select('campaign_id')->first();
         $campaign = new CampainController();
@@ -198,7 +198,7 @@ class SMSController extends Controller
     }
 
     public function purchaseHistory(){
-        $title = "AdMy | Push SMS Purchase History";
+        $title = "MyBdApps | Push SMS Purchase History";
         $user_id = session()->get('user_id');
         $is_active = "sms_purchase_history";
         $lists = UserSMS::where('user_id',$user_id)->where('is_active',1)->paginate(20);
@@ -207,7 +207,7 @@ class SMSController extends Controller
     public function campaingForUser(){
         session()->forget('dateRangeStat');
         session()->forget('message');
-        $title = "AdMy | Campaing Stat";
+        $title = "MyBdApps | Campaing Stat";
         $is_active = "campaing_stat";
         $data = [];
         return view('portal.sms_schedule.campain_stat_user', compact('title','is_active','data'));
@@ -217,7 +217,7 @@ class SMSController extends Controller
         session()->forget('clientId');
         session()->forget('dateRangeStat');
         session()->forget('message');
-        $title = "AdMy | Campaing Stat";
+        $title = "MyBdApps | Campaing Stat";
         $is_active = "campaing_stat_admin";
         $users = User::where('status',1)->where('role','user')->get();
         $data = [];

@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $title = "AdMy";
+        $title = "MyBdApps";
         $packs = Pack::where('status', 1)->get();
         $sms = SMS::where('status', 1)->where('sms_category','bulk')->get();
         $push_sms = SMS::where('status', 1)->where('sms_category','push')->get();
@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     public function WebAPI()
     {
-        $title = "AdMy | Web API";
+        $title = "MyBdApps | Web API";
         $packs = WebApi::where('status', 1)->where('acquisition','!=',0)->limit(3)->get();
         $single = WebApi::where('acquisition',0)->select('price')->first();
         $unit_price = $single->price;

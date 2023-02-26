@@ -17,13 +17,13 @@ class LoginController extends Controller
 {
     public function signin()
     {
-        $title = "AdMy | Sign In";
+        $title = "MyBdApps | Sign In";
         return view('site.pages.signin', compact('title'));
     }
 
     public function signup()
     {
-        $title = "AdMy | Sign Up";
+        $title = "MyBdApps | Sign Up";
         return view('site.pages.signup', compact('title'));
     }
 
@@ -228,7 +228,7 @@ class LoginController extends Controller
                                 ->first();
 
         if($fpData){
-            $title = "AdMy | Forgot Password";
+            $title = "MyBdApps | Forgot Password";
             return view('site.pages.forgot_pass', compact('title', 'user_id', 'token'));
         }else{
             return redirect()->route('home');
@@ -236,7 +236,7 @@ class LoginController extends Controller
     }
 
     public function forgot(){
-        $title = "AdMy | Forgot Password";
+        $title = "MyBdApps | Forgot Password";
         return view('site.pages.forgot_email', compact('title'));
     }
 

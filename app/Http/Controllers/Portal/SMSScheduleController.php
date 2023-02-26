@@ -13,7 +13,7 @@ class SMSScheduleController extends Controller
 {
     public function create()
     {
-        $title = "AdMy | Create SMS Schedule";
+        $title = "MyBdApps | Create SMS Schedule";
         $is_active = "create_sms_schedule";
         $categories = Category::where('status', 1)->get();
         $sms_texts = SMSText::where('status', 1)->get();
@@ -128,7 +128,7 @@ class SMSScheduleController extends Controller
             session()->forget('dateRangeStat');
             $all_schedule_list = SMSSchedule::orderBy('created_at', 'desc')->paginate(20);
         }
-        $title = "AdMy | SMS Schedule List";
+        $title = "MyBdApps | SMS Schedule List";
         $is_active = "sms_schedule_list";
         
         return view('portal.sms_schedule.list', compact('title', 'is_active', 'all_schedule_list'));
@@ -137,7 +137,7 @@ class SMSScheduleController extends Controller
     public function listForUser(Request $request)
     {
         $user_id = session()->get('user_id');
-        $title = "AdMy | SMS Schedule List";
+        $title = "MyBdApps | SMS Schedule List";
         $is_active = "sms_schedule_list";
         $all_schedule_list = SMSSchedule::where('user_id',$user_id)->paginate(20);
         return view('portal.sms_schedule.user_list', compact('title', 'is_active', 'all_schedule_list'));

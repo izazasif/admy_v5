@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admy</title>
+    <title>MyBdApps</title>
 </head>
 
 <body>

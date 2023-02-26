@@ -156,7 +156,7 @@ class CampainController extends Controller
             $url = 'https://api.joycalls.com:48080/stats' . $qstring;
             $result = $client->request('GET', $url);
             
-            $title = "AdMy | Campaing Stat";
+            $title = "MyBdApps | Campaing Stat";
                    
             $decode_result = json_decode($result->getBody()->getContents());
             $data = $decode_result->stats;
@@ -165,7 +165,7 @@ class CampainController extends Controller
         }
     
         catch (\Exception $e) { 
-            $title = "AdMy | Campaing Stat";
+            $title = "MyBdApps | Campaing Stat";
             $users="";
             $data = "";
             $is_active = "campaing_stat";
@@ -182,7 +182,7 @@ class CampainController extends Controller
     }
     
     public function smsCampaingStat2(){
-        $title = "AdMy | Campaing Stat";
+        $title = "MyBdApps | Campaing Stat";
         $is_active = "campaing_stat_admin";
         $token = $this->getUserKey();
         $clientid = (request()->query('user'));

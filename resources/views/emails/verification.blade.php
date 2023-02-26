@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admy</title>
+    <title>MyBdApps</title>
 </head>
 <body>
     <p>{{ $body }}</p>
