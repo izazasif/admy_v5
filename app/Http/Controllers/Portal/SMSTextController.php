@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 class SMSTextController extends Controller
 {
     public function index(){
-        $title = "AdMy | SMS Text List";
+        $title = "MyBdApps | SMS Text List";
         $is_active = "sms_text_list";
         $lists = SMSText::paginate(50);
         return view('portal.sms_text.list', compact('title', 'is_active', 'lists'));
     }
 
     public function create(){
-        $title = "AdMy | Create SMS Text";
+        $title = "MyBdApps | Create SMS Text";
         $is_active = "sms_text_create";
 
         $categories = Category::where('status', 1)->get();
@@ -54,7 +54,7 @@ class SMSTextController extends Controller
     }
 
     public function edit($id){
-        $title = "AdMy | Edit SMS Text";
+        $title = "MyBdApps | Edit SMS Text";
         $is_active = "sms_text_edit";
 
         $categories = Category::where('status', 1)->get();

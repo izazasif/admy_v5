@@ -9,7 +9,7 @@ class ObdController extends Controller
 {
     public function analytics()
     {
-        $title = "AdMy | Products Analytics";
+        $title = "MyBdApps | Products Analytics";
         return view('site.pages.analytics', compact('title'));
     }
 }

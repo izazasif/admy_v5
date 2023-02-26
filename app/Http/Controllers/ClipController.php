@@ -10,7 +10,7 @@ use App\Models\AudioClip;
 class ClipController extends Controller
 {
     public function index(){
-        $title = "AdMy | Clip List";
+        $title = "MyBdApps | Clip List";
         $is_active = "clip_list";
 
         $clips = AudioClip::paginate(50);
@@ -19,7 +19,7 @@ class ClipController extends Controller
     }
 
     public function create(){
-        $title = "AdMy | Create OBD Clip";
+        $title = "MyBdApps | Create OBD Clip";
         $is_active = "clip_create";
 
         $categories = Category::where('status', 1)->get();
@@ -70,7 +70,7 @@ class ClipController extends Controller
     }
 
     public function edit($id){
-      $title = "AdMy | Edit OBD Clip";
+      $title = "MyBdApps | Edit OBD Clip";
       $is_active = "clip_edit";
 
       $categories = Category::where('status', 1)->get();

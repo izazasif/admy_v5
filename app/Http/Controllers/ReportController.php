@@ -19,7 +19,7 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        $title = "AdMy | Report User";
+        $title = "MyBdApps | Report User";
         $is_active = "user_report";
 
         $daterange = $request->search_date;
@@ -61,7 +61,7 @@ class ReportController extends Controller
      */
     public function schedule(Request $request)
     {
-        $title = "AdMy | Report User";
+        $title = "MyBdApps | Report User";
         $is_active = "schedule_report";
 
         $daterange = $request->shdaterange;
@@ -152,7 +152,7 @@ class ReportController extends Controller
 
     public function  package(Request $request)
     {   
-        $title = "AdMy | Report User";
+        $title = "MyBdApps | Report User";
         $is_active = "package_report";
 
         $daterange = $request->shdaterange;
@@ -311,7 +311,7 @@ class ReportController extends Controller
             $all_schedule_list = [];
         }
         
-        $title = "AdMy | Report User";
+        $title = "MyBdApps | Report User";
         $is_active = "obd_report_count";
 
         return view('portal.report_obd.obd_report', compact('title', 'is_active','all_schedule_list'));

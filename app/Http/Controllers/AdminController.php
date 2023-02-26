@@ -18,7 +18,7 @@ use Carbon\Carbon;
 class AdminController extends Controller
 {
     public function index(){
-        $title = "AdMy | Admin User List";
+        $title = "MyBdApps | Admin User List";
         $is_active = "admin_list";
 
         $admin_users = User::where('role', 'admin')->paginate(50);
@@ -27,7 +27,7 @@ class AdminController extends Controller
     }
 
     public function create(){
-        $title = "AdMy | Create Admin User";
+        $title = "MyBdApps | Create Admin User";
         $is_active = "admin_create";
 
         return view('portal.admin.create', compact('title', 'is_active'));
@@ -80,7 +80,7 @@ class AdminController extends Controller
     }
 
     public function edit($id){
-      $title = "AdMy | Edit Admin User";
+      $title = "MyBdApps | Edit Admin User";
       $is_active = "admin_edit";
 
       $adminDetail = User::where('id', $id)->first();
@@ -127,7 +127,7 @@ class AdminController extends Controller
     }
 
     public function userList(){
-        $title = "AdMy | User List";
+        $title = "MyBdApps | User List";
         $is_active = "user_list";
 
         $users = User::where('role', 'user')->paginate(50);

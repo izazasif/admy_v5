@@ -9,7 +9,7 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     public function index(){
-        $title = "AdMy | Category List";
+        $title = "MyBdApps | Category List";
         $is_active = "category_list";
 
         $categories = Category::paginate(50);
@@ -18,7 +18,7 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        $title = "AdMy | Create Category";
+        $title = "MyBdApps | Create Category";
         $is_active = "category_create";
 
         return view('portal.category.create', compact('title', 'is_active'));
@@ -48,7 +48,7 @@ class CategoryController extends Controller
     }
 
     public function edit($id){
-      $title = "AdMy | Edit Category";
+      $title = "MyBdApps | Edit Category";
       $is_active = "category_edit";
 
       $categoryDetail = Category::where('id', $id)->first();

@@ -10,7 +10,7 @@ use App\Models\Discussion;
 class TicketController extends Controller
 {
     public function index(){
-        $title = "AdMy | Ticket List";
+        $title = "MyBdApps | Ticket List";
         $is_active = "ticket_list";
 
         $tickets = Ticket::orderBy('updated_at', 'desc')->paginate(50);
@@ -19,7 +19,7 @@ class TicketController extends Controller
     }
 
     public function create(){
-        $title = "AdMy | Create Ticket";
+        $title = "MyBdApps | Create Ticket";
         $is_active = "ticket_create";
 
         return view('portal.ticket.create', compact('title', 'is_active'));
@@ -53,7 +53,7 @@ class TicketController extends Controller
     }
 
     public function selfList(){
-        $title = "AdMy | My Ticket List";
+        $title = "MyBdApps | My Ticket List";
         $is_active = "ticket_list_self";
 
         $user_id = session()->get('user_id');
@@ -65,7 +65,7 @@ class TicketController extends Controller
     }
 
     public function edit($id){
-        $title = "AdMy | Edit Ticket";
+        $title = "MyBdApps | Edit Ticket";
         $is_active = "ticket_edit";
   
         $ticketDetail = Ticket::where('id', $id)->first();
@@ -78,7 +78,7 @@ class TicketController extends Controller
     }
 
     public function selfEdit($id){
-        $title = "AdMy | Edit Ticket";
+        $title = "MyBdApps | Edit Ticket";
         $is_active = "ticket_edit";
   
         $ticketDetail = Ticket::where('id', $id)->first();

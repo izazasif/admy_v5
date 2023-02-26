@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 class WebApiController extends Controller
 {
     public function index(){
-        $title = "AdMy | Web API List";
+        $title = "MyBdApps | Web API List";
         $is_active = "web_api_list";
         $lists = WebApi::paginate(50);
         return view('portal.web-api.list', compact('title', 'is_active', 'lists'));
     }
 
     public function create(){
-        $title = "AdMy | Create Web API";
+        $title = "MyBdApps | Create Web API";
         $is_active = "web_api_create";
         return view('portal.web-api.create', compact('title', 'is_active'));
     }
@@ -51,7 +51,7 @@ class WebApiController extends Controller
     }
 
     public function edit($id){
-        $title = "AdMy | Edit Web API";
+        $title = "MyBdApps | Edit Web API";
         $is_active = "web_api_edit";
         $web = WebApi::where('id',$id)->first();
 
@@ -87,14 +87,14 @@ class WebApiController extends Controller
     }
 
     public function purchase(){
-        $title = "AdMy | Web API Purchase";
+        $title = "MyBdApps | Web API Purchase";
         $is_active = "purchase_web_api";
         $webs = WebApi::where('status', 1)->where('acquisition','!=',0)->get();
         return view('portal.web-api.purchase', compact('title', 'is_active', 'webs'));
     }
 
     public function checkout($id){
-        $title = "AdMy | Web API Checkout";
+        $title = "MyBdApps | Web API Checkout";
         $is_active = "purchase_web_api";
         $packDetails = WebApi::where('id', $id)->where('status', 1)->first();
         if($packDetails) {
@@ -130,7 +130,7 @@ class WebApiController extends Controller
             'acquisition.required' => 'Acquisition field is required!',
             'acquisition.numeric' => 'Acquisition field is numeric!',
         ];
-        $title = "AdMy | Web API Checkout";
+        $title = "MyBdApps | Web API Checkout";
         $is_active = "purchase_web_api";
         $packDetails = WebApi::where('acquisition',0)->where('status', 1)->first();
         if($packDetails) {
@@ -158,7 +158,7 @@ class WebApiController extends Controller
     }
 
     public function purchaseHistory(){
-        $title = "AdMy | Web API purchase history";
+        $title = "MyBdApps | Web API purchase history";
         $is_active = "web_api_purchase_history";
         $user_id = session()->get('user_id');
         $lists = UserWebAPI::where('user_id',$user_id)->paginate(20);

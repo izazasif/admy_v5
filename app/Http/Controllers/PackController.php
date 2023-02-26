@@ -12,14 +12,14 @@ use PDF;
 class PackController extends Controller
 {
     public function purchase(){
-        $title = "AdMy | Pack Purchase";
+        $title = "MyBdApps | Pack Purchase";
         $is_active = "purchase_pack";
         $packs = Pack::where('status', 1)->get();
         return view('portal.pack.purchase', compact('title', 'is_active', 'packs'));
     }
 
     public function checkout($id){
-      $title = "AdMy | Pack Checkout";
+      $title = "MyBdApps | Pack Checkout";
       $is_active = "purchase_pack";
       $packDetails = Pack::where('id', $id)->where('status', 1)->first();
 
@@ -88,7 +88,7 @@ class PackController extends Controller
     }
 
     public function history(Request $request){
-      $title = "AdMy | Pack History";
+      $title = "MyBdApps | Pack History";
       $is_active = "purchase_history";
       $packs = Pack::where('status', 1)->get();
 
@@ -150,14 +150,14 @@ class PackController extends Controller
     }
 
     public function faq(){
-      $title = "AdMy | FAQ";
+      $title = "MyBdApps | FAQ";
       $is_active = "faq";
 
       return view('portal.faq', compact('title', 'is_active'));
     }
 
     public function index(){
-      $title = "AdMy | OBD Pack List";
+      $title = "MyBdApps | OBD Pack List";
       $is_active = "pack_list";
 
       $packs = Pack::paginate(50);
@@ -166,7 +166,7 @@ class PackController extends Controller
     }
 
     public function create(){
-      $title = "AdMy | Create OBD Pack";
+      $title = "MyBdApps | Create OBD Pack";
       $is_active = "pack_create";
 
       return view('portal.pack.create', compact('title', 'is_active'));
@@ -208,7 +208,7 @@ class PackController extends Controller
     }
 
     public function edit($id){
-      $title = "AdMy | Edit OBD Pack";
+      $title = "MyBdApps | Edit OBD Pack";
       $is_active = "pack_edit";
 
       $packDetail = Pack::where('id', $id)->first();

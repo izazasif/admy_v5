@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $title = "AdMy | Home";
+        $title = "MyBdApps | Home";
         return view('admin.home.index', compact('title'));
     }
 }

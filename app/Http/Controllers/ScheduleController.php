@@ -17,7 +17,7 @@ class ScheduleController extends Controller
 {
     public function create()
     {
-        $title = "AdMy | Create Schedule";
+        $title = "MyBdApps | Create Schedule";
         $is_active = "create_schedule";
         $categorys = Category::where('status', 1)->get();
         $audio_clips = AudioClip::where('status', 1)->get();
@@ -119,7 +119,7 @@ class ScheduleController extends Controller
 
     public function history(Request $request)
     {
-        $title = "AdMy | Schedule History";
+        $title = "MyBdApps | Schedule History";
         $is_active = "schedule_history";
         $categories = Category::where('status', 1)->get();
 
@@ -347,7 +347,7 @@ class ScheduleController extends Controller
 
     public function list(Request $request)
     {
-        $title = "AdMy | Schedule List";
+        $title = "MyBdApps | Schedule List";
         $is_active = "schedule_list";
         $categories = Category::where('status', 1)->get();
 
@@ -415,7 +415,7 @@ class ScheduleController extends Controller
   }
 
     public function report(Request $request){
-      $title = "AdMy | Schedule Report";
+      $title = "MyBdApps | Schedule Report";
       $is_active = "schedule_report";
       $categories = Category::where('status', 1)->get();
 
