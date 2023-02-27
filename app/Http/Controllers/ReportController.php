@@ -173,7 +173,7 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                             ->select('s_m_s.price as total','user_s_m_s.user_id as user_email','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
+                             ->select('s_m_s.price as total','user_s_m_s.user_id as user_id','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
                              DB::raw('("My Push") as type'))
                              ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
@@ -182,7 +182,7 @@ class ReportController extends Controller
                             ->get();             
             $obd_sold = DB::table('user_packs')
                             ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                             ->select('packs.price as total','user_packs.user_id as user_email','user_packs.created_at as date'
+                             ->select('packs.price as total','user_packs.user_id as user_id','user_packs.created_at as date'
                              ,'user_packs.amount as tot_amount'
                              ,DB::raw('("OBD") as type'))
                              ->where('user_packs.status', 1)
@@ -215,7 +215,7 @@ class ReportController extends Controller
             
             $obd_sold = DB::table('user_packs')
                         ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                        ->select('packs.price as total','user_packs.user_id as user_email','user_packs.created_at as date'
+                        ->select('packs.price as total','user_packs.user_id as user_id','user_packs.created_at as date'
                         ,'user_packs.amount as tot_amount'
                         ,DB::raw('("OBD") as type'))
                         ->where('user_packs.status', 1)
@@ -247,7 +247,7 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                            ->select('s_m_s.price as total','user_s_m_s.user_id as user_email','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
+                            ->select('s_m_s.price as total','user_s_m_s.user_id as user_id','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
                             DB::raw('("My Push") as type'))
                             ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
