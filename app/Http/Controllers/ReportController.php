@@ -173,24 +173,21 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                             ->select(DB::raw("sum(tbl_s_m_s.price) as total"),
-                             DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),
-                             DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),
+                             ->select('s_m_s.price as total','user_s_m_s.user_id as user_email','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
                              DB::raw('("My Push") as type'))
                              ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
                             ->whereBetween('user_s_m_s.created_at',[$from, $to])
-                            ->groupBy('date')
-                            ->get();
+                            ->orderBy('date', 'asc')
+                            ->get();             
             $obd_sold = DB::table('user_packs')
                             ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                             ->select(DB::raw("sum(tbl_packs.price) as total")
-                             ,DB::raw( "DATE(tbl_user_packs.created_at) as date")
-                             ,DB::raw( "sum(tbl_user_packs.amount) as tot_amount")
+                             ->select('packs.price as total','user_packs.user_id as user_email','user_packs.created_at as date'
+                             ,'user_packs.amount as tot_amount'
                              ,DB::raw('("OBD") as type'))
                              ->where('user_packs.status', 1)
                             ->whereBetween('user_packs.created_at',[$from, $to])
-                            ->groupBy('date')
+                            ->orderBy('date', 'asc')
                             ->get();                
             
           foreach($push_sms_sold as $tot_sms_sold) {
@@ -217,15 +214,14 @@ class ReportController extends Controller
             $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
             
             $obd_sold = DB::table('user_packs')
-                            ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
-                             ->select(DB::raw("sum(tbl_packs.price) as total"),
-                             DB::raw( "DATE(tbl_user_packs.created_at) as date"),
-                             DB::raw( "sum(tbl_user_packs.amount) as tot_amount"),
-                             DB::raw('("OBD") as type'))
-                             ->where('user_packs.status', 1)
-                            ->whereBetween('user_packs.created_at',[$from, $to])
-                            ->groupBy('date')
-                            ->get();                
+                        ->join('packs', 'packs.id', '=', 'user_packs.pack_id')
+                        ->select('packs.price as total','user_packs.user_id as user_email','user_packs.created_at as date'
+                        ,'user_packs.amount as tot_amount'
+                        ,DB::raw('("OBD") as type'))
+                        ->where('user_packs.status', 1)
+                        ->whereBetween('user_packs.created_at',[$from, $to])
+                        ->orderBy('date', 'asc')
+                        ->get();                
             
          
             $total_package_sold = $obd_sold->sortBy('date');
@@ -251,15 +247,13 @@ class ReportController extends Controller
             
             $push_sms_sold = DB::table('user_s_m_s')
                             ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id')
-                            ->select(DB::raw("sum(tbl_s_m_s.price) as total"),
-                            DB::raw( "DATE(tbl_user_s_m_s.created_at) as date"),
-                            DB::raw( "sum(tbl_user_s_m_s.amount) as tot_amount"),
+                            ->select('s_m_s.price as total','user_s_m_s.user_id as user_email','user_s_m_s.created_at as date','user_s_m_s.amount as tot_amount',
                             DB::raw('("My Push") as type'))
                             ->where('user_s_m_s.status', 1)
                             ->where('user_s_m_s.is_active', 1)
                             ->whereBetween('user_s_m_s.created_at',[$from, $to])
-                            ->groupBy('date')
-                            ->get();               
+                            ->orderBy('date', 'asc')
+                            ->get();           
             
          
             $total_package_sold = $push_sms_sold->sortBy('date');
@@ -274,8 +268,8 @@ class ReportController extends Controller
             $total_2 += $result->tot_amount;
          }
                                       
+         
         }
-
         else {
             $total_1 = 0;
             $total_2 = 0;  
