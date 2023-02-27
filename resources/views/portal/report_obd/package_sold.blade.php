@@ -83,21 +83,21 @@
                                     <th class="text-center">SL</th>
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Type</th>
-                                    <th class="text-center">Email </th>
+                                    <th class="text-center">User Email </th>
                                     <th class="text-center">Package</th>
                                     <th class="text-center">Amount </th>
                                 </tr>
                                 @php $sl = 1; @endphp
                                 @foreach ($total_package_sold as $pack_sold)
                                 @php                          
-                                $data =  \App\Models\User::select('email')->where(['id' => $pack_sold->user_email])->first();
-                               
+                                $data =  \App\Models\User::where(['id' => $pack_sold->user_id])->first();
+                                $userEmail = $data->email;
                                 @endphp
                                     <tr>
                                       <td class="text-center">{{ $sl++ }}</td>
                                       <td class="text-center">{{ date('d-m-Y', strtotime($pack_sold->date)) }}</td>
                                       <td class="text-center">{{ $pack_sold->type }}</td>
-                                      <td class="text-center">{{ $data }}</td>
+                                      <td class="text-center">{{ $userEmail }}</td>
                                       <td class="text-center">{{ $pack_sold->tot_amount }}</td>
                                       <td class="text-center">{{ $pack_sold->total }}</td>
                                    </tr>  
