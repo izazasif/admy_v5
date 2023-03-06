@@ -194,8 +194,9 @@ class BikashController extends Controller
            session()->put('user_sms_credit', $userPushSMSBalance);
 
            $data = SMSController::invoiceData($payment->user_sms_id);
+           $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
            $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
-           $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';
+           $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>please, find attached the invoice.';
            \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
 
            $message = 'Payment is successful! Pack purchase completed.';

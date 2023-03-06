@@ -153,7 +153,7 @@
                 <td>{{ number_format($data->amount) }}</td>
             </tr>
             <tr class="heading">
-                <td>Payment Method(bKash)</td>
+                <td>Payment Method(bKash/bank)</td>
 
                 <td>Amount(BDT)</td>
             </tr>
@@ -172,7 +172,7 @@
                 <td>{{ ($data->price * $data->vat) / 100 }} BDT</td>
             </tr>
             <tr class="">
-                <td>bKash Charge({{ $data->charge ? $data->charge : '0' }}%)</td>
+                <td>Gateway Charge({{ $data->charge ? $data->charge : '0' }}%)</td>
 
                 <td>{{ ($data->price * $data->charge) / 100 }} BDT</td>
             </tr>

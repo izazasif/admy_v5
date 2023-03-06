@@ -33,8 +33,8 @@ class PackController extends Controller
       session()->forget('id_token');
       session()->put('id_token', $id_token);
       // dd($request_token);
-
-      return view('portal.pack.checkout', compact('title', 'is_active', 'packDetails', 'id_token', 'refresh_token', 'expires_in', 'token_type'));
+      $total_amount = $packDetails->price + ($packDetails->price * ((env('APP_OBD_VAT')+env('APP_OBD_GATEWAY')) / 100));
+      return view('portal.pack.checkout', compact('title', 'is_active', 'packDetails', 'id_token', 'refresh_token', 'expires_in', 'token_type','total_amount'));
     }
 
     function bkash_Get_Token(){
@@ -260,7 +260,7 @@ class PackController extends Controller
     }
 
     public static function invoiceData($id){
-      $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','packs.*')
+      $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','user_packs.vat as vat','user_packs.gateway_charge as charge','packs.*')
                           ->join('users', 'users.id', '=', 'user_packs.user_id') 
                           ->join('packs', 'packs.id', '=', 'user_packs.pack_id') 
                           ->where('user_packs.id',$id)

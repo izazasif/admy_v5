@@ -65,13 +65,14 @@
                                         </div>
                                         {{-- vat charge --}}
                                         <div class="pack-amount">
-                                            <span>Vat(15%)- {{ $packDetails->price * (15 / 100) }}
+                                            <span>Vat({{ env('APP_PSMS_VAT') }}%)-
+                                                {{ $packDetails->price * (env('APP_PSMS_VAT') / 100) }}
                                                 Taka</span>
                                         </div>
                                         {{-- payment gateway charge --}}
                                         <div class="pack-amount">
-                                            <span>bKash charge(1.5%)-
-                                                {{ $packDetails->price * (1.5 / 100) }} Taka</span>
+                                            <span>Gateway charge({{ env('APP_PSMS_GATEWAY') }}%)-
+                                                {{ $packDetails->price * (env('APP_PSMS_GATEWAY') / 100) }} Taka</span>
                                         </div>
                                         <div class="pack-amount">
                                             <span>Sub-Total

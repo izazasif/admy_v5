@@ -153,7 +153,7 @@
                 <td>{{ number_format($data->amount) }}</td>
             </tr>
             <tr class="heading">
-                <td>Payment Method(bKash)</td>
+                <td>Payment Method(bKash/bank)</td>
 
                 <td>Amount(BDT)</td>
             </tr>
@@ -163,20 +163,22 @@
                 <td>{{ number_format($data->price) }}BDT</td>
             </tr>
             <tr class="">
-                <td>Vat(0%)</td>
+                <td>Vat({{ $data->vat ? $data->vat : '0' }}%)</td>
 
-                <td>0BDT</td>
+                <td>{{ ($data->price * $data->vat) / 100 }} BDT</td>
             </tr>
             <tr class="">
-                <td>bKash Charge(0%)</td>
+                <td>Gateway Charge({{ $data->charge ? $data->charge : '0' }}%)</td>
 
-                <td>0BDT</td>
+                <td>{{ ($data->price * $data->charge) / 100 }} BDT</td>
             </tr>
-
+            @php
+                $p = $data->price + $data->price * (($data->vat + $data->charge) / 100);
+            @endphp
             <tr class="total">
                 <td></td>
 
-                <td>Total: {{ number_format($data->price) }}BDT</td>
+                <td>Total: {{ number_format($p) }}BDT</td>
             </tr>
         </table>
         <p style="font-size: 10px;">*Validity: {{ $data->validity }} Days & Valid Till
