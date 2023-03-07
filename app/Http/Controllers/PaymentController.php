@@ -98,6 +98,7 @@ class PaymentController extends Controller
                 $userPackData->vat = env('APP_OBD_VAT'); // percentage
                 $userPackData->gateway_charge = env('APP_OBD_GATEWAY'); // percentage
                 $userPackData->base_price = $packDetails->price;
+                $userPackData->type = 'bkash';
                 $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +'.$packDetails->validity.' day'));
                 $userPackData->save();
 
@@ -140,6 +141,7 @@ class PaymentController extends Controller
                 $userPackData->vat = env('APP_OBD_VAT'); // percentage
                 $userPackData->gateway_charge = env('APP_OBD_GATEWAY'); // percentage
                 $userPackData->base_price = $packDetails->price;
+                $userPackData->type = 'bkash';
                 $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +'.$packDetails->validity.' day'));
                 $userPackData->save();
 

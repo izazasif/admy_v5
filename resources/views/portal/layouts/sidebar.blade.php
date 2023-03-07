@@ -152,6 +152,13 @@
                                         Report</a>
                                 </li>
                             @endif
+                            @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_creator')
+                                <li class="{{ $is_active == 'obd_bank_payment' ? 'active' : '' }}"><a
+                                        href="{{ route('obd.bank.payment') }}"><i class="fa fa-dollar "></i>
+                                        Pending Bank
+                                        Payment</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endif
@@ -201,11 +208,16 @@
                                         Report</a>
                                 </li>
                             @endif
+                            @if (session()->get('permission') != 'sms_creator' && session()->get('permission') != 'sms_viewer')
+                                <li class="{{ $is_active == 'sms_bank_payment' ? 'active' : '' }}"><a
+                                        href="{{ route('psms.bank.payment') }}"><i class="fa fa-dollar"></i>
+                                        Pending Bank Payment</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endif
                 @if (session()->get('permission') == 'all')
-                   
                     <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
                             href="{{ route('ticket.list') }}"><i class="fa fa-ticket text-aqua"></i> <span>Ticket
                                 List</span></a></li>
@@ -226,13 +238,12 @@
                                     href="{{ route('category.list') }}"><i class="fa fa-stack-exchange"></i> Category
                                     List</a></li>
                         </ul>
-                    </li>            
+                    </li>
                     <li class="{{ $is_active == 'user_list' ? 'active' : '' }}"><a
                             href="{{ route('user.list') }}"><i class="fa fa-users text-aqua"></i> <span>User
                                 List</span></a></li>
-                    
                 @endif
-                
+
 
                 <!-- <li class="treeview {{ $is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active == 'web_api_schedule_list' ? 'active' : '' }}">
                     <a href="#">
@@ -268,8 +279,8 @@
                     </li>
                 @endif
                 @if (session()->get('permission') == 'all')
-                <li
-                        class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count'  ? 'active' : '' }}">
+                    <li
+                        class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count' ? 'active' : '' }}">
                         <a href="#">
                             <i class="fa fa-th-large text-aqua"></i> <span>Report </span>
                             <span class="pull-right-container">
@@ -278,16 +289,19 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="{{ $is_active == 'user_report' ? 'active' : '' }}"><a
-                                    href="{{ route('report.user') }}"><i class="fa fa-tags"></i> User Registration Count </a>
+                                    href="{{ route('report.user') }}"><i class="fa fa-tags"></i> User Registration
+                                    Count </a>
                             </li>
-                            <li class="{{ $is_active == 'package_report'  ? 'active' : '' }}"><a
-                                    href="{{ route('package.report') }}"><i class="fa fa-stack-exchange"></i> Number of Package Sold 
-                            <li class="{{ $is_active == 'schedule_report'  ? 'active' : '' }}"><a
-                                    href="{{ route('schedule.report') }}"><i class="fa fa-stack-exchange"></i> Daily Scheduled Count
-                                    </a></li>
-                            <li class="{{ $is_active == 'obd_report_count'  ? 'active' : '' }}"><a
+                            <li class="{{ $is_active == 'package_report' ? 'active' : '' }}"><a
+                                    href="{{ route('package.report') }}"><i class="fa fa-stack-exchange"></i> Number
+                                    of Package Sold
+                            <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a
+                                    href="{{ route('schedule.report') }}"><i class="fa fa-stack-exchange"></i> Daily
+                                    Scheduled Count
+                                </a></li>
+                            <li class="{{ $is_active == 'obd_report_count' ? 'active' : '' }}"><a
                                     href="{{ route('obd.report') }}"><i class="fa fa-stack-exchange"></i> OBD Report
-                                    </a></li>        
+                                </a></li>
                         </ul>
                     </li>
                 @endif

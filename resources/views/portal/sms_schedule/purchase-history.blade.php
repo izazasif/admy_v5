@@ -41,19 +41,24 @@
                                 @foreach ($lists as $list)
                                     <tr>
                                         <td class="text-center">{{ $sl++ }}</td>
-                                        <td class="text-center">{{ $list->package_id }}</td>
+                                        <td class="text-center">
+                                            {{ $list->package_id ? $list->package_id : 'Bank Transfer' }}
+                                        </td>
                                         <td class="text-center">{{ $list->channel }}</td>
                                         <td class="text-center">{{ number_format($list->amount) }}</td>
                                         <td class="text-center">{{ $list->payment_status }}</td>
-                                        <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->valid_til)) }}</td>
+                                        <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->valid_till)) }}</td>
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($list->created_at)) }}</td>
                                         <td class="text-center">
-                                            @if ($list->is_status)
+                                            @if ($list->payment_status == 'Pending')
+                                                <span style="color:blue"><b><i class="fa fa-clock-o"
+                                                            aria-hidden="true"></i>&nbsp Pending</b></span>
+                                            @elseif ($list->is_active == 1 && strtotime($list->valid_till) >= strtotime('now'))
                                                 <span style="color:green"><b><i class="fa fa-check"
                                                             aria-hidden="true"></i>&nbsp;Active</b></span>
                                             @else
-                                                <span style="color:red"><b><i class="fa fa-clock-o"
-                                                            aria-hidden="true"></i>&nbsp In Active</b></span>
+                                                <span style="color:red"><b><i class="fa fa-times"
+                                                            aria-hidden="true"></i>&nbsp Expired</b></span>
                                             @endif
                                         </td>
                                         <td class="text-center">

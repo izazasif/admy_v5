@@ -134,7 +134,17 @@ class PackController extends Controller
       $shpack = session()->get('shpack');
 
       $user_id = session()->get('user_id');
-      $contents = UserPack::where('user_id', $user_id)->orderBy('created_at','desc');
+      $contents = UserPack::where('user_id',$user_id)
+                        ->where(function ($query) {
+                        $query->where('status', 1)
+                            ->orWhere(function ($query) {
+                                    $query->where('status', 0)
+                                        ->where('type', 'Bank');
+                                });
+                        })
+                        ->orderBy('created_at', 'desc');
+                         
+      // $contents = UserPack::where('user_id', $user_id)->orderBy('created_at','desc');
       if( $shpdaterange ) {
           $shpdaterange = (explode(" - ", $shpdaterange));
           $shfromdate = $shpdaterange[0];
@@ -260,12 +270,71 @@ class PackController extends Controller
     }
 
     public static function invoiceData($id){
-      $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','user_packs.vat as vat','user_packs.gateway_charge as charge','packs.*')
+      $content = UserPack::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_packs.id as invoice','user_packs.amount as credit','user_packs.valid_till as validTill','user_packs.created_at as created','user_packs.vat as vat','user_packs.gateway_charge as charge','user_packs.type as type','user_packs.status as pay_status','packs.*')
                           ->join('users', 'users.id', '=', 'user_packs.user_id') 
                           ->join('packs', 'packs.id', '=', 'user_packs.pack_id') 
                           ->where('user_packs.id',$id)
                           ->first();
       return $content;                    
     }  
+
+    public function storeSlip(Request $request){
+        $this->validate($request,[
+            'obd_id'=>'required',
+            'slip'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+        ]);
+
+        $slip = $request->file('slip');            
+        $slip_img = rand() . $slip->getClientOriginalName(); 
+        $slip->move(public_path('assets/payslip_obd'), $slip_img);
+
+        $packDetails = Pack::where('id', $request->input('obd_id'))->where('status', 1)->first();
+        $user_id = session()->get('user_id');
+        $userPackData = new UserPack();
+        $userPackData->user_id = $user_id;
+        $userPackData->pack_id = $request->input('obd_id');
+        $userPackData->amount = $packDetails->amount;
+        $userPackData->base_price = $packDetails->price;
+        $userPackData->vat = env('APP_OBD_VAT'); // percentage
+        $userPackData->gateway_charge = env('APP_OBD_GATEWAY'); // percentage
+        $userPackData->status = 0;
+        $userPackData->type = 'Bank';
+        $userPackData->slip_file = $slip_img;
+        $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +' . $packDetails->validity . ' day'));
+        $success = $userPackData->save();
+
+        if($success) {                
+            $message = 'pay slip uploded! Please, wait a while till approved.';
+            return redirect()->back()->with('message',$message);
+        }
+        else
+        {
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
+    }
+
+    public function bankPayment(Request $request){
+      $title = "MyBdApps | OBD Bank Payment";
+      $is_active = "obd_bank_payment";
+      $packs = Pack::where('status', 1)->get();
+      $lists = UserPack::where('status',0)->where('type','Bank')->paginate(20);
+      return view('portal.pack.obdbankpayment', compact('title', 'is_active', 'lists'));
+    }
+
+    public function bankPaymentApprove($id){
+      try {
+            $obd_pack = UserPack::findOrFail($id);
+            $obd_pack->status = 1;
+            $obd_pack->save();
+            $message = 'OBD Payment, approved!';
+            return redirect()->back()->with('message',$message);
+        }
+        
+        catch(e){
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
+    }
 
 }

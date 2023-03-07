@@ -153,7 +153,9 @@
                 <td>{{ number_format($data->amount) }}</td>
             </tr>
             <tr class="heading">
-                <td>Payment Method(bKash/bank)</td>
+                <td>Payment
+                    Method({{ $data->type ? $data->type : 'bkash' }})-{{ $data->pay_status == 1 ? 'PAID' : 'DUE' }}
+                </td>
 
                 <td>Amount(BDT)</td>
             </tr>

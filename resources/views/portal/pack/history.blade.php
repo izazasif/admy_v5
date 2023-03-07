@@ -111,7 +111,10 @@
                                         <td class="text-center">{{ date('d-m-Y h:i A', strtotime($pack->valid_till)) }}
                                         </td>
                                         <td class="text-center">
-                                            @if ($pack->valid_till >= date('Y-m-d H:i:s'))
+                                            @if ($pack->status == 0)
+                                                <span style="color:blue"><b><i class="fa fa-clock-o"
+                                                            aria-hidden="true"></i>&nbsp;Pending</b></span>
+                                            @elseif ($pack->valid_till >= date('Y-m-d H:i:s'))
                                                 <span style="color:green"><b><i class="fa fa-check"
                                                             aria-hidden="true"></i>&nbsp;Active</b></span>
                                             @else
