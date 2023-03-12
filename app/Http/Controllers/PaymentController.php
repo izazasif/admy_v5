@@ -95,6 +95,9 @@ class PaymentController extends Controller
                 $userPackData->user_id = $user_id;
                 $userPackData->pack_id = $request->packID;
                 $userPackData->amount = $packDetails->amount;
+                $userPackData->vat = env('APP_OBD_VAT'); // percentage
+                $userPackData->gateway_charge = env('APP_OBD_GATEWAY'); // percentage
+                $userPackData->base_price = $packDetails->price;
                 $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +'.$packDetails->validity.' day'));
                 $userPackData->save();
 
@@ -103,8 +106,9 @@ class PaymentController extends Controller
                 session()->put('user_credit', $user_credit-$user_debit);
 
                 $data = PackController::invoiceData($userPackData->id);
+                $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
                 $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
-                $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';                
+                $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT '.env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_OBD_GATEWAY').'%).<br/>please, find attached the invoice.';                
                 \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
             }else{
                 $message = 'Something went wrong! Please try again.';
@@ -133,6 +137,9 @@ class PaymentController extends Controller
                 $userPackData->user_id = $user_id;
                 $userPackData->pack_id = $request->packID;
                 $userPackData->amount = $packDetails->amount;
+                $userPackData->vat = env('APP_OBD_VAT'); // percentage
+                $userPackData->gateway_charge = env('APP_OBD_GATEWAY'); // percentage
+                $userPackData->base_price = $packDetails->price;
                 $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +'.$packDetails->validity.' day'));
                 $userPackData->save();
 
@@ -140,8 +147,9 @@ class PaymentController extends Controller
                 $user_debit = Schedule::where('user_id', $user_id)->sum('obd_amount');
                 session()->put('user_credit', $user_credit-$user_debit);
                 $data = PackController::invoiceData($userPackData->id);
+                $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
                 $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
-                $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$data->price. ' (Included VAT 5% and Getway Charge 1%).<br/>please, find attached the invoice.';                
+                $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT '.env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_OBD_GATEWAY').'%).<br/>please, find attached the invoice.';              
                 \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
                 // \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body))->attachData($pdf->output(), 'OBD'.$userPackData->id.'-invoice.pdf');
             }else{

@@ -133,8 +133,8 @@ class SMSController extends Controller
             $userPackData->sms_id = $id;
             $userPackData->amount = $packDetails->amount;
             $userPackData->base_price = $packDetails->price;
-            $userPackData->vat = 15; // percentage
-            $userPackData->gateway_charge = 1.5; // percentage
+            $userPackData->vat = env('APP_PSMS_VAT'); // percentage
+            $userPackData->gateway_charge = env('APP_PSMS_GATEWAY'); // percentage
             $userPackData->channel = 'push';
             $userPackData->is_active = 0;
             $userPackData->payment_status = 'Pending';
@@ -148,7 +148,7 @@ class SMSController extends Controller
                     return back();
                 }
                 session()->put('bkash_token',$token);
-                $total_amount = $packDetails->price + ($packDetails->price * (16.5 / 100));
+                $total_amount = $packDetails->price + ($packDetails->price * ((env('APP_PSMS_VAT')+env('APP_PSMS_GATEWAY')) / 100));
                 return view('portal.sms.checkout', compact('title', 'is_active', 'packDetails','user_pack_id','total_amount'));
             }else{
                 $message = 'Something is wrong, try again';

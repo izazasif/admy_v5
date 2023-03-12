@@ -192,12 +192,26 @@ class AdminController extends Controller
         //Izaz_Update
         $data['total_package_sold'] = $data['push_sms_sold'] + $data['obd_sold'];
  
-        //all sum price(bdt) 
-        $data['obd_price'] = DB::table('packs')
+        //all sum price(bdt)
+        $obd_price_without_vat = DB::table('packs')
                             ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
                             ->where('user_packs.status', '=', 1)
+                            ->whereNull('base_price')
                             ->whereBetween('user_packs.created_at', [$end_date,$strat_date])
                             ->sum('packs.price'); 
+        
+        $obd_price_with_vat = DB::table('packs')
+                            ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
+                            ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                            ->where('user_packs.status', '=', 1)
+                            ->whereNotNull('base_price')
+                            ->whereBetween('user_packs.created_at', [$end_date,$strat_date])
+                            ->value('price_with_vat');
+
+        $data['obd_price'] = $obd_price_without_vat;
+        if($obd_price_with_vat != null){
+          $data['obd_price'] = $obd_price_without_vat + $obd_price_with_vat; 
+        }
 
         $push_sms_price_vat = DB::table('user_s_m_s')
                           ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
@@ -244,11 +258,25 @@ class AdminController extends Controller
     }
    
     public static function obd_price_calculation($start_date,$end_date){
-                  return DB::table('packs')
-                            ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
-                            ->where('user_packs.status',1)
-                            ->whereBetween('user_packs.created_at', [$start_date, $end_date])
-                            ->sum('packs.price');
+      $obd_price=  DB::table('packs')
+                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                ->where('user_packs.status',1)
+                ->whereNull('user_packs.base_price')
+                ->whereBetween('user_packs.created_at', [$start_date, $end_date])
+                ->sum('packs.price');
+      $obd_price_vat=  DB::table('packs')
+                ->select(DB::raw('sum( base_price + (base_price * ((gateway_charge + vat)/100))) as price_with_vat'))
+                ->join('user_packs', 'packs.id', '=', 'user_packs.pack_id')
+                ->where('user_packs.status',1)
+                ->whereNotNull('base_price')
+                ->whereBetween('user_packs.created_at', [$start_date, $end_date])
+                ->value('price_with_vat');    
+
+      if($obd_price_vat != null){
+        return $obd_price + $obd_price_vat; 
+      }
+
+      return $obd_price;          
     }
 
     public static function push_sms_price_calculation($start_date,$end_date){
