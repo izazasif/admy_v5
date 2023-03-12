@@ -44,9 +44,11 @@
                                         <tr>
                                             <td class="text-center">{{ $sl++ }}</td>
 
-                                            <td class="text-center"><img
-                                                    src="{{ url('assets/payslip_pushsms/' . $list->slip_file) }}"
-                                                    alt="Image">
+                                            <td class="text-center">
+                                                <a class=".btn.btn-app" target="_blank"
+                                                    href="{{ url('assets/payslip_pushsms/' . $list->slip_file) }}">
+                                                    <button>view pay slip</button>
+                                                </a>
                                             </td>
                                             <td class="text-center">{{ number_format($list->amount) }}</td>
                                             <td class="text-center">
