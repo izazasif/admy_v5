@@ -328,6 +328,13 @@ class PackController extends Controller
             $obd_pack->status = 1;
             $obd_pack->save();
             $message = 'OBD Payment, approved!';
+
+            $data = self::invoiceData($id);
+            $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
+            $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT '.env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_OBD_GATEWAY').'%).<br/>please, find attached the invoice.';                
+            \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
             return redirect()->back()->with('message',$message);
         }catch(Exception $e){
             $message = 'Something is wrong, try again!';

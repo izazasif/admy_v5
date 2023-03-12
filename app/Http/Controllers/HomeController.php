@@ -13,9 +13,9 @@ class HomeController extends Controller
     public function index()
     {
         $title = "MyBdApps";
-        $packs = Pack::where('status', 1)->get();
-        $sms = SMS::where('status', 1)->where('sms_category','bulk')->get();
-        $push_sms = SMS::where('status', 1)->where('sms_category','push')->get();
+        $packs = Pack::where('status', 1)->limit(5)->get();
+        $sms = SMS::where('status', 1)->where('sms_category','bulk')->limit(5)->get();
+        $push_sms = SMS::where('status', 1)->where('sms_category','push')->limit(5)->get();
         // $push_sms = SMS::where('status', 1)->where('sms_category','push')->limit(3)->get();
         $condition = "in";
         return view('site.pages.index', compact('title', 'packs', 'condition','sms','push_sms'));
