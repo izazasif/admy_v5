@@ -322,9 +322,7 @@ class SMSController extends Controller
             $obd_pack->save();
             $message = 'Push SMS Payment, approved!';
             return redirect()->back()->with('message',$message);
-        }
-        
-        catch(e){
+        }catch(Exception $e){
             $message = 'Something is wrong, try again!';
             return redirect()->back()->with('message',$message);
         }
