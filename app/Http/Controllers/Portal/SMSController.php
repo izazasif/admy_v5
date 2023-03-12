@@ -321,6 +321,13 @@ class SMSController extends Controller
             $obd_pack->payment_status = 'Completed';
             $obd_pack->save();
             $message = 'Push SMS Payment, approved!';
+
+            $data = self::invoiceData($id);
+            $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+            $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>please, find attached the invoice.';
+           \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
             return redirect()->back()->with('message',$message);
         }catch(Exception $e){
             $message = 'Something is wrong, try again!';
