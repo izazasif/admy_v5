@@ -1,11 +1,38 @@
 @extends('portal.layouts.master')
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
 
+    label.custom-file-upload {
+        cursor: pointer;
+        border: 2px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    label.custom-file-upload:hover {
+        background-color: #ccc;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+</style>
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <section class="content">
             <div class="row">
-                <div class="col-xs-12 col-sm-4">
+                <div class="col-xs-12 col-md-6">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Checkout</h3>
@@ -98,6 +125,25 @@
                                                 <!-- </div> -->
                                             </button>
                                             {{-- @endif --}}
+                                        </div>
+                                        <h4>OR</h4>
+                                        <div class="pack-buy">
+                                            <p>Pay With Payment Slip</p>
+                                            <form method="POST" action="{{ route('payslip.obd.store') }}"
+                                                enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+                                                <label for="image-upload" class="custom-file-upload">
+                                                    <i class="fa fa-cloud-upload"></i> Choose Image
+                                                </label>
+                                                <input value={{ $packDetails->id }} name='obd_id' type='hidden' />
+                                                <input readonly id="image-upload" name="slip"
+                                                    style="border: 2px solid black" type="file"
+                                                    accept="image/jpeg,image/png" required>
+                                                <button style="margin-top: 10px" type="submit"
+                                                    class="btn btn-md btn-flat btn-primary">
+                                                    Submit
+                                                </button>
+                                            </form>
                                         </div>
                                         <div style="font-weight: bold;">Note: Please be informed that your app will be
                                             broadcasted within 7 days based on available schedule.</div>

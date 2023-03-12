@@ -138,6 +138,7 @@ class SMSController extends Controller
             $userPackData->channel = 'push';
             $userPackData->is_active = 0;
             $userPackData->payment_status = 'Pending';
+            $userPackData->type = 'bkash';
             $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +' . $packDetails->validity . ' day'));
             $success = $userPackData->save();
             if($success) {
@@ -201,9 +202,20 @@ class SMSController extends Controller
         $title = "MyBdApps | Push SMS Purchase History";
         $user_id = session()->get('user_id');
         $is_active = "sms_purchase_history";
-        $lists = UserSMS::where('user_id',$user_id)->where('is_active',1)->paginate(20);
+        // $lists = UserSMS::where('user_id',$user_id)->where('is_active',1)->paginate(20);
+        $lists = UserSMS::where('user_id',$user_id)
+                        ->where(function ($query) {
+                        $query->where('is_active', 1)
+                            ->orWhere(function ($query) {
+                                    $query->where('payment_status', 'Pending')
+                                        ->where('type', 'Bank');
+                                });
+                        })
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(20);            
         return view('portal.sms_schedule.purchase-history',compact('title','is_active','lists'));
     }
+
     public function campaingForUser(){
         session()->forget('dateRangeStat');
         session()->forget('message');
@@ -227,7 +239,7 @@ class SMSController extends Controller
     public function reject ($id){
       $scheduleData = SMSSchedule::where('id', $id)->first();
       $scheduleData->status = -1; //"-1" means push sms schedule reject 
-    //   $scheduleData->sms_amount = 0; 
+      //   $scheduleData->sms_amount = 0; 
       $scheduleData->save();
       
       $user_email = User::where('id',$scheduleData->user_id)->first();
@@ -239,20 +251,83 @@ class SMSController extends Controller
       \Mail::to($sendTo)->send(new \App\Mail\ScheduleRejectMail($body));
       return redirect()->back()->with('message',$message);
     }
+
     public function invoicePdf($id){
       $data = $this->invoiceData($id);
       $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
       return $pdf->download('PushSMS'.$id.'-invoice.pdf');
-    return [];
+      return [];
     }
 
     public static function invoiceData($id){
-      $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','user_s_m_s.vat as vat','user_s_m_s.gateway_charge as charge','s_m_s.*')
+      $content = UserSMS::select('users.username as uname','users.email as email', 'users.mobile_no as mobile','user_s_m_s.id as invoice','user_s_m_s.amount as credit','user_s_m_s.valid_till as validTill','user_s_m_s.created_at as created','user_s_m_s.vat as vat','user_s_m_s.gateway_charge as charge','user_s_m_s.type as type','user_s_m_s.is_active as pay_status','s_m_s.*')
                           ->join('users', 'users.id', '=', 'user_s_m_s.user_id') 
                           ->join('s_m_s', 's_m_s.id', '=', 'user_s_m_s.sms_id') 
                           ->where('user_s_m_s.id',$id)
                           ->first();
       return $content;                    
+    }
+
+    public function storeSlip(Request $request){
+        $this->validate($request,[
+            'sms_id'=>'required',
+            'slip'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
+        ]);
+
+        $slip = $request->file('slip');            
+        $slip_img = rand() . $slip->getClientOriginalName(); 
+        $slip->move(public_path('assets/payslip_pushsms'), $slip_img);
+
+        $packDetails = SMS::where('id', $request->input('sms_id'))->where('status', 1)->first();
+        $user_id = session()->get('user_id');
+        $userPackData = new UserSMS();
+        $userPackData->user_id = $user_id;
+        $userPackData->sms_id = $request->input('sms_id');
+        $userPackData->amount = $packDetails->amount;
+        $userPackData->base_price = $packDetails->price;
+        $userPackData->vat = env('APP_PSMS_VAT'); // percentage
+        $userPackData->gateway_charge = env('APP_PSMS_GATEWAY'); // percentage
+        $userPackData->channel = 'push';
+        $userPackData->is_active = 0;
+        $userPackData->payment_status = 'Pending';
+        $userPackData->type = 'Bank';
+        $userPackData->slip_file = $slip_img;
+        $userPackData->valid_till = date('Y-m-d H:i:s', strtotime(now() . ' +' . $packDetails->validity . ' day'));
+        $success = $userPackData->save();
+
+        if($success) {                
+            $message = 'pay slip uploded! Please, wait a while till approved.';
+            return redirect()->back()->with('message',$message);
+        }
+        else
+        {
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
+    }
+
+    public function bankPayment(){
+        $title = "MyBdApps | Push SMS Bank Payment";
+        $user_id = session()->get('user_id');
+        $is_active = "sms_bank_payment";
+        $lists = UserSMS::where('payment_status','Pending')->where('type','Bank')->paginate(20);                   
+        return view('portal.sms.psmsbankpayment',compact('title','is_active','lists'));
+    }
+
+    public function bankPaymentApprove($id){
+      try {
+            $obd_pack = UserSMS::findOrFail($id);
+            $obd_pack->is_active = 1;
+            $obd_pack->payment_status = 'Completed';
+            $obd_pack->save();
+            $message = 'Push SMS Payment, approved!';
+            return redirect()->back()->with('message',$message);
+        }
+        
+        catch(e){
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
     }
     
 }
