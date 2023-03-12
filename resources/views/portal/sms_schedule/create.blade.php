@@ -81,6 +81,7 @@
                                                 <!-- <option value="50">50</option>
                                                 <option value="100">100</option>
                                                 <option value="200">200</option> -->
+                                                <option value="1000">{{ number_format(1000) }}</option>
                                                 <option value="1200">{{ number_format(1200) }}</option>
                                                 <option value="2500">{{ number_format(2500) }}</option>
                                                 <option value="5000">{{ number_format(5000) }}</option>
