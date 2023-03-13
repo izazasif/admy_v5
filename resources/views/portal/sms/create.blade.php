@@ -22,9 +22,11 @@
                             <div class="panel-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
-                                        <ul class="text-left" style="list-style-type: none; padding-left: 0px;"><a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <ul class="text-left" style="list-style-type: none; padding-left: 0px;"><a
+                                                class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             @foreach ($errors->all() as $error)
-                                                <li><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> &nbsp;{{ $error }}</li>
+                                                <li><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                                                    &nbsp;{{ $error }}</li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -34,8 +36,9 @@
                                     <div class="alert alert-success text-left">
                                         <ul style="list-style-type: none; padding-left: 0px;">
                                             <li>
-                                                <a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> &nbsp;{{ session('message') }}
+                                                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                                &nbsp;{{ session('message') }}
                                             </li>
                                         </ul>
                                     </div>
@@ -46,7 +49,8 @@
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{ old('name') }}">
+                                            <input type="text" class="form-control" name="name"
+                                                placeholder="Enter Name" value="{{ old('name') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="category">SMS category</label>
@@ -66,19 +70,24 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Unit Price</label>
-                                            <input type="number" step="0.000000001" min=0 class="form-control" name="unit_price" placeholder="Enter Unit Price" value="{{ old('unit_price') }}">
+                                            <input type="number" step="0.000000001" min=0 class="form-control"
+                                                name="unit_price" placeholder="Enter Unit Price"
+                                                value="{{ old('unit_price') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="amount">Amount</label>
-                                            <input type="number" min=0 class="form-control" name="amount" placeholder="Enter Amount" value="{{ old('amount') }}">
+                                            <input type="number" min=0 class="form-control" name="amount"
+                                                placeholder="Enter Amount" value="{{ old('amount') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="price">Total Price</label>
-                                            <input type="number" min=0 class="form-control" name="price" placeholder="Enter Total Price" value="{{ old('price') }}">
+                                            <input type="number" step="0.000000001" min=0 class="form-control"
+                                                name="price" placeholder="Enter Total Price" value="{{ old('price') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="validity">Validity</label>
-                                            <input type="number" class="form-control" name="validity" placeholder="Enter Validity" value="{{ old('validity') }}">
+                                            <input type="number" class="form-control" name="validity"
+                                                placeholder="Enter Validity" value="{{ old('validity') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="status">Status</label>
