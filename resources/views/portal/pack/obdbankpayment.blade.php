@@ -27,6 +27,8 @@
                                 style="margin-top:20px; margin-bottom:30px;width:100%">
                                 <tr>
                                     <th class="text-center">SL</th>
+                                    <th class="text-center">User Name</th>
+                                    <th class="text-center">Email Address</th>
                                     <th class="text-center">Pay SLip</th>
                                     <th class="text-center">OBD Credits</th>
                                     <th class="text-center">Price(Included vat&charge)</th>
@@ -38,16 +40,17 @@
                                 @php $sl=1 @endphp
                                 @php $sl = ($lists->currentpage()-1)* $lists->perpage()+1 @endphp
                                 @if (sizeof($lists) == 0)
-                                    <td class="text-center" colspan="8"> No data</td>
+                                    <td class="text-center" colspan="10"> No data</td>
                                 @else
                                     @foreach ($lists as $list)
                                         <tr>
                                             <td class="text-center">{{ $sl++ }}</td>
-
+                                            <td class="text-center">{{ $list->username }}</td>
+                                            <td class="text-center">{{ $list->email }}</td>
                                             <td class="text-center">
                                                 <a class=".btn.btn-app" target="_blank"
                                                     href="{{ url('assets/payslip_obd/' . $list->slip_file) }}">
-                                                    <button>view pay slip</button>
+                                                    <button>pay slip</button>
                                                 </a>
                                             </td>
                                             <td class="text-center">{{ number_format($list->amount) }}</td>
@@ -72,9 +75,17 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('obd.bank.payment.approve', $list->id) }}">
-                                                    <i class="fa fa-check-circle-o"
-                                                        style="font-size:18px;"></i>&nbsp;Approve
+                                                <div style="margin-bottom: 1px">
+                                                    <a href="{{ route('obd.bank.payment.approve', $list->id) }}"
+                                                        onclick="return confirm('Are you sure you want to approve this payment?');">
+                                                        <button><i class="fa fa-check"
+                                                                style="font-size:18px;"></i>&nbsp;Approve</button>
+                                                    </a>
+                                                </div>
+                                                <a href="{{ route('obd.bank.payment.reject', $list->id) }}"
+                                                    onclick="return confirm('Are you sure you want to reject this payment?');">
+                                                    <button><i class="fa fa-times"
+                                                            style="font-size:18px; color:red"></i>&nbsp;Reject</button>
                                                 </a>
                                             </td>
                                         </tr>
