@@ -308,11 +308,11 @@ class PackController extends Controller
             //email to authority
             $data = self::invoiceData($userPackData->id);
             $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
-            $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+            $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
             $body = 'Dear Concern, <br/> You have received a payment slip '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>Please check and approve accordingly.<br/>Thank you!';
             $authority_email = ['anisur.rahman@miaki.co', 'asad.zaman@miaki.co', 'yusuf.shumon@miaki.co'];
            \Mail::to($authority_email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
-           
+
             return redirect()->back()->with('message',$message);
         }
         else
