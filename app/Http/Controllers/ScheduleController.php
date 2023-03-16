@@ -299,7 +299,15 @@ class ScheduleController extends Controller
           $contents = $contents->where('category_id', $shcategory);
         }
         if( $shstatus ) {
-          $shstatus = $shstatus == 'active' ? 1 : 0;
+          if ($shstatus == 'active'){
+              $shstatus = 1;
+          } 
+          elseif ($shstatus == '-1'){
+              $shstatus = -1;
+          }
+          else {
+              $shstatus = 0;
+          }
           $contents = $contents->where('status', $shstatus);
         }
         return $contents;
