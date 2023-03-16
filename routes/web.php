@@ -164,6 +164,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     Route::group(['middleware' => 'CheckOBDManager'], function(){
         Route::get('/obd/bank/payment/pending','PackController@bankPayment')->name('obd.bank.payment');
         Route::get('/obd/bank/payment/approve/{id}','PackController@bankPaymentApprove')->name('obd.bank.payment.approve');
+        Route::get('/obd/bank/payment/reject/{id}','PackController@bankPaymentReject')->name('obd.bank.payment.reject');
         Route::get('/clip/create','ClipController@create')->name('clip.create');
         Route::post('/clip/store','ClipController@store')->name('clip.store');        
         Route::get('/clip/edit/{id}','ClipController@edit')->name('clip.edit');
@@ -189,6 +190,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
     Route::group(['middleware' => 'CheckSMSManager'], function(){
         Route::get('/psms/bank/payment/pending','Portal\SMSController@bankPayment')->name('psms.bank.payment');
         Route::get('/psms/bank/payment/approve/{id}','Portal\SMSController@bankPaymentApprove')->name('psms.bank.payment.approve');
+        Route::get('/psms/bank/payment/reject/{id}','Portal\SMSController@bankPaymentReject')->name('psms.bank.payment.reject');
         Route::get('/sms/create','Portal\SMSController@create')->name('portal.sms.create');
         Route::post('/sms/store','Portal\SMSController@store')->name('portal.sms.store');        
         Route::get('/sms/edit/{id}','Portal\SMSController@edit')->name('portal.sms.edit');

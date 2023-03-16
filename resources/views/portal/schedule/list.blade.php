@@ -27,14 +27,14 @@
                                                 value="{{ session()->has('shdaterange') ? session()->get('shdaterange') : '' }}">
                                         </div>
                                         <!-- <div class="form-group distable-cell">
-                                                                                                  <label for="shfromdate">From Date</label>
-                                                                                                  <input class="form-control input-sm datepicker" type="text" name="shfromdate" placeholder="From date" value="{{ session()->has('shfromdate') ? session()->get('shfromdate') : '' }}">
-                                                                                                </div>
+                                                                                                      <label for="shfromdate">From Date</label>
+                                                                                                      <input class="form-control input-sm datepicker" type="text" name="shfromdate" placeholder="From date" value="{{ session()->has('shfromdate') ? session()->get('shfromdate') : '' }}">
+                                                                                                    </div>
 
-                                                                                                <div class="form-group distable-cell">
-                                                                                                  <label for="shtodate">To Date</label>
-                                                                                                  <input class="form-control input-sm datepicker" type="text" name="shtodate" placeholder="To date" value="{{ session()->has('shtodate') ? session()->get('shtodate') : '' }}">
-                                                                                                </div> -->
+                                                                                                    <div class="form-group distable-cell">
+                                                                                                      <label for="shtodate">To Date</label>
+                                                                                                      <input class="form-control input-sm datepicker" type="text" name="shtodate" placeholder="To date" value="{{ session()->has('shtodate') ? session()->get('shtodate') : '' }}">
+                                                                                                    </div> -->
                                         <div class="form-group distable-cell">
                                             <label for="shcategory">Category</label>
                                             <select class="form-control input-sm" id="shcategory" name="shcategory">
@@ -78,6 +78,9 @@
                                                 <option value="inactive"
                                                     {{ session()->has('shstatus') && session()->get('shstatus') == 'inactive' ? 'selected' : '' }}>
                                                     Pending</option>
+                                                <option value="-1"
+                                                    {{ session()->has('shstatus') && session()->get('shstatus') == '-1' ? 'selected' : '' }}>
+                                                    Rejected</option>
                                             </select>
                                         </div>
 
@@ -166,12 +169,12 @@
                                         </td>
                                         @if (!$schedule->status)
                                             <!-- <td class="text-center">
-                                                                                              <a href="{{ route('schedule.list.update', $schedule->id) }}">
-                                                                                                <button type="button" class="btn btn-primary btn-xs">
-                                                                                                  <i class="fa fa-rocket" aria-hidden="true"></i> Deliver
-                                                                                                </button>
-                                                                                              </a>
-                                                                                            </td> -->
+                                                                                                  <a href="{{ route('schedule.list.update', $schedule->id) }}">
+                                                                                                    <button type="button" class="btn btn-primary btn-xs">
+                                                                                                      <i class="fa fa-rocket" aria-hidden="true"></i> Deliver
+                                                                                                    </button>
+                                                                                                  </a>
+                                                                                                </td> -->
                                             @if (session()->get('permission') != 'obd_viewer')
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-primary btn-xs deliver_btn"
@@ -186,91 +189,106 @@
                                                     </a>
                                                 </td>
                                             @endif
-
-                                            @elseif ($schedule->status == 1)
-                                              <td class="text-center">
-                                              <!-- <a class="btn btn-primary btn-xs deliver_btn" href="" data-toggle="modal"  data-target="#exampleModal_view{{ $schedule->id   }}"> <i class="fa fa-eye" aria-hidden="true"></i> view</a> -->
-                                              <button type="button" class="btn btn-primary btn-xs deliver_btn"
-                                                        data-toggle="modal" data-target="#exampleModal_view{{$schedule->id}}"
-                                                        data-id="{{ $schedule->id }}">
-                                                        <i class="fa fa-rocket" aria-hidden="true"></i> View
-                                                    </button>  
+                                        @elseif ($schedule->status == 1)
+                                            <td class="text-center">
+                                                <!-- <a class="btn btn-primary btn-xs deliver_btn" href="" data-toggle="modal"  data-target="#exampleModal_view{{ $schedule->id }}"> <i class="fa fa-eye" aria-hidden="true"></i> view</a> -->
+                                                <button type="button" class="btn btn-primary btn-xs deliver_btn"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal_view{{ $schedule->id }}"
+                                                    data-id="{{ $schedule->id }}">
+                                                    <i class="fa fa-rocket" aria-hidden="true"></i> View
+                                                </button>
                                             </td>
                                         @endif
                                     </tr>
 
-                                       <!-- /.content-wrapper -->
-                                       <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal_view{{$schedule->id}}">
-                                                                                <div class="modal-dialog" role="document">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header text-center">
-                                                                                            <h5 class="modal-title" style="font-size: 24px; font-weight:bold;">Report Data</h5>
-                                                                                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                                                                            <span aria-hidden="true">&times;</span>
-                                                                                                                                                            </button> -->
-                                                                                        </div>
-                                                                                        <form method="POST" action="{{ route('schedule.list.update_view') }}" enctype="multipart/form-data">
-                                                                                            @csrf
-                                                                                            <div class="modal-body">
-                                                                                            @php                          
-                                                                                            $data =  \App\Models\Report::where(['schedule_id' => $schedule->id])->first();
-                                                                                            $data_actual_time = \App\Models\Schedule::where(['id' => $schedule->id])->pluck('actual_delivery_time')->first(); 
-                                                                                         
-                                                                                            @endphp
-                                                                                                 <input type="hidden" value="{{$schedule->id}}" name="schedule_id">
-                                                                                                <div class="box-body">
-                                                                                                    <div class="form-group">
-                                                                                                        <label for="actual_delivery_time">Actual Delivery Time</label>
-                                                                                                        <h4 class="box-title"> <span>{{ date('d-m-Y h:i A', strtotime($data_actual_time)) }}</span> </h4>
-                                                                                                        <!-- <input type="text" id='datetimepicker' class="form-control"
-                                                                                                    name="actual_delivery_time" placeholder="Enter Actual Delivery Time" value=""
-                                                                                                    required> -->
-                                                                                                    <input type="datetime-local" id="meeting-time" class="form-control"
-                                                                                                    name="actual_delivery_time" value=""
-                                                                                                    min="2020-12-07T00:00" max="2030-12-14T00:00">
-                                                                                                                                                                                                    </div>
-                                                                                                  
-                                                                                                    <div class="form-group">
-                                                                                                        <label for="sent_amount">Send Amount</label>
-                                                                                                        <input type="number" class="form-control" name="sent_amount"
-                                                                                                             value="{{ $data->sent_amount ?? 'None' }}" >
-                                                                                                             
-                                                                                                    </div>
-                                                                                                    <div class="form-group">
-                                                                                                        <label for="sent_amount">Success Amount</label>
-                                                                                                        <input type="number" class="form-control" name="success_amount"
-                                                                                                             value="{{ $data->success_amount ?? 'None' }}" >
-                                                                                                             
-                                                                                                    </div>
-                                                                                                    <div class="form-group">
-                                                                                                        <label for="sent_amount">Failed Amount</label>
-                                                                                                        <input type="number" class="form-control" name="failed_amount"
-                                                                                                             value="{{ $data->failed_amount ?? 'None' }}">
-                                                                                                          
-                                                                                                    </div>
-                                                                                                    <div class="form-group">
-                                                                                                        <label for="sent_amount">Subscribed Amount</label>
-                                                                                                        <input type="number" class="form-control" name="subscribed_amount"
-                                                                                                             value="{{ $data->subscribed_amount ?? 'None' }}">
-                                                                                                             
-                                                                                                    </div>
-                                                                                                    
-                                                                                                    
-                                                                                                </div>
-                                                                                                <!-- /.box-body -->
+                                    <!-- /.content-wrapper -->
+                                    <div class="modal fade" tabindex="-1" role="dialog"
+                                        id="exampleModal_view{{ $schedule->id }}">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header text-center">
+                                                    <h5 class="modal-title" style="font-size: 24px; font-weight:bold;">
+                                                        Report Data</h5>
+                                                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                                                                                <span aria-hidden="true">&times;</span>
+                                                                                                                                                                </button> -->
+                                                </div>
+                                                <form method="POST" action="{{ route('schedule.list.update_view') }}"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                        @php
+                                                            $data = \App\Models\Report::where(['schedule_id' => $schedule->id])->first();
+                                                            $data_actual_time = \App\Models\Schedule::where(['id' => $schedule->id])
+                                                                ->pluck('actual_delivery_time')
+                                                                ->first();
+                                                            
+                                                        @endphp
+                                                        <input type="hidden" value="{{ $schedule->id }}"
+                                                            name="schedule_id">
+                                                        <div class="box-body">
+                                                            <div class="form-group">
+                                                                <label for="actual_delivery_time">Actual Delivery
+                                                                    Time</label>
+                                                                <h4 class="box-title">
+                                                                    <span>{{ date('d-m-Y h:i A', strtotime($data_actual_time)) }}</span>
+                                                                </h4>
+                                                                <!-- <input type="text" id='datetimepicker' class="form-control"
+                                                                                                        name="actual_delivery_time" placeholder="Enter Actual Delivery Time" value=""
+                                                                                                        required> -->
+                                                                <input type="datetime-local" id="meeting-time"
+                                                                    class="form-control" name="actual_delivery_time"
+                                                                    value="" min="2020-12-07T00:00"
+                                                                    max="2030-12-14T00:00">
+                                                            </div>
 
-                                                                                                <!-- <div class="box-footer">
-                                                                                                                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                                                                                                                                </div> -->
-                                                                                            </div>
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                                                            </div>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sent_amount">Send Amount</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="sent_amount"
+                                                                    value="{{ $data->sent_amount ?? 'None' }}">
+
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sent_amount">Success Amount</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="success_amount"
+                                                                    value="{{ $data->success_amount ?? 'None' }}">
+
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sent_amount">Failed Amount</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="failed_amount"
+                                                                    value="{{ $data->failed_amount ?? 'None' }}">
+
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sent_amount">Subscribed Amount</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="subscribed_amount"
+                                                                    value="{{ $data->subscribed_amount ?? 'None' }}">
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <!-- /.box-body -->
+
+                                                        <!-- <div class="box-footer">
+                                                                                                                                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                                                                                                    </div> -->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </table>
                             <div class="text-center">
@@ -284,7 +302,7 @@
             </div>
         </section>
         <!-- /.content -->
-    </div>                                  
+    </div>
     <!-- /.content-wrapper -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
         <div class="modal-dialog" role="document">
@@ -292,8 +310,8 @@
                 <div class="modal-header text-center">
                     <h5 class="modal-title" style="font-size: 24px; font-weight:bold;">Report Data</h5>
                     <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                      <span aria-hidden="true">&times;</span>
-                                                                                    </button> -->
+                                                                                          <span aria-hidden="true">&times;</span>
+                                                                                        </button> -->
                 </div>
                 <form method="POST" action="{{ route('schedule.list.update') }}" enctype="multipart/form-data">
                     <div class="modal-body">
@@ -330,8 +348,8 @@
                         <!-- /.box-body -->
 
                         <!-- <div class="box-footer">
-                                                                                          <button type="submit" class="btn btn-primary">Submit</button>
-                                                                                        </div> -->
+                                                                                              <button type="submit" class="btn btn-primary">Submit</button>
+                                                                                            </div> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -341,5 +359,4 @@
             </div>
         </div>
     </div>
-   
 @endsection

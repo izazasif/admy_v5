@@ -297,6 +297,14 @@ class SMSController extends Controller
 
         if($success) {                
             $message = 'pay slip uploded! Please, wait a while till approved.';
+            // email to autority 
+            $data = self::invoiceData($userPackData->id);
+            $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+            $body = 'Dear Concern, <br/> You have received a payment slip '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>Please check and approve accordingly.<br/>Thank you!';
+            $authority_email = ['anisur.rahman@miaki.co', 'asad.zaman@miaki.co', 'yusuf.shumon@miaki.co'];
+           \Mail::to($authority_email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
             return redirect()->back()->with('message',$message);
         }
         else
@@ -310,7 +318,7 @@ class SMSController extends Controller
         $title = "MyBdApps | Push SMS Bank Payment";
         $user_id = session()->get('user_id');
         $is_active = "sms_bank_payment";
-        $lists = UserSMS::where('payment_status','Pending')->where('type','Bank')->paginate(20);                   
+        $lists = UserSMS::select('user_s_m_s.*','users.username','users.email')->join('users', 'users.id', '=', 'user_s_m_s.user_id')->where('user_s_m_s.payment_status','Pending')->where('user_s_m_s.type','Bank')->paginate(20);                   
         return view('portal.sms.psmsbankpayment',compact('title','is_active','lists'));
     }
 
@@ -327,6 +335,28 @@ class SMSController extends Controller
             $pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
             $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>please, find attached the invoice.';
            \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
+            return redirect()->back()->with('message',$message);
+        }catch(Exception $e){
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
+    }
+    
+    public function bankPaymentReject($id){
+      try {
+            $obd_pack = UserSMS::findOrFail($id);
+            $obd_pack->is_active = -1;
+            $obd_pack->status = -1;
+            $obd_pack->payment_status = 'Rejected';
+            $obd_pack->save();
+            $message = 'Push SMS Payment, rejected!';
+
+            //$data = self::invoiceData($id);
+            //$sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            //$pdf = PDF::loadView('portal.sms_schedule.pushsmsinvoice', compact('data'));
+            //$body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>please, find attached the invoice.';
+            //\Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
 
             return redirect()->back()->with('message',$message);
         }catch(Exception $e){

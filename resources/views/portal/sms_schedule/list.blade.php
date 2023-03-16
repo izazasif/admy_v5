@@ -28,6 +28,21 @@
                                                 value="{{ session()->has('dateRangeStat') && session()->get('dateRangeStat') ? session()->get('dateRangeStat') : '' }}"
                                                 type="text" name="dateRange" placeholder="Choose Date Range">
                                         </div>
+                                        <div class="form-group distable-cell">
+                                            <label for="smsstatus">Status</label>
+                                            <select class="form-control input-sm" id="smsstatus" name="smsstatus">
+                                                <option value="0">Choose Status</option>
+                                                <option value="active"
+                                                    {{ session()->has('smsstatus') && session()->get('smsstatus') == 'active' ? 'selected' : '' }}>
+                                                    Delivered</option>
+                                                <option value="inactive"
+                                                    {{ session()->has('smsstatus') && session()->get('smsstatus') == 'inactive' ? 'selected' : '' }}>
+                                                    Pending</option>
+                                                <option value="-1"
+                                                    {{ session()->has('smsstatus') && session()->get('smsstatus') == '-1' ? 'selected' : '' }}>
+                                                    Rejected</option>
+                                            </select>
+                                        </div>
 
                                         <div class="distable-cell search-btns" style="padding-left: 20px;">
                                             <button type="submit" class="btn btn-sm btn-flat btn-primary"

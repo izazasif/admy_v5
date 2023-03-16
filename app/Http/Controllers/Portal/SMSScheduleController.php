@@ -115,19 +115,46 @@ class SMSScheduleController extends Controller
     public function list(Request $request)
     {
         $daterange = $request->dateRange;
+        $smsstatus = $request->smsstatus;
         
-        if($daterange){
-            session()->put('dateRangeStat', $daterange);
-            $f = trim(explode("-",$daterange)[0]," ");
-            $t = trim(explode("-",$daterange)[1]," ");
-            $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
-            $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
-            $all_schedule_list = SMSSchedule::whereBetween('schedule_time',[$from, $to])->orderBy('created_at', 'desc')->paginate(20);
+        if($daterange || $smsstatus){
+            if(!$smsstatus){
+               session()->forget('smsstatus'); 
+            }
+            if(!$daterange){
+               session()->forget('dateRangeStat'); 
+            }
+            $content = SMSSchedule::orderBy('created_at', 'desc');
+            if($daterange){
+                session()->put('dateRangeStat', $daterange);
+                $f = trim(explode("-",$daterange)[0]," ");
+                $t = trim(explode("-",$daterange)[1]," ");
+                $from = \Carbon\Carbon::createFromFormat('m/d/Y', $f)->format('Y-m-d'.' 00:00:00');
+                $to = \Carbon\Carbon::createFromFormat('m/d/Y', $t)->format('Y-m-d'.' 23:59:59');
+                $content = $content->whereBetween('schedule_time',[$from, $to]);
+            }
+            if($smsstatus){
+                session()->put('smsstatus', $smsstatus);                
+                if ($smsstatus == 'active'){
+                    $smsstatus = 1;
+                } 
+                elseif ($smsstatus == '-1'){
+                    $smsstatus = -1;
+                }
+                else {
+                    $smsstatus = 0;
+                }
+                $content = $content->where('status',$smsstatus);
+            }
+            $all_schedule_list = $content->paginate(50);             
         }
+
         else{
             session()->forget('dateRangeStat');
+            session()->forget('smsstatus');
             $all_schedule_list = SMSSchedule::orderBy('created_at', 'desc')->paginate(20);
         }
+
         $title = "MyBdApps | SMS Schedule List";
         $is_active = "sms_schedule_list";
         

@@ -305,6 +305,14 @@ class PackController extends Controller
 
         if($success) {                
             $message = 'pay slip uploded! Please, wait a while till approved.';
+            //email to authority
+            $data = self::invoiceData($userPackData->id);
+            $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
+            $body = 'Dear Concern, <br/> You have received a payment slip '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>Please check and approve accordingly.<br/>Thank you!';
+            $authority_email = ['anisur.rahman@miaki.co', 'asad.zaman@miaki.co', 'yusuf.shumon@miaki.co'];
+           \Mail::to($authority_email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
             return redirect()->back()->with('message',$message);
         }
         else
@@ -318,7 +326,7 @@ class PackController extends Controller
       $title = "MyBdApps | OBD Bank Payment";
       $is_active = "obd_bank_payment";
       $packs = Pack::where('status', 1)->get();
-      $lists = UserPack::where('status',0)->where('type','Bank')->paginate(20);
+      $lists = UserPack::select('user_packs.*','users.username','users.email')->join('users', 'users.id', '=', 'user_packs.user_id')->where('user_packs.status',0)->where('user_packs.type','Bank')->paginate(20);      
       return view('portal.pack.obdbankpayment', compact('title', 'is_active', 'lists'));
     }
 
@@ -341,5 +349,25 @@ class PackController extends Controller
             return redirect()->back()->with('message',$message);
         }
     }
+    public function bankPaymentReject($id){
+      try {
+            $obd_pack = UserPack::findOrFail($id);
+            $obd_pack->status = -1;
+            $obd_pack->save();
+            $message = 'OBD Payment, Rejected!';
+
+            // $data = self::invoiceData($id);
+            // $sub_total = $data->price + ($data->price * (( $data->vat + $data->charge) / 100));
+            // $pdf = PDF::loadView('portal.pack.obdinvoice', compact('data'));
+            // $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of OBD.<br/> '.'Total price '.$sub_total. ' (Included VAT '.env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_OBD_GATEWAY').'%).<br/>please, find attached the invoice.';                
+            // \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
+
+            return redirect()->back()->with('message',$message);
+        }catch(Exception $e){
+            $message = 'Something is wrong, try again!';
+            return redirect()->back()->with('message',$message);
+        }
+    }
+    
 
 }
