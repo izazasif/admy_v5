@@ -31,7 +31,7 @@ input, button, select, textarea, .btn {
 	/* width:110px; */
   width: 40%;
 	height:50px;
-	margin-left: 7%;
+	/* margin-left: 7%; */
 }
 
 .logo-bar .media-heading{
@@ -65,6 +65,12 @@ input, button, select, textarea, .btn {
 	  line-height: 1.2;
 }
 
+@media screen and (max-width: 720px) {
+  .navbar-inverse .navbar-nav>li>a{
+    line-height: 3.2;
+    margin-top: 6px;
+  }
+}
 
 /*slider:::::::::::::::::::::::::::::*/
 .slider-part .container-fluid{
@@ -95,15 +101,24 @@ input, button, select, textarea, .btn {
 /*platform:::::::::::::::::::::::::::*/
 .platform{
    position: relative;
-   top: -60px;
+   top: 10px;
 }
 
 .platform h4{
    color:white;
    font-size: 15px;
    font-weight: bold;
+   margin-top:40px;
 }
-
+@media screen and (max-width: 720px) {
+  .platform h4{
+    color:white;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 26px;
+    
+  }
+}
 .platform p{
    color:white;
    font-size: 14px;
@@ -121,19 +136,30 @@ input, button, select, textarea, .btn {
     padding-top: 5px;
     padding-bottom: 5px
 }
-.platform .padding{
+/* .platform .padding{
     padding-left:3%;
     padding-right:3%;
-}
+} */
 
 .platform .plat-image{
 	width: 72px;
   height: 72px;
   /* width: 85px;
   height: 140px; */
-	margin-top: 10px;
+	margin-top: 40px;
 }
 
+@media screen and (max-width: 720px) {
+  .platform .plat-image{
+   
+    width: 72px;
+  height: 56px;
+  /* width: 85px;
+  height: 140px; */
+	margin-top: 6px;
+    
+  }
+}
 
 
 /*about admy:::::::::::::::::::::::;*/
@@ -312,13 +338,13 @@ input, button, select, textarea, .btn {
 .admy-obd-platform p.first-p{
 	/*margin-bottom: 45px;*/
 	margin-top: 40px;
-  margin-left:20px;
+  margin-left:3px;
   text-align: justify;
 }
 
 .admy-obd-platform p.second-p{
 	/*margin-bottom: 25px;*/
-   margin-left:20px;
+   margin-left:3px;
    text-align: justify;
 }
 
@@ -331,6 +357,7 @@ input, button, select, textarea, .btn {
 
 .admy-obd-platform .detail .col-md-6{
   padding:15px;
+  margin-left:3px;
 }
 
 
@@ -343,7 +370,7 @@ input, button, select, textarea, .btn {
  }
 
 .carousel-indicators {
-    bottom: 85px !important;
+    /* bottom: 85px !important; */
 }
 
 .carousel-control .glyphicon-chevron-right{
@@ -356,7 +383,16 @@ input, button, select, textarea, .btn {
 
 
 
-
+ @media screen and (max-width: 720px) {
+  .carousel-control .glyphicon-chevron-right{
+    margin-right: -10px;
+}
+}
+@media screen and (max-width: 720px) {
+  .carousel-control .glyphicon-chevron-left{
+ 	 margin-left: -10px;
+ }
+}
 /* .....................................................................
  .....................................
  ...........................................................................
@@ -656,13 +692,16 @@ input, button, select, textarea, .btn {
 }
 
 .digital-platform .cpa-image{
-    width: 420px;
+    width: 388px;
     height: 180px;
+    margin-left: -15px;
 }
 
 .digital-platform .content-digital{
     padding-left: 7%;
     padding-right: 7%;
+    text-align: justify;
+    line-height: 1.4em;
 }
 
 .digital-platform .content-digital h5{
@@ -671,6 +710,8 @@ input, button, select, textarea, .btn {
 
 .digital-platform .content-digital-left{
     padding-left: 7%;
+    text-align: justify;
+    line-height: 1.4em;
 }
 
 .digital-platform .content-digital-left h5{
@@ -1120,7 +1161,8 @@ input, button, select, textarea, .btn {
 
 .contact-us-field .col-md-4{
    padding-right: 0px;
-   margin-top: -10px;
+   padding-left: 0px;
+   margin-top: -14px;
 }
 
 .contact-us-field .col-md-6{
@@ -1193,8 +1235,8 @@ input, button, select, textarea, .btn {
   color:white;
   font-weight: bold;
   font-size: 20px;
-  padding-left:110px;
-  padding-right: 110px;
+  /* padding-left:20px;
+  padding-right: 110px; */
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top:40px;
@@ -1587,8 +1629,9 @@ __________________________    PASSWORD   RECOVER   ___________________________
 .api-package_2{
     background: #d7d5d5!important;
     padding: 30px;
-    margin-top: 11px;
+    margin-top: 10px;
     min-height: 215px;
+    margin-left: -15px;
 }
 #web-api-service a{
     width: 100%;

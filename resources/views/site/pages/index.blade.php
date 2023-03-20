@@ -64,20 +64,20 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
-                        <div class="col-md-3 padding">
-                            <div class="row  background-red">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="row  background-red" style="margin-left: 51px!important;height: 198px!important;">
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/obd_platform.png') }}" class="plat-image">
                                 </div>
                                 <div class="col-md-8">
-                                    <h4>OBD Platform</h4>
+                                    <h4 >OBD Platform</h4>
                                     <p>The system automatically dials out calls to a list of mobile users provided by the
                                         telecom operator.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 padding">
-                            <div class="row background-red">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/bulk-sms-service.png') }}"
                                         class="plat-image">
@@ -90,8 +90,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 padding">
-                            <div class="row background-red">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/digital-platform.png') }}"
                                         class="plat-image">
@@ -104,8 +104,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 padding">
-                            <div class="row background-red">
+                        <div class="col-md-3 col-sm-12">
+                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/push-marketing.png') }}"
                                         class="plat-image">
@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-
+  <br>
 
     <div class="about-admy" id="about-admy">
         <div class="container-fluid">
@@ -153,7 +153,7 @@
 
                         </div>
                         <div class="col-md-7 text-right" data-aos="fade-left">
-                            <img src="{{ asset('assets/admy/image/about.jpg') }}" style="width: 80%">
+                            <img src="{{ asset('assets/admy/image/about.jpg') }}" style="width: 100%;margin-left: -3px;">
                         </div>
                     </div>
                 </div>
@@ -431,15 +431,15 @@
                 <div class="col-md-5 col-md-offset-1">
                     <img src="{{ asset('assets/images/push_sms_03/my-push-smsm.png') }}" class="img-responsive">
                     <div class="global-delivery" data-aos="zoom-in" data-aos-duration="1000">
-                        <h4><b>Global reach and fast delivery</b></h4>
-                        <img src="{{ asset('assets/images/line/push_line.png') }}" class="img-responsive">
-                        <p>Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
+                        <h4 style="margin-left: -35px;"><b>Global reach and fast delivery</b></h4>
+                        <img src="{{ asset('assets/images/line/push_line.png') }}" style="margin-left: -50px;" class="img-responsive">
+                        <p style="margin-left: -54px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
                             Automated SMS mailling reaches recipients at the speed of 200-500 SMS per second on 800 networks
                             in over 200 countries around the world.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="titles">
+                    <div class="titles" style="margin-left: 70px;">
                         <h1 class="bulk">MY PUSH</h1>
                         <h1 class="sms-service">SMS SERVICE</h1>
                     </div>
@@ -486,9 +486,9 @@
                 <div class="col-md-4 col-md-offset-1">
                     <img src="{{ asset('assets/images/bulk_sms_02/bulk_sms_service.png') }}" class="img-responsive">
                     <div class="global-delivery" data-aos="zoom-in" data-aos-duration="1000">
-                        <h4><b>Global reach and fast delivery</b></h4>
-                        <img src="{{ asset('assets/images/line/bulk_line.png') }}" class="img-responsive">
-                        <p>Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
+                        <h4 style="margin-left: -30px;"><b>Global reach and fast delivery</b></h4>
+                        <img src="{{ asset('assets/images/line/bulk_line.png') }}" style="margin-left: -50px;" class="img-responsive">
+                        <p style="margin-left: -55px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
                             Automated SMS mailling reaches recipients at the speed of 200-500 SMS per second on 800 networks
                             in over 200 countries around the world.</p>
                     </div>
@@ -506,7 +506,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-10" style="margin-top:165px;">
                             <h3 class="service-process text-center" data-aos="fade-right" data-aos-duration="1000">
                                 <b>Service Process</b>
                             </h3>
@@ -580,7 +580,6 @@
                     <h4><b>Cost per acquisition is also referred to as cost per action or CPA — but don’t get confused with
                             diction, these three terms all mean the same thing!</b></h4>
                 </div>
-                <div class="col-md-2"></div>
                 <div class="col-md-3">
                     <img src="{{ asset('assets/images/digital_platform/cpc.png') }}" class="cpa-image">
                 </div>
