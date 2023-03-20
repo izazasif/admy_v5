@@ -1,4 +1,5 @@
 @extends('site.layouts.master')
+
 @section('content')
     <div class="contact-us">
         <div class="container-fluid">
@@ -12,7 +13,7 @@
     <div class="contact-us-field">
         <div class="container-fluid">
             <div class="row">
-                <div class="text-center">
+                <div class="text-center" style="margin-left:-35px;">
                     <img class="" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
                 </div>
                 <h2 class="text-center bulk-plan web-plan"><b>WEB API PRICE PLAN</b></h2>
@@ -35,27 +36,27 @@
                 </div>
                 <div class="col-md-4">
                     <div class="row" id="web-api-service_c">
-                    <div class="col-md-11">
-                        <form id="custom" action="{{ route('web.api.checkout.post') }}" method="POST">
-                            @csrf
-                        <div class="api-package_2">
+                        <div class="col-md-11">
+                            <form id="custom" action="{{ route('web.api.checkout.post') }}" method="POST">
+                                @csrf
+                            <div class="api-package_2">
 
-                            <h2> Choose Your Plan</h2>
-                                <table>
-                                    <tr>
-                                        <td><p>ACQUISITION </p></td>
-                                        <td><input  name="acquisition" id="acquisition" value="0" class="form-control"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p style="margin-top: 15px">COST</p></td>
-                                        <td><button style="width: 100%; margin-top: 15px" class="btn btn-danger btn-calculate" id="ts">0</button></td>
-                                    </tr>
-                                </table>
+                                <h2> Choose Your Plan</h2>
+                                    <table>
+                                        <tr>
+                                            <td><p>ACQUISITION </p></td>
+                                            <td><input  name="acquisition" id="acquisition" value="0" class="form-control"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><p style="margin-top: 15px">COST</p></td>
+                                            <td><button style="width: 100%; margin-top: 15px" class="btn btn-danger btn-calculate" id="ts">0</button></td>
+                                        </tr>
+                                    </table>
+                            </div>
+                            <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
+                            <button  class="btn btn-danger btn-calculate" type="button" style="width: 104%;margin-left: -15px;" role="button"><b>Coming Soon</b></button>
+                            </form>
                         </div>
-                        <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
-                        <button  class="btn btn-danger btn-calculate" type="button" style="width: 100%" role="button"><b>Coming Soon</b></button>
-                        </form>
-                </div>
                     </div>
                 </div>
             </div>

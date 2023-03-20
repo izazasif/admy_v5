@@ -38,11 +38,11 @@
                        <form method="POST" action="{{ route('signup.submit') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                          <div class="form-group row">
-                             <div class="col-md-6 col-sm-6 col-xs-6">
+                             <div class="col-md-6 col-sm-12 col-xs-12">
                                  <label for="username">First Name:<span> *</span></label>
                                  <input class="form-control input-lg" name="first_name" value="{{ old('first_name') }}" type="text">
                              </div>
-                             <div class="col-md-6 col-sm-6 col-xs-6">
+                             <div class="col-md-6 col-sm-12 col-xs-12">
                                  <label for="username">Last Name:<span></span></label>
                                  <input class="form-control input-lg" name="last_name" value="{{ old('last_name') }}" type="text">
                              </div>

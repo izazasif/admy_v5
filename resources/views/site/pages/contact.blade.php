@@ -15,19 +15,19 @@
             <div class="col-md-10 col-md-offset-1">
                <div class="row">
 
-                  <div class="col-md-4 col-md-offset-1">
+                  <div class="col-md-4 col-md-offset-1" >
                      <div class="get-in-touch">
                         <h1 class="text-center in-touch">Get in Touch</h1>
                         <img src="{{ asset('assets/admy/image/rectangle-line.png') }}" class="line">
                         <div class="text-center">
                           <img src="{{ asset('assets/admy/image/message.png') }}" class="message">
                         </div>
-                        <p>Thank you for your time, pls. send anything (your questions, queries, feedback) to us. </p>
+                        <p style="line: height 1.4em;">Thank you for your time, pls. send anything (your questions, queries, feedback) to us. </p>
                         <p>We are listening...</p>
                      </div>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">
                     <div class="form-div">
                         @if ($errors->any())
                         <div class="alert alert-danger">
