@@ -152,7 +152,7 @@
                             </p>
 
                         </div>
-                        <div class="col-md-7 text-right" data-aos="fade-left">
+                        <div class="col-md-7 text-right">
                             <img src="{{ asset('assets/admy/image/about.jpg') }}" style="width: 100%;margin-left: -3px;">
                         </div>
                     </div>
@@ -342,11 +342,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="{{ asset('assets/images/obd_platform_01/obd_platform.png') }}"
-                                    class="img-responsive" data-aos="zoom-out">
+                                    class="img-responsive">
                             </div>
                             <div class="col-md-8">
-                                <h1 data-aos="fade-right">MyBDApps</h1>
-                                <h2 data-aos="fade-left">OBD PLATFORM</h2>
+                                <h1 data-aos="fade-down">MyBDApps</h1>
+                                <h2 data-aos="fade-up">OBD PLATFORM</h2>
 
                                 <p class="first-p">With this platform OBD call is triggered to customer from a system
                                     offering different information like important voice broadcasting or services like VAS,
@@ -445,11 +445,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <h3 class="service-process text-center" data-aos="fade-right" data-aos-duration="1000">
+                            <h3 class="service-process text-center">
                                 <b>Service Process</b>
                             </h3>
                             <img src="{{ asset('assets/images/push_sms_03/push-sms-service.png') }}"
-                                class="img-responsive" data-aos="zoom-out" data-aos-duration="1000">
+                                class="img-responsive">
                         </div>
                     </div>
                 </div>
@@ -460,7 +460,7 @@
                     <div class="" style="margin-left: 7%; margin-right: 7%;">
                        <!-- <div class="col-md-1"></div> -->
                         @foreach ($push_sms as $sm)
-                            <div class="col-md-3 text-center" data-aos="zoom-out"
+                            <div class="col-md-3 text-center"
                                 style=" padding-bottom:2%">
                                 <div class="package">
                                     <h2>BDT {{ number_format($sm->price) }}</h2>
@@ -507,11 +507,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10" style="margin-top:165px;">
-                            <h3 class="service-process text-center" data-aos="fade-right" data-aos-duration="1000">
+                            <h3 class="service-process text-center">
                                 <b>Service Process</b>
                             </h3>
                             <img src="{{ asset('assets/images/bulk_sms_02/bulk-sms-infographic.png') }}"
-                                class="img-responsive" data-aos="zoom-out" data-aos-duration="1000">
+                                class="img-responsive">
                         </div>
                     </div>
                 </div>
@@ -546,11 +546,10 @@
             <div class="row">
                 <div class="col-md-7 col-md-offset-1 image">
                     <div class="title">
-                        <h1 class="digital" data-aos="fade-right">DIGITAL</h1>
-                        <h1 class="platforms" data-aos="fade-left">PLATFORM</h1>
+                        <h1 class="digital">DIGITAL</h1>
+                        <h1 class="platforms">PLATFORM</h1>
                     </div>
-                    <img src="{{ asset('assets/images/digital_platform/digital-platform.png') }}" class="img-responsive"
-                        data-aos="zoom-out">
+                    <img src="{{ asset('assets/images/digital_platform/digital-platform.png') }}" class="img-responsive">
 
                 </div>
                 <div class="col-md-10 col-md-offset-1 content-digital">
