@@ -67,9 +67,9 @@
                             <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate"
                                 role="button">Logout</a>
                         @else
-                            <a href="{{ route('signin') }}" class="btn btn-danger btn-calculate" role="button">SIGN
+                            <a href="{{ route('signin') }}" class="btn btn-danger btn-calculate" style="width:87%;" role="button">SIGN
                                 IN</a>
-                            <a href="{{ route('signup') }}" class="btn btn-danger btn-calculate" role="button">SIGN
+                            <a href="{{ route('signup') }}" class="btn btn-danger btn-calculate" style="width:87%;" role="button">SIGN
                                 UP</a>
                         @endif
                     </div>
@@ -79,7 +79,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="50">
+<nav class="navbar navbar-inverse" data-offset-top="50">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
