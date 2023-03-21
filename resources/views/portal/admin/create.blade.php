@@ -15,8 +15,8 @@
                                     <div class="input-group-btn">
                                         <a href="">
                                             <!-- <button type="button" class="btn btn-primary btn-sm pull-right">
-                                          <i class="fa fa-users" aria-hidden="true"></i> All Categories
-                                        </button> -->
+                                                  <i class="fa fa-users" aria-hidden="true"></i> All Categories
+                                                </button> -->
                                         </a>
                                     </div>
                                 </div>
@@ -77,6 +77,11 @@
                                             <select class="form-control" name="user_permission" id="user_permission">
                                                 <option value="">-- Select Role --</option>
                                                 <option value="all">Super Admin</option>
+                                                <option value="ticket">Ticket Admin</option>
+                                                <option value="financial">Financial Admin</option>
+                                                <option value="report">Reporting Admin</option>
+                                                <option value="obd_sms_manager">OBD SMS Manager</option>
+                                                <option value="obd_sms_viewer">OBD SMS Viewer</option>
                                                 <option value="obd_creator">OBD Manager</option>
                                                 <option value="obd_viewer">OBD Viewer</option>
                                                 <option value="sms_creator">Push SMS Manager</option>
