@@ -65,7 +65,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
-                            <div class="row  background-red" style="margin-left: 51px!important;height: 198px!important;">
+                            <div class="row  background-red" >
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/obd_platform.png') }}" class="plat-image">
                                 </div>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
+                            <div class="row background-red" >
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/bulk-sms-service.png') }}"
                                         class="plat-image">
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="col-md-3 col-sm-12">
-                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
+                            <div class="row background-red" >
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/digital-platform.png') }}"
                                         class="plat-image">
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="col-md-3 col-sm-12">
-                            <div class="row background-red" style="margin-left: 51px!important;height: 198px!important;">
+                            <div class="row background-red">
                                 <div class="col-md-4">
                                     <img src="{{ asset('assets/images/banner_icon/push-marketing.png') }}"
                                         class="plat-image">

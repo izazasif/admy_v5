@@ -17,7 +17,7 @@
                     <img class="" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
                 </div>
                 <h2 class="text-center bulk-plan web-plan"><b>WEB API PRICE PLAN</b></h2>
-                <div class="col-md-7">
+                <div class="col-md-7 col-sm-12">
                     <div class="row">
                             <div class="row" id="web-api-service">
                                 <div class="col-md-2"></div>
@@ -34,7 +34,7 @@
                             </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12">
                     <div class="row" id="web-api-service_c">
                         <div class="col-md-11">
                             <form id="custom" action="{{ route('web.api.checkout.post') }}" method="POST">
@@ -54,7 +54,7 @@
                                     </table>
                             </div>
                             <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
-                            <button  class="btn btn-danger btn-calculate" type="button" style="width: 104%;margin-left: -15px;" role="button"><b>Coming Soon</b></button>
+                            <button  class="btn btn-danger btn-calculate" type="button" role="button"><b>Coming Soon</b></button>
                             </form>
                         </div>
                     </div>

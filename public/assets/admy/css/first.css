@@ -31,9 +31,14 @@ input, button, select, textarea, .btn {
 	/* width:110px; */
   width: 40%;
 	height:50px;
-	/* margin-left: 7%; */
+	margin-left: 7%;
 }
 
+@media screen and (max-width: 720px) {
+  .logo-bar .logo-image{
+    margin-left: 0px;
+  }
+}
 .logo-bar .media-heading{
 	font-weight: bold;
 	font-size: 12px;
@@ -131,15 +136,30 @@ input, button, select, textarea, .btn {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height:150px;
+    height:198px;
     width: 260px;
     padding-top: 5px;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    margin-left: -3px;
 }
 /* .platform .padding{
     padding-left:3%;
     padding-right:3%;
 } */
+
+@media screen and (max-width: 720px) {
+  .platform .background-red{
+    background-image: url("../../images/banner_icon/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:198px;
+    width: 260px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 48px;
+}
+}
 
 .platform .plat-image{
 	width: 72px;
@@ -247,6 +267,21 @@ input, button, select, textarea, .btn {
 .btn-calculate{
 	 /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
 	 background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+   width: 100%;
+   margin-left: -6px;
+   margin-top: 7px;
+}
+
+@media screen and (max-width: 720px) {
+  .btn-calculate{
+    width: 99%;
+    margin-left: -2px;
+  }
+  
+}
+.btn-calculate{
+  /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
+  background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
 }
 
 .btn-calculate_2{
@@ -1157,6 +1192,7 @@ input, button, select, textarea, .btn {
 .contact-us-field{
    padding-top: 100px;
    padding-bottom: 100px;
+   margin-left: 6px;
 }
 
 .contact-us-field .col-md-4{
@@ -1625,19 +1661,42 @@ __________________________    PASSWORD   RECOVER   ___________________________
     background: #d7d5d5!important;
     padding: 30px;
     min-height: 215px;
+    margin-left: -2px;
+    width: 99%;
 }
 .api-package_2{
     background: #d7d5d5!important;
     padding: 30px;
-    margin-top: 10px;
+    margin-top: 14px;
     min-height: 215px;
-    margin-left: -15px;
+    margin-left: -6px;
+    width: 408px;
+    /* margin-left: -4px; */
+}
+@media screen and (max-width: 720px) {
+  .api-package{
+    width: 378px;
+    
+}
+}
+@media screen and (max-width: 720px) {
+  .api-package_2{
+    width: 378px;
+    margin-left: -2px;
+}
 }
 #web-api-service a{
     width: 100%;
     margin-top: 7px;
 }
-
+@media screen and (max-width: 720px) {
+  #web-api-service a{
+   
+    margin-top: 0px;
+    width: 378px;
+    margin-left: -11px;
+}
+}
 
 #web-api-service .api-package h2 {
     color: #a32757;
