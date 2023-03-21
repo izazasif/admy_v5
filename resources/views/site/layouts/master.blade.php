@@ -13,6 +13,19 @@
   <link rel="stylesheet" href="{{ asset('assets/admy/css/font-admy.css') }}">
   <link rel="icon" type="image/gif/png" href="{{ asset('assets/images/foot-logo.png') }}">
 
+  <style>
+    .navbar-header{
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+    .navbar-inverse .container-fluid{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .navbar-toggle {
+      margin-right: 33px;
+    }
+  </style>
   @yield('extra-head-scripts')
 </head>
 <body>

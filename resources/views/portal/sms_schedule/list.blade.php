@@ -167,7 +167,7 @@
                                 @endforeach
                             </table>
                             <div class="text-center">
-                                {{ $all_schedule_list->links() }}
+                                {{ $all_schedule_list->appends(Request::except('page'))->links() }}
                             </div>
                         </div>
                     </div>

@@ -727,7 +727,8 @@ input, button, select, textarea, .btn {
 }
 
 .digital-platform .cpa-image{
-    width: 388px;
+    /* width: 388px; */
+    width: 100%;
     height: 180px;
     margin-left: -15px;
 }
