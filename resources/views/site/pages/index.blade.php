@@ -130,7 +130,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
                         <div class="col-md-5">
-                            <h2 style="text-align: center;">About MyBDApps</h2>
+                            <h2 style="text-align: center;margin-top: -7px;">About MyBDApps</h2>
                             <div class="row line-big">
                                 <div class="col-md-12" style="text-align: center;">
                                     <img src="{{ asset('assets/images/line/about_line.png') }}">
@@ -168,7 +168,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div data-aos="fade-up" data-aos-duration="1000">
-                        <h3 class="text-center"><b>Advantage of MyBDApps</b></h3>
+                        <h3 class="text-center" style="margin-top: -7px;"><b>Advantage of MyBDApps</b></h3>
                         <div class="row line-big">
                             <div class="col-md-12 text-center">
                                 <img src="{{ asset('assets/images/line/advantage_line.png') }}">
@@ -395,7 +395,7 @@
 
 
     <div class="obd-packages-plan">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="obd-pack-plan text-center" data-aos="zoom-in">OBD PACKAGES PLAN</h2>
