@@ -54,7 +54,7 @@
                                     </table>
                             </div>
                             <!-- <button  class="btn btn-danger btn-calculate" type="submit" style="width: 100%" role="button"><b>BUY NOW</b></button> -->
-                            <button  class="btn btn-danger btn-calculate" type="button" role="button"><b>Coming Soon</b></button>
+                            <button  class="btn btn-danger btn_calculate_2" type="button" role="button"><b>Coming Soon</b></button>
                             </form>
                         </div>
                     </div>

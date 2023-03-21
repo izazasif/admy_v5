@@ -15,7 +15,7 @@
             <div class="col-md-10 col-md-offset-1">
                <div class="row">
 
-                  <div class="col-md-4 col-md-offset-1" >
+                  <div class="col-md-4 col-md-offset-1">
                      <div class="get-in-touch">
                         <h1 class="text-center in-touch">Get in Touch</h1>
                         <img src="{{ asset('assets/admy/image/rectangle-line.png') }}" class="line">

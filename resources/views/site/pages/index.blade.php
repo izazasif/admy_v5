@@ -130,7 +130,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
                         <div class="col-md-5">
-                            <h2 style="text-align: center;margin-top: -7px;">About MyBDApps</h2>
+                            <h2 style="text-align: center;margin-top: -6px;">About MyBDApps</h2>
                             <div class="row line-big">
                                 <div class="col-md-12" style="text-align: center;">
                                     <img src="{{ asset('assets/images/line/about_line.png') }}">
@@ -153,7 +153,7 @@
 
                         </div>
                         <div class="col-md-7 text-right">
-                            <img src="{{ asset('assets/admy/image/about.jpg') }}" style="width: 100%;margin-left: -3px;">
+                            <img src="{{ asset('assets/admy/image/about.jpg') }}" style="width: 100%;margin-left: -3px;margin-top: 0px;">
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div data-aos="fade-up" data-aos-duration="1000">
-                        <h3 class="text-center" style="margin-top: -7px;"><b>Advantage of MyBDApps</b></h3>
+                        <h3 class="text-center"><b>Advantage of MyBDApps</b></h3>
                         <div class="row line-big">
                             <div class="col-md-12 text-center">
                                 <img src="{{ asset('assets/images/line/advantage_line.png') }}">
@@ -344,9 +344,9 @@
                                 <img src="{{ asset('assets/images/obd_platform_01/obd_platform.png') }}"
                                     class="img-responsive">
                             </div>
-                            <div class="col-md-8">
-                                <h1 data-aos="fade-down">MyBDApps</h1>
-                                <h2 data-aos="fade-up">OBD PLATFORM</h2>
+                            <div class="col-md-8" style="margin-top: -24px;">
+                                <h1 data-aos="fade-down" style="text-align: center;">MyBDApps</h1>
+                                <h2 data-aos="fade-up" style="text-align: center;">OBD PLATFORM</h2>
 
                                 <p class="first-p">With this platform OBD call is triggered to customer from a system
                                     offering different information like important voice broadcasting or services like VAS,
@@ -363,7 +363,7 @@
 
                         <h4 class="text-center"><b>Key Benefits:</b></h4>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top: -19px;">
                                 <ul style="list-style-type:none">
                                     <li>Automatically dials mobile number subscribers to promote and market services.</li>
                                     <li>Intelligently segregates un-successful calls and re-dials automatically.</li>
@@ -497,8 +497,8 @@
                     <div class="titles">
                         <div class="row">
                             <div class="col-md-5">
-                                <h1 class="bulk">BULK</h1>
-                                <h1 class="sms-service">SMS SERVICE</h1>
+                                <h1 class="bulk" style="text-align: center;">BULK</h1>
+                                <h1 class="sms-service" style="text-align: center;">SMS SERVICE</h1>
                             </div>
                             <div class="col-md-2">
                                 <img class="coming_soon" src="{{ asset('assets/images/banner_icon/coming-soon.png') }}">
