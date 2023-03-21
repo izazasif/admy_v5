@@ -130,9 +130,9 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="row">
                         <div class="col-md-5">
-                            <h2>About MyBDApps</h2>
+                            <h2 style="text-align: center;">About MyBDApps</h2>
                             <div class="row line-big">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="text-align: center;">
                                     <img src="{{ asset('assets/images/line/about_line.png') }}">
                                 </div>
                             </div>
@@ -395,7 +395,7 @@
 
 
     <div class="obd-packages-plan">
-        <div class="">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="obd-pack-plan text-center" data-aos="zoom-in">OBD PACKAGES PLAN</h2>
