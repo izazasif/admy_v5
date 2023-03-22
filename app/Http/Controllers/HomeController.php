@@ -37,7 +37,8 @@ class HomeController extends Controller
     }
 
     public function phpinfo(){
-        echo phpinfo();
+        // echo phpinfo();
+        return view('site.pages.test');
     }
 
 }
