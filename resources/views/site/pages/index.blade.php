@@ -439,7 +439,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="titles" style="margin-left: 70px;">
+                    <div class="titles" style="margin-left: 53px;">
                         <h1 class="bulk">MY PUSH</h1>
                         <h1 class="sms-service">SMS SERVICE</h1>
                     </div>
@@ -461,7 +461,7 @@
                        <!-- <div class="col-md-1"></div> -->
                         @foreach ($push_sms as $sm)
                             <div class="col-md-3 text-center"
-                                style=" padding-bottom:2%">
+                                style=" padding-bottom:5%">
                                 <div class="package">
                                     <h2>BDT {{ number_format($sm->price) }}</h2>
                                     <!-- <p> Per SMS</p> -->
