@@ -15,7 +15,7 @@ class CheckSMSManager
      */
     public function handle($request, Closure $next)
     {
-        if(session()->get('permission') == 'all' || session()->get('permission') == 'sms_creator')
+        if(session()->get('permission') == 'all' || session()->get('permission') == 'sms_creator' || session()->get('permission') == 'obd_sms_manager')
         {
             return $next($request);
         } else{

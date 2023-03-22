@@ -15,7 +15,7 @@ class CheckOBDManager
      */
     public function handle($request, Closure $next)
     {
-        if(session()->get('permission') == 'all' || session()->get('permission') == 'obd_creator')
+        if(session()->get('permission') == 'all' || session()->get('permission') == 'obd_creator' || session()->get('permission') == 'obd_sms_manager')
         {
             return $next($request);
         } else{
