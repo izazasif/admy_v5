@@ -37,6 +37,8 @@ input, button, select, textarea, .btn {
 @media screen and (max-width: 720px) {
   .logo-bar .logo-image{
     margin-left: 0px;
+    width: 100px;
+	height:auto;
   }
 }
 .logo-bar .media-heading{
@@ -48,8 +50,8 @@ input, button, select, textarea, .btn {
 }
 /*nav bar:::::::::::::::::::::::::::*/
 .navbar{
-	/*background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);*/
-	background: url("../../images/top_address/menu_bar.png");
+	background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+	/* background: url("../../images/top_address/menu_bar.png"); */
 	border:0px;
 	margin:0px;
 }
@@ -157,7 +159,7 @@ input, button, select, textarea, .btn {
     width: 260px;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-left: 48px;
+    margin-left: 50px;
 }
 }
 
@@ -186,8 +188,8 @@ input, button, select, textarea, .btn {
 
 .about-admy{
   background: #ebebeb;
-  padding-top:40px;
-  padding-bottom: 45px;
+  padding-top:26px;
+  padding-bottom: 4px;
 }
 .about-admy h2{
   font-weight: bold;
@@ -264,18 +266,21 @@ input, button, select, textarea, .btn {
 	text-align: center;
 }
 
-.btn-calculate{
-	 /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
-	 background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
-   width: 100%;
-   margin-left: -6px;
-   margin-top: 7px;
-}
 
 @media screen and (max-width: 720px) {
   .btn-calculate{
-    width: 99%;
-    margin-left: -2px;
+    width: 45%;
+  }
+  
+}
+.btn-calculate2{
+  background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+ width: 40%;
+}
+@media screen and (max-width: 720px) {
+  .btn-calculate2{
+     background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+    width: 29%;
   }
   
 }
@@ -290,8 +295,8 @@ input, button, select, textarea, .btn {
 }
 
 .product-overview{
-   padding-top: 30px;
-   padding-bottom: 30px;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
 
 .product-overview .product-overview-bg{
@@ -322,11 +327,12 @@ input, button, select, textarea, .btn {
 	padding-bottom: 20px;
 	padding-left:16%;
 	padding-right:16%;
+  margin-top: -4px;
 }
 
 .admy-obd-platform{
-    padding-top: 40px;
-    padding-bottom: 35px;
+    padding-top: 18px;
+    padding-bottom: 13px;
     background: #ebebeb;
 }
 
@@ -363,7 +369,8 @@ input, button, select, textarea, .btn {
 }
 
 .admy-obd-platform ul{
-	margin-left: -4%;
+	margin-left: -13%;
+  text-align: justify;
 }
 
 .admy-obd-platform ul li{
@@ -372,7 +379,7 @@ input, button, select, textarea, .btn {
 
 .admy-obd-platform p.first-p{
 	/*margin-bottom: 45px;*/
-	margin-top: 40px;
+	margin-top: 15px;
   margin-left:3px;
   text-align: justify;
 }
@@ -436,7 +443,7 @@ input, button, select, textarea, .btn {
  .bulk-sms-service{
    background: #ebebeb;
    padding-top:90px;
-   padding-bottom:80px;
+   padding-bottom:10px;
  }
 
  .bulk-sms-service .titles{
@@ -446,7 +453,7 @@ input, button, select, textarea, .btn {
     font-size: 56px;
     font-weight: bold;
     color:#982c62;
-     margin-top: 124px;
+     margin-top: 20px;
  }
 
  .bulk-sms-service h1.sms-service{
@@ -510,15 +517,15 @@ input, button, select, textarea, .btn {
 
 .push-sms-service{
     background: white;
-    padding-top:90px;
-    padding-bottom:80px;
+    padding-top:50px;
+    padding-bottom:27px;
 }
 
 .push-sms-service h1.bulk{
     font-size: 56px;
     font-weight: bold;
     color:#982c62;
-    margin-top: 124px;
+    margin-top: 17px;
 }
 
 .push-sms-service h1.sms-service{
@@ -529,7 +536,7 @@ input, button, select, textarea, .btn {
 }
 
 .push-sms-service h3.service-process{
-    margin-top: 45px;
+    margin-top: 14px;
     margin-bottom: 18px;
 }
 
@@ -591,8 +598,8 @@ input, button, select, textarea, .btn {
    background-repeat: no-repeat;
    background-size: cover;
 
-   padding-top:40px;
-   padding-bottom: 70px;
+   padding-top:6px;
+   padding-bottom: 33px;
 }
 
 .obd-packages-plan h2.obd-pack-plan{
@@ -728,9 +735,9 @@ input, button, select, textarea, .btn {
 
 .digital-platform .cpa-image{
     /* width: 388px; */
-    width: 100%;
+    width: 97%;
     height: 180px;
-    margin-left: -15px;
+    margin-left: 12px;
 }
 
 .digital-platform .content-digital{
@@ -741,7 +748,7 @@ input, button, select, textarea, .btn {
 }
 
 .digital-platform .content-digital h5{
-    padding-top:23px;
+    padding-top:0px;
 }
 
 .digital-platform .content-digital-left{
@@ -790,6 +797,28 @@ input, button, select, textarea, .btn {
   padding-top:25px;
 }
 
+@media screen and (max-width: 720px) {
+  .footer-wrap .first-col{
+    /* padding-top:45px; */
+    padding-top:0px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .method1{
+    /* padding-top:45px; */
+    
+    margin-left: -78px;
+
+  }
+}
+@media screen and (max-width: 720px) {
+  .form_mobile{
+    /* padding-top:45px; */
+    
+    margin-left: -192px;
+
+  }
+}
 .footer-wrap .first-col button{
   height:34px;
 }
@@ -802,7 +831,12 @@ input, button, select, textarea, .btn {
   padding-top:20px;
   padding-bottom:10px;
 }
+@media screen and (max-width: 720px) {
+  .footer-wrap .thired-col{
 
+    margin-top: -37px;
+  }
+}
 .footer-wrap .middle-part p{
   margin: 0 0 8px;
 }
@@ -844,6 +878,11 @@ input, button, select, textarea, .btn {
   padding-top:25px;
 }
 
+@media screen and (max-width: 720px) {
+  .footer-wrap .second-col,.footer-wrap .thired-col,.footer-wrap .fourth-col,.footer-wrap .fifth-col{
+    padding-top:42px;
+}
+}
 .footer-wrap .second-col h4{
   font-size: 16px;
   font-family: "ClearGothicSerial";
@@ -1191,9 +1230,9 @@ input, button, select, textarea, .btn {
 
 
 .contact-us-field{
-   padding-top: 100px;
-   padding-bottom: 100px;
-   margin-left: 6px;
+   padding-top: 10px;
+   padding-bottom: 50px;
+   margin-left: 0px;
 }
 
 .contact-us-field .col-md-4{
@@ -1304,14 +1343,29 @@ input, button, select, textarea, .btn {
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
+   margin-top: 14px;
+   height: 944px;
+
 }
 
+@media screen and (max-width: 720px) {
+  .contact-us-field .get-in-touch{
+    display: none;
+ 
+ }
+}
 
 
 .contact-us-field .miaki-address{
   margin-bottom: 25px;
 }
+/* @media screen and (max-width: 720px) {
+  .contact-us-field .miaki-address{
+   
+    margin-top: -56px;
 
+  }
+} */
 .contact-us-field .miaki-address p{
   font-size: 18px;
   margin-bottom: 1px;
@@ -1319,7 +1373,7 @@ input, button, select, textarea, .btn {
 
 .contact-us-field .contact-info-images1{
   width:30px;
-  padding-top: 46%;
+  padding-top: 0%;
 }
 
 .contact-us-field .contact-info-images2{
@@ -1662,7 +1716,7 @@ __________________________    PASSWORD   RECOVER   ___________________________
     background: #d7d5d5!important;
     padding: 30px;
     min-height: 215px;
-    margin-left: -2px;
+    margin-left: 13px;
     width: 99%;
 }
 .api-package_2{
@@ -1677,28 +1731,49 @@ __________________________    PASSWORD   RECOVER   ___________________________
 @media screen and (max-width: 720px) {
   .api-package{
     width: 378px;
-    
+    margin-left: 6px;
+    margin-top: 8px;
 }
 }
 @media screen and (max-width: 720px) {
   .api-package_2{
     width: 378px;
-    margin-left: -2px;
+    margin-left: 6px;
+    margin-top: 22px;
+}
+}
+.btn_calculate_2{
+  background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+  margin-left: -6px;
+  margin-top: 7px;
+  width: 408px;
+ 
+}
+@media screen and (max-width: 720px) {
+  .btn_calculate_2{
+    width: 378px;
+    margin-left: 6px;
+    margin-top: 0px;
 }
 }
 #web-api-service a{
     width: 100%;
     margin-top: 7px;
+    margin-left: 12px;
 }
 @media screen and (max-width: 720px) {
   #web-api-service a{
    
     margin-top: 0px;
     width: 378px;
-    margin-left: -11px;
+    margin-left: 0px;
 }
 }
-
+@media screen and (max-width: 720px) {
+  .form_con{
+    margin-top: -88px;
+}
+}
 #web-api-service .api-package h2 {
     color: #a32757;
     font-weight: bold;

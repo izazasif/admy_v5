@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('assets/images/top-logo-new.png') }}" class="logo-image">
+                <img src="{{ asset('assets/images/top.png') }}" class="logo-image">
             </div>
             <div class="col-md-8 bar-right-side">
                 <div class="row">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-md-offset-1">
+                    <div class="col-md-3 col-sm-3 col-md-offset-1">
                         @if (session()->has('user_mail'))
                             @if (session()->get('user_role') == 'user')
                                 <a href="{{ route('schedule.create') }}" class="btn btn-danger btn-calculate"
@@ -67,9 +67,9 @@
                             <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate"
                                 role="button">Logout</a>
                         @else
-                            <a href="{{ route('signin') }}" class="btn btn-danger btn-calculate" style="width:87%;" role="button">SIGN
+                            <a href="{{ route('signin') }}" class="btn btn-danger btn-calculate2"  role="button">SIGN
                                 IN</a>
-                            <a href="{{ route('signup') }}" class="btn btn-danger btn-calculate" style="width:87%;" role="button">SIGN
+                            <a href="{{ route('signup') }}" class="btn btn-danger btn-calculate2"  role="button">SIGN
                                 UP</a>
                         @endif
                     </div>
