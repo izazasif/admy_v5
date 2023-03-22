@@ -45,11 +45,11 @@
                                     <table>
                                         <tr>
                                             <td><p>ACQUISITION </p></td>
-                                            <td><input  name="acquisition" id="acquisition" value="0" class="form-control"></td>
+                                            <td><input  name="acquisition" id="acquisition" value="0" class="form-control" style="margin-left: 12px;"></td>
                                         </tr>
                                         <tr>
                                             <td><p style="margin-top: 15px">COST</p></td>
-                                            <td><button style="width: 100%; margin-top: 15px" class="btn btn-danger btn-calculate" id="ts">0</button></td>
+                                            <td><button style="width: 100%; margin-top: 15px;margin-left: 13px;" class="btn btn-danger btn-calculate" id="ts">0</button></td>
                                         </tr>
                                     </table>
                             </div>

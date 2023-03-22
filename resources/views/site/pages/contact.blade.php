@@ -45,7 +45,7 @@
                         </ul>
                         </div>
                         @endif
-                       <form method="POST" action="{{ route('contact.submit') }}" enctype="multipart/form-data">
+                       <form method="POST" action="{{ route('contact.submit') }}" enctype="multipart/form-data" class="form_con">
                         {{ csrf_field() }}
                          <div class="form-group row">
 

@@ -140,7 +140,7 @@
                                 <div class="col-md-12">
                                 </div>
                             </div>
-                            <p>MyBDApps is a digital marketing platform designed to promote products & services to the
+                            <p style="line-height: 1.4em;">MyBDApps is a digital marketing platform designed to promote products & services to the
                                 community and target market. It is being developed to claim its spot as one of the top
                                 digital marketing tools.
                                 <br><br>Digital Marketing plays a big part in the success of any products & services of a
@@ -348,11 +348,11 @@
                                 <h1 data-aos="fade-down" style="text-align: center;">MyBDApps</h1>
                                 <h2 data-aos="fade-up" style="text-align: center;">OBD PLATFORM</h2>
 
-                                <p class="first-p">With this platform OBD call is triggered to customer from a system
+                                <p class="first-p" style="line-height: 1.4em;">With this platform OBD call is triggered to customer from a system
                                     offering different information like important voice broadcasting or services like VAS,
                                     promotional marketing sales or Customer Survey.</p>
 
-                                <p class="second-p"><b>The main features of this system should be:</b> Self execution
+                                <p class="second-p" style="line-height: 1.4em;"><b>The main features of this system should be:</b> Self execution
                                     option for the customer should be easily configured (IVR system) and customized with 3rd
                                     party applications for different VAS services.</p>
                             </div>
@@ -431,9 +431,9 @@
                 <div class="col-md-5 col-md-offset-1">
                     <img src="{{ asset('assets/images/push_sms_03/my-push-smsm.png') }}" class="img-responsive">
                     <div class="global-delivery" data-aos="zoom-in" data-aos-duration="1000">
-                        <h4 style="margin-left: -35px;"><b>Global reach and fast delivery</b></h4>
-                        <img src="{{ asset('assets/images/line/push_line.png') }}" style="margin-left: -50px;" class="img-responsive">
-                        <p style="margin-left: -54px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
+                        <h4 style="margin-left: -20px;"><b>Global reach and fast delivery</b></h4>
+                        <img src="{{ asset('assets/images/line/push_line.png') }}" style="margin-left: -31px;" class="img-responsive">
+                        <p style="margin-left: -53px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
                             Automated SMS mailling reaches recipients at the speed of 200-500 SMS per second on 800 networks
                             in over 200 countries around the world.</p>
                     </div>
