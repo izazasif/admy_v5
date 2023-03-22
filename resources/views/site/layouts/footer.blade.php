@@ -2,11 +2,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2 d-none d-lg-block">
+            <!-- <div class="col-md-offset-2">
            
-            </div>
+            </div> -->
             
-            <div class="col-md-3 col-xs-6 first-col">
+            <div class="col-md-3 col-xs-6 col-md-offset-2 first-col">
             <img src="{{ asset('assets/images/foot-logo.png') }}" class="img-responsive footer-logo" style="height: 69px; margin-top: 14px;" />
 
                 <div class="middle-part">

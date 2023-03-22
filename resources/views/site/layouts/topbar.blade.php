@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('assets/images/top.png') }}" class="logo-image">
+                <a href="{{ route('home') }}"> <img src="{{ asset('assets/images/top.png') }}" class="logo-image"></a>
             </div>
             <div class="col-md-8 bar-right-side">
                 <div class="row">
@@ -110,7 +110,7 @@
                 @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                <li style="margin-left: 38px;"><a href="{{ route('contact') }}">Contact Us</a></li>
                 @if (session()->has('user_username'))
                     <li><a href="#"><i class="fa fa-user"></i> {{ session()->get('user_username') }}</a></li>
                 @endif
