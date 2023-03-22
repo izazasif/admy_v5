@@ -280,7 +280,9 @@ input, button, select, textarea, .btn {
 @media screen and (max-width: 720px) {
   .btn-calculate2{
      background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
-    width: 29%;
+     width: 45%;
+     margin-top: -74px;
+     margin-left: 6px;
   }
   
 }

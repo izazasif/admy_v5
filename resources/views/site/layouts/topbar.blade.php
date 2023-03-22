@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-8 bar-right-side">
                 <div class="row">
-                    <div class="col-md-7 col-md-offset-1">
+                    <div class="col-md-7 col-xs-6 col-md-offset-1">
                         <div class="row">
                             <div class="col-md-4">
                                 <a href="{{ route('contact') }}#location-map">
@@ -49,8 +49,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-3 col-sm-3 col-md-offset-1">
+ 
+                    <div class="col-md-3 col-xs-6 col-md-offset-1">
                         @if (session()->has('user_mail'))
                             @if (session()->get('user_role') == 'user')
                                 <a href="{{ route('schedule.create') }}" class="btn btn-danger btn-calculate"
@@ -58,10 +58,10 @@
                             @elseif(session()->get('permission') == 'sms_creator' || session()->get('permission') == 'sms_viewer')
                                 <a href="{{ route('sms.schedule.list') }}" class="btn btn-danger btn-calculate"
                                     role="button">Portal</a>
-                            @else
-                                <!-- <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate"
-                                    role="button">Portal</a> -->
-                                    <a href="{{ route('dashboard.view') }}" class="btn btn-danger btn-calculate"
+                            @else 
+                              <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate"
+                                    role="button">Portal</a> 
+                                     <a href="{{ route('dashboard.view') }}" class="btn btn-danger btn-calculate"
                                     role="button">Portal</a>
                             @endif
                             <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate"
@@ -77,6 +77,7 @@
             </div>
         </div>
     </div>
+ 
 </div>
 
 <nav class="navbar navbar-inverse" data-offset-top="50">
