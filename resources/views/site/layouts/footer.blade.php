@@ -6,7 +6,7 @@
            
             </div> -->
             
-            <div class="col-md-3 col-xs-6 col-md-offset-2 first-col">
+            <div class="col-md-4 col-xs-6 first-col">
             <img src="{{ asset('assets/images/foot-logo.png') }}" class="img-responsive footer-logo" style="height: 69px; margin-top: 14px;" />
 
                 <div class="middle-part">
@@ -17,7 +17,7 @@
                     <p>Email: info@miaki.co</p>
                 </div>
             </div>
-            <div class="col-md-3 col-xs-6 thired-col">
+            <div class="col-md-4 col-xs-6 thired-col">
             <h4>QUICK NAVIGATION</h4>
                 <ul>
                     <li><a href="{{ url('/') }}">Home</a></li>
@@ -36,7 +36,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3 col-xs-6 fifth-col">
+            <div class="col-md-4 col-xs-6 fifth-col">
                 <h4><b class="method1"> CONTACT US</b></h4>
                 <form class="form_mobile">
                     <div class="form-group">

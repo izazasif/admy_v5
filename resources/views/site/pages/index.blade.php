@@ -460,8 +460,8 @@
                     <div class="" style="margin-left: 7%; margin-right: 7%;">
                        <!-- <div class="col-md-1"></div> -->
                         @foreach ($push_sms as $sm)
-                            <div class="col-md-3 text-center"
-                                style=" padding-bottom:5%">
+                            <div class="col-md-3 text-center price_plan"
+                              >
                                 <div class="package">
                                     <h2>BDT {{ number_format($sm->price) }}</h2>
                                     <!-- <p> Per SMS</p> -->
