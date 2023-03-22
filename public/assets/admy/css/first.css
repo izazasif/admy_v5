@@ -1794,3 +1794,12 @@ __________________________    PASSWORD   RECOVER   ___________________________
 .web-plan{
     margin-bottom: 30px;
 }
+
+.price_plan{
+  padding-bottom:2%
+}
+@media screen and (max-width: 720px) {
+  .price_plan{
+    padding-bottom:5%
+  }
+}
