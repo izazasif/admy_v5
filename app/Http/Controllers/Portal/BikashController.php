@@ -219,6 +219,6 @@ class BikashController extends Controller
         $purchase = new CampainController();
         $response = $purchase->purchasePackage($email, $amount);
 
-        dd($response->package_id);
+        dd($response);
     }
 }
