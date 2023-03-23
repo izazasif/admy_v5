@@ -213,11 +213,11 @@ class BikashController extends Controller
     }
 
     public function manualAssignSMSPackage(Request $request){
-        $email = $request->email;
+        $userid = $request->userid;
         $amount = $request->amount;
 
         $purchase = new CampainController();
-        $response = $purchase->purchasePackage($email, $amount);
+        $response = $purchase->purchasePackage($userid, $amount);
 
         dd($response);
     }

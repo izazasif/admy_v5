@@ -337,7 +337,7 @@ class SMSController extends Controller
            \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
             
             $campaign = new CampainController();
-            $campaign->purchasePackage($data->email,$data->amount);
+            $campaign->purchasePackage($obd_pack->user_id,$data->amount);
 
             return redirect()->back()->with('message',$message);
         }catch(Exception $e){
