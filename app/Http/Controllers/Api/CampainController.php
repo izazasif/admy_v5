@@ -39,7 +39,7 @@ class CampainController extends Controller
         return $response->key;
     }
 
-    public static function purchasePackage($client_id,$conversions){
+    public function purchasePackage($client_id,$conversions){
         $user = User::find($client_id);
         if($user) {
             $data = array(
