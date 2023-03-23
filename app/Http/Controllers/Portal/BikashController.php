@@ -211,4 +211,14 @@ class BikashController extends Controller
         $message = 'Payment failed! '.\Config::get('bkasherrors.'.$code);
         return redirect()->route('sms.purchase')->withErrors($message);
     }
+
+    public function manualAssignSMSPackage(Request $request){
+        $email = $request->email;
+        $amount = $request->amount;
+
+        $purchase = new CampainController();
+        $response = $purchase->purchasePackage($email, $amount);
+
+        dd($response->package_id);
+    }
 }

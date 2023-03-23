@@ -233,4 +233,6 @@ Route::get('web/bkash/query-payment', 'Portal\WebBikashController@queryPayment')
 Route::get('web/bkash/success/{payment_id}', 'Portal\WebBikashController@bkashSuccess')->name('web-bkash-success');
 Route::get('web/bkash/error/{code}', 'Portal\WebBikashController@bkashError')->name('web-bkash-error');
 
+Route::post('manual/assign-sms-package', 'Portal\BikashController@manualAssignSMSPackage')->name('manual.assign-sms-package');
+
 Route::get('/logout','LoginController@logout')->name('logout');
