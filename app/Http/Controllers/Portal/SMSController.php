@@ -336,7 +336,8 @@ class SMSController extends Controller
             $body = 'Dear Developer, <br/> you have purchased '.$data->amount. ' amount of Push SMS.<br/> '.'Total price '.$sub_total. ' (Included VAT'. env('APP_PSMS_VAT').'% and Getway Charge '.env('APP_PSMS_GATEWAY'). '%).<br/>please, find attached the invoice.';
            \Mail::to($data->email)->send(new \App\Mail\InvoiceMail($body,$pdf->output()));
             
-            CampainController::purchasePackage($data->email,$data->amount);
+            $campaign = new CampainController();
+            $campaign->purchasePackage($obd_pack->user_id,$data->amount);
 
             return redirect()->back()->with('message',$message);
         }catch(Exception $e){
