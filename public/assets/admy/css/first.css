@@ -196,6 +196,13 @@ input, button, select, textarea, .btn {
   font-size:36px;
 }
 
+@media screen and (max-width: 720px) {
+  .about-admy h2{
+    font-weight: bold;
+    font-size:25px;
+  }
+}
+
 .about-admy h4{
   font-weight: bold;
   font-size:16px;
@@ -208,8 +215,24 @@ input, button, select, textarea, .btn {
   margin-bottom: 20px;
   color:black;
   text-align: justify;
+  line-height: 1.4em;
 }
 
+@media screen and (max-width: 720px) {
+  .about-admy p{
+    margin-bottom: 20px;
+    color:black;
+    text-align: justify;
+    line-height: 1.2em;
+    font-size: 17px;
+    margin-top: 11px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .key_benifit{
+    font-size:25px;
+  }
+}
 .line-big .col-md-12{
 	margin-top:-12px;
 }
@@ -266,6 +289,10 @@ input, button, select, textarea, .btn {
 	text-align: center;
 }
 
+.btn-calculate{
+  /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
+  background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
+}
 
 @media screen and (max-width: 720px) {
   .btn-calculate{
@@ -286,10 +313,7 @@ input, button, select, textarea, .btn {
   }
   
 }
-.btn-calculate{
-  /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
-  background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
-}
+
 
 .btn-calculate_2{
     /*background: url("../../images/obd_platform_01/order-now-bg.png");*/
@@ -314,14 +338,25 @@ input, button, select, textarea, .btn {
 .product-overview h3{
      font-size: 30px;
 }
-
+@media screen and (max-width: 720px) {
+  .product-overview h3{
+    font-size: 24px;
+}
+}
 .product-overview .product-overview-bg img{
 	width:60px;
 	height:75px;
 	margin-top: 10%;
 	margin-bottom: 10%;
 }
-
+@media screen and (max-width: 720px) {
+  .product-overview .product-overview-bg img{
+    width:50px;
+    height:65px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}
 .product-overview h5{
 	font-size:20px;
 	color:white;
@@ -351,6 +386,17 @@ input, button, select, textarea, .btn {
     margin-left: 20px;
 }
 
+@media screen and (max-width: 720px) {
+  .admy-obd-platform h1{
+    font-size:30px;
+    font-weight: bold;
+    color:#aa2654;
+    margin-top:50px;
+    margin-bottom: -5px;
+      margin-left: 7px;
+  }
+}
+
 .admy-obd-platform h2{
 	font-size:38px;
 	font-weight: bold;
@@ -358,7 +404,15 @@ input, button, select, textarea, .btn {
 	margin-top: 0px;
     margin-left: 20px;
 }
-
+@media screen and (max-width: 720px) {
+  .admy-obd-platform h2{
+    font-size:28px;
+    font-weight: bold;
+    color:#403f41;
+    margin-top: 5px;
+      margin-left: 20px;
+  }
+}
 .admy-obd-platform ul li:before {
     content: "";
     line-height: 1em;
@@ -374,6 +428,13 @@ input, button, select, textarea, .btn {
 	margin-left: -13%;
   text-align: justify;
 }
+@media screen and (max-width: 720px) {
+  .admy-obd-platform ul{
+    margin-left: -41px;
+    text-align: justify;
+    font-size: 17px;
+  }
+}
 
 .admy-obd-platform ul li{
 	line-height: 22px;
@@ -384,12 +445,34 @@ input, button, select, textarea, .btn {
 	margin-top: 15px;
   margin-left:3px;
   text-align: justify;
+  line-height: 1.4em;
 }
 
 .admy-obd-platform p.second-p{
 	/*margin-bottom: 25px;*/
    margin-left:3px;
    text-align: justify;
+   line-height: 1.4em;
+}
+@media screen and (max-width: 720px) {
+  .admy-obd-platform p.first-p{
+    /*margin-bottom: 45px;*/
+    margin-top: 15px;
+    margin-left:3px;
+    text-align: justify;
+    line-height: 1.2em;
+    font-size: 17px;
+  }
+  
+}
+@media screen and (max-width: 720px) {
+  .admy-obd-platform p.second-p{
+    /*margin-bottom: 25px;*/
+     margin-left:3px;
+     text-align: justify;
+     line-height: 1.2em;
+     font-size: 17px;
+  }
 }
 
 .admy-obd-platform h4{
@@ -457,13 +540,25 @@ input, button, select, textarea, .btn {
     color:#982c62;
      margin-top: 20px;
  }
-
+ @media screen and (max-width: 720px) {
+  .bulk-sms-service h1.bulk{
+   
+    font-size: 25px;
+ }
+}
  .bulk-sms-service h1.sms-service{
     font-size:38px;
     font-weight: bold;
     color:#403f41;
     margin-top: -10px;
  }
+
+ @media screen and (max-width: 720px) {
+  .bulk-sms-service h1.sms-service{
+   
+    font-size:17px;
+ }
+}
 
 .bulk-sms-service h3.service-process{
    margin-top: 45px;
@@ -477,20 +572,57 @@ input, button, select, textarea, .btn {
 .bulk-sms-service .global-delivery h4{
   margin-top:17px;
 }
-
+.fast_del {
+  margin-left: -30px;
+}
+@media screen and (max-width: 720px) {
+  .fast_del{
+    margin-left: -16px;
+ }
+}
+.img-responsive1{
+  display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: -50px;
+}
+@media screen and (max-width: 720px) {
+  .img-responsive1{
+    margin-left: -2px;
+    height:2px; 
+    margin-top: 14px;
+ }
+}
+@media screen and (max-width: 720px) {
+  .img-responsive2{
+    margin-left: -27px;
+    height: 2px;
+    margin-top: 14px;
+ }
+}
 .bulk-sms-service .global-delivery p{
   margin-top:10px;
   text-align: justify;
   font-size: 18px;
 }
-
+@media screen and (max-width: 720px) {
+  .bulk-sms-service .global-delivery p{
+    font-size: 17px;
+    line-height: 1.2em;
+ }
+}
 .bulk-sms-service h2.bulk-plan{
   font-size: 36px;
   color:#403f41;
   margin-top: 35px;
   margin-bottom: 15px;
 }
-
+@media screen and (max-width: 720px) {
+  .bulk-sms-service h2.bulk-plan{
+   
+    font-size:25px;
+ }
+}
 .bulk-sms-service .package{
   background: #d7d5d5;
   padding-top:25px;
@@ -529,7 +661,13 @@ input, button, select, textarea, .btn {
     color:#982c62;
     margin-top: 17px;
 }
-
+@media screen and (max-width: 720px) {
+  .push-sms-service h1.bulk{
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 70px;
+ }
+}
 .push-sms-service h1.sms-service{
     font-size:38px;
     font-weight: bold;
@@ -537,9 +675,23 @@ input, button, select, textarea, .btn {
     margin-top: -10px;
 }
 
+@media screen and (max-width: 720px) {
+  .push-sms-service h1.sms-service{
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 70px;
+ }
+}
+
 .push-sms-service h3.service-process{
     margin-top: 14px;
     margin-bottom: 18px;
+}
+@media screen and (max-width: 720px) {
+  .push-sms-service h3.service-process{
+    font-weight: bold;
+    font-size: 17px;
+ }
 }
 
 .push-sms-service .global-delivery{
@@ -554,13 +706,27 @@ input, button, select, textarea, .btn {
     margin-top:10px;
     text-align: justify;
     font-size: 18px;
+    
 }
-
+@media screen and (max-width: 720px) {
+  .push-sms-service .global-delivery p{
+  
+    font-size: 17px;
+    line-height: 1.2em;
+ }
+}
 .push-sms-service h2.bulk-plan{
     font-size: 36px;
     color:#403f41;
     margin-top: 35px;
     margin-bottom: 15px;
+}
+
+@media screen and (max-width: 720px) {
+  .push-sms-service h2.bulk-plan{
+  
+    font-size: 25px;
+ }
 }
 
 .push-sms-service .package{
@@ -610,6 +776,13 @@ input, button, select, textarea, .btn {
    color:white;
 }
 
+@media screen and (max-width: 720px) {
+  .obd-packages-plan h2.obd-pack-plan{
+    font-weight: bold;
+    font-size: 25px;
+    color:white;
+ }
+}
 
 .obd-packages-plan .wrap{
   background: white;
@@ -739,14 +912,17 @@ input, button, select, textarea, .btn {
     /* width: 388px; */
     width: 97%;
     height: 180px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    padding-right: 2px;
+    padding-left: 13px;
 }
 
 .digital-platform .content-digital{
     padding-left: 7%;
     padding-right: 7%;
     text-align: justify;
-    line-height: 1.4em;
+    line-height: 1.2em;
+    font-size: 17px;
 }
 
 .digital-platform .content-digital h5{
@@ -756,7 +932,9 @@ input, button, select, textarea, .btn {
 .digital-platform .content-digital-left{
     padding-left: 7%;
     text-align: justify;
-    line-height: 1.4em;
+    line-height: 1.2em;
+    padding-right: 7%;
+    font-size: 17px;
 }
 
 .digital-platform .content-digital-left h5{
@@ -1144,6 +1322,7 @@ input, button, select, textarea, .btn {
 
 .login-now .col-md-4{
    padding-right: 0px;
+   padding-left: 0px;
 }
 
 .login-now .col-md-6{
@@ -1687,9 +1866,13 @@ __________________________    PASSWORD   RECOVER   ___________________________
 }
 
 .top-icon-text{
-  padding-top: 4px;
+  padding-top: 0px;
+  margin-top: -8px;
 }
-
+.top-icon-text2{
+  padding-top: 0px;
+  margin-top: 2px;
+}
 .sign-up-background{
     background: url("../../images/SignUP/registration.png");
     width: auto;
@@ -1805,3 +1988,20 @@ __________________________    PASSWORD   RECOVER   ___________________________
     padding-bottom:5%
   }
 }
+
+.top_contact{
+  margin-top: 1px;
+}
+@media screen and (max-width: 720px) {
+  .top_contact{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .top-icon-text{
+    padding-top: 3px;
+    margin-top: 3px;
+  }
+}
+
