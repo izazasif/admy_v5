@@ -13,10 +13,10 @@
                                     <div class="media">
                                         <div class="media-left">
                                             <img src="{{ asset('assets/images/top_address/location_icon.png') }}"
-                                                class="media-object" style="width:30px">
+                                                class="media-object" style="width:30px;margin-top: -2px;">
                                         </div>
                                         <div class="media-body">
-                                            <p class="media-heading top-icon-text">19/A, Banani, Dhaka.</p>
+                                            <p class="media-heading top-icon-text2">19/A, Banani, Dhaka.</p>
                                         </div>
                                     </div>
                                 </a>
@@ -29,7 +29,8 @@
                                                 class="media-object" style="width:30px">
                                         </div>
                                         <div class="media-body">
-                                            <p class="media-heading top-icon-text">Call Us +01872634967</p>
+                                            <h6 class="top_contact"> Call Us </h6>
+                                            <p class="media-heading top-icon-text"> +01872634967</p>
                                         </div>
                                     </div>
                                 </a>
@@ -42,7 +43,8 @@
                                                 class="media-object" style="width:30px;">
                                         </div>
                                         <div class="media-body">
-                                            <p class="media-heading top-icon-text">Mail Us info@mybdapps.com</p>
+                                            <h6 class="top_contact">Mail Us  </h6>
+                                            <p class="media-heading top-icon-text">info@mybdapps.com</p>
                                         </div>
                                     </div>
                                 </a>
@@ -53,18 +55,18 @@
                     <div class="col-md-3 col-xs-6 col-md-offset-1">
                         @if (session()->has('user_mail'))
                             @if (session()->get('user_role') == 'user')
-                                <a href="{{ route('schedule.create') }}" class="btn btn-danger btn-calculate"
+                                <a href="{{ route('schedule.create') }}" class="btn btn-danger btn-calculate2"
                                     role="button">Portal</a>
                             @elseif(session()->get('permission') == 'sms_creator' || session()->get('permission') == 'sms_viewer')
-                                <a href="{{ route('sms.schedule.list') }}" class="btn btn-danger btn-calculate"
+                                <a href="{{ route('sms.schedule.list') }}" class="btn btn-danger btn-calculate2"
                                     role="button">Portal</a>
                             @else 
-                              <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate"
-                                    role="button">Portal</a> 
-                                     <a href="{{ route('dashboard.view') }}" class="btn btn-danger btn-calculate"
+                              <!-- <a href="{{ route('schedule.list') }}" class="btn btn-danger btn-calculate2"
+                                    role="button">Portal</a>  -->
+                                     <a href="{{ route('dashboard.view') }}" class="btn btn-danger btn-calculate2"
                                     role="button">Portal</a>
                             @endif
-                            <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate"
+                            <a href="{{ route('logout') }}" class="btn btn-danger btn-calculate2"
                                 role="button">Logout</a>
                         @else
                             <a href="{{ route('signin') }}" class="btn btn-danger btn-calculate2"  role="button">SIGN

@@ -140,7 +140,7 @@
                                 <div class="col-md-12">
                                 </div>
                             </div>
-                            <p style="line-height: 1.4em;">MyBDApps is a digital marketing platform designed to promote products & services to the
+                            <p >MyBDApps is a digital marketing platform designed to promote products & services to the
                                 community and target market. It is being developed to claim its spot as one of the top
                                 digital marketing tools.
                                 <br><br>Digital Marketing plays a big part in the success of any products & services of a
@@ -345,10 +345,10 @@
                                     class="img-responsive">
                             </div>
                             <div class="col-md-8" style="margin-top: -24px;">
-                                <h1 data-aos="fade-down" style="text-align: center;">MyBDApps</h1>
-                                <h2 data-aos="fade-up" style="text-align: center;">OBD PLATFORM</h2>
+                                <h1 data-aos="fade-down" class="obd_platform" style="text-align: center;">MyBDApps</h1>
+                                <h2 data-aos="fade-up" class="obd_platform" style="text-align: center;">OBD PLATFORM</h2>
 
-                                <p class="first-p" style="line-height: 1.4em;">With this platform OBD call is triggered to customer from a system
+                                <p class="first-p">With this platform OBD call is triggered to customer from a system
                                     offering different information like important voice broadcasting or services like VAS,
                                     promotional marketing sales or Customer Survey.</p>
 
@@ -361,7 +361,7 @@
                     <div class="detail">
 
 
-                        <h4 class="text-center"><b>Key Benefits:</b></h4>
+                        <h4 class="text-center"><b class="key_benifit">Key Benefits:</b></h4>
                         <div class="row">
                             <div class="col-md-6" style="margin-top: -19px;">
                                 <ul style="list-style-type:none">
@@ -432,7 +432,7 @@
                     <img src="{{ asset('assets/images/push_sms_03/my-push-smsm.png') }}" class="img-responsive">
                     <div class="global-delivery" data-aos="zoom-in" data-aos-duration="1000">
                         <h4 style="margin-left: -20px;"><b>Global reach and fast delivery</b></h4>
-                        <img src="{{ asset('assets/images/line/push_line.png') }}" style="margin-left: -31px;" class="img-responsive">
+                        <img src="{{ asset('assets/images/line/push_line.png') }}" style="margin-left: -31px;" class="img-responsive img-responsive1">
                         <p style="margin-left: -53px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
                             Automated SMS mailling reaches recipients at the speed of 200-500 SMS per second on 800 networks
                             in over 200 countries around the world.</p>
@@ -486,8 +486,8 @@
                 <div class="col-md-4 col-md-offset-1">
                     <img src="{{ asset('assets/images/bulk_sms_02/bulk_sms_service.png') }}" class="img-responsive">
                     <div class="global-delivery" data-aos="zoom-in" data-aos-duration="1000">
-                        <h4 style="margin-left: -30px;"><b>Global reach and fast delivery</b></h4>
-                        <img src="{{ asset('assets/images/line/bulk_line.png') }}" style="margin-left: -50px;" class="img-responsive">
+                        <h4 class="fast_del"><b>Global reach and fast delivery</b></h4>
+                        <img src="{{ asset('assets/images/line/bulk_line.png') }}" class="img-responsive img-responsive2">
                         <p style="margin-left: -55px;">Use bulk SMS to raise brand awareness or just send SMS for your personal non-commercial needs.
                             Automated SMS mailling reaches recipients at the speed of 200-500 SMS per second on 800 networks
                             in over 200 countries around the world.</p>
