@@ -9,14 +9,23 @@ input, button, select, textarea, .btn {
 }
 
 .logo-bar{
-	background-image: url("../image/logo-background.png");
+	/* background-image: url("../image/logo-background.png");
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 	padding-top:10px;
 	padding-bottom: 10px;
 }
-
+@media screen and (max-width: 720px) {
+  .logo-bar{
+    background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    background-color: #e1d9d9;
+  }  
+}
 .logo-bar .bar-right-side{
     padding-top: 10px;
 }
@@ -36,17 +45,17 @@ input, button, select, textarea, .btn {
 
 @media screen and (max-width: 720px) {
   .logo-bar .logo-image{
-    margin-left: 0px;
-    width: 100px;
-	height:auto;
+    margin-left: 2px;
+    width: 90px;
+    height: auto;
   }
 }
 .logo-bar .media-heading{
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 11px;
 }
 .logo-bar a{
-	font-size: 14px;
+	font-size: 12px;
 }
 /*nav bar:::::::::::::::::::::::::::*/
 .navbar{
@@ -307,9 +316,10 @@ input, button, select, textarea, .btn {
 @media screen and (max-width: 720px) {
   .btn-calculate2{
      background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
-     width: 45%;
-     margin-top: -74px;
+     width: 41%;
+     margin-top: -71px;
      margin-left: 6px;
+     border-radius: 5px!important;
   }
   
 }
@@ -1681,7 +1691,7 @@ input, button, select, textarea, .btn {
  }
 
  .media:first-child {
-    margin-top: 5px !important;
+    margin-top: 0px !important;
 }
 
 
@@ -1990,7 +2000,9 @@ __________________________    PASSWORD   RECOVER   ___________________________
 }
 
 .top_contact{
-  margin-top: 1px;
+  margin-top: 0px;
+  font-size: 14px;
+  font-weight: 500;
 }
 @media screen and (max-width: 720px) {
   .top_contact{
@@ -2000,8 +2012,8 @@ __________________________    PASSWORD   RECOVER   ___________________________
 
 @media screen and (max-width: 720px) {
   .top-icon-text{
-    padding-top: 3px;
-    margin-top: 3px;
+    padding-top: 2px;
+    margin-top: 2px;
   }
 }
 

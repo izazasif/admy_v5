@@ -9,11 +9,11 @@
                     <div class="col-md-7 col-xs-6 col-md-offset-1">
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="{{ route('contact') }}#location-map">
+                                <a href="{{ route('contact') }}#location-map" style="text-decoration: none;">
                                     <div class="media">
-                                        <div class="media-left">
+                                        <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/location_icon.png') }}"
-                                                class="media-object" style="width:30px;margin-top: -2px;">
+                                                class="media-object" style="width: 24px;margin-top: -2px;">
                                         </div>
                                         <div class="media-body">
                                             <p class="media-heading top-icon-text2">19/A, Banani, Dhaka.</p>
@@ -22,11 +22,11 @@
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="//api.whatsapp.com/send?phone=8801872634967">
+                                <a href="//api.whatsapp.com/send?phone=8801872634967" style="text-decoration: none;">
                                     <div class="media">
-                                        <div class="media-left">
+                                        <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/whatsapp.png') }}"
-                                                class="media-object" style="width:30px">
+                                                class="media-object" style="width:24px;">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="top_contact"> Call Us </h6>
@@ -36,11 +36,11 @@
                                 </a>
                             </div>
                             <div class="col-md-4">
-                                <a href="{{ route('contact') }}#contact-us-field">
+                                <a href="{{ route('contact') }}#contact-us-field" style="text-decoration: none;">
                                     <div class="media">
-                                        <div class="media-left">
+                                        <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/mail_icon.png') }}"
-                                                class="media-object" style="width:30px;">
+                                                class="media-object" style="width:24px;">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="top_contact">Mail Us  </h6>
