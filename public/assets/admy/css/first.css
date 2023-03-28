@@ -55,7 +55,8 @@ input, button, select, textarea, .btn {
 	font-size: 11px;
 }
 .logo-bar a{
-	font-size: 12px;
+	font-size: 11px;
+  
 }
 /*nav bar:::::::::::::::::::::::::::*/
 .navbar{
@@ -316,10 +317,12 @@ input, button, select, textarea, .btn {
 @media screen and (max-width: 720px) {
   .btn-calculate2{
      background: linear-gradient(to bottom, #8b2b60 0%, #ae2552 100%);
-     width: 41%;
-     margin-top: -71px;
+     width: 43%;
+     margin-top: -78px;
      margin-left: 6px;
-     border-radius: 5px!important;
+     border-radius: 4px!important;
+     padding: 4px 6px;
+     
   }
   
 }
