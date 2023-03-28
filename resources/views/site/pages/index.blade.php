@@ -133,7 +133,7 @@
                             <h2 style="text-align: center;margin-top: -6px;">About MyBDApps</h2>
                             <div class="row line-big">
                                 <div class="col-md-12" style="text-align: center;">
-                                    <img src="{{ asset('assets/images/line/about_line.png') }}">
+                                    <img src="{{ asset('assets/images/line/about_line_2.png') }}">
                                 </div>
                             </div>
                             <div class="row line-sm">
