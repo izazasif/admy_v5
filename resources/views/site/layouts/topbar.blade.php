@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-7 col-xs-6 col-md-offset-1">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 ">
                                 <a href="{{ route('contact') }}#location-map" style="text-decoration: none;">
                                     <div class="media">
                                         <div class="media-left" style="padding-right: 3px;">
@@ -21,9 +21,9 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-xs-4">
                                 <a href="//api.whatsapp.com/send?phone=8801872634967" style="text-decoration: none;">
-                                    <div class="media">
+                                    <div class="media" style="overflow: visible;">
                                         <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/whatsapp.png') }}"
                                                 class="media-object" style="width:24px;">
@@ -35,9 +35,9 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-xs-4 media1_image">
                                 <a href="{{ route('contact') }}#contact-us-field" style="text-decoration: none;">
-                                    <div class="media">
+                                    <div class="media media1">
                                         <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/mail_icon.png') }}"
                                                 class="media-object" style="width:24px;">
