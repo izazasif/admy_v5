@@ -14,7 +14,7 @@
                             <div class="alert alert-success text-center">
                                 <ul style="list-style-type: none">
                                     <li>
-                                        <a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                         {{ session('message') }}
                                     </li>
                                 </ul>
@@ -30,16 +30,31 @@
                                     <th class="text-center">Delivered</th>
                                     <th class="text-center">Conversions</th>
                                     <th class="text-center">Parked</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Effective Scheduled Date</th>
 
                                 </tr>
-                                @php $sl=1 @endphp
-                                    <tr>
-                                        <td class="text-center">{{ $sl++ }}</td>
-                                        <td class="text-center">{{ $stat->sent }}</td>
-                                        <td class="text-center">{{ $stat->delivered }}</td>
-                                        <td class="text-center">{{ $stat->conversions }}</td>
-                                        <td class="text-center">{{ $stat->parked }}</td>
-                                    </tr>
+                                @php
+                                    $sl = 1;
+                                    $statusText = ($status === 1) ? 'CREATED' :
+                                        (($status === 2) ? 'RUNNING' :
+                                        (($status === 3) ? 'PAUSED' :
+                                        (($status === 4) ? 'ENDED' :
+                                        (($status === 6) ? 'SCHEDULED' : ''))));
+                                @endphp
+                                <tr>
+                                    <td class="text-center">{{ $sl++ }}</td>
+                                    <td class="text-center">{{ $stat->sent }}</td>
+                                    <td class="text-center">{{ $stat->delivered }}</td>
+                                    <td class="text-center">{{ $stat->conversions }}</td>
+                                    <td class="text-center">{{ $stat->parked }}</td>
+                                    <td class="text-center">
+                                        {{ $statusText }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $effectiveScheduledDate == 0 ? '' : date('Y-m-d', strtotime($effectiveScheduledDate)) }}
+                                    </td>
+                                </tr>
 
                             </table>
                         </div>

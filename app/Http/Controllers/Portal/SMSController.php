@@ -194,8 +194,31 @@ class SMSController extends Controller
         $cam = Campaign::where('schedule_id',$id)->select('campaign_id')->first();
         $campaign = new CampainController();
         $response =  $campaign->getCampainInformation($cam->campaign_id);
-        $stat = $response->stat;
-        return view('portal.sms_schedule.campaign_stat',compact('stat','title','is_active'));
+        try{
+            if (isset($response->error)) {
+                throw new \Exception($response->error);
+            }
+            else if($response->result == 0){
+            $stat = $response->stat;
+            $status = $response->status; 
+            $effectiveScheduledDate = 0;
+                if($status == 6){
+                $effectiveScheduledDate = $response->effectiveScheduledDate; 
+                }
+            }        
+            else{   
+            $status = 0;
+            $effectiveScheduledDate = 0;        
+            $stat = (object) [    "sent" => 0,    "delivered" => 0,    "conversions" => 0,    "parked" => 0];
+            }
+        }
+        catch(\Exception $e){
+            $status = 0;
+            $effectiveScheduledDate = 0;        
+            $stat = (object) [    "sent" => 0,    "delivered" => 0,    "conversions" => 0,    "parked" => 0];
+        }        
+        
+        return view('portal.sms_schedule.campaign_stat',compact('stat','status','effectiveScheduledDate','title','is_active'));
     }
 
     public function purchaseHistory(){
