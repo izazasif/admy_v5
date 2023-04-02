@@ -1710,8 +1710,8 @@ input, button, select, textarea, .btn {
 }
 @media screen and (max-width: 720px) {
   .media1_image{
-    margin-top: -29px;
-    margin-left: 52px;
+    margin-top: 0px;
+    margin-left: 31px;
   }
 }
 
