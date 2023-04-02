@@ -71,5 +71,8 @@ class Kernel extends HttpKernel
         'CheckOBDViewer' => \App\Http\Middleware\CheckOBDViewer::class,
         'CheckSMSManager' => \App\Http\Middleware\CheckSMSManager::class,
         'CheckSMSViewer' => \App\Http\Middleware\CheckSMSViewer::class,
+        'CheckTicket' => \App\Http\Middleware\CheckTicket::class,
+        'CheckFinancial' => \App\Http\Middleware\CheckFinancial::class,
+        'CheckReporting' => \App\Http\Middleware\CheckReporting::class,
     ];
 }
