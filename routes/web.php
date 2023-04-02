@@ -134,10 +134,6 @@ Route::group(['middleware' => 'CheckLogout'], function(){
 
         Route::get('web/api/schedule/delivered/{id}','Portal\WebAPIScheduleController@delivered')->name('web.api.schedule.delivered');
         Route::get('web/api/schedule/list','Portal\WebAPIScheduleController@list')->name('web.api.schedule.list');
-        
-        Route::get('/ticket/list','TicketController@index')->name('ticket.list');
-        Route::get('/ticket/edit/{id}','TicketController@edit')->name('ticket.edit');
-        Route::post('/ticket/update','TicketController@update')->name('ticket.update');
    
         Route::get('admin/user/report','Portal\ReportController@dailyUserReport')->name('admin.userreport');
         Route::get('admin/obd/report','Portal\ReportController@dailyObdReport')->name('admin.obdreport');
@@ -145,26 +141,13 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::get('admin/activity/log','Portal\ReportController@activityLog')->name('admin.logreport');
         //  Route::get('joycall/login','Api\CampainController@getUserKey')->name('joycall.login');
 
-        //User report 
-        Route::get('/report/user','ReportController@index')->name('report.user');
-        Route::post('/report/user','ReportController@index')->name('report.user');
-        Route::get('/report/schedule','ReportController@schedule')->name('schedule.report');
-        Route::post('/report/schedule','ReportController@schedule')->name('schedule.report');
-        Route::get('/report/package','ReportController@package')->name('package.report');
-        Route::post('/report/package','ReportController@package')->name('package.report');
-        Route::get('/report/obd','ReportController@obd_report')->name('obd.report');
-        Route::post('/report/obd','ReportController@obd_report')->name('obd.report');
-
         Route::get('/reset/user','ReportController@report_reset_user')->name('user_report.reset');
         Route::get('/reset/package','ReportController@report_reset_package')->name('package_report.reset');
         Route::get('/reset/schedule','ReportController@report_reset_schedule')->name('schedule_report.reset');
         Route::get('/reset/obd_report','ReportController@reset_obd_report')->name('obd_report.reset');
     });
     // OBD Manager
-    Route::group(['middleware' => 'CheckOBDManager'], function(){
-        Route::get('/obd/bank/payment/pending','PackController@bankPayment')->name('obd.bank.payment');
-        Route::get('/obd/bank/payment/approve/{id}','PackController@bankPaymentApprove')->name('obd.bank.payment.approve');
-        Route::get('/obd/bank/payment/reject/{id}','PackController@bankPaymentReject')->name('obd.bank.payment.reject');
+    Route::group(['middleware' => 'CheckOBDManager'], function(){        
         Route::get('/clip/create','ClipController@create')->name('clip.create');
         Route::post('/clip/store','ClipController@store')->name('clip.store');        
         Route::get('/clip/edit/{id}','ClipController@edit')->name('clip.edit');
@@ -187,10 +170,7 @@ Route::group(['middleware' => 'CheckLogout'], function(){
 
     });
     // SMS Manager
-    Route::group(['middleware' => 'CheckSMSManager'], function(){
-        Route::get('/psms/bank/payment/pending','Portal\SMSController@bankPayment')->name('psms.bank.payment');
-        Route::get('/psms/bank/payment/approve/{id}','Portal\SMSController@bankPaymentApprove')->name('psms.bank.payment.approve');
-        Route::get('/psms/bank/payment/reject/{id}','Portal\SMSController@bankPaymentReject')->name('psms.bank.payment.reject');
+    Route::group(['middleware' => 'CheckSMSManager'], function(){        
         Route::get('/sms/create','Portal\SMSController@create')->name('portal.sms.create');
         Route::post('/sms/store','Portal\SMSController@store')->name('portal.sms.store');        
         Route::get('/sms/edit/{id}','Portal\SMSController@edit')->name('portal.sms.edit');
@@ -215,7 +195,38 @@ Route::group(['middleware' => 'CheckLogout'], function(){
         Route::post('admin/campaing/stat','Api\CampainController@smsCampaingStat')->name('sms.campaing.stat');
         Route::get('admin/campaing/stat-2','Api\CampainController@smsCampaingStat2')->name('sms.campaing.stat2');
         Route::get('admin/campaing/stat','Portal\SMSController@campaingForAdmin')->name('sms.campaing.list.admin');
-    });      
+    });
+    
+    // ticket Manager
+    Route::group(['middleware' => 'CheckTicket'], function(){
+        Route::get('/ticket/list','TicketController@index')->name('ticket.list');
+        Route::get('/ticket/edit/{id}','TicketController@edit')->name('ticket.edit');
+        Route::post('/ticket/update','TicketController@update')->name('ticket.update');
+    });
+    
+    // Fin Manager
+    Route::group(['middleware' => 'CheckFinancial'], function(){
+        Route::get('/obd/bank/payment/pending','PackController@bankPayment')->name('obd.bank.payment');
+        Route::get('/obd/bank/payment/approve/{id}','PackController@bankPaymentApprove')->name('obd.bank.payment.approve');
+        Route::get('/obd/bank/payment/reject/{id}','PackController@bankPaymentReject')->name('obd.bank.payment.reject');
+        Route::get('/psms/bank/payment/pending','Portal\SMSController@bankPayment')->name('psms.bank.payment');
+        Route::get('/psms/bank/payment/approve/{id}','Portal\SMSController@bankPaymentApprove')->name('psms.bank.payment.approve');
+        Route::get('/psms/bank/payment/reject/{id}','Portal\SMSController@bankPaymentReject')->name('psms.bank.payment.reject');
+    });
+
+    // Report Manager
+    Route::group(['middleware' => 'CheckReporting'], function(){
+        
+        //User report 
+        Route::get('/report/user','ReportController@index')->name('report.user');
+        Route::post('/report/user','ReportController@index')->name('report.user');
+        Route::get('/report/schedule','ReportController@schedule')->name('schedule.report');
+        Route::post('/report/schedule','ReportController@schedule')->name('schedule.report');
+        Route::get('/report/package','ReportController@package')->name('package.report');
+        Route::post('/report/package','ReportController@package')->name('package.report');
+        Route::get('/report/obd','ReportController@obd_report')->name('obd.report');
+        Route::post('/report/obd','ReportController@obd_report')->name('obd.report');
+    }); 
 
 });
 

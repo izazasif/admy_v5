@@ -18,59 +18,47 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             @if (session()->get('user_role') == 'user')
-                <li
-                    class="treeview {{ $is_active == 'create_schedule' || $is_active == 'schedule_history' || $is_active == 'purchase_history' || $is_active == 'schedule_report' || $is_active == 'purchase_pack' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-opencart text-aqua"></i> <span>OBD</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'purchase_pack' ? 'active' : '' }}"><a
-                                href="{{ route('pack.purchase') }}"><i class="fa fa-shopping-bag"></i> Buy Packs</a>
-                        </li>
-                        <li class="{{ $is_active == 'purchase_history' ? 'active' : '' }}"><a
-                                href="{{ route('pack.history') }}"><i class="fa fa-history"></i> OBD pack purchase
-                                History</a></li>
-                        <li class="{{ $is_active == 'create_schedule' ? 'active' : '' }}"><a
-                                href="{{ route('schedule.create') }}"><i class="fa fa-calculator"></i>Schedule OBD</a>
-                        </li>
-                        <li class="{{ $is_active == 'schedule_history' ? 'active' : '' }}"><a
-                                href="{{ route('schedule.history') }}"><i class="fa fa-calendar-check-o"></i>Schedule
-                                History</a></li>
-                        <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a
-                                href="{{ route('schedule.report') }}"><i class="fa fa-database"></i>OBD Report</a></li>
-                    </ul>
-                </li>
+            <li class="treeview {{ $is_active == 'create_schedule' || $is_active == 'schedule_history' || $is_active == 'purchase_history' || $is_active == 'schedule_report' || $is_active == 'purchase_pack' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-opencart text-aqua"></i> <span>OBD</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'purchase_pack' ? 'active' : '' }}"><a href="{{ route('pack.purchase') }}"><i class="fa fa-shopping-bag"></i> Buy Packs</a>
+                    </li>
+                    <li class="{{ $is_active == 'purchase_history' ? 'active' : '' }}"><a href="{{ route('pack.history') }}"><i class="fa fa-history"></i> OBD pack purchase
+                            History</a></li>
+                    <li class="{{ $is_active == 'create_schedule' ? 'active' : '' }}"><a href="{{ route('schedule.create') }}"><i class="fa fa-calculator"></i>Schedule OBD</a>
+                    </li>
+                    <li class="{{ $is_active == 'schedule_history' ? 'active' : '' }}"><a href="{{ route('schedule.history') }}"><i class="fa fa-calendar-check-o"></i>Schedule
+                            History</a></li>
+                    <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a href="{{ route('schedule.report') }}"><i class="fa fa-database"></i>OBD Report</a></li>
+                </ul>
+            </li>
 
-                <li
-                    class="treeview {{ $is_active == 'create_sms_schedule' || $is_active == 'sms_schedule_list' || $is_active == 'purchase_sms' || $is_active == 'sms_purchase_history' || $is_active == 'campaing_stat' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-telegram text-aqua"></i> <span>Push SMS</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'purchase_sms' ? 'active' : '' }}"><a
-                                href="{{ route('sms.purchase') }}"><i class="fa fa-cart-plus"></i> Buy Push SMS
-                                Package</a></li>
-                        <li class="{{ $is_active == 'sms_purchase_history' ? 'active' : '' }}"><a
-                                href="{{ route('sms.purchase.history') }}"><i class="fa fa-life-saver text-aqua"></i>
-                                <span>Push SMS Pack Purchase History</span></a></li>
-                        <li class="{{ $is_active == 'create_sms_schedule' ? 'active' : '' }}"><a
-                                href="{{ route('sms.schedule.create') }}"><i class="fa fa-credit-card text-aqua"></i>
-                                <span>Push SMS Schedule</span></a></li>
-                        <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a
-                                href="{{ route('sms.schedule.list.user') }}"><i class="fa fa-history text-aqua"></i>
-                                <span>Push SMS Schedule History</span></a></li>
-                        <li class="{{ $is_active == 'campaing_stat' ? 'active' : '' }}"><a
-                                href="{{ route('sms.campaing.list.user') }}"><i class="fa fa-line-chart text-aqua"></i>
-                                <span>Push SMS Campaing Stat</span></a></li>
-                    </ul>
-                </li>
-                <!-- <li class="treeview {{ $is_active == 'create_web_api_schedule' || $is_active == 'web_api_schedule_list' || $is_active == 'purchase_web_api' || $is_active == 'web_api_purchase_history' ? 'active' : '' }}">
+            <li class="treeview {{ $is_active == 'create_sms_schedule' || $is_active == 'sms_schedule_list' || $is_active == 'purchase_sms' || $is_active == 'sms_purchase_history' || $is_active == 'campaing_stat' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-telegram text-aqua"></i> <span>Push SMS</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'purchase_sms' ? 'active' : '' }}"><a href="{{ route('sms.purchase') }}"><i class="fa fa-cart-plus"></i> Buy Push SMS
+                            Package</a></li>
+                    <li class="{{ $is_active == 'sms_purchase_history' ? 'active' : '' }}"><a href="{{ route('sms.purchase.history') }}"><i class="fa fa-life-saver text-aqua"></i>
+                            <span>Push SMS Pack Purchase History</span></a></li>
+                    <li class="{{ $is_active == 'create_sms_schedule' ? 'active' : '' }}"><a href="{{ route('sms.schedule.create') }}"><i class="fa fa-credit-card text-aqua"></i>
+                            <span>Push SMS Schedule</span></a></li>
+                    <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a href="{{ route('sms.schedule.list.user') }}"><i class="fa fa-history text-aqua"></i>
+                            <span>Push SMS Schedule History</span></a></li>
+                    <li class="{{ $is_active == 'campaing_stat' ? 'active' : '' }}"><a href="{{ route('sms.campaing.list.user') }}"><i class="fa fa-line-chart text-aqua"></i>
+                            <span>Push SMS Campaing Stat</span></a></li>
+                </ul>
+            </li>
+            <!-- <li class="treeview {{ $is_active == 'create_web_api_schedule' || $is_active == 'web_api_schedule_list' || $is_active == 'purchase_web_api' || $is_active == 'web_api_purchase_history' ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-apple text-aqua"></i> <span>Web API</span>
                         <span class="pull-right-container">
@@ -85,167 +73,155 @@
                     </ul>
                 </li> -->
 
-                <li
-                    class="treeview {{ $is_active == 'ticket_create' || $is_active == 'ticket_list_self' ? 'active' : '' }}">
-                    <a href="#">
-                        <i class="fa fa-ticket text-aqua"></i> <span>Issue A Ticket</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="{{ $is_active == 'ticket_create' ? 'active' : '' }}"><a
-                                href="{{ route('ticket.create') }}"><i class="fa fa-plus text-aqua"></i> <span>Create
-                                    Ticket</span></a></li>
-                        <li class="{{ $is_active == 'ticket_list_self' ? 'active' : '' }}"><a
-                                href="{{ route('ticket.list.self') }}"><i class="fa fa-list text-aqua"></i> <span>My
-                                    Tickets</span></a></li>
-                    </ul>
-                </li>
-                <li class="{{ $is_active == 'faq' ? 'active' : '' }}"><a href="{{ route('faq') }}"><i
-                            class="fa fa-question-circle text-aqua"></i> <span>FAQ</span></a></li>
+            <li class="treeview {{ $is_active == 'ticket_create' || $is_active == 'ticket_list_self' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-ticket text-aqua"></i> <span>Issue A Ticket</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'ticket_create' ? 'active' : '' }}"><a href="{{ route('ticket.create') }}"><i class="fa fa-plus text-aqua"></i> <span>Create
+                                Ticket</span></a></li>
+                    <li class="{{ $is_active == 'ticket_list_self' ? 'active' : '' }}"><a href="{{ route('ticket.list.self') }}"><i class="fa fa-list text-aqua"></i> <span>My
+                                Tickets</span></a></li>
+                </ul>
+            </li>
+            <li class="{{ $is_active == 'faq' ? 'active' : '' }}"><a href="{{ route('faq') }}"><i class="fa fa-question-circle text-aqua"></i> <span>FAQ</span></a></li>
             @endif
             @if (session()->get('user_role') == 'admin')
-                @if (session()->get('permission') == 'all' ||
-                        session()->get('permission') == 'obd_creator' ||
-                        session()->get('permission') == 'obd_viewer')
-                    @if (session()->get('permission') == 'all')
-                        <li class="{{ $is_active == 'dashboard_view' ? 'active' : '' }}"><a
-                                href="{{ route('dashboard.view') }}"><i class="fa fa-dashboard text-aqua"></i>
-                                <span>Dashboard
-                                </span></a>
-                        </li>
+            @if (session()->get('permission') == 'all' ||
+            session()->get('permission') == 'obd_creator' ||
+            session()->get('permission') == 'obd_viewer'|| session()->get('permission') == 'financial' || session()->get('permission') == 'obd_sms_manager' || session()->get('permission') == 'obd_sms_viewer')
+            @if (session()->get('permission') == 'all')
+            <li class="{{ $is_active == 'dashboard_view' ? 'active' : '' }}"><a href="{{ route('dashboard.view') }}"><i class="fa fa-dashboard text-aqua"></i>
+                    <span>Dashboard
+                    </span></a>
+            </li>
+            @endif
+            <li class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' || $is_active == 'obd_bank_payment'? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-music text-aqua"></i> <span>OBD</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @if (session()->get('permission') != 'financial')                    
+                    <li class="{{ $is_active == 'schedule_list' ? 'active' : '' }}"><a href="{{ route('schedule.list') }}"><i class="fa fa-neuter"></i> Schedule List </a>
+                    </li>
                     @endif
-                    <li
-                        class="treeview {{ $is_active == 'clip_list' || $is_active == 'pack_create' || $is_active == 'pack_list' || $is_active == 'schedule_list' || $is_active == 'clip_create' || $is_active == 'clip_edit' || $is_active == 'obd_report' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa fa-music text-aqua"></i> <span>OBD</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ $is_active == 'schedule_list' ? 'active' : '' }}"><a
-                                    href="{{ route('schedule.list') }}"><i class="fa fa-neuter"></i> Schedule List </a>
-                            </li>
-                            @if (session()->get('permission') != 'obd_viewer')
-                                <li class="{{ $is_active == 'clip_create' ? 'active' : '' }}"><a
-                                        href="{{ route('clip.create') }}"><i class="fa fa-star-o"></i> Create OBD
-                                        Clip</a>
-                                </li>
-                            @endif
-                            <li class="{{ $is_active == 'clip_list' ? 'active' : '' }}"><a
-                                    href="{{ route('clip.list') }}"><i class="fa fa-stack-exchange"></i> OBD Clip
-                                    List</a></li>
-                            @if (session()->get('permission') != 'obd_viewer')
-                                <li class="{{ $is_active == 'pack_create' ? 'active' : '' }}"><a
-                                        href="{{ route('pack.create') }}"><i class="fa fa-bug"></i> Create OBD
-                                        pack</a>
-                                </li>
-                            @endif
-                            <li class="{{ $is_active == 'pack_list' ? 'active' : '' }}"><a
-                                    href="{{ route('pack.list') }}"><i class="fa fa-recycle"></i> OBD pack List</a>
-                            </li>
-                            @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_creator')
-                                <li class="{{ $is_active == 'obd_report' ? 'active' : '' }}"><a
-                                        href="{{ route('admin.obdreport') }}"><i class="fa fa-file"></i> OBD
-                                        Report</a>
-                                </li>
-                            @endif
-                            @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_creator')
-                                <li class="{{ $is_active == 'obd_bank_payment' ? 'active' : '' }}"><a
-                                        href="{{ route('obd.bank.payment') }}"><i class="fa fa-dollar "></i>
-                                        Pending Bank
-                                        Payment</a>
-                                </li>
-                            @endif
-                        </ul>
+                    @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_sms_viewer' && session()->get('permission') != 'financial')
+                    <li class="{{ $is_active == 'clip_create' ? 'active' : '' }}"><a href="{{ route('clip.create') }}"><i class="fa fa-star-o"></i> Create OBD
+                            Clip</a>
                     </li>
-                @endif
-                @if (session()->get('permission') == 'all' ||
-                        session()->get('permission') == 'sms_creator' ||
-                        session()->get('permission') == 'sms_viewer')
-                    <li
-                        class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' || $is_active == 'sms_report' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa fa-whatsapp text-aqua"></i> <span> My Push</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a
-                                    href="{{ route('sms.schedule.list') }}"><i class="fa fa-calendar text-aqua"></i>
-                                    <span> SMS Schedule List</span></a></li>
-                            @if (session()->get('permission') != 'sms_viewer')
-                                <li class="{{ $is_active == 'sms_create' ? 'active' : '' }}"><a
-                                        href="{{ route('portal.sms.create') }}"><i class="fa fa-star-half-empty"></i>
-                                        Create
-                                        SMS Package</a></li>
-                            @endif
-                            <li class="{{ $is_active == 'sms_list' ? 'active' : '' }}"><a
-                                    href="{{ route('portal.sms.list') }}"><i class="fa fa-hacker-news"></i> SMS
-                                    Package
-                                    List</a></li>
-                            @if (session()->get('permission') != 'sms_viewer')
-                                <li class="{{ $is_active == 'sms.text_create' ? 'active' : '' }}"><a
-                                        href="{{ route('sms.text.create') }}"><i class="fa fa-battery-full"></i>
-                                        Create
-                                        SMS
-                                        Text</a></li>
-                            @endif
-                            <li class="{{ $is_active == 'sms.text_list' ? 'active' : '' }}"><a
-                                    href="{{ route('sms.text.list') }}"><i class="fa fa-wechat"></i> SMS Text
-                                    List</a>
-                            </li>
-                            <li class="{{ $is_active == 'campaing_stat_admin' ? 'active' : '' }}"><a
-                                    href="{{ route('sms.campaing.list.admin') }}"><i
-                                        class="fa fa-line-chart text-aqua"></i>
-                                    <span>SMS Campaing Stat</span></a></li>
-                            @if (session()->get('permission') != 'sms_creator' && session()->get('permission') != 'sms_viewer')
-                                <li class="{{ $is_active == 'sms_report' ? 'active' : '' }}"><a
-                                        href="{{ route('admin.smsreport') }}"><i class="fa fa-file"></i>Push SMS
-                                        Report</a>
-                                </li>
-                            @endif
-                            @if (session()->get('permission') != 'sms_creator' && session()->get('permission') != 'sms_viewer')
-                                <li class="{{ $is_active == 'sms_bank_payment' ? 'active' : '' }}"><a
-                                        href="{{ route('psms.bank.payment') }}"><i class="fa fa-dollar"></i>
-                                        Pending Bank Payment</a>
-                                </li>
-                            @endif
-                        </ul>
+                    @endif
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'clip_list' ? 'active' : '' }}"><a href="{{ route('clip.list') }}"><i class="fa fa-stack-exchange"></i> OBD Clip
+                            List</a></li>
+                    @endif        
+                    @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_sms_viewer' && session()->get('permission') != 'financial')
+                    <li class="{{ $is_active == 'pack_create' ? 'active' : '' }}"><a href="{{ route('pack.create') }}"><i class="fa fa-bug"></i> Create OBD
+                            pack</a>
                     </li>
-                @endif
-                @if (session()->get('permission') == 'all')
-                    <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a
-                            href="{{ route('ticket.list') }}"><i class="fa fa-ticket text-aqua"></i> <span>Ticket
-                                List</span></a></li>
-                    <li
-                        class="treeview {{ $is_active == 'category_list' || $is_active == 'category_create' || $is_active == 'category_edit' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa fa-th-large text-aqua"></i> <span>Category</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ $is_active == 'category_create' ? 'active' : '' }}"><a
-                                    href="{{ route('category.create') }}"><i class="fa fa-tags"></i> Create
-                                    Category</a>
-                            </li>
-                            <li class="{{ $is_active == 'category_list' ? 'active' : '' }}"><a
-                                    href="{{ route('category.list') }}"><i class="fa fa-stack-exchange"></i> Category
-                                    List</a></li>
-                        </ul>
+                    @endif
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'pack_list' ? 'active' : '' }}"><a href="{{ route('pack.list') }}"><i class="fa fa-recycle"></i> OBD pack List</a>
                     </li>
-                    <li class="{{ $is_active == 'user_list' ? 'active' : '' }}"><a
-                            href="{{ route('user.list') }}"><i class="fa fa-users text-aqua"></i> <span>User
-                                List</span></a></li>
-                @endif
+                    @endif
+                    @if (session()->get('permission') == 'all' )
+                    <li class="{{ $is_active == 'obd_report' ? 'active' : '' }}"><a href="{{ route('admin.obdreport') }}"><i class="fa fa-file"></i> OBD
+                            Report</a>
+                    </li>
+                    @endif
+                    @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_sms_viewer')
+                    <li class="{{ $is_active == 'obd_bank_payment' ? 'active' : '' }}"><a href="{{ route('obd.bank.payment') }}"><i class="fa fa-dollar "></i>
+                            Pending Bank
+                            Payment</a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+            @if (session()->get('permission') == 'all' ||
+            session()->get('permission') == 'sms_creator' ||
+            session()->get('permission') == 'sms_viewer' || session()->get('permission') == 'financial' || session()->get('permission') == 'obd_sms_manager' || session()->get('permission') == 'obd_sms_viewer')
+            <li class="treeview {{ $is_active == 'sms_text_list' || $is_active == 'sms_text_create' || $is_active == 'sms_text_edit' || $is_active == 'sms_schedule_list' || $is_active == 'sms_create' || $is_active == 'sms_list' || $is_active == 'sms_edit' || $is_active == 'campaing_stat_admin' || $is_active == 'sms_report' || $is_active == 'sms_bank_payment'? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-whatsapp text-aqua"></i> <span> My Push</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'sms_schedule_list' ? 'active' : '' }}"><a href="{{ route('sms.schedule.list') }}"><i class="fa fa-calendar text-aqua"></i>
+                            <span> SMS Schedule List</span></a></li>
+                    @endif        
+                    @if (session()->get('permission') != 'sms_viewer' && session()->get('permission') != 'obd_sms_viewer' && session()->get('permission') != 'financial')
+                    <li class="{{ $is_active == 'sms_create' ? 'active' : '' }}"><a href="{{ route('portal.sms.create') }}"><i class="fa fa-star-half-empty"></i>
+                            Create
+                            SMS Package</a></li>
+                    @endif
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'sms_list' ? 'active' : '' }}"><a href="{{ route('portal.sms.list') }}"><i class="fa fa-hacker-news"></i> SMS
+                            Package
+                            List</a></li>
+                    @endif        
+                    @if (session()->get('permission') != 'sms_viewer' && session()->get('permission') != 'financial' && session()->get('permission') != 'obd_sms_viewer')
+                    <li class="{{ $is_active == 'sms.text_create' ? 'active' : '' }}"><a href="{{ route('sms.text.create') }}"><i class="fa fa-battery-full"></i>
+                            Create
+                            SMS
+                            Text</a></li>
+                    @endif
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'sms.text_list' ? 'active' : '' }}"><a href="{{ route('sms.text.list') }}"><i class="fa fa-wechat"></i> SMS Text
+                            List</a>
+                    </li>
+                    @endif
+                    @if (session()->get('permission') != 'financial') 
+                    <li class="{{ $is_active == 'campaing_stat_admin' ? 'active' : '' }}"><a href="{{ route('sms.campaing.list.admin') }}"><i class="fa fa-line-chart text-aqua"></i>
+                            <span>SMS Campaing Stat</span></a></li>
+                    @endif        
+                    @if (session()->get('permission') == 'all' )
+                    <li class="{{ $is_active == 'sms_report' ? 'active' : '' }}"><a href="{{ route('admin.smsreport') }}"><i class="fa fa-file"></i>Push SMS
+                            Report</a>
+                    </li>
+                    @endif
+                    @if (session()->get('permission') != 'obd_viewer' && session()->get('permission') != 'obd_sms_viewer')
+                    <li class="{{ $is_active == 'sms_bank_payment' ? 'active' : '' }}"><a href="{{ route('psms.bank.payment') }}"><i class="fa fa-dollar"></i>
+                            Pending Bank Payment</a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+            @if (session()->get('permission') == 'all' || session()->get('permission') == 'ticket')
+            <li class="{{ $is_active == 'ticket_list' || $is_active == 'ticket_edit' ? 'active' : '' }}"><a href="{{ route('ticket.list') }}"><i class="fa fa-ticket text-aqua"></i> <span>Ticket
+                        List</span></a></li>
+            @endif
+            @if (session()->get('permission') == 'all')            
+            <li class="treeview {{ $is_active == 'category_list' || $is_active == 'category_create' || $is_active == 'category_edit' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-th-large text-aqua"></i> <span>Category</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'category_create' ? 'active' : '' }}"><a href="{{ route('category.create') }}"><i class="fa fa-tags"></i> Create
+                            Category</a>
+                    </li>
+                    <li class="{{ $is_active == 'category_list' ? 'active' : '' }}"><a href="{{ route('category.list') }}"><i class="fa fa-stack-exchange"></i> Category
+                            List</a></li>
+                </ul>
+            </li>
+            <li class="{{ $is_active == 'user_list' ? 'active' : '' }}"><a href="{{ route('user.list') }}"><i class="fa fa-users text-aqua"></i> <span>User
+                        List</span></a></li>
+            @endif
 
 
-                <!-- <li class="treeview {{ $is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active == 'web_api_schedule_list' ? 'active' : '' }}">
+            <!-- <li class="treeview {{ $is_active == 'web_api_list' || $is_active == 'web_api_create' || $is_active == 'web_api_edit' || $is_active == 'web_api_schedule_list' ? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-bullhorn text-aqua"></i> <span>Web API Package</span>
                         <span class="pull-right-container">
@@ -258,59 +234,50 @@
                         <li class="{{ $is_active == 'web_api_list' ? 'active' : '' }}"><a href="{{ route('web.api.list') }}"><i class="fa fa-bar-chart"></i> Web API pack List</a></li>
                     </ul>
                 </li> -->
-                @if (session()->get('permission') == 'all')
-                    <li
-                        class="treeview {{ $is_active == 'admin_list' || $is_active == 'admin_create' || $is_active == 'admin_edit' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa fa-user text-aqua"></i> <span>Admin</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ $is_active == 'admin_create' ? 'active' : '' }}"><a
-                                    href="{{ route('admin.create') }}"><i class="fa fa-circle-o"></i> Create Admin
-                                    User</a></li>
-                            <li class="{{ $is_active == 'admin_list' ? 'active' : '' }}"><a
-                                    href="{{ route('admin.list') }}"><i class="fa fa-circle-o"></i> Admin User
-                                    List</a>
-                            </li>
-                        </ul>
+            @if (session()->get('permission') == 'all')
+            <li class="treeview {{ $is_active == 'admin_list' || $is_active == 'admin_create' || $is_active == 'admin_edit' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-user text-aqua"></i> <span>Admin</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'admin_create' ? 'active' : '' }}"><a href="{{ route('admin.create') }}"><i class="fa fa-circle-o"></i> Create Admin
+                            User</a></li>
+                    <li class="{{ $is_active == 'admin_list' ? 'active' : '' }}"><a href="{{ route('admin.list') }}"><i class="fa fa-circle-o"></i> Admin User
+                            List</a>
                     </li>
-                @endif
-                @if (session()->get('permission') == 'all')
-                    <li
-                        class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count' ? 'active' : '' }}">
-                        <a href="#">
-                            <i class="fa fa-th-large text-aqua"></i> <span>Report </span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ $is_active == 'user_report' ? 'active' : '' }}"><a
-                                    href="{{ route('report.user') }}"><i class="fa fa-tags"></i> User Registration
-                                    Count </a>
-                            </li>
-                            <li class="{{ $is_active == 'package_report' ? 'active' : '' }}"><a
-                                    href="{{ route('package.report') }}"><i class="fa fa-stack-exchange"></i> Number
-                                    of Package Sold
-                            <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a
-                                    href="{{ route('schedule.report') }}"><i class="fa fa-stack-exchange"></i> Daily
-                                    Scheduled Count
-                                </a></li>
-                            <li class="{{ $is_active == 'obd_report_count' ? 'active' : '' }}"><a
-                                    href="{{ route('obd.report') }}"><i class="fa fa-stack-exchange"></i> OBD Report
-                                </a></li>
-                        </ul>
+                </ul>
+            </li>
+            @endif
+            @if (session()->get('permission') == 'all' || session()->get('permission') == 'report')
+            <li class="treeview {{ $is_active == 'user_report' || $is_active == 'schedule_report' || $is_active == 'package_report' || $is_active == 'obd_report_count' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-th-large text-aqua"></i> <span>Report </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ $is_active == 'user_report' ? 'active' : '' }}"><a href="{{ route('report.user') }}"><i class="fa fa-tags"></i> User Registration
+                            Count </a>
                     </li>
-                @endif
-                @if (session()->get('permission') == 'all')
-                    <li class="{{ $is_active == 'log_report' ? 'active' : '' }}"><a
-                            href="{{ route('admin.logreport') }}"><i class="fa fa-history text-aqua"></i>
-                            <span>Activity
-                                Log</span></a></li>
-                @endif
+                    <li class="{{ $is_active == 'package_report' ? 'active' : '' }}"><a href="{{ route('package.report') }}"><i class="fa fa-stack-exchange"></i> Number
+                            of Package Sold
+                    <li class="{{ $is_active == 'schedule_report' ? 'active' : '' }}"><a href="{{ route('schedule.report') }}"><i class="fa fa-stack-exchange"></i> Daily
+                            Scheduled Count
+                        </a></li>
+                    <li class="{{ $is_active == 'obd_report_count' ? 'active' : '' }}"><a href="{{ route('obd.report') }}"><i class="fa fa-stack-exchange"></i> OBD Report
+                        </a></li>
+                </ul>
+            </li>
+            @endif
+            @if (session()->get('permission') == 'all')
+            <li class="{{ $is_active == 'log_report' ? 'active' : '' }}"><a href="{{ route('admin.logreport') }}"><i class="fa fa-history text-aqua"></i>
+                    <span>Activity
+                        Log</span></a></li>
+            @endif
             @endif
         </ul>
 
