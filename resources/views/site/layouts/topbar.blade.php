@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h6 class="top_contact"> Call Us </h6>
-                                            <p class="media-heading top-icon-text"> +01850613527</p>
+                                            <p class="media-heading top-icon-text"> +01843900056</p>
                                         </div>
                                     </div>
                                 </a>
