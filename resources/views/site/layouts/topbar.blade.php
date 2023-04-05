@@ -21,14 +21,15 @@
                                 </a>
                             </div>
                             <div class="col-md-4 col-xs-4">
-                                <a href="//api.whatsapp.com/send?phone=8801872634967" style="text-decoration: none;">
+                                <!-- <a href="//api.whatsapp.com/send?phone=8801872634967" style="text-decoration: none;"> -->
+                                <a href="#" style="text-decoration: none;">
                                     <div class="media" style="overflow: visible;">
                                         <div class="media-left" style="padding-right: 3px;">
                                             <img src="{{ asset('assets/images/top_address/whatsapp.png') }}" class="media-object" style="width:24px;">
                                         </div>
                                         <div class="media-body">
                                             <h6 class="top_contact"> Call Us </h6>
-                                            <p class="media-heading top-icon-text"> +01872634967</p>
+                                            <p class="media-heading top-icon-text"> +01850613527</p>
                                         </div>
                                     </div>
                                 </a>
@@ -41,7 +42,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h6 class="top_contact">Mail Us </h6>
-                                            <p class="media-heading top-icon-text">info@mybdapps.com</p>
+                                            <p class="media-heading top-icon-text">support@mybdapps.com</p>
                                         </div>
                                     </div>
                                 </a>

@@ -13,8 +13,8 @@
                     <p>Feel free to get in touch with us. We are here to help.</p>
                     <p>MyBDApps</p>
                     <p>Tel: +88 0184 3900 056</p>
-                    <p>Tel: +88 0175 9692 020</p>
-                    <p>Email: info@miaki.co</p>
+                    <!-- <p>Tel: +88 0175 9692 020</p> -->
+                    <p>Email: support@mybdapps.com</p>
                 </div>
             </div>
             <div class="col-md-4 col-xs-6 thired-col">
