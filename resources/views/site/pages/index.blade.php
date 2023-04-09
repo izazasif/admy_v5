@@ -24,7 +24,7 @@
 
 
                     <div class="item">
-                        <img src="{{ asset('assets/admy/image/banner1.jpg') }}" alt="Los Angeles" style="width:100%;">
+                        <img src="{{ asset('assets/admy/image/banner1.jpeg') }}" alt="Los Angeles" style="width:100%;">
                         <div class="carousel-caption">
                             <h1 class="text-left"><b>Finding your best customers</b></h1>
                             <h2 class="text-left" style="font-size: 38px;"><b>and winning them over</b></h2>
@@ -363,7 +363,7 @@
 
                         <h4 class="text-center"><b class="key_benifit">Key Benefits:</b></h4>
                         <div class="row">
-                            <div class="col-md-6" style="margin-top: -19px;">
+                            <div class="col-md-offset-3 col-md-6" style="margin-top: -19px;">
                                 <ul style="list-style-type:none">
                                     <li>Automatically dials mobile number subscribers to promote and market services.</li>
                                     <li>Intelligently segregates un-successful calls and re-dials automatically.</li>
@@ -372,7 +372,7 @@
                                     <li>Allows adding operator’s internal ‘Do not Dial (DND)’ list.</li>
                                 </ul>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-offset-3 col-md-6">
                                 <ul style="list-style-type:none">
                                     <li>Supports Call Patching, that is it routes IVR call to a customer support executive.
                                     </li>
