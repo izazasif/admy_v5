@@ -347,7 +347,18 @@ input, button, select, textarea, .btn {
      padding-right: 3%;
     /* margin-bottom: 13%;*/
 }
-
+@media screen and (max-width: 720px) {
+  .product-overview .product-overview-bg{
+    background-image: url("../../images/banner_icon/advantage_of_admy.png");;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left:3%;
+    padding-right: 3%;
+    height: 170px;
+   /* margin-bottom: 13%;*/
+}
+}
 .product-overview h3{
      font-size: 30px;
 }
@@ -364,8 +375,8 @@ input, button, select, textarea, .btn {
 }
 @media screen and (max-width: 720px) {
   .product-overview .product-overview-bg img{
-    width:45px;
-    height:60px;
+    width:40px;
+    height:50px;
     margin-top: 10%;
     margin-bottom: 10%;
   }
@@ -379,7 +390,17 @@ input, button, select, textarea, .btn {
 	padding-right:16%;
   margin-top: -4px;
 }
-
+@media screen and (max-width: 720px) {
+  .product-overview h5{
+    font-size:17px;
+    color:white;
+    font-weight: bold;
+    padding-bottom: 20px;
+    padding-left:16%;
+    padding-right:16%;
+    margin-top: -4px;
+  }
+}
 .admy-obd-platform{
     padding-top: 18px;
     padding-bottom: 13px;
@@ -433,7 +454,8 @@ input, button, select, textarea, .btn {
     height: .5em;
     background-color: #aa2654;
     float: left;
-    margin: .72em .50em 0;
+    /* margin: .72em .50em 0; */
+    margin: 7.7px .50em 0;
     border-radius: 50%;
 }
 
@@ -1623,9 +1645,9 @@ input, button, select, textarea, .btn {
     height: 200px;
     /*border: 1px solid #f1f1f1;*/
     perspective: 1000px;
-    margin-bottom: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-bottom: -16px;
+    padding-left: 35px;
+    padding-right: 35px;
   }
 }
 
