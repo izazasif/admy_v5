@@ -497,7 +497,7 @@ input, button, select, textarea, .btn {
 
 .admy-obd-platform .detail .col-md-6{
   padding:15px;
-  margin-left:3px;
+  /* margin-left:3px; */
 }
 
 
@@ -1613,6 +1613,20 @@ input, button, select, textarea, .btn {
   /*border: 1px solid #f1f1f1;*/
   perspective: 1000px;
   margin-bottom: 25px
+}
+
+
+@media screen and (max-width: 720px) {
+  .flip-box {
+    background-color: transparent;
+    width:100%;
+    height: 200px;
+    /*border: 1px solid #f1f1f1;*/
+    perspective: 1000px;
+    margin-bottom: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 .flip-box-inner {
