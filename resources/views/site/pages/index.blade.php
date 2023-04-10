@@ -363,17 +363,13 @@
 
                         <h4 class="text-center"><b class="key_benifit">Key Benefits:</b></h4>
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-6" style="margin-top: -19px;">
+                            <div class="col-md-offset-2 col-md-8" style="margin-top: -10px;">
                                 <ul style="list-style-type:none">
                                     <li>Automatically dials mobile number subscribers to promote and market services.</li>
                                     <li>Intelligently segregates un-successful calls and re-dials automatically.</li>
                                     <li>Generates various reports.</li>
                                     <li>Supports virtually unlimited levels in call flow.</li>
                                     <li>Allows adding operator’s internal ‘Do not Dial (DND)’ list.</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-offset-3 col-md-6">
-                                <ul style="list-style-type:none">
                                     <li>Supports Call Patching, that is it routes IVR call to a customer support executive.
                                     </li>
                                     <li>Allows checking the quality of voice calls before initiating the dialling process.
@@ -383,6 +379,11 @@
                                     <li>Allows online and real-time activation and subscription process.</li>
                                 </ul>
                             </div>
+                            <!-- <div class="col-md-offset-2 col-md-8">
+                                <ul style="list-style-type:none">
+                                   
+                                </ul>
+                            </div> -->
                         </div>
                     </div>
                 </div>
